@@ -81,8 +81,8 @@ const brand: BrandData = {
     ],
   },
   contact: {
-    email: "info@schumms.com",
-    phone: "+49 611 945 757 0",
+    email: "Info@schumms.com",
+    phone: "+49 (0)6122 727 555-0",
     address: {
       street: "Borsigstraße 20",
       zip: "65205",
