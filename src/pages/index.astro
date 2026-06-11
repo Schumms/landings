@@ -1,13 +1,4 @@
 ---
-// Branch erkennen — main = Redirect, dev = Übersicht
-const branch = import.meta.env.COOLIFY_BRANCH || process.env.COOLIFY_BRANCH || 'main';
-
-// Auf main: Redirect auf schumms.com (keine Index-Seite, keine Liste)
-if (branch === 'main') {
-  return Astro.redirect('https://schumms.com', 301);
-}
-
-// Auf dev: Alle Pages laden und Liste anzeigen
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/global/Nav.astro";
@@ -77,7 +68,7 @@ const drafts = sorted.filter(p => !p.data.published);
       )}
 
       <p class="index__note">
-        <a href={brand.url}>← Zurück zu schumms.com</a>
+        <a href={brand.url}>Zurück zu schumms.com</a>
       </p>
     </div>
   </main>
