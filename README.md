@@ -1,108 +1,52 @@
-# schumms-landings
+# Schumm & Rösch — Agentic Landingpage System
 
-Agent-gestütztes **Landing Page Template** für [Schumm & Rösch](https://www.schumms.com).
+> Landingpages erstellen, previewen und veröffentlichen — per Chat. Kein Code, kein Terminal.
 
-Der Agent editiert **nur Markdown** in `src/content/pages/`. Design, Sections, Routing und DSGVO-Basis sind vorgebaut.
+## Wie es funktioniert
 
-**Agent-Dokumentation:** [`AGENTS.md`](./AGENTS.md)
+- **Zwei Branches**: `main` (Live) und `dev` (Preview)
+- **dev**: Alle Pages sichtbar — auch Entwürfe
+- **main**: Nur veröffentlichte Pages (`published: true`)
+- **Deployment**: Automatisch über Coolify
 
----
+## Für Mitarbeitende
 
-## Quick Start
+1. Sag mir im Chat, welche Landingpage du brauchst
+2. Ich erstelle einen Entwurf auf der Preview
+3. Du prüfst und sagst mir, was angepasst werden soll
+4. Wenn alles passt: "veröffentlichen" — ich schalte sie live
 
-```bash
-pnpm install
-pnpm run dev      # → http://localhost:4321
-pnpm run build    # → dist/
-```
+Siehe [AGENTS.md](AGENTS.md) für die vollständige Dokumentation.
 
-| URL | Typ | Beschreibung |
-|-----|-----|--------------|
-| `/arbeitsplatz-fitness-check/` | Lead-Magnet | Conversion-optimierte Referenz |
-| `/default-landing/` | Lead-Magnet | Alle Sections aktiv (Showcase) |
-| `/hr-konferenz-wiesbaden/` | Event | Konferenz mit Programm, Speaker, Location |
-| `/workspace-day-september/` | Event | Kompakter Event-Funnel |
-| `/` | — | Interne Seitenliste (Dev, `noindex`) |
+## Technisches
 
----
+- **Framework**: Astro (Static Site Generator)
+- **Styling**: CSS Custom Properties
+- **Fonts**: Inter (self-hosted)
+- **Build**: `pnpm run build`
+- **Output**: Statische Dateien in `dist/`
 
-## Neue Landingpage anlegen
+## Branches
 
-```bash
-# Lead-Magnet / E-Book / Checklist
-cp src/content/pages/_template.leadmagnet.md src/content/pages/mein-angebot.md
+| Branch | Zweck | URL |
+|--------|-------|-----|
+| `dev` | Preview, alle Pages | `preview-landing.ki.schumms.com` |
+| `main` | Live, nur veröffentlicht | `landing.schumms.com` |
 
-# Event / Konferenz
-cp src/content/pages/_template.event.md src/content/pages/mein-event.md
-```
+## Scripts
 
-1. Frontmatter ausfüllen (`slug`, Inhalte, `sections:`)
-2. Bilder nach `public/pages/[slug]/` legen
-3. Nicht benötigte Sections auf `false` — **Inhalte nicht löschen**
-4. `published: true` → Build deployen
+- `pnpm dev` — Lokale Entwicklung
+- `pnpm build` — Produktions-Build (filtert Entwürfe auf main)
+- `pnpm preview` — Lokale Preview des Builds
 
-**Neue Markdown-Datei während laufendem Dev-Server?** Einmal neu starten (`pnpm run dev`), sonst 404 auf dem neuen Slug.
+## Filter-Logic
 
-Details: [`AGENTS.md`](./AGENTS.md)
+Das Script `scripts/filter-pages.js` läuft vor dem Build:
+- **main**: Entwürfe (`published: false`) werden temporär entfernt
+- **dev**: Alle Pages werden gebaut
 
----
+## Kontakt
 
-## Architektur
-
-```
-src/content/pages/              ← Agent editiert hier
-  _template.leadmagnet.md       ← Vorlage Lead-Magnet (nicht gebaut)
-  _template.event.md            ← Vorlage Event (nicht gebaut)
-  _template.md                  ← Legacy: alle Sections (nicht gebaut)
-
-src/components/sections/        ← Section-Komponenten (fix)
-src/lib/sections.ts             ← 18-Section-Registry + Defaults
-src/content.config.ts           ← Zod-Schema (Build bricht bei Fehlern)
-src/data/brand.ts               ← Markendaten (fix)
-
-public/pages/[slug]/            ← Page-spezifische Bilder
-public/images/pool/             ← schumms.com Image Pool + manifest.json
-public/images/logos/            ← Partner-Logos
-scripts/                        ← Asset-Fetcher (optional)
-```
-
-**Build-Regel:** `_`-Prefix in `src/content/pages/` → wird ignoriert.
-
-**Production:** Nur `published: true`. Entwürfe: lokal sichtbar, `noindex`.
-
----
-
-## Design (schumms.com)
-
-- Schwarz/Weiß, Inter, scharfe Kanten
-- Coral `#FD7857` — Hero-CTA, Nav-CTA, Formular
-- Hero: Split-Layout · Benefits: nummerierte Kreise
-- LP-Nav: Logo links, ein CTA rechts
-- LP-Footer: Impressum + Datenschutz + Adresse
-
----
-
-## Deployment (Coolify)
-
-| Branch | Domain |
-|--------|--------|
-| `dev` | preview-landing.schumms.com |
-| `main` | landing.schumms.com |
-
-Production-Root `/` ist interne Seitenliste (`noindex`). Live-LPs: `/{slug}/`.
-
----
-
-## Repository als Template nutzen
-
-1. GitHub: **Use this template** → neues Repo
-2. `astro.config.mjs` → `site:` anpassen
-3. `src/data/brand.ts` → Markendaten
-4. Impressum/Datenschutz juristisch prüfen
-5. `form_webhook` in n8n anlegen
-
----
-
-## Lizenz
-
-MIT — siehe [`LICENSE`](./LICENSE)
+Schumm & Rösch Planen + Einrichten GmbH  
+Borsigstraße 20, 65205 Wiesbaden  
+info@schumms.com

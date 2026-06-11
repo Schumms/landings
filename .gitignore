@@ -31,7 +31,14 @@ Thumbs.db
 *.swo
 
 # Temporary
+*.tmp
+*.temp
 tmp/
 tmp-*/
 temp/
+
+# Drafts (wird vom Build-Script erzeugt)
+src/content/pages/.drafts/
+
+# Raw assets
 public/pages/**/_raw/

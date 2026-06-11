@@ -1,13 +1,13 @@
 {
   "name": "schumms-landings",
-  "version": "1.1.0",
-  "description": "Agent-gestütztes Landing Page Template für Schumm & Rösch — 18 Sections, Markdown-only Workflow",
+  "version": "1.2.0",
+  "description": "Agentic Landingpage System für Schumm & Rösch — Markdown-only Workflow, 14 Sections",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/filter-pages.js && astro build",
+    "build": "node scripts/filter-pages.js && astro build && node scripts/restore-pages.js",
     "preview": "astro preview",
     "astro": "astro"
   },
