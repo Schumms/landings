@@ -7,7 +7,7 @@
   "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/filter-pages.js && astro build && node scripts/restore-pages.js",
+    "build": "node scripts/filter-pages.js && astro build && node scripts/post-build.js && node scripts/restore-pages.js",
     "preview": "astro preview",
     "astro": "astro"
   },
