@@ -7,7 +7,16 @@
 - **Zwei Branches**: `main` (Live) und `dev` (Preview)
 - **Auf dev**: Alle Seiten sichtbar — auch Entwürfe. Die Startseite zeigt eine Liste aller Pages.
 - **Auf main**: Nur veröffentlichte Seiten (`published: true`) sind erreichbar. Die Startseite leitet auf `schumms.com` weiter.
-- **Deployment**: Automatisch über Coolify. Push auf `dev` → preview-landing.schumms.com. Push auf `main` → landing.schumms.com.
+- **Deployment**: Automatisch über Coolify. Push auf `dev` → preview-landing.ki.schumms.com. Push auf `main` → landing.ki.schumms.com.
+
+## URLs
+
+| Umgebung | URL | Zweck |
+|----------|-----|-------|
+| **Preview** | `https://landing-preview.ki.schumms.com` | Alle Pages inkl. Entwürfe |
+| **Live** | `https://landing.ki.schumms.com` | Nur veröffentlichte Pages |
+
+**Preview-Zugang**: Basic Auth mit User `schumms` / Password `schumms`
 
 ## Workflow für Landingpages
 
@@ -36,6 +45,15 @@ Agent: Setzt published: true → Merged nach main → "🚀 Live: [URL]"
 - **dev**: Kein Schutz — hier wird gearbeitet und getestet.
 - **Agenten dürfen**: Auf `dev` committen und pushen. Auf `main` nur via Merge nach expliziter Bestätigung.
 
+## Build Pipeline
+
+```
+1. filter-pages.js  → Entwürfe entfernen (nur auf main)
+2. astro build      → Statische Dateien generieren
+3. post-build.js    → index.html mit Redirect ersetzen (nur auf main)
+4. restore-pages.js → Entwürfe wiederherstellen
+```
+
 ## Dateistruktur (wichtig für Agenten)
 
 ```
@@ -44,6 +62,9 @@ public/pages/[slug]/        ← Hier landen Bilder zu einer Page
 src/content.config.ts       ← Schema — niemals editieren
 src/components/sections/    ← Sections — niemals editieren
 src/data/brand.ts           ← Markendaten — niemals editieren
+scripts/filter-pages.js     ← Build-Script — niemals editieren
+scripts/post-build.js       ← Build-Script — niemals editieren
+scripts/restore-pages.js    ← Build-Script — niemals editieren
 ```
 
 ## Regeln für Agenten

@@ -1,6 +1,6 @@
 ---
 slug: arbeitsplatz-fitness-check
-published: true
+published: false
 
 title: "Arbeitsplatz-Fitness-Check — Hybrid in 3 Min"
 description: "Kostenlose Selbsteinschätzung für HR & Facility: Hybrid-Readiness-Score, Top-3-Hebel und Management-One-Pager — sofort als PDF."
