@@ -1,20 +1,29 @@
 ---
+import { execSync } from "child_process";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/global/Nav.astro";
 import Footer from "@components/global/Footer.astro";
 import brand from "@data/brand";
 
-const pages = await getCollection("pages", ({ data }) => {
-  if (import.meta.env.PROD) return data.published;
-  return true;
-});
+// Branch erkennen — main = Live (Redirect), dev = Preview (Liste)
+let branch = "main";
+try {
+  branch = execSync("git rev-parse --abbrev-ref HEAD", { cwd: process.cwd() }).toString().trim();
+} catch {}
 
+// Auf main: immer Redirect auf schumms.com
+if (branch === "main") {
+  return Astro.redirect("https://schumms.com", 301);
+}
+
+// Auf dev: Liste aller Pages (auch Entwürfe) als Preview-Übersicht
+const pages = await getCollection("pages");
 const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de"));
 ---
 
 <BaseLayout
-  title="Landingpages"
+  title="Landingpages — Preview"
   description="Schumm & Rösch — Agent-gestütztes Landing Page System"
   robots="noindex, nofollow"
 >
@@ -22,15 +31,10 @@ const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de
   <main id="main-content" class="index">
     <div class="container">
       <p class="index__eyebrow">Schumm & Rösch</p>
-      <h1>Landingpages</h1>
+      <h1>Landingpages — Preview</h1>
       <p class="index__intro">
-        Neue Seiten: Markdown in <code>src/content/pages/</code> — siehe <code>AGENTS.md</code>.
-      </p>
-
-      <p class="index__hint">
-        Lead-Magnet: <a href="/arbeitsplatz-fitness-check/">arbeitsplatz-fitness-check</a>
-        · Showcase: <a href="/default-landing/">default-landing</a>
-        · Event: <a href="/hr-konferenz-wiesbaden/">hr-konferenz-wiesbaden</a>
+        Hier siehst du alle Landingpages, die gerade in Arbeit sind.
+        Entwürfe sind mit einem Badge markiert.
       </p>
 
       <ul class="index__list divider-list" role="list">
@@ -42,7 +46,11 @@ const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de
                   {entry.data.title}
                 </a>
               </div>
-              {!entry.data.published && <span class="index__badge">Entwurf</span>}
+              {entry.data.published ? (
+                <span class="index__badge index__badge--live">Live</span>
+              ) : (
+                <span class="index__badge">Entwurf</span>
+              )}
             </li>
           ))
         }
@@ -76,20 +84,6 @@ const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de
     max-width: 50ch;
   }
 
-  .index__hint {
-    margin-top: 0.75rem;
-    font-size: var(--text-sm);
-    max-width: none;
-  }
-
-  .index__hint a {
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .index code {
-    font-size: 0.9em;
-  }
-
   .index__list {
     margin-top: 3rem;
     max-width: 40rem;
@@ -115,6 +109,10 @@ const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     flex-shrink: 0;
+  }
+
+  .index__badge--live {
+    color: var(--color-mint);
   }
 
   .index__note {

@@ -1,0 +1,23 @@
+name: Branch Guard
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check who pushed
+        run: |
+          if [ "${{ github.actor }}" != "Schumms" ]; then
+            echo "❌ Direkter Push auf main ist nicht erlaubt."
+            echo ""
+            echo "Nutze stattdessen:"
+            echo "  1. Erstelle oder bearbeite deine Landingpage auf dem dev-Branch"
+            echo "  2. Sag im Chat: '/landing-publish' oder 'veröffentlichen'"
+            echo "  3. Ich übernehme das Merge auf main"
+            echo ""
+            exit 1
+          fi
+          echo "✅ Push von Schumms erlaubt."

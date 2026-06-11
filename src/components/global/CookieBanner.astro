@@ -1,12 +1,20 @@
 <div class="cookie-banner" id="cookie-banner" hidden>
   <div class="cookie-banner__inner container">
-    <p class="cookie-banner__text">
-      Wir verwenden nur technisch notwendige Cookies.
-      <a href="/datenschutz">Datenschutzerklärung</a>
-    </p>
-    <button class="btn cookie-banner__btn" type="button" id="cookie-accept">
-      Verstanden
-    </button>
+    <div class="cookie-banner__left">
+      <p class="cookie-banner__text">
+        Wir verwenden nur technisch notwendige Cookies, die für den Betrieb der Seite
+        erforderlich sind. Kein Tracking, keine Analyse-Cookies.
+        <a href="/datenschutz">Datenschutzerklärung</a>
+      </p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button class="btn btn--outline btn--on-dark cookie-banner__btn" type="button" id="cookie-decline">
+        Ablehnen
+      </button>
+      <button class="btn cookie-banner__btn" type="button" id="cookie-accept">
+        Akzeptieren
+      </button>
+    </div>
   </div>
 </div>
 
@@ -18,7 +26,7 @@
     z-index: 200;
     background: var(--color-black);
     color: var(--color-white);
-    padding-block: 1rem;
+    padding-block: 1.25rem;
   }
 
   .cookie-banner__inner {
@@ -26,12 +34,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .cookie-banner__text {
     font-size: var(--text-sm);
     max-width: 55ch;
+    line-height: 1.5;
   }
 
   .cookie-banner__text a {
@@ -39,16 +48,17 @@
     text-decoration: underline;
   }
 
-  .cookie-banner__btn {
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.75rem;
     flex-shrink: 0;
-    background: var(--color-white);
-    color: var(--color-black);
-    border-color: var(--color-white);
+    flex-wrap: wrap;
   }
 
-  .cookie-banner__btn:hover {
-    background: transparent;
-    color: var(--color-white);
+  .cookie-banner__btn {
+    padding: 0.625rem 1.25rem;
+    min-height: 2.75rem;
+    font-size: var(--text-xs);
   }
 </style>
 
@@ -56,13 +66,17 @@
   const KEY = "schumms-cookie-consent";
   const banner = document.getElementById("cookie-banner");
   const accept = document.getElementById("cookie-accept");
+  const decline = document.getElementById("cookie-decline");
 
   if (banner && !localStorage.getItem(KEY)) {
     banner.hidden = false;
   }
 
-  accept?.addEventListener("click", () => {
+  const dismiss = () => {
     localStorage.setItem(KEY, "1");
     if (banner) banner.hidden = true;
-  });
+  };
+
+  accept?.addEventListener("click", dismiss);
+  decline?.addEventListener("click", dismiss);
 </script>
