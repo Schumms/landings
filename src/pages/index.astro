@@ -1,63 +1,76 @@
 ---
-import { execSync } from "child_process";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/global/Nav.astro";
 import Footer from "@components/global/Footer.astro";
 import brand from "@data/brand";
 
-// Branch erkennen — main = Live (Redirect), dev = Preview (Liste)
-let branch = "main";
-try {
-  branch = execSync("git rev-parse --abbrev-ref HEAD", { cwd: process.cwd() }).toString().trim();
-} catch {}
+// Alle Pages laden (für Preview/Index-Zwecke)
+const allPages = await getCollection("pages");
+const sorted = allPages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de"));
 
-// Auf main: immer Redirect auf schumms.com
-if (branch === "main") {
-  return Astro.redirect("https://schumms.com", 301);
-}
-
-// Auf dev: Liste aller Pages (auch Entwürfe) als Preview-Übersicht
-const pages = await getCollection("pages");
-const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de"));
+// Veröffentlichte vs. Entwürfe
+const published = sorted.filter(p => p.data.published);
+const drafts = sorted.filter(p => !p.data.published);
 ---
 
 <BaseLayout
-  title="Landingpages — Preview"
-  description="Schumm & Rösch — Agent-gestütztes Landing Page System"
+  title="Landingpages"
+  description="Schumm & Rösch — Landingpages, Downloads und Veranstaltungen"
   robots="noindex, nofollow"
 >
   <Nav minimal />
   <main id="main-content" class="index">
     <div class="container">
       <p class="index__eyebrow">Schumm & Rösch</p>
-      <h1>Landingpages — Preview</h1>
+      <h1>Landingpages</h1>
       <p class="index__intro">
-        Hier siehst du alle Landingpages, die gerade in Arbeit sind.
-        Entwürfe sind mit einem Badge markiert.
+        Aktuelle Angebote, Downloads und Veranstaltungen.
       </p>
 
-      <ul class="index__list divider-list" role="list">
-        {
-          sorted.map((entry) => (
-            <li class="divider-list__item index__item">
-              <div>
-                <a class="index__link" href={`/${entry.data.slug}/`}>
-                  {entry.data.title}
-                </a>
-              </div>
-              {entry.data.published ? (
+      {published.length > 0 ? (
+        <ul class="index__list divider-list" role="list">
+          {
+            published.map((entry) => (
+              <li class="divider-list__item index__item">
+                <div>
+                  <a class="index__link" href={`/${entry.data.slug}/`}>
+                    {entry.data.title}
+                  </a>
+                </div>
                 <span class="index__badge index__badge--live">Live</span>
-              ) : (
-                <span class="index__badge">Entwurf</span>
-              )}
-            </li>
-          ))
-        }
-      </ul>
+              </li>
+            ))
+          }
+        </ul>
+      ) : (
+        <p class="index__empty">
+          Aktuell sind keine Landingpages veröffentlicht.
+        </p>
+      )}
+
+      {drafts.length > 0 && (
+        <div class="index__drafts">
+          <h2 class="index__drafts-title">In Arbeit</h2>
+          <ul class="index__list divider-list" role="list">
+            {
+              drafts.map((entry) => (
+                <li class="divider-list__item index__item">
+                  <div>
+                    <a class="index__link" href={`/${entry.data.slug}/`}>
+                      {entry.data.title}
+                    </a>
+                  </div>
+                  <span class="index__badge">Entwurf</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      )}
 
       <p class="index__note">
-        <a href={brand.url}>schumms.com</a>
+        <a href={brand.url}>← Zurück zu schumms.com</a>
       </p>
     </div>
   </main>
@@ -115,8 +128,24 @@ const sorted = pages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de
     color: var(--color-mint);
   }
 
-  .index__note {
+  .index__empty {
     margin-top: 3rem;
+    color: var(--color-text-muted);
+    max-width: 50ch;
+  }
+
+  .index__drafts {
+    margin-top: 4rem;
+    opacity: 0.7;
+  }
+
+  .index__drafts-title {
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  .index__note {
+    margin-top: 4rem;
     font-size: var(--text-sm);
     max-width: none;
   }
