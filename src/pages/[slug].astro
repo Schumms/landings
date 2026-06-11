@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import LandingLayout from "@layouts/LandingLayout.astro";
 
 export async function getStaticPaths() {
+  // Alle Pages rendern (Filter passiert im Pre-build Script)
   const pages = await getCollection("pages");
 
   return pages.map((entry) => ({
