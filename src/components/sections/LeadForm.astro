@@ -229,10 +229,21 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
           }
         );
 
+        // HubSpot gibt auch 200 zurück mit Fehlern im Body
+        const rawBody = await response.text();
+        let body: any = {};
+        try { body = JSON.parse(rawBody); } catch { /* kein JSON */ }
+
         if (!response.ok) {
-          const errBody = await response.json().catch(() => ({}));
-          console.error("HubSpot API Error:", errBody);
-          throw new Error(errBody.message ?? "HubSpot submission failed");
+          console.error("HubSpot HTTP Error:", response.status, body);
+          const msg = body.message ?? body.errors?.[0]?.message ?? `HTTP ${response.status}`;
+          throw new Error(`HubSpot: ${msg}`);
+        }
+
+        // Auch bei 200: Prüfe auf HubSpot-Validierungsfehler
+        if (body.errors && body.errors.length > 0) {
+          console.error("HubSpot Validation Errors:", body.errors);
+          throw new Error(`HubSpot: ${body.errors[0].message}`);
         }
       } else if (webhook) {
         // ── Fallback: generischer Webhook ──
@@ -258,7 +269,9 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
       }
     } catch (err: any) {
       status.dataset.state = "error";
+      // Vollständigen Fehler anzeigen, damit der User beim nächsten Test genau weiß, was passiert
       status.textContent = err.message ?? "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+      console.error("Form submission error:", err);
     } finally {
       submitBtn?.removeAttribute("disabled");
     }
