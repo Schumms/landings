@@ -110,7 +110,7 @@ form_success_message: "Danke! Deine Anmeldung ist eingegangen. Bestätigung folg
 form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei HubSpot gespeichert und verarbeitet werden."
 
 hubspot_portal_id: "146949753"
-hubspot_form_id: "45fdc244-ff7e-459f-8449-5e9910b2e945"
+hubspot_form_id: "0cf88ed8-fee7-4d85-b59b-cd3944b6d062"
 
 social_proof_text: "Unsere Partner"
 social_proof_logos_monochrome: false

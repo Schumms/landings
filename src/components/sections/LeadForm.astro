@@ -49,52 +49,6 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
         <input id="company" name="company" type="text" placeholder="Firma" autocomplete="organization" />
       </div>
 
-      <div class="form-field">
-        <label for="sit-frequency">Wie oft sitzt du? <span class="range-value" id="range-value">5</span></label>
-        <input
-          id="sit-frequency"
-          name="wie_oft_sitzt_du"
-          type="range"
-          min="1"
-          max="10"
-          value="5"
-          step="1"
-          aria-describedby="range-hint"
-        />
-        <p id="range-hint" class="range-hint">1 = kaum · 10 = den ganzen Tag</p>
-      </div>
-
-      <style>
-        .range-value {
-          display: inline-block;
-          min-width: 1.5rem;
-          text-align: center;
-          font-weight: var(--font-weight-bold);
-          color: var(--color-violet);
-        }
-        .range-hint {
-          font-size: var(--text-xs);
-          opacity: 0.7;
-          margin-top: 0.25rem;
-        }
-        input[type="range"] {
-          width: 100%;
-          accent-color: var(--color-violet);
-        }
-      </style>
-
-      <script is:inline>
-        (function() {
-          const range = document.getElementById("sit-frequency");
-          const display = document.getElementById("range-value");
-          if (range && display) {
-            range.addEventListener("input", () => {
-              display.textContent = range.value;
-            });
-          }
-        })();
-      </script>
-
       <div class="form-field form-field--checkbox">
         <label class="checkbox-label">
           <input type="checkbox" name="privacy" required />
@@ -189,7 +143,6 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
     const nameRaw = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
-    const sitFrequency = String(formData.get("wie_oft_sitzt_du") ?? "").trim();
 
     // Name in firstname/lastname splitten (letztes Leerzeichen)
     let firstname = nameRaw;
@@ -210,7 +163,6 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
         ];
 
         if (company) fields.push({ name: "company", value: company });
-        if (sitFrequency) fields.push({ name: "wie_oft_sitzt_du", value: sitFrequency });
 
         const payload = {
           fields,
