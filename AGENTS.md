@@ -7,14 +7,14 @@
 - **Zwei Branches**: `main` (Live) und `dev` (Preview)
 - **Auf dev**: Alle Seiten sichtbar — auch Entwürfe. Die Startseite zeigt eine Liste aller Pages.
 - **Auf main**: Nur veröffentlichte Seiten (`published: true`) sind erreichbar. Die Startseite leitet auf `schumms.com` weiter.
-- **Deployment**: Automatisch über Coolify. Push auf `dev` → preview-landing.ki.schumms.com. Push auf `main` → landing.ki.schumms.com.
+- **Deployment**: Automatisch über Coolify. Push auf `dev` → preview-landing.ki.schumms.com. Push auf `main` → landing.schumms.com.
 
 ## URLs
 
 | Umgebung | URL | Zweck |
 |----------|-----|-------|
 | **Preview** | `https://landing-preview.ki.schumms.com` | Alle Pages inkl. Entwürfe |
-| **Live** | `https://landing.ki.schumms.com` | Nur veröffentlichte Pages |
+| **Live** | `https://landing.schumms.com` | Nur veröffentlichte Pages |
 
 **Preview-Zugang**: Basic Auth mit User `schumms` / Password `schumms`
 
