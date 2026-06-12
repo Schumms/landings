@@ -146,7 +146,7 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
 
     // Name in firstname/lastname splitten (letztes Leerzeichen)
     let firstname = nameRaw;
-    let lastname = "";
+    let lastname = "-";
     const lastSpace = nameRaw.lastIndexOf(" ");
     if (lastSpace > 0) {
       firstname = nameRaw.slice(0, lastSpace).trim();
