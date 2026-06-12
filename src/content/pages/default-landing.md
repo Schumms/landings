@@ -1,6 +1,6 @@
 ---
 slug: default-landing
-published: true
+published: false
 
 title: "Future Work 2026 — Kostenloser Download"
 description: "Das E-Book für Entscheiderinnen: Trends, Strategien und konkrete Handlungsempfehlungen für moderne Arbeitswelten."

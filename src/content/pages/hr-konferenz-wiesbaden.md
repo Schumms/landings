@@ -1,6 +1,6 @@
 ---
 slug: hr-konferenz-wiesbaden
-published: true
+published: false
 
 title: "HR Konferenz Wiesbaden — HR im KI-Zeitalter"
 description: "18. Juni 2026 in Wiesbaden: Keynotes, Worldcafé und Panel zu KI, Kultur, Rollen und Arbeitsräumen. Ticket für 49 € sichern."

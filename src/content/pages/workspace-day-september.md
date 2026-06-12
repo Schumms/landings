@@ -1,6 +1,6 @@
 ---
 slug: workspace-day-september
-published: true
+published: false
 
 title: "Workspace Day September — Kostenlose Anmeldung"
 description: "Ein halber Tag Inspiration, Austausch und konkrete Impulse für moderne Arbeitswelten. Jetzt kostenlos anmelden — Plätze begrenzt."

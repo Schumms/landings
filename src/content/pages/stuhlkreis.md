@@ -1,6 +1,6 @@
 ---
 slug: stuhlkreis
-published: true
+published: false
 
 title: "Stuhlkreis — Austausch über Stühle"
 description: "Ein Tag voller Stühle, Teambuilding und gesundem Sitzen. Für alle, die beruflich auf Stühlen sitzen."
