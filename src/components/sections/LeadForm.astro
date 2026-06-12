@@ -8,6 +8,9 @@ interface Props {
 
 const { page } = Astro.props;
 
+const hasHubSpot = !!page.hubspot_portal_id && !!page.hubspot_form_id;
+const hasWebhook = !!page.form_webhook;
+
 const privacyNote =
   page.form_privacy_note ??
   "Ich willige ein, dass meine Angaben zur Beantwortung meiner Anfrage elektronisch erhoben und verarbeitet werden.";
@@ -25,7 +28,9 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
     <form
       class="lead-form__form"
       id="landing-form"
-      data-webhook={page.form_webhook}
+      data-hubspot-portal={page.hubspot_portal_id ?? ""}
+      data-hubspot-form={page.hubspot_form_id ?? ""}
+      data-webhook={page.form_webhook ?? ""}
       data-download={page.form_download_url ?? ""}
       data-success={page.form_success_message ?? "Vielen Dank für deine Anfrage!"}
     >
@@ -41,7 +46,7 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
 
       <div class="form-field">
         <label class="sr-only" for="company">Firma</label>
-        <input id="company" name="company" type="text" placeholder="Firma" autocomplete="organization" required />
+        <input id="company" name="company" type="text" placeholder="Firma" autocomplete="organization" />
       </div>
 
       <div class="form-field form-field--checkbox">
@@ -122,28 +127,75 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
     event.preventDefault();
     if (!form || !status) return;
 
+    const hubspotPortal = form.dataset.hubspotPortal;
+    const hubspotForm = form.dataset.hubspotForm;
     const webhook = form.dataset.webhook;
     const downloadUrl = form.dataset.download;
     const successMessage = form.dataset.success ?? "Vielen Dank!";
     const submitBtn = form.querySelector<HTMLButtonElement>(".lead-form__submit");
-
-    if (!webhook) return;
 
     submitBtn?.setAttribute("disabled", "true");
     status.hidden = false;
     status.dataset.state = "";
     status.textContent = "Wird gesendet …";
 
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    const nameRaw = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+
+    // Name in firstname/lastname splitten (letztes Leerzeichen)
+    let firstname = nameRaw;
+    let lastname = "";
+    const lastSpace = nameRaw.lastIndexOf(" ");
+    if (lastSpace > 0) {
+      firstname = nameRaw.slice(0, lastSpace).trim();
+      lastname = nameRaw.slice(lastSpace + 1).trim();
+    }
 
     try {
-      const response = await fetch(webhook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      if (hubspotPortal && hubspotForm) {
+        // ── HubSpot Forms API (HubSpot-first) ──
+        const payload = {
+          fields: [
+            { name: "firstname", value: firstname },
+            { name: "lastname", value: lastname },
+            { name: "email", value: email },
+            { name: "company", value: company },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        };
 
-      if (!response.ok) throw new Error("Request failed");
+        const response = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${hubspotPortal}/${hubspotForm}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!response.ok) {
+          const errBody = await response.json().catch(() => ({}));
+          console.error("HubSpot API Error:", errBody);
+          throw new Error(errBody.message ?? "HubSpot submission failed");
+        }
+      } else if (webhook) {
+        // ── Fallback: generischer Webhook ──
+        const data = Object.fromEntries(formData.entries());
+        const response = await fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) throw new Error("Webhook request failed");
+      } else {
+        throw new Error("Kein Formular-Ziel konfiguriert.");
+      }
 
       status.textContent = successMessage;
       form.reset();
@@ -153,9 +205,9 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
           window.open(downloadUrl, "_blank", "noopener,noreferrer");
         }, 600);
       }
-    } catch {
+    } catch (err: any) {
       status.dataset.state = "error";
-      status.textContent = "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+      status.textContent = err.message ?? "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
     } finally {
       submitBtn?.removeAttribute("disabled");
     }

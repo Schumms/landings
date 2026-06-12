@@ -146,10 +146,13 @@ const landingSchema = z.object({
   form_title: z.string(),
   form_intro: z.string().optional(),
   form_cta: z.string(),
-  form_webhook: z.string().url(),
+  form_webhook: z.string().url().optional(),
   form_download_url: z.string().url().optional(),
   form_success_message: z.string().optional(),
   form_privacy_note: z.string().optional(),
+
+  hubspot_portal_id: z.string().optional(),
+  hubspot_form_id: z.string().optional(),
 
   secondary_cta_heading: z.string().optional(),
   secondary_cta_text: z.string().optional(),

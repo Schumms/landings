@@ -106,8 +106,11 @@ location_image_alt: "Showroom Schumm & Rösch in Wiesbaden"
 form_title: "Sichere dir deinen Platz!"
 form_intro: "Nur noch wenige Plätze verfügbar. Jetzt anmelden und 42 % sparen."
 form_cta: "Platz sichern"
-form_webhook: "https://n8n.schumms.com/webhook/DEIN-WEBHOOK"
 form_success_message: "Danke! Deine Anmeldung ist eingegangen. Bestätigung folgt per E-Mail."
+form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei HubSpot gespeichert und verarbeitet werden."
+
+hubspot_portal_id: "146949753"
+hubspot_form_id: "45fdc244-ff7e-459f-8449-5e9910b2e945"
 
 social_proof_text: "Unsere Partner"
 social_proof_logos_monochrome: false
