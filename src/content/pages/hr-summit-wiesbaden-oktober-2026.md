@@ -75,7 +75,6 @@ program_items:
     speaker: "David Hillmer"
     role: "Gründer und Geschäftsführer · Hello Agile"
     organization: "Hello Agile"
-    organization_logo: "/pages/hr-summit-wiesbaden-oktober-2026/partners/elevate.png"
     description: "Wie gelingt Führung, wenn KI Aufgaben übernimmt? David Hillmer zeigt konkrete Use Cases aus der Arbeit mit agilen Teams und skizziert, welche Rollen Führungskräfte künftig brauchen, um den Wandel wirksam zu gestalten — ohne die Menschen aus dem Blick zu verlieren."
   - type: "Keynote"
     title: "Arbeitsplatz 2030"
