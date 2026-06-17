@@ -13,6 +13,14 @@ section_order:
   - location
   - form
 
+sections_layout:
+  problem:
+    align: "center"
+  hero:
+    background: "default"
+  location:
+    width: "wide"
+
 sections:
   nav: true
   hero: true

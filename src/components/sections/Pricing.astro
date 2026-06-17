@@ -1,19 +1,30 @@
 ---
-import type { LandingPageData } from "@lib/types";
+import type { LandingPageData, SectionLayout } from "@lib/types";
 import PricingCard from "@components/sections/PricingCard.astro";
 
 interface Props {
   page: LandingPageData;
+  layout?: SectionLayout;
 }
 
-const { page } = Astro.props;
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "pricing",
+  "section",
+  "section--compact",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
 
 if (!page.pricing_amount || page.problem_intro) {
   return null;
 }
 ---
 
-<section class="section section--compact pricing" id="pricing" aria-labelledby="pricing-heading">
+<section class:list={sectionClasses} id="pricing" aria-labelledby="pricing-heading">
   <div class="container pricing__layout">
     <PricingCard page={page} />
   </div>

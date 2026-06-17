@@ -57,6 +57,19 @@ const contentPreviewItem = z.object({
   description: z.string().optional(),
 });
 
+const sectionLayoutSchema = z
+  .object({
+    align: z.enum(["left", "center"]).optional(),
+    width: z.enum(["narrow", "normal", "wide", "full"]).optional(),
+    background: z
+      .enum(["default", "muted", "dark", "accent"])
+      .optional(),
+    text_align: z.enum(["left", "center"]).optional(),
+  })
+  .optional();
+
+const sectionsLayoutSchema = z.record(z.string(), sectionLayoutSchema).optional();
+
 const landingSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   published: z.boolean().default(false),
@@ -64,6 +77,7 @@ const landingSchema = z.object({
   description: z.string().max(160),
   sections: sectionsSchema,
   section_order: z.array(z.enum(CONTENT_SECTION_IDS)).optional(),
+  sections_layout: sectionsLayoutSchema,
 
   nav_cta_text: z.string().optional(),
 
@@ -158,6 +172,9 @@ const landingSchema = z.object({
   secondary_cta_text: z.string().optional(),
   secondary_cta_button: z.string().optional(),
   secondary_cta_href: z.string().optional(),
+
+  /** Per-Section layout modifier (für non-tech iteration). Beispiel: section_modifiers: { problem: ["centered"] } */
+  section_modifiers: z.record(z.string(), z.array(z.string())).optional(),
 });
 
 const pages = defineCollection({

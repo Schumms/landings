@@ -304,6 +304,103 @@ a {
   }
 }
 
+/* ─────────────────────────────────────────────────────────────
+ * Per-Section Layout Overrides — non-technical iteration surface
+ * All values resolve to theme tokens from schumms.css.
+ * Activated by `sections_layout` in frontmatter.
+ * ───────────────────────────────────────────────────────────── */
+
+/* Container width variants */
+.section--width-narrow .container {
+  max-width: 48rem;
+}
+
+.section--width-wide .container {
+  max-width: 90rem;
+}
+
+.section--width-full .container {
+  max-width: 100%;
+  padding-inline: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* Background variants — theme-token-only */
+.section--bg-muted {
+  background: var(--color-border);
+}
+
+.section--bg-dark {
+  background: var(--color-black);
+  color: var(--color-text-on-dark);
+}
+
+.section--bg-dark h2,
+.section--bg-dark h3,
+.section--bg-dark p,
+.section--bg-dark li {
+  color: var(--color-text-on-dark);
+}
+
+.section--bg-dark .location__label,
+.section--bg-dark .program__type,
+.section--bg-dark .speakers__tagline,
+.section--bg-dark .speakers__title {
+  color: var(--color-text-on-dark);
+  opacity: 0.7;
+}
+
+.section--bg-accent {
+  background: var(--color-coral);
+  color: var(--color-black);
+}
+
+.section--bg-accent h2,
+.section--bg-accent h3,
+.section--bg-accent p,
+.section--bg-accent li {
+  color: var(--color-black);
+}
+
+/* Centered alignment — forces single column & centers content.
+ * Works with .split / .split--40-60 / .split--intro-pricing grids. */
+.section--align-center .split,
+.section--align-center .split--40-60,
+.section--align-center .split--intro-pricing {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.section--align-center h2,
+.section--align-center h3,
+.section--align-center p,
+.section--align-center .problem__intro,
+.section--align-center .benefits__intro-text,
+.section--align-center .content-preview__intro,
+.section--align-center .location__intro,
+.section--align-center .program__intro,
+.section--align-center .speakers__tagline,
+.section--align-center .faq__intro-text {
+  margin-inline: auto;
+}
+
+.section--align-center .program__header,
+.section--align-center .speakers__header,
+.section--align-center .benefits__intro,
+.section--align-center .content-preview__copy {
+  text-align: center;
+  width: 100%;
+}
+
+/* Explicit prose alignment (independent of section-level align) */
+.section--text-align-center p,
+.section--text-align-center .program__description,
+.section--text-align-center .speakers__bio {
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
