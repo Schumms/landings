@@ -13,7 +13,6 @@ section_order:
   - speakers
   - location
   - form
-  - social_proof_bar
 
 sections:
   nav: true
@@ -25,7 +24,7 @@ sections:
   speakers: true
   location: true
   form: true
-  social_proof_bar: true
+  social_proof_bar: false
   transformation: false
   process: false
   testimonial: false
