@@ -59,7 +59,7 @@ benefits:
   - headline: "KI-Anwendungen für deinen Führungsalltag"
     description: "Konkrete Use Cases, die du nächste Woche einsetzen kannst — kein Theorie-Ballast. Vorgestellt von Jessica Turner anhand ihres virtuellen Product Owners als Sparringspartner."
   - headline: "Klarheit über KI-Rollen in deinem Team"
-    description: "Wer macht was, wenn KI Aufgaben übernimmt? Wie baust du dein Team neu auf? Antworten aus der Organisationsberatung mit David Hillmer und Adacor."
+    description: "Wer macht was, wenn KI Aufgaben übernimmt? Wie baust du dein Team neu auf? David Hillmer zeigt, wie agile Organisationen Rollen, Verantwortlichkeiten und Entscheidungsmuster neu justieren, damit Teams auch im KI-Zeitalter handlungsfähig bleiben."
   - headline: "Einblicke von einem AI-Native Unternehmen"
     description: "Was in 2–3 Jahren normal sein wird — und was du heute schon vorbereiten kannst. Simon Busshart teilt seine Erfahrungen aus dem Aufbau eines AI-nativen Unternehmens."
   - headline: "Wandel gestalten, ohne dein Team zu verlieren"
