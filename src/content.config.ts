@@ -86,6 +86,7 @@ const landingSchema = z.object({
   hero_subtitle: z.string().max(300),
   hero_image: z.string().optional(),
   hero_image_alt: z.string().optional(),
+  hero_variant: z.enum(["default", "fullbleed"]).optional(),
   cta_text: z.string(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 

@@ -8,8 +8,12 @@ interface Props {
 
 const { page, layout } = Astro.props;
 
+const heroVariant = page.hero_variant ?? "default";
+const isFullbleed = heroVariant === "fullbleed";
+
 const sectionClasses = [
   "hero",
+  isFullbleed && "hero--fullbleed",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
@@ -18,6 +22,16 @@ const sectionClasses = [
 ---
 
 <section class:list={sectionClasses} id="hero" aria-labelledby="hero-heading">
+  {
+    isFullbleed && page.hero_image && (
+      <div
+        class="hero__bg"
+        role="presentation"
+        aria-hidden="true"
+        style={`background-image: url(${page.hero_image})`}
+      />
+    )
+  }
   <div class="container hero__grid">
     <div class="hero__copy">
       {page.hero_eyebrow && <p class="hero__eyebrow">{page.hero_eyebrow}</p>}
@@ -41,20 +55,22 @@ const sectionClasses = [
       }
     </div>
 
-    <div class="hero__visual">
-      {
-        page.hero_image ? (
-          <img
-            src={page.hero_image}
-            alt={page.hero_image_alt ?? ""}
-            loading="eager"
-            decoding="async"
-          />
-        ) : (
-          <div class="hero__visual-fallback" aria-hidden="true" />
-        )
-      }
-    </div>
+    {
+      !isFullbleed && (
+        <div class="hero__visual">
+          {page.hero_image ? (
+            <img
+              src={page.hero_image}
+              alt={page.hero_image_alt ?? ""}
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <div class="hero__visual-fallback" aria-hidden="true" />
+          )}
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -143,5 +159,78 @@ const sectionClasses = [
 
   .hero__visual-fallback {
     background: linear-gradient(160deg, #2a2a2a 0%, #0a0a0a 100%);
+  }
+
+  /* ── Fullbleed-Variante ──────────────────────────────────────── */
+  .hero--fullbleed {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    min-height: clamp(32rem, 70vh, 44rem);
+    display: flex;
+    align-items: center;
+    padding-block: clamp(3rem, 10vw, 7rem);
+  }
+
+  .hero--fullbleed .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+
+  .hero--fullbleed .hero__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.65) 100%
+    );
+    z-index: -1;
+  }
+
+  .hero--fullbleed .hero__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .hero--fullbleed .hero__copy {
+    color: var(--color-white);
+    max-width: 56rem;
+  }
+
+  .hero--fullbleed .hero__copy h1 {
+    max-width: 18ch;
+    margin-inline: auto;
+    color: var(--color-white);
+  }
+
+  .hero--fullbleed .hero__eyebrow {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero--fullbleed .hero__subtitle {
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+
+  .hero--fullbleed .hero__trust {
+    border-top-color: rgba(255, 255, 255, 0.25);
+    margin-inline: auto;
+  }
+
+  .hero--fullbleed .hero__metric-label {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .hero--fullbleed .hero__cta {
+    margin-inline: auto;
   }
 </style>
