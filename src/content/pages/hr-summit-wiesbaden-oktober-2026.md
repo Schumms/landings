@@ -1,6 +1,6 @@
 ---
 slug: hr-summit-wiesbaden-oktober-2026
-published: true
+published: false
 
 title: "HR Summit Wiesbaden — Die Zukunft arbeitet anders"
 description: "HR Summit Wiesbaden 22.10.2026: Wie KI Kultur, Rollen & Führung verändert. 4 Speaker, 49 € Early Bird."
