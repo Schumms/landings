@@ -24,43 +24,49 @@ interface Props {
 }
 
 const { page, sections } = Astro.props;
+
+/**
+ * Resolve layout override for a given section id.
+ * Returns undefined if no override is configured — components keep their default classes.
+ */
+const layoutFor = (id: string) => page.sections_layout?.[id];
 ---
 
 {
   sections.map((id) => {
     switch (id) {
       case "hero":
-        return <Hero page={page} />;
+        return <Hero page={page} layout={layoutFor("hero")} />;
       case "social_proof_bar":
-        return <SocialProofBar page={page} />;
+        return <SocialProofBar page={page} layout={layoutFor("social_proof_bar")} />;
       case "problem":
-        return <Problem page={page} />;
+        return <Problem page={page} layout={layoutFor("problem")} />;
       case "pricing":
-        return <Pricing page={page} />;
+        return <Pricing page={page} layout={layoutFor("pricing")} />;
       case "program":
-        return <Program page={page} />;
+        return <Program page={page} layout={layoutFor("program")} />;
       case "transformation":
-        return <Transformation page={page} />;
+        return <Transformation page={page} layout={layoutFor("transformation")} />;
       case "benefits":
-        return <Benefits page={page} />;
+        return <Benefits page={page} layout={layoutFor("benefits")} />;
       case "process":
-        return <Process page={page} />;
+        return <Process page={page} layout={layoutFor("process")} />;
       case "speakers":
-        return <Speakers page={page} />;
+        return <Speakers page={page} layout={layoutFor("speakers")} />;
       case "testimonial":
-        return <Testimonial page={page} />;
+        return <Testimonial page={page} layout={layoutFor("testimonial")} />;
       case "about":
-        return <About page={page} />;
+        return <About page={page} layout={layoutFor("about")} />;
       case "content_preview":
-        return <ContentPreview page={page} />;
+        return <ContentPreview page={page} layout={layoutFor("content_preview")} />;
       case "location":
-        return <Location page={page} />;
+        return <Location page={page} layout={layoutFor("location")} />;
       case "faq":
-        return <FAQ page={page} />;
+        return <FAQ page={page} layout={layoutFor("faq")} />;
       case "form":
-        return <LeadForm page={page} />;
+        return <LeadForm page={page} layout={layoutFor("form")} />;
       case "secondary_cta":
-        return <SecondaryCTA page={page} />;
+        return <SecondaryCTA page={page} layout={layoutFor("secondary_cta")} />;
       default:
         return null;
     }

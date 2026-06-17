@@ -1,12 +1,23 @@
 ---
-import type { LandingPageData } from "@lib/types";
+import type { LandingPageData, SectionLayout } from "@lib/types";
 import brand from "@data/brand";
 
 interface Props {
   page: LandingPageData;
+  layout?: SectionLayout;
 }
 
-const { page } = Astro.props;
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "form",
+  "section",
+  "section--coral",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
 
 const hasHubSpot = !!page.hubspot_portal_id && !!page.hubspot_form_id;
 const hasWebhook = !!page.form_webhook;
@@ -18,7 +29,7 @@ const privacyNote =
 const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umgehend.";
 ---
 
-<section class="section section--coral lead-form" id="lead-form" aria-labelledby="form-heading">
+<section class:list={sectionClasses} id="lead-form" aria-labelledby="form-heading">
   <div class="container split">
     <div class="lead-form__intro">
       <h2 id="form-heading">{page.form_title}</h2>

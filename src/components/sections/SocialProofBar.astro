@@ -1,11 +1,21 @@
 ---
-import type { LandingPageData } from "@lib/types";
+import type { LandingPageData, SectionLayout } from "@lib/types";
 
 interface Props {
   page: LandingPageData;
+  layout?: SectionLayout;
 }
 
-const { page } = Astro.props;
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "social_proof_bar",
+  "section--sm",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
 
 const logosMonochrome = page.social_proof_logos_monochrome !== false;
 
@@ -19,7 +29,7 @@ if (!hasContent) {
 }
 ---
 
-<section class="section--sm social-proof" id="social-proof" aria-label="Social Proof">
+<section class:list={sectionClasses} id="social-proof" aria-label="Social Proof">
   <div class="container social-proof__inner">
     {page.social_proof_text && <p class="social-proof__text">{page.social_proof_text}</p>}
 
