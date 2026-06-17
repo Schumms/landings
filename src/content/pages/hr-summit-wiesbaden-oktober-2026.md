@@ -7,13 +7,12 @@ description: "HR Summit Wiesbaden 22.10.2026: Wie KI Kultur, Rollen & Führung v
 
 section_order:
   - hero
-  - problem
   - benefits
+  - problem
   - program
   - speakers
   - location
   - form
-
 sections:
   nav: true
   hero: true
