@@ -174,6 +174,27 @@ const landingSchema = z.object({
   // Optionales Abschluss-Zitat der Sektion (auf einer eigenen Karte).
   references_closing_quote: z.string().optional(),
 
+  // Service-Übersicht: 3–6 Cards mit Kernleistungen (z.B. Beratung / Planung / Einrichtung).
+  // Jede Card hat optionale Eyebrow-Nummer, Title, Description, Bullets, Bild und CTA.
+  service_overview_heading: z.string().optional(),
+  service_overview_intro: z.string().optional(),
+  service_overview: z
+    .array(
+      z.object({
+        eyebrow: z.string().optional(),
+        title: z.string(),
+        description: z.string(),
+        bullets: z.array(z.string()).max(5).optional(),
+        image: z.string().optional(),
+        image_alt: z.string().optional(),
+        cta_text: z.string().optional(),
+        cta_href: z.string().optional(),
+      }),
+    )
+    .min(3)
+    .max(6)
+    .optional(),
+
   content_preview_heading: z.string().optional(),
   content_preview_intro: z.string().optional(),
   content_preview_image: z.string().optional(),
