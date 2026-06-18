@@ -253,6 +253,58 @@ const landingSchema = z.object({
   secondary_cta_button: z.string().optional(),
   secondary_cta_href: z.string().optional(),
 
+  // Stats / Key-Figures: 3–6 große Zahlen für Autoritätsaufbau (z.B. 15+ Jahre · 500+ Projekte).
+  stats_heading: z.string().optional(),
+  stats_intro: z.string().optional(),
+  stats: z
+    .array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+        subtext: z.string().optional(),
+      }),
+    )
+    .min(3)
+    .max(6)
+    .optional(),
+
+  // Vergleichstabelle: 3–8 Rows, zwei Spalten (label_a vs. label_b).
+  // Optional eine Spalte via highlight ("a" oder "b") visuell hervorheben.
+  comparison_heading: z.string().optional(),
+  comparison_intro: z.string().optional(),
+  comparison_label_a: z.string().optional(),
+  comparison_label_b: z.string().optional(),
+  comparison_highlight: z.enum(["a", "b"]).optional(),
+  comparison: z
+    .array(
+      z.object({
+        feature: z.string(),
+        value_a: z.string(),
+        value_b: z.string(),
+      }),
+    )
+    .min(3)
+    .max(8)
+    .optional(),
+
+  // CTA-Banner (Mid-Page): schmale Conversion-Bar ohne Formular.
+  cta_banner_heading: z.string().optional(),
+  cta_banner_text: z.string().optional(),
+  cta_banner_button: z.string().optional(),
+  cta_banner_href: z.string().optional(),
+
+  // Newsletter-Signup: Mini-Formular (nur E-Mail + DSGVO) als dritter Conversion-Pfad.
+  newsletter_heading: z.string().optional(),
+  newsletter_intro: z.string().optional(),
+  newsletter_bullets: z.array(z.string()).max(5).optional(),
+  newsletter_placeholder: z.string().optional(),
+  newsletter_cta: z.string().optional(),
+  newsletter_privacy_note: z.string().optional(),
+  newsletter_success_message: z.string().optional(),
+  newsletter_hubspot_portal_id: z.string().optional(),
+  newsletter_hubspot_form_id: z.string().optional(),
+  newsletter_webhook: z.string().url().optional(),
+
   /** Footer-Claim für die Landingpage (z.B. "Mutig. Prägend. Zukunftsgerichtet."). */
   footer_claim: z.string().optional(),
 

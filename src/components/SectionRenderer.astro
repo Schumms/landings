@@ -20,6 +20,10 @@ import FAQ from "@components/sections/FAQ.astro";
 import LeadForm from "@components/sections/LeadForm.astro";
 import ContactForm from "@components/sections/ContactForm.astro";
 import SecondaryCTA from "@components/sections/SecondaryCTA.astro";
+import Stats from "@components/sections/Stats.astro";
+import Comparison from "@components/sections/Comparison.astro";
+import CtaBanner from "@components/sections/CtaBanner.astro";
+import NewsletterSignup from "@components/sections/NewsletterSignup.astro";
 
 interface Props {
   page: LandingPageData;
@@ -76,6 +80,14 @@ const layoutFor = (id: string) => page.sections_layout?.[id];
         return <ContactForm page={page} layout={layoutFor("contact_form")} />;
       case "secondary_cta":
         return <SecondaryCTA page={page} layout={layoutFor("secondary_cta")} />;
+      case "stats":
+        return <Stats page={page} layout={layoutFor("stats")} />;
+      case "comparison":
+        return <Comparison page={page} layout={layoutFor("comparison")} />;
+      case "cta_banner":
+        return <CtaBanner page={page} layout={layoutFor("cta_banner")} />;
+      case "newsletter_signup":
+        return <NewsletterSignup page={page} layout={layoutFor("newsletter_signup")} />;
       default:
         return null;
     }

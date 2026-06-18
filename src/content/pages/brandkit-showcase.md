@@ -10,13 +10,15 @@ published: false
 title: "Brandkit-Showcase — Alle Komponenten im Überblick"
 description: "Demo-Seite mit allen verfügbaren Landingpage-Sections: Sales-Standard, Event, Trust und Formulare. Für Brandkit-Verständnis und als Vorlage."
 
-# Alle 18 Content-Sections in sinnvoller Reihenfolge
+# Alle Content-Sections in sinnvoller Reihenfolge
 section_order:
   - hero
   - social_proof_bar
   - problem
+  - stats
   - transformation
   - benefits
+  - cta_banner
   - process
   - pricing
   - program
@@ -25,20 +27,24 @@ section_order:
   - testimonial
   - references
   - service_overview
+  - comparison
   - about
   - location
   - faq
   - form
   - contact_form
   - secondary_cta
+  - newsletter_signup
 
 sections:
   nav: true
   hero: true
   social_proof_bar: true
   problem: true
+  stats: true
   transformation: true
   benefits: true
+  cta_banner: true
   process: true
   pricing: true
   program: true
@@ -46,6 +52,7 @@ sections:
   testimonial: true
   references: true
   service_overview: true
+  comparison: true
   about: true
   content_preview: true
   location: true
@@ -53,6 +60,7 @@ sections:
   form: true
   contact_form: true
   secondary_cta: true
+  newsletter_signup: true
   footer: true
 
 # ── Navigation ───────────────────────────────────────────────────
@@ -104,6 +112,23 @@ problem_points:
   - "Pricing, Program, Speakers, Location, References — die Event- und B2B-Sections"
   - "Forms (LeadForm + ContactForm), FAQ, About, Testimonial, Secondary CTA — Trust- und Conversion-Sections"
 
+# ── 3.5 Stats / Key-Figures (NEU) ────────────────────────────────
+stats_heading: "Stats / Key-Figures — die Autoritäts-Section"
+stats_intro: "Große Zahlen für sofortige Glaubwürdigkeit. Hero-Metrics sind dafür zu klein — diese Section ist der richtige Ort für 3–6 zentrale Kennzahlen."
+stats:
+  - value: "15+"
+    label: "Jahre Erfahrung"
+    subtext: "Seit 2010 im DACH-Raum aktiv."
+  - value: "500+"
+    label: "Projekte realisiert"
+    subtext: "Von 50 bis 5.000 Mitarbeitende."
+  - value: "3.500+"
+    label: "Arbeitsplätze gestaltet"
+    subtext: "Mit Strategie, Konzept und Umsetzung."
+  - value: "98%"
+    label: "Weiterempfehlung"
+    subtext: "Aus unabhängiger Kundenbefragung 2024."
+
 # ── 4. Lösung / Transformation ──────────────────────────────────
 transformation_heading: "Von der Demo zur fertigen Landingpage"
 transformation_before: "Eine neue Landingpage erstellen heißt raten, welche Sections es gibt, wie sie aussehen, und welche Felder das Schema verlangt — jedes Mal von vorn."
@@ -119,6 +144,12 @@ benefits:
     description: "Sales-Standard, Event, Trust, Forms — jede Komponente hat einen klaren Zweck und einen klaren Platz in der Reihenfolge."
   - headline: "Weniger Rückfragen beim Bau"
     description: "Wer die Sections kennt, beschreibt beim Briefing präziser, was die Seite können muss — die Erstellung wird schneller und konsistenter."
+
+# ── 5.5 CTA-Banner (Mid-Page) (NEU) ─────────────────────────────
+cta_banner_heading: "Bereit für den ersten Schritt?"
+cta_banner_text: "30 Minuten, kostenfrei, unverbindlich — wir gehen eure Situation gemeinsam durch."
+cta_banner_button: "Erstgespräch vereinbaren"
+cta_banner_href: "https://www.schumms.com/kontakt"
 
 # ── 6. Prozess ───────────────────────────────────────────────────
 process_heading: "So nutzt du die Showcase-Seite"
@@ -227,6 +258,29 @@ service_overview:
       - "Zweiter Abschluss-Baustein"
       - "Dritter Abschluss-Baustein"
 
+# ── 12.7 Vergleichstabelle (NEU) ────────────────────────────────
+comparison_heading: "Vergleichstabelle — die Differenzierungs-Section"
+comparison_intro: "Zwei-Spalten-Tabelle für kaufbereite Besucher:innen, die Anbieter vergleichen. Eine Spalte kann optisch hervorgehoben werden."
+comparison_label_a: "Schumm & Rösch"
+comparison_label_b: "Klassische Innenarchitektur"
+comparison_highlight: "a"
+comparison:
+  - feature: "Strategie vor Ästhetik"
+    value_a: "Raum folgt Strategie — Fläche wird zum Hebel"
+    value_b: "Ästhetik im Fokus, Strategie oft nachgelagert"
+  - feature: "Ein Ansprechpartner"
+    value_a: "Von Analyse bis Übergabe — eine Person, ein Vertrag"
+    value_b: "Mehrere Gewerke, viele Übergaben, mehr Reibung"
+  - feature: "Workshops mit euren Leuten"
+    value_a: "Bedarf wird mit HR, Facility und GF erarbeitet"
+    value_b: "Bedarf wird vom Architekten interpretiert"
+  - feature: "Betriebskosten im Blick"
+    value_a: "Lifecycle-Kosten sind Teil des Konzepts"
+    value_b: "Einmal-Kosten im Fokus, Folgekosten extern"
+  - feature: "Lieferung und Montage"
+    value_a: "Aus einer Hand — kein Bauteil ohne Verantwortlichen"
+    value_b: "Subunternehmer pro Gewerk, mehr Schnittstellen"
+
 # ── 13. Über uns / Trust ─────────────────────────────────────────
 about_heading: "Wer diese Section pflegt"
 about_name: "Demo-Person"
@@ -280,4 +334,15 @@ secondary_cta_heading: "Noch nicht das Richtige dabei?"
 secondary_cta_text: "Für individuelle Themen oder Sonderformate — direkt ins Gespräch gehen."
 secondary_cta_button: "Kontakt aufnehmen"
 secondary_cta_href: "https://www.schumms.com/kontakt"
+
+# ── 19. Newsletter-Signup (NEU) ─────────────────────────────────
+newsletter_heading: "Newsletter-Signup — der sanfte Conversion-Pfad"
+newsletter_intro: "Für alle, die noch nicht reif für ein Beratungsgespräch sind, aber langfristig dranbleiben wollen. E-Mail + DSGVO, kein Sales-Funnel."
+newsletter_bullets:
+  - "1× pro Monat: Impulse zu Arbeitswelten, New Work und Projekten"
+  - "Praxis-Beispiele aus 500+ Projekten im DACH-Raum"
+  - "Keine Werbung, jederzeit kündbar"
+newsletter_placeholder: "Deine E-Mail-Adresse"
+newsletter_cta: "Newsletter abonnieren"
+newsletter_success_message: "Demo-Modus — kein echter Versand. In Produktion: Bestätigungsmail in wenigen Minuten."
 ---

@@ -1,0 +1,75 @@
+---
+import type { LandingPageData, SectionLayout } from "@lib/types";
+
+interface Props {
+  page: LandingPageData;
+  layout?: SectionLayout;
+}
+
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "cta-banner",
+  "section",
+  "section--compact",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
+
+// Section nur rendern, wenn Headline + Button + Href gesetzt sind.
+if (!page.cta_banner_heading || !page.cta_banner_button || !page.cta_banner_href) {
+  return null;
+}
+---
+
+<section class:list={sectionClasses} id="cta-banner" aria-labelledby="cta-banner-heading">
+  <div class="container cta-banner__inner">
+    <div class="cta-banner__copy">
+      <h2 id="cta-banner-heading" class="cta-banner__heading">{page.cta_banner_heading}</h2>
+      {page.cta_banner_text && <p class="cta-banner__text">{page.cta_banner_text}</p>}
+    </div>
+    <a class="btn btn--coral cta-banner__button" href={page.cta_banner_href}>
+      {page.cta_banner_button}
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-banner__inner {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    padding-block: 2rem;
+  }
+
+  @media (min-width: 720px) {
+    .cta-banner__inner {
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+    }
+  }
+
+  .cta-banner__heading {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: 1.15;
+    letter-spacing: var(--tracking-tight, -0.03em);
+    margin: 0;
+    max-width: 28ch;
+  }
+
+  .cta-banner__text {
+    margin-top: 0.5rem;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    max-width: 50ch;
+  }
+
+  .cta-banner__button {
+    width: fit-content;
+    white-space: nowrap;
+  }
+</style>
