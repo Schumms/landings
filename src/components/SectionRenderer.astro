@@ -11,6 +11,7 @@ import Benefits from "@components/sections/Benefits.astro";
 import Process from "@components/sections/Process.astro";
 import Speakers from "@components/sections/Speakers.astro";
 import Testimonial from "@components/sections/Testimonial.astro";
+import References from "@components/sections/References.astro";
 import About from "@components/sections/About.astro";
 import ContentPreview from "@components/sections/ContentPreview.astro";
 import Location from "@components/sections/Location.astro";
@@ -56,6 +57,8 @@ const layoutFor = (id: string) => page.sections_layout?.[id];
         return <Speakers page={page} layout={layoutFor("speakers")} />;
       case "testimonial":
         return <Testimonial page={page} layout={layoutFor("testimonial")} />;
+      case "references":
+        return <References page={page} layout={layoutFor("references")} />;
       case "about":
         return <About page={page} layout={layoutFor("about")} />;
       case "content_preview":

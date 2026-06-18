@@ -31,6 +31,6 @@ const navCta = page.nav_cta_text ?? page.cta_text;
   <main id="main-content">
     <SectionRenderer page={page} sections={sections} />
   </main>
-  {visibility.footer && <Footer landing />}
+  {visibility.footer && <Footer landing page={page} />}
   <CookieBanner />
 </BaseLayout>

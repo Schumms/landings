@@ -53,6 +53,19 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     <div class="lead-form__intro">
       <h2 id="form-heading">{page.form_title}</h2>
       <p class="lead-form__hint">{formIntro}</p>
+
+      {page.form_what_you_get?.length && (
+        <div class="lead-form__benefits">
+          {page.form_what_you_get_heading && (
+            <p class="lead-form__benefits-heading">{page.form_what_you_get_heading}</p>
+          )}
+          <ul class="lead-form__benefits-list">
+            {page.form_what_you_get.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
 
     <form
@@ -166,6 +179,47 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     font-size: var(--text-lg);
     line-height: 1.55;
     max-width: 38ch;
+  }
+
+  .lead-form__benefits {
+    margin-top: 2rem;
+    max-width: 42ch;
+  }
+
+  .lead-form__benefits-heading {
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--tracking-wide, 0.08em);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+    max-width: none;
+  }
+
+  .lead-form__benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .lead-form__benefits-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  .lead-form__benefits-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-coral);
+    font-weight: var(--font-weight-bold);
   }
 
   .lead-form__form {

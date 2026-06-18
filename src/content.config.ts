@@ -147,6 +147,32 @@ const landingSchema = z.object({
   about_title: z.string().optional(),
   about_image: z.string().optional(),
   about_bio: z.string().optional(),
+  // 3 kurze Haltungs-Zitate als Boxen unter dem Bio-Block (z.B. "Wir sind professionell, ohne distanziert zu sein.").
+  about_quotes: z.array(z.string()).max(4).optional(),
+  // Team-Grid: bis zu 4 Personen mit Name, Rolle, optionalem Bild.
+  about_team: z.array(speakerItem).max(4).optional(),
+
+  // Neue Section: Referenz-Karten (3-Spalten-Grid mit Bild, Branche, Challenge, Ergebnis).
+  references_heading: z.string().optional(),
+  references_intro: z.string().optional(),
+  references: z
+    .array(
+      z.object({
+        industry: z.string(),
+        size: z.string().optional(),
+        challenge: z.string(),
+        result: z.string(),
+        image: z.string().optional(),
+        image_alt: z.string().optional(),
+      }),
+    )
+    .min(1)
+    .max(6)
+    .optional(),
+  references_cta_text: z.string().optional(),
+  references_cta_href: z.string().url().optional(),
+  // Optionales Abschluss-Zitat der Sektion (auf einer eigenen Karte).
+  references_closing_quote: z.string().optional(),
 
   content_preview_heading: z.string().optional(),
   content_preview_intro: z.string().optional(),
@@ -165,6 +191,9 @@ const landingSchema = z.object({
   form_download_url: z.string().url().optional(),
   form_success_message: z.string().optional(),
   form_privacy_note: z.string().optional(),
+  // "Was du bekommst"-Bullet-Liste über dem Formular (z.B. für Leadmagneten).
+  form_what_you_get: z.array(z.string()).max(6).optional(),
+  form_what_you_get_heading: z.string().optional(),
 
   // Optionale Felder für LeadForm (jede Page schaltet sie via Frontmatter ein).
   form_show_salutation: z.boolean().optional(),
@@ -202,6 +231,9 @@ const landingSchema = z.object({
   secondary_cta_text: z.string().optional(),
   secondary_cta_button: z.string().optional(),
   secondary_cta_href: z.string().optional(),
+
+  /** Footer-Claim für die Landingpage (z.B. "Mutig. Prägend. Zukunftsgerichtet."). */
+  footer_claim: z.string().optional(),
 
   /** Per-Section layout modifier (für non-tech iteration). Beispiel: section_modifiers: { problem: ["centered"] } */
   section_modifiers: z.record(z.string(), z.array(z.string())).optional(),

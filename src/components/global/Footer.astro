@@ -1,15 +1,19 @@
 ---
 import brand from "@data/brand";
+import type { LandingPageData } from "@lib/types";
 
 interface Props {
   /** Landing page mode: legal links only, no social — reduces distraction */
   landing?: boolean;
   minimal?: boolean;
+  /** Page-Data (für Footer-Claim und weitere Page-spezifische Inhalte) */
+  page?: LandingPageData;
 }
 
-const { landing = false, minimal = false } = Astro.props;
+const { landing = false, minimal = false, page } = Astro.props;
 const year = new Date().getFullYear();
 const { street, zip, city } = brand.contact.address;
+const claim = page?.footer_claim;
 ---
 
 <footer class="footer">
@@ -17,6 +21,7 @@ const { street, zip, city } = brand.contact.address;
     {
       landing ? (
         <div class="footer__landing">
+          {claim && <p class="footer__claim">{claim}</p>}
           <nav class="footer__legal" aria-label="Rechtliches">
             {brand.footer.legal.map((link) => (
               <a href={link.href}>{link.label}</a>
@@ -66,6 +71,16 @@ const { street, zip, city } = brand.contact.address;
     gap: 1.25rem;
     align-items: center;
     text-align: center;
+  }
+
+  .footer__claim {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    max-width: none;
+    margin: 0;
   }
 
   .footer__grid {

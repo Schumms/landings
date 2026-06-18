@@ -6,16 +6,16 @@ published: false
 title: "New Work Beratung & Bürokonzepte | Schumm+Rösch"
 description: "New Work Konzepte und moderne Bürowelten für Unternehmen ab 25 MA. Strategisch, ganzheitlich, messbar wirksam. Jetzt Erstgespräch buchen."
 
-# Sichtbarkeit + Reihenfolge (Dokument-Struktur 1:1 abgebildet)
+# Sichtbarkeit + Reihenfolge — orientiert am Mockup
 section_order:
   - hero
   - secondary_cta
   - problem
   - process
+  - references
   - transformation
-  - testimonial
-  - about
   - form
+  - about
   - contact_form
 
 sections:
@@ -25,7 +25,8 @@ sections:
   problem: true
   process: true
   transformation: true
-  testimonial: true
+  testimonial: false
+  references: true
   about: true
   form: true
   contact_form: true
@@ -44,7 +45,7 @@ nav_cta_text: "Check starten"
 # ── SEKTION 1 — HERO ─────────────────────────────────────────────
 hero_eyebrow: "New Work Beratung · Strategisch · Ganzheitlich"
 hero_title: "Dein Büro sieht aus wie 2018. Deine Mitarbeitenden arbeiten wie 2025."
-hero_subtitle: "Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht."
+hero_subtitle: "Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht. Wir entwickeln Konzepte, die nicht nur gut aussehen, sondern wirklich funktionieren."
 hero_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
 hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug"
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
@@ -87,21 +88,40 @@ process_steps:
   - title: "Laufende Begleitung"
     description: "Fertig gebaut ist nicht fertig gedacht. Arbeitswelten verändern sich. Wir bleiben euer Partner – für Anpassungen, Erweiterungen und neue Projekte."
 
-# ── SEKTION 4 — TRANSFORMATION (Vorher/Nachher-Brücke) ───────────
+# ── SEKTION 4 — REFERENZEN (3-Spalten-Grid) ──────────────────────
+references_heading: "Was daraus wird, wenn Fläche strategisch gedacht wird."
+references_intro: "Keine Renderings. Keine Hochglanz-Fantasien. Nur echte Projekte – mit echten Herausforderungen und messbaren Ergebnissen."
+references:
+  - industry: "Technologieunternehmen"
+    size: "80 Mitarbeitende · Frankfurt"
+    challenge: "Drei Abteilungen, eine Fläche, keine klare Zonenlogik. Homeoffice war längst Realität, das Büro aber noch auf Präsenz ausgelegt."
+    result: "Activity-Based-Working-Konzept mit dedizierten Fokus-, Kollaborations- und Kommunikationszonen. Flächennutzung optimiert, Mitarbeiterzufriedenheit messbar gestiegen."
+  - industry: "Beratungsunternehmen"
+    size: "200 Mitarbeitende · Expansion auf 2 Standorte"
+    challenge: "Schnelles Wachstum, neuer Standort, keine Zeit für lange Abstimmungen. Das neue Büro musste Identität, Kultur und Funktionalität gleichzeitig abbilden."
+    result: "Konzept, Planung und Umsetzung in einem Zug. Einheitliche Bürosprache an beiden Standorten. Klare Repräsentation der Unternehmensmarke im Raum."
+  - industry: "Industrieunternehmen"
+    size: "500+ Mitarbeitende · Transformation zu New Work"
+    challenge: "Historisch gewachsene Raumstruktur, Einzelbüros und Flure, keine New-Work-Eignung. Gleichzeitig: hohe Erwartungen der Mitarbeitenden nach Corona."
+    result: "Phased Transformation über mehrere Monate. Hybride Konzepte für verschiedene Abteilungen. Signifikante Reduktion der Leerstandsquote."
+references_closing_quote: "Schumm+Rösch hat nicht nur unser Büro gebaut – sie haben uns geholfen zu verstehen, wie unsere Leute heute arbeiten. Das verändert alles."
+references_cta_text: "Weitere Referenzen anfragen"
+references_cta_href: "mailto:hallo@schumm-roesch.de?subject=Referenzen%20New%20Work"
+
+# ── SEKTION 4b — TRANSFORMATION (Vorher/Nachher-Brücke) ─────────
 transformation_heading: "Was sich verändert, wenn Fläche strategisch gedacht wird."
 transformation_before: "Fläche, die als Kostenfaktor verwaltet wird. Zonen, die nicht zur tatsächlichen Arbeit passen. Ein Büro, das niemanden mehr vom Sofa lockt."
 transformation_after: "Eine Fläche, die zu eurer Arbeitsweise passt. Zonen, die messbar genutzt werden. Ein Büro, das Talente anzieht – statt sie zu verlieren."
 
-# ── SEKTION 4 — TESTIMONIAL (Sozialer Beweis) ─────────────────────
-testimonial_heading: "Was daraus wird, wenn Fläche strategisch gedacht wird."
-testimonial_quote: "Wir haben nicht nur ein neues Büro bekommen – wir haben verstanden, wie unsere Leute heute arbeiten. Und das spürt man jeden Tag."
-testimonial_author: "Head of People"
-testimonial_role: "Geschäftsführung"
-testimonial_company: "Technologieunternehmen, 80 Mitarbeitende"
-
 # ── SEKTION 5 — LEADMAGNET (New Work Readiness Check) ─────────────
 form_title: "In 2 Minuten zum klaren Bild: Wie New-Work-ready ist euer Büro wirklich?"
 form_intro: "Viele Unternehmen ahnen, dass ihr Büro nicht mehr zur Arbeitswirklichkeit passt. Aber woran erkennt man das genau – und wo fängt man an? Unser kostenfreier Check gibt euch Klarheit."
+form_what_you_get_heading: "Was du bekommst"
+form_what_you_get:
+  - "Eure persönliche New Work Readiness Einordnung (4 Reifestufen)"
+  - "Die 3 wichtigsten Handlungsfelder für euer Unternehmen"
+  - "Erste konkrete Empfehlungen – passend zu eurer Unternehmensgröße"
+  - "Kostenlos. Ohne Verkaufsgespräch. Direkt per E-Mail."
 form_cta: "Jetzt Check starten – kostenlos und unverbindlich"
 form_success_message: "Danke! Dein Ergebnis kommt in wenigen Minuten per E-Mail."
 form_privacy_note: "Ich stimme zu, mein Ergebnis per E-Mail zu erhalten. Du kannst dich jederzeit wieder abmelden."
@@ -120,9 +140,24 @@ hubspot_form_id: "DEINE-FORM-ID-HIER"
 
 # ── SEKTION 6 — ÜBER UNS ─────────────────────────────────────────
 about_heading: "Wir bauen keine Büros. Wir bauen Arbeitswelten, die Unternehmen nach vorn bringen."
+about_image: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
+about_image_alt: "Susanne Busshart, Geschäftsführerin Schumm+Rösch"
 about_name: "Susanne Busshart"
 about_title: "Geschäftsführerin · Schumm+Rösch"
 about_bio: "Hinter Schumm+Rösch steckt eine klare Überzeugung: Räume sind kein Nebenschauplatz unternehmerischer Entwicklung. Sie entscheiden mit, wie gut Teams zusammenarbeiten, wie stark Mitarbeitende sich identifizieren – und wie gut ein Unternehmen auf Veränderung reagieren kann. Wir denken nicht vom Produkt aus, sondern vom Unternehmen. Vom Verstehen, nicht vom Planen."
+about_quotes:
+  - "Wir sind professionell, ohne distanziert zu sein."
+  - "Wir sind visionär, ohne abzuheben."
+  - "Wir sind mutig, ohne laut um jeden Preis zu sein."
+about_team:
+  - name: "Susanne Busshart"
+    title: "Geschäftsführerin"
+    bio: "Strategin für Arbeitswelten, die erst fragt und dann plant."
+    image: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
+  - name: "Simon Busshart"
+    title: "Mitgründer"
+    bio: "Operativer Kopf mit Blick fürs Detail und die Baustelle."
+    image: "/pages/hr-konferenz-wiesbaden/speakers/simon-busshart.jpg"
 
 # ── SEKTION 7 — KONTAKTFORMULAR ──────────────────────────────────
 contact_form_title: "Lasst uns reden. Kostenlos. Ohne Druck. Auf Augenhöhe."
@@ -138,6 +173,9 @@ contact_form_phone_required: false
 contact_form_secondary_cta_label: "Termin online buchen"
 contact_form_secondary_cta_href: "https://go.schumms.com/meetings/sophie-schreiner"
 contact_form_reassurance: "Kein Verkaufsgespräch, das ihr nicht haben wollt. Wir melden uns innerhalb von 24 Stunden – oder ihr gebt uns einfach direkt Bescheid, wann's passt."
-contact_form_address: "Schumm+Rösch Planen+Einrichten GmbH · Borsigstraße 20, 65205 Wiesbaden · +49 (0)6122 727 555-0 · Info@schumms.com"
+contact_form_address: "Schumm+Rösch Planen+Einrichten GmbH · Borsigstraße 20, 65205 Wiesbaden · +49 (0)6122 727 555-0 · hallo@schumm-roesch.de"
 contact_form_hubspot_form_id: "DEINE-FORM-ID-HIER"
+
+# ── FOOTER ───────────────────────────────────────────────────────
+footer_claim: "Mutig. Prägend. Zukunftsgerichtet."
 ---

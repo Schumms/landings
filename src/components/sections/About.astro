@@ -17,34 +17,89 @@ const sectionClasses = [
   layout?.text_align && `section--text-align-${layout.text_align}`,
 ].filter(Boolean);
 
-if (!page.about_name && !page.about_bio) {
+const hasMain = !!(page.about_name || page.about_bio);
+const hasTeam = !!page.about_team?.length;
+const hasQuotes = !!page.about_quotes?.length;
+
+if (!hasMain && !hasTeam && !hasQuotes) {
   return null;
 }
 ---
 
 <section class:list={sectionClasses} id="about" aria-labelledby="about-heading">
-  <div class="container split">
-    {
-      page.about_image && (
-        <img
-          class="about__photo"
-          src={page.about_image}
-          alt={page.about_name ?? "Ansprechpartnerin"}
-          loading="lazy"
-        />
-      )
-    }
+  <div class="container">
+    {page.about_heading && <h2 id="about-heading" class="about__heading">{page.about_heading}</h2>}
 
-    <div class="about__content">
-      <h2 id="about-heading">{page.about_heading ?? "Wer steckt dahinter?"}</h2>
-      {page.about_name && <p class="about__name">{page.about_name}</p>}
-      {page.about_title && <p class="about__title">{page.about_title}</p>}
-      {page.about_bio && <p class="about__bio">{page.about_bio}</p>}
-    </div>
+    {hasMain && (
+      <div class="about__main split">
+        {page.about_image && (
+          <img
+            class="about__photo"
+            src={page.about_image}
+            alt={page.about_name ?? "Ansprechpartnerin"}
+            loading="lazy"
+          />
+        )}
+
+        <div class="about__content">
+          {page.about_name && <p class="about__name">{page.about_name}</p>}
+          {page.about_title && <p class="about__title">{page.about_title}</p>}
+          {page.about_bio && <p class="about__bio">{page.about_bio}</p>}
+        </div>
+      </div>
+    )}
+
+    {hasQuotes && (
+      <div class="about__quotes">
+        {page.about_quotes.map((quote) => (
+          <blockquote class="about__quote">{quote}</blockquote>
+        ))}
+      </div>
+    )}
+
+    {hasTeam && (
+      <div class="about__team">
+        {page.about_team.map((member) => (
+          <article class="about__member">
+            {member.image && (
+              <img
+                class="about__member-photo"
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+              />
+            )}
+            <div class="about__member-body">
+              {member.name && <p class="about__member-name">{member.name}</p>}
+              {member.title && <p class="about__member-role">{member.title}</p>}
+              {member.bio && <p class="about__member-bio">{member.bio}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
   </div>
 </section>
 
 <style>
+  .about__heading {
+    max-width: 22ch;
+    margin-bottom: 2rem;
+  }
+
+  .about__main.split {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .about__main.split {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .about__photo {
     width: 100%;
     max-width: 20rem;
@@ -70,6 +125,79 @@ if (!page.about_name && !page.about_bio) {
   .about__bio {
     margin-top: 1.25rem;
     font-size: var(--text-lg);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  /* Haltungs-Zitate (3 Boxen) */
+  .about__quotes {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 720px) {
+    .about__quotes {
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+  }
+
+  .about__quote {
+    margin: 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-muted, #f5f5f5);
+    border-left: 3px solid var(--color-coral);
+    font-size: var(--text-base);
+    line-height: 1.55;
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Team-Grid */
+  .about__team {
+    margin-top: 3rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 720px) {
+    .about__team {
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+  }
+
+  .about__member {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .about__member-photo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .about__member-name {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+    max-width: none;
+  }
+
+  .about__member-role {
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  .about__member-bio {
+    font-size: var(--text-sm);
     line-height: 1.55;
     color: var(--color-text-muted);
     max-width: none;
