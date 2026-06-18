@@ -21,6 +21,7 @@ export const CONTENT_SECTION_IDS = [
   "location",
   "faq",
   "form",
+  "contact_form",
   "secondary_cta",
 ] as const;
 
@@ -55,6 +56,7 @@ export const DEFAULT_SECTION_VISIBILITY: Record<SectionId, boolean> = {
   location: false,
   faq: true,
   form: true,
+  contact_form: false,
   secondary_cta: true,
   footer: true,
 };
@@ -91,6 +93,7 @@ export const SECTION_LABELS: Record<SectionId, string> = {
   location: "Location / Anfahrt",
   faq: "FAQ",
   form: "Formular / CTA",
+  contact_form: "Kontaktformular",
   secondary_cta: "Sekundärer CTA",
   footer: "Footer",
 };

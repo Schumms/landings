@@ -132,7 +132,7 @@ const landingSchema = z.object({
   benefits: z.array(benefitItem).min(3).max(5).optional(),
 
   process_heading: z.string().optional(),
-  process_steps: z.array(processStep).min(3).max(3).optional(),
+  process_steps: z.array(processStep).min(3).max(8).optional(),
 
   testimonial_heading: z.string().optional(),
   testimonial_quote: z.string().optional(),
@@ -166,8 +166,37 @@ const landingSchema = z.object({
   form_success_message: z.string().optional(),
   form_privacy_note: z.string().optional(),
 
+  // Optionale Felder für LeadForm (jede Page schaltet sie via Frontmatter ein).
+  form_show_salutation: z.boolean().optional(),
+  form_show_phone: z.boolean().optional(),
+  form_show_employee_count: z.boolean().optional(),
+  form_show_message: z.boolean().optional(),
+  form_split_name: z.boolean().optional(),
+  form_salutation_options: z.array(z.string()).optional(),
+  form_employee_count_options: z.array(z.string()).optional(),
+  form_message_label: z.string().optional(),
+  form_message_max_length: z.number().int().positive().optional(),
+
   hubspot_portal_id: z.string().optional(),
   hubspot_form_id: z.string().optional(),
+
+  // Zweite Form-Section (z.B. Kontaktformular am Seitenende).
+  // Wenn vorhanden, wird sie als eigenständige Section gerendert.
+  contact_form_title: z.string().optional(),
+  contact_form_intro: z.string().optional(),
+  contact_form_cta: z.string().optional(),
+  contact_form_privacy_note: z.string().optional(),
+  contact_form_success_message: z.string().optional(),
+  contact_form_hubspot_form_id: z.string().optional(),
+  contact_form_show_message: z.boolean().optional(),
+  contact_form_show_phone: z.boolean().optional(),
+  contact_form_phone_required: z.boolean().optional(),
+  contact_form_message_label: z.string().optional(),
+  contact_form_message_max_length: z.number().int().positive().optional(),
+  contact_form_secondary_cta_label: z.string().optional(),
+  contact_form_secondary_cta_href: z.string().optional(),
+  contact_form_reassurance: z.string().optional(),
+  contact_form_address: z.string().optional(),
 
   secondary_cta_heading: z.string().optional(),
   secondary_cta_text: z.string().optional(),

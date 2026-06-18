@@ -27,6 +27,25 @@ const privacyNote =
   "Ich willige ein, dass meine Angaben zur Beantwortung meiner Anfrage elektronisch erhoben und verarbeitet werden.";
 
 const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umgehend.";
+
+// Optionale Felder — jede Page schaltet sie via Frontmatter ein.
+// Defaults: alle aus, damit bestehende Pages unverändert rendern.
+const showSalutation = page.form_show_salutation ?? false;
+const showPhone = page.form_show_phone ?? false;
+const showEmployeeCount = page.form_show_employee_count ?? false;
+const showMessage = page.form_show_message ?? false;
+
+// Wenn Anrede aktiv → firstname/lastname getrennt rendern
+const splitName = showSalutation || page.form_split_name === true;
+
+const salutationOptions: readonly string[] =
+  page.form_salutation_options ?? ["Frau", "Herr", "Divers", "Keine Angabe"];
+
+const employeeCountOptions: readonly string[] =
+  page.form_employee_count_options ?? ["25-50", "51-200", "201-500", "500+"];
+
+const messageLabel = page.form_message_label ?? "Dein Anlass";
+const messageMaxLength = page.form_message_max_length ?? 300;
 ---
 
 <section class:list={sectionClasses} id="lead-form" aria-labelledby="form-heading">
@@ -44,21 +63,82 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
       data-webhook={page.form_webhook ?? ""}
       data-download={page.form_download_url ?? ""}
       data-success={page.form_success_message ?? "Vielen Dank für deine Anfrage!"}
+      data-split-name={splitName ? "true" : "false"}
     >
-      <div class="form-field">
-        <label class="sr-only" for="name">Name</label>
-        <input id="name" name="name" type="text" placeholder="Name" autocomplete="name" required />
-      </div>
+      {showSalutation && (
+        <div class="form-field">
+          <label class="sr-only" for="salutation">Anrede</label>
+          <select id="salutation" name="salutation" required>
+            <option value="" disabled selected>Anrede</option>
+            {salutationOptions.map((opt) => (
+              <option value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {splitName ? (
+        <div class="form-field form-field--row">
+          <div>
+            <label class="sr-only" for="firstname">Vorname</label>
+            <input id="firstname" name="firstname" type="text" placeholder="Vorname" autocomplete="given-name" required />
+          </div>
+          <div>
+            <label class="sr-only" for="lastname">Nachname</label>
+            <input id="lastname" name="lastname" type="text" placeholder="Nachname" autocomplete="family-name" required />
+          </div>
+        </div>
+      ) : (
+        <div class="form-field">
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Name" autocomplete="name" required />
+        </div>
+      )}
 
       <div class="form-field">
         <label class="sr-only" for="email">E-Mail-Adresse</label>
         <input id="email" name="email" type="email" placeholder="E-Mail" autocomplete="email" required />
       </div>
 
+      {showPhone && (
+        <div class="form-field">
+          <label class="sr-only" for="phone">Telefonnummer</label>
+          <input id="phone" name="phone" type="tel" placeholder="Telefonnummer" autocomplete="tel" required />
+        </div>
+      )}
+
       <div class="form-field">
         <label class="sr-only" for="company">Firma</label>
-        <input id="company" name="company" type="text" placeholder="Firma" autocomplete="organization" />
+        <input id="company" name="company" type="text" placeholder="Firma" autocomplete="organization" required />
       </div>
+
+      {showEmployeeCount && (
+        <div class="form-field">
+          <label class="sr-only" for="employee_count">Mitarbeiterzahl</label>
+          <select id="employee_count" name="employee_count" required>
+            <option value="" disabled selected>Mitarbeiterzahl</option>
+            {employeeCountOptions.map((opt) => (
+              <option value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {showMessage && (
+        <div class="form-field">
+          <label class="sr-only" for="message">{messageLabel}</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder={messageLabel}
+            maxlength={messageMaxLength}
+            rows="4"
+          ></textarea>
+          <small class="form-field__counter" data-counter-for="message">
+            <span data-counter-used>0</span> / {messageMaxLength}
+          </small>
+        </div>
+      )}
 
       <div class="form-field form-field--checkbox">
         <label class="checkbox-label">
@@ -91,6 +171,69 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
   .lead-form__form {
     display: grid;
     gap: 0.875rem;
+  }
+
+  .form-field--row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 540px) {
+    .form-field--row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-field textarea {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-border, #e2e2e2);
+    border-radius: 0;
+    font: inherit;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    background: var(--color-white);
+    color: var(--color-black);
+    resize: vertical;
+    min-height: 5.5rem;
+    box-sizing: border-box;
+  }
+
+  .form-field textarea:focus {
+    outline: 2px solid var(--color-coral);
+    outline-offset: -2px;
+  }
+
+  .form-field select {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-border, #e2e2e2);
+    border-radius: 0;
+    font: inherit;
+    font-size: var(--text-base);
+    background: var(--color-white);
+    color: var(--color-black);
+    box-sizing: border-box;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-muted) 50%),
+      linear-gradient(135deg, var(--color-muted) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+    background-size: 5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .form-field select:focus {
+    outline: 2px solid var(--color-coral);
+    outline-offset: -2px;
+  }
+
+  .form-field__counter {
+    display: block;
+    text-align: right;
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin-top: 0.25rem;
   }
 
   .form-field--checkbox .checkbox-label {
@@ -134,6 +277,17 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
   const form = document.getElementById("landing-form") as HTMLFormElement | null;
   const status = document.getElementById("form-status");
 
+  // Live-Character-Counter für Textarea(s) im Formular
+  document.querySelectorAll<HTMLTextAreaElement>(".lead-form__form textarea[maxlength]").forEach((ta) => {
+    const counterWrap = ta.parentElement?.querySelector<HTMLElement>("[data-counter-for]");
+    const used = counterWrap?.querySelector<HTMLElement>("[data-counter-used]");
+    const update = () => {
+      if (used) used.textContent = String(ta.value.length);
+    };
+    ta.addEventListener("input", update);
+    update();
+  });
+
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form || !status) return;
@@ -143,6 +297,7 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
     const webhook = form.dataset.webhook;
     const downloadUrl = form.dataset.download;
     const successMessage = form.dataset.success ?? "Vielen Dank!";
+    const splitName = form.dataset.splitName === "true";
     const submitBtn = form.querySelector<HTMLButtonElement>(".lead-form__submit");
 
     submitBtn?.setAttribute("disabled", "true");
@@ -151,29 +306,48 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
     status.textContent = "Wird gesendet …";
 
     const formData = new FormData(form);
-    const nameRaw = String(formData.get("name") ?? "").trim();
+
+    // Name-Logik: bei splitName direkt firstname/lastname,
+    // sonst kombiniertes "name"-Feld am letzten Leerzeichen splitten.
+    let firstname = "";
+    let lastname = "-";
+    if (splitName) {
+      firstname = String(formData.get("firstname") ?? "").trim();
+      lastname = String(formData.get("lastname") ?? "").trim() || "-";
+    } else {
+      const nameRaw = String(formData.get("name") ?? "").trim();
+      firstname = nameRaw;
+      const lastSpace = nameRaw.lastIndexOf(" ");
+      if (lastSpace > 0) {
+        firstname = nameRaw.slice(0, lastSpace).trim();
+        lastname = nameRaw.slice(lastSpace + 1).trim();
+      }
+    }
+
     const email = String(formData.get("email") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
-
-    // Name in firstname/lastname splitten (letztes Leerzeichen)
-    let firstname = nameRaw;
-    let lastname = "-";
-    const lastSpace = nameRaw.lastIndexOf(" ");
-    if (lastSpace > 0) {
-      firstname = nameRaw.slice(0, lastSpace).trim();
-      lastname = nameRaw.slice(lastSpace + 1).trim();
-    }
+    const salutation = String(formData.get("salutation") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "").trim();
+    const employeeCount = String(formData.get("employee_count") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
 
     try {
       if (hubspotPortal && hubspotForm) {
         // ── HubSpot Forms API (HubSpot-first) ──
+        // Property-Namen entsprechen HubSpot-Built-ins (salutation, firstname,
+        // lastname, email, phone, company) plus optionale Custom-Properties
+        // (employee_count, message). Timo legt diese in HubSpot an.
         const fields: any[] = [
           { name: "firstname", value: firstname },
           { name: "lastname", value: lastname },
           { name: "email", value: email },
         ];
 
+        if (salutation) fields.push({ name: "salutation", value: salutation });
+        if (phone) fields.push({ name: "phone", value: phone });
         if (company) fields.push({ name: "company", value: company });
+        if (employeeCount) fields.push({ name: "employee_count", value: employeeCount });
+        if (message) fields.push({ name: "message", value: message });
 
         const payload = {
           fields,
@@ -224,6 +398,12 @@ const formIntro = page.form_intro ?? "Schnell ausgefüllt — wir melden uns umg
 
       status.textContent = successMessage;
       form.reset();
+      // Counter nach Reset auf 0 setzen
+      document.querySelectorAll<HTMLTextAreaElement>(".lead-form__form textarea[maxlength]").forEach((ta) => {
+        const counterWrap = ta.parentElement?.querySelector<HTMLElement>("[data-counter-for]");
+        const used = counterWrap?.querySelector<HTMLElement>("[data-counter-used]");
+        if (used) used.textContent = "0";
+      });
 
       if (downloadUrl) {
         window.setTimeout(() => {
