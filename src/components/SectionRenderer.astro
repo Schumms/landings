@@ -11,11 +11,14 @@ import Benefits from "@components/sections/Benefits.astro";
 import Process from "@components/sections/Process.astro";
 import Speakers from "@components/sections/Speakers.astro";
 import Testimonial from "@components/sections/Testimonial.astro";
+import References from "@components/sections/References.astro";
+import ServiceOverview from "@components/sections/ServiceOverview.astro";
 import About from "@components/sections/About.astro";
 import ContentPreview from "@components/sections/ContentPreview.astro";
 import Location from "@components/sections/Location.astro";
 import FAQ from "@components/sections/FAQ.astro";
 import LeadForm from "@components/sections/LeadForm.astro";
+import ContactForm from "@components/sections/ContactForm.astro";
 import SecondaryCTA from "@components/sections/SecondaryCTA.astro";
 
 interface Props {
@@ -55,6 +58,10 @@ const layoutFor = (id: string) => page.sections_layout?.[id];
         return <Speakers page={page} layout={layoutFor("speakers")} />;
       case "testimonial":
         return <Testimonial page={page} layout={layoutFor("testimonial")} />;
+      case "references":
+        return <References page={page} layout={layoutFor("references")} />;
+      case "service_overview":
+        return <ServiceOverview page={page} layout={layoutFor("service_overview")} />;
       case "about":
         return <About page={page} layout={layoutFor("about")} />;
       case "content_preview":
@@ -65,6 +72,8 @@ const layoutFor = (id: string) => page.sections_layout?.[id];
         return <FAQ page={page} layout={layoutFor("faq")} />;
       case "form":
         return <LeadForm page={page} layout={layoutFor("form")} />;
+      case "contact_form":
+        return <ContactForm page={page} layout={layoutFor("contact_form")} />;
       case "secondary_cta":
         return <SecondaryCTA page={page} layout={layoutFor("secondary_cta")} />;
       default:

@@ -1,0 +1,283 @@
+---
+# Brandkit-Showcase — Demo-Seite mit allen Sections
+# Demonstriert das globale Design und die verfügbaren Komponenten.
+# Nicht für den Live-Einsatz — Inhalte sind neutrale Demo-Texte.
+# Stand: Juni 2026
+
+slug: brandkit-showcase
+published: false
+
+title: "Brandkit-Showcase — Alle Komponenten im Überblick"
+description: "Demo-Seite mit allen verfügbaren Landingpage-Sections: Sales-Standard, Event, Trust und Formulare. Für Brandkit-Verständnis und als Vorlage."
+
+# Alle 18 Content-Sections in sinnvoller Reihenfolge
+section_order:
+  - hero
+  - social_proof_bar
+  - problem
+  - transformation
+  - benefits
+  - process
+  - pricing
+  - program
+  - speakers
+  - content_preview
+  - testimonial
+  - references
+  - service_overview
+  - about
+  - location
+  - faq
+  - form
+  - contact_form
+  - secondary_cta
+
+sections:
+  nav: true
+  hero: true
+  social_proof_bar: true
+  problem: true
+  transformation: true
+  benefits: true
+  process: true
+  pricing: true
+  program: true
+  speakers: true
+  testimonial: true
+  references: true
+  service_overview: true
+  about: true
+  content_preview: true
+  location: true
+  faq: true
+  form: true
+  contact_form: true
+  secondary_cta: true
+  footer: true
+
+# ── Navigation ───────────────────────────────────────────────────
+nav_cta_text: "Zur Form-Section"
+
+# ── 1. Hero ──────────────────────────────────────────────────────
+hero_eyebrow: "Brandkit · Komponenten-Showcase"
+hero_title: "Alle Sections auf einen Blick."
+hero_subtitle: "Eine Demo-Seite, die das globale Design und die verfügbaren Komponenten zeigt. Für die Erstellung weiterer Landingpages — und als Vorlage, was wo möglich ist."
+# Wiederverwendetes Hero-Bild aus default-landing (neutrales Default)
+hero_image: "/pages/default-landing/hero.jpg"
+hero_image_alt: "Neutrale Büroatmosphäre mit Möbeln und warmem Licht"
+cta_text: "Zur Form-Section"
+hero_trust_metrics:
+  - value: "18"
+    label: "Sections"
+  - value: "Sales · Event"
+    label: "Beide Welten"
+  - value: "Demo"
+    label: "Kein Live-Use"
+
+# ── 2. Social Proof Bar ──────────────────────────────────────────
+social_proof_text: "Bereits im Einsatz auf der schumms.com-Website"
+social_proof_metrics:
+  - value: "18"
+    label: "Komponenten"
+  - value: "5+"
+    label: "Live-Pages"
+  - value: "100%"
+    label: "Brand-Konform"
+social_proof_logos:
+  - name: "Vitra"
+    image: "/images/logos/schumms-partners/vitra.svg"
+  - name: "Wilkhahn"
+    image: "/images/logos/schumms-partners/wilkhahn.svg"
+  - name: "sedus"
+    image: "/images/logos/schumms-partners/sedus.svg"
+  - name: "König + Neurath"
+    image: "/images/logos/schumms-partners/koenig-neurath.svg"
+  - name: "VARIO"
+    image: "/images/logos/schumms-partners/vario.svg"
+
+# ── 3. Problem / Schmerz ─────────────────────────────────────────
+# Hinweis: problem_intro bleibt leer, weil die Pricing-Section-Komponente
+# Pricing nur rendert, wenn problem_intro NICHT gesetzt ist.
+problem_heading: "Was diese Seite zeigt"
+problem_points:
+  - "Hero, Social Proof, Problem, Transformation, Benefits, Process — die Sales-Standard-Sections"
+  - "Pricing, Program, Speakers, Location, References — die Event- und B2B-Sections"
+  - "Forms (LeadForm + ContactForm), FAQ, About, Testimonial, Secondary CTA — Trust- und Conversion-Sections"
+
+# ── 4. Lösung / Transformation ──────────────────────────────────
+transformation_heading: "Von der Demo zur fertigen Landingpage"
+transformation_before: "Eine neue Landingpage erstellen heißt raten, welche Sections es gibt, wie sie aussehen, und welche Felder das Schema verlangt — jedes Mal von vorn."
+transformation_after: "Mit dieser Showcase-Seite ist klar, welche Bausteine zur Verfügung stehen und wie sie im Brand-System wirken. Die nächste LP wird zur Frage: Welche Sections braucht dieses Thema?"
+
+# ── 5. Nutzen / Benefits ─────────────────────────────────────────
+benefits_heading: "Was die Showcase-Seite bringt"
+benefits_intro: "Drei konkrete Vorteile für alle, die künftig Landingpages im schumms.com-System bauen."
+benefits:
+  - headline: "Globales Design sofort sichtbar"
+    description: "Schwarz + Coral, Inter, scharfe Kanten, großzügiger Whitespace — die Brand-Sprache wird bei jedem Scrollen klar."
+  - headline: "Sections als Baukasten verstehen"
+    description: "Sales-Standard, Event, Trust, Forms — jede Komponente hat einen klaren Zweck und einen klaren Platz in der Reihenfolge."
+  - headline: "Weniger Rückfragen beim Bau"
+    description: "Wer die Sections kennt, beschreibt beim Briefing präziser, was die Seite können muss — die Erstellung wird schneller und konsistenter."
+
+# ── 6. Prozess ───────────────────────────────────────────────────
+process_heading: "So nutzt du die Showcase-Seite"
+process_steps:
+  - title: "Scrollen und aufmerken"
+    description: "Sieh dir alle 18 Sections in Ruhe an — Form, Farbe, Schrift und Abfolge geben ein Gefühl für das System."
+  - title: "Vergleichen mit dem Briefing"
+    description: "Markiere die Sections, die für die neue Landingpage inhaltlich gebraucht werden — Standard, Event oder beides."
+  - title: "Briefing präzise formulieren"
+    description: "Sag dem Agent konkret, welche Sections aktiviert werden sollen und welche Inhalte reinkommen — der Rest ist Mechanik."
+
+# ── 7. Pricing / Ticket (Event-Section) ─────────────────────────
+pricing_eyebrow: "Demo-Preis"
+pricing_label: "Jetzt für"
+pricing_amount: "0"
+pricing_currency: "€"
+pricing_text: "Kostenlose Visualisierungs-Seite — keine Konversion, keine Anbindung an HubSpot oder Webhook."
+pricing_cta: "Trotzdem ausprobieren"
+
+# ── 8. Programm / Agenda (Event-Section) ────────────────────────
+program_heading: "Section-Reihenfolge — wie sie hier steht"
+program_intro: "Die Reihenfolge der Sections auf dieser Seite folgt einer typischen Sales-/Event-Logik."
+program_items:
+  - type: "Sales-Flow"
+    title: "Aufmerksamkeit → Conversion"
+    description: "Hero, Social Proof, Problem, Transformation, Benefits, Process — der klassische Sales-Funnel."
+  - type: "Event-Flow"
+    title: "Programm, Speaker, Location"
+    description: "Pricing, Program, Speakers, Location — die Sections, die bei Veranstaltungen ergänzt werden."
+  - type: "Trust & Forms"
+    title: "Beweise sammeln, Abschluss erleichtern"
+    description: "Testimonial, References, About, FAQ, Form, ContactForm, Secondary CTA — Trust aufbauen und Konversion absichern."
+
+# ── 9. Speaker (Event-Section) ──────────────────────────────────
+speakers_heading: "Wer hinter der Brand steht"
+speakers_tagline: "Die Personen hinter schumms.com — als Demo für die Speaker-Section."
+speakers:
+  - name: "Susanne Busshart"
+    title: "Geschäftsführerin · Schumm & Rösch"
+    bio: "Seit über 15 Jahren gestaltet Susanne Busshart Arbeitswelten für Unternehmen jeder Größe. Auf dieser Demo-Seite als Speaker-Platzhalter."
+  - name: "Simon Busshart"
+    title: "Geschäftsführer · Schumm & Rösch"
+    bio: "Verantwortet Projekte, Kundenbeziehungen und den DACH-weiten Marktauftritt. Demo-Bio für die zweite Speaker-Karte."
+
+# ── 10. Inhalt / Was du bekommst ────────────────────────────────
+content_preview_heading: "Was diese Section leistet"
+content_preview_intro: "Die Content-Preview-Section eignet sich für alles, was Besucher:innen vorab sehen sollen — Inhalte, Module, Programm-Highlights."
+content_preview_items:
+  - title: "Bullet-Liste mit Icons"
+    description: "Drei bis sechs kurze Punkte — was die Zielgruppe erhält, lernt oder bekommt."
+  - title: "Optionales Vorschau-Bild"
+    description: "Mockup, PDF-Cover oder Programm-Visualisierung — kann, muss aber nicht."
+  - title: "Klare Struktur"
+    description: "Titel links, Inhalt rechts — übersichtlich und scanbar auf Desktop wie Mobile."
+
+# ── 11. Testimonial ──────────────────────────────────────────────
+testimonial_heading: "Was Stimmen zur Showcase sagen"
+testimonial_quote: "Diese eine Seite spart uns drei Briefings pro neuer Landingpage — wir sehen sofort, welche Sections es gibt und wie sie zusammenwirken."
+testimonial_author: "Demo-Autor:in"
+testimonial_role: "Marketing"
+testimonial_company: "Schumm & Rösch (intern)"
+
+# ── 12. Referenzen (B2B-Showcase) ────────────────────────────────
+references_heading: "Referenzen-Karten im Grid"
+references_intro: "Drei Spalten, Bild + Branche + Herausforderung + Ergebnis — für Case Studies oder Kundenprojekte."
+references:
+  - industry: "Beispiel-Branche A"
+    size: "ca. 250 Mitarbeitende"
+    challenge: "Hier steht die Ausgangslage des Projekts — ein konkretes Problem, das gelöst wurde."
+    result: "Hier steht das messbare oder qualitative Ergebnis nach dem Projekt."
+  - industry: "Beispiel-Branche B"
+    size: "ca. 800 Mitarbeitende"
+    challenge: "Ein anderes Problem aus einem anderen Kontext — zeigt die Bandbreite der Cases."
+    result: "Das Ergebnis dazu, wieder knapp und konkret."
+  - industry: "Beispiel-Branche C"
+    size: "ca. 60 Mitarbeitende"
+    challenge: "Drittes Beispiel — kann auch eine ganz andere Branche oder Größe sein."
+    result: "Passendes Ergebnis — idealerweise mit Zahl, Zeitraum oder konkretem Nutzen."
+references_cta_text: "Mehr Referenzen ansehen"
+references_cta_href: "https://www.schumms.com"
+references_closing_quote: "Drei Beispiele reichen, um Vertrauen aufzubauen — Quantität schlägt Qualität hier selten."
+
+# ── 12.5 Service-Übersicht (neue Section) ───────────────────────
+service_overview_heading: "Service-Übersicht — die Card-Section"
+service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Mit Eyebrow-Nummer, Title, Description, Bullet-Liste, optionalem Bild und optionalem CTA."
+service_overview:
+  - eyebrow: "01"
+    title: "Demo-Service A"
+    description: "Kurze Beschreibung der ersten Kernleistung — was sie konkret liefert und für wen sie gedacht ist."
+    bullets:
+      - "Erster konkreter Baustein"
+      - "Zweiter Baustein"
+      - "Dritter Baustein"
+  - eyebrow: "02"
+    title: "Demo-Service B"
+    description: "Kurze Beschreibung der zweiten Kernleistung — wie sie auf Service A aufbaut oder eigenständig funktioniert."
+    bullets:
+      - "Erster Baustein dieser Stufe"
+      - "Zweiter Baustein"
+      - "Dritter Baustein"
+  - eyebrow: "03"
+    title: "Demo-Service C"
+    description: "Kurze Beschreibung der dritten Kernleistung — der Abschluss, der die Wirkung sichtbar macht."
+    bullets:
+      - "Erster Abschluss-Baustein"
+      - "Zweiter Abschluss-Baustein"
+      - "Dritter Abschluss-Baustein"
+
+# ── 13. Über uns / Trust ─────────────────────────────────────────
+about_heading: "Wer diese Section pflegt"
+about_name: "Demo-Person"
+about_title: "Brand-Verantwortliche:r · Schumm & Rösch"
+about_bio: "Diese Bio ist Platzhalter — auf echten Landingpages steht hier die Person hinter dem Projekt, mit Expertise und Erfahrung, die Vertrauen schafft."
+
+# ── 14. Location / Anfahrt (Event-Section) ──────────────────────
+location_heading: "Location-Section"
+location_intro: "Für Event-Landingpages: Venue, Adresse und Kontakt in einer klaren Zwei-Spalten-Struktur."
+location_venue: "Schumm & Rösch Eventfläche"
+location_address: "Borsigstraße 20 · 65205 Wiesbaden"
+location_phone: "+49 (0)6122 727 555-0"
+location_email: "info@schumms.com"
+
+# ── 15. FAQ ─────────────────────────────────────────────────────
+faq_heading: "Häufige Fragen zur Showcase-Seite"
+faq_intro: "Was Marketing und Vertrieb zur Komponenten-Übersicht wissen sollten."
+faq:
+  - question: "Ist diese Seite für den Live-Einsatz gedacht?"
+    answer: "Nein. Sie ist ein internes Visualisierungs-Tool, das die verfügbaren Sections und das globale Design zeigt — nicht für Besucher:innen oder Werbung."
+  - question: "Werden die Formulare funktionieren?"
+    answer: "Optisch ja, funktional nein. Die Form-Section ist ohne HubSpot- oder Webhook-Anbindung konfiguriert — Submit zeigt im Status den Hinweis, dass kein Ziel hinterlegt ist."
+  - question: "Kann ich Sections auf der Showcase ein- oder ausblenden?"
+    answer: "Ja, über das Frontmatter-Feld `sections:`. Auf false gesetzte Sections werden auf der Preview und Live nicht gerendert — die Inhalte bleiben erhalten."
+  - question: "Wo finde ich eine Vorlage für eine echte Landingpage?"
+    answer: "Im Repo unter `src/content/pages/_template.leadmagnet.md` und `_template.event.md` — jeweils mit Kommentaren, was die Felder bedeuten."
+
+# ── 16. Formular / CTA (LeadForm) ───────────────────────────────
+# Hinweis: Keine HubSpot- oder Webhook-Anbindung — Submit zeigt "Kein Formular-Ziel konfiguriert."
+form_title: "Form-Section (LeadForm)"
+form_intro: "Standard-Leadformular mit Name, E-Mail, Firma und DSGVO-Checkbox. Optisch identisch zu echten LPs — Submit ohne Ziel-Anbindung."
+form_cta: "Anfrage senden (Demo)"
+form_what_you_get_heading: "Was du hier siehst"
+form_what_you_get:
+  - "Vier Standardfelder (Name, E-Mail, Firma, DSGVO)"
+  - "Optionales Auftauchen weiterer Felder via Frontmatter (Anrede, Telefon, Mitarbeiterzahl, Nachricht)"
+  - "Coral-Akzentfarbe und scharfe Kanten als Brand-Element"
+form_success_message: "Optischer Test-Modus — kein echter Versand."
+
+# ── 17. Kontaktformular (ContactForm) ───────────────────────────
+# Hinweis: Ohne HubSpot-Form-ID wirft Submit eine Demo-Fehlermeldung.
+contact_form_title: "Kontakt-Section (ContactForm)"
+contact_form_intro: "Zweite Form-Section für ausführlichere Anfragen. Eigene HubSpot-Form-ID erforderlich — hier nicht hinterlegt."
+contact_form_cta: "Nachricht senden (Demo)"
+contact_form_reassurance: "Antwort innerhalb von 24 Stunden."
+contact_form_address: "Schumm & Rösch Planen + Einrichten GmbH · Borsigstraße 20 · 65205 Wiesbaden"
+contact_form_success_message: "Optischer Test-Modus — kein echter Versand."
+
+# ── 18. Sekundärer CTA ──────────────────────────────────────────
+secondary_cta_heading: "Noch nicht das Richtige dabei?"
+secondary_cta_text: "Für individuelle Themen oder Sonderformate — direkt ins Gespräch gehen."
+secondary_cta_button: "Kontakt aufnehmen"
+secondary_cta_href: "https://www.schumms.com/kontakt"
+---

@@ -1,0 +1,365 @@
+---
+import type { LandingPageData, SectionLayout } from "@lib/types";
+import brand from "@data/brand";
+
+interface Props {
+  page: LandingPageData;
+  layout?: SectionLayout;
+}
+
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "contact-form",
+  "section",
+  "section--dark",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
+
+const portalId = page.hubspot_portal_id ?? "";
+const formId = page.contact_form_hubspot_form_id ?? "";
+
+const title = page.contact_form_title ?? "Lasst uns reden.";
+const intro = page.contact_form_intro ?? "Schreib uns — wir melden uns innerhalb von 24 Stunden.";
+const cta = page.contact_form_cta ?? "Nachricht senden";
+const success = page.contact_form_success_message ?? "Vielen Dank — wir melden uns innerhalb von 24 Stunden.";
+
+const privacyNote =
+  page.contact_form_privacy_note ??
+  "Ich willige ein, dass meine Angaben zur Beantwortung meiner Anfrage elektronisch erhoben und verarbeitet werden.";
+
+const showPhone = page.contact_form_show_phone ?? false;
+const phoneRequired = page.contact_form_phone_required ?? false;
+const showMessage = page.contact_form_show_message ?? true;
+const messageLabel = page.contact_form_message_label ?? "Dein Anlass in einem Satz";
+const messageMaxLength = page.contact_form_message_max_length ?? 300;
+
+// Sekundärer CTA: z.B. "Termin online buchen" mit externem Link
+const secondaryCtaLabel = page.contact_form_secondary_cta_label;
+const secondaryCtaHref = page.contact_form_secondary_cta_href;
+
+// Reassurance-Text + Adresse (werden unter dem Formular gerendert)
+const reassurance = page.contact_form_reassurance;
+const address = page.contact_form_address;
+---
+
+<section class:list={sectionClasses} id="contact-form" aria-labelledby="contact-form-heading">
+  <div class="container split">
+    <div class="contact-form__intro">
+      <h2 id="contact-form-heading">{title}</h2>
+      {intro.split("\n").map((line) => <p class="contact-form__hint">{line}</p>)}
+
+      {secondaryCtaLabel && secondaryCtaHref && (
+        <a class="btn btn--secondary contact-form__cta-secondary" href={secondaryCtaHref}>
+          {secondaryCtaLabel}
+        </a>
+      )}
+    </div>
+
+    <form
+      class="contact-form__form"
+      id="landing-contact-form"
+      data-hubspot-portal={portalId}
+      data-hubspot-form={formId}
+      data-success={success}
+    >
+      <div class="form-field form-field--row">
+        <div>
+          <label class="sr-only" for="contact-firstname">Vorname</label>
+          <input id="contact-firstname" name="firstname" type="text" placeholder="Vorname" autocomplete="given-name" required />
+        </div>
+        <div>
+          <label class="sr-only" for="contact-lastname">Nachname</label>
+          <input id="contact-lastname" name="lastname" type="text" placeholder="Nachname" autocomplete="family-name" required />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="sr-only" for="contact-email">E-Mail</label>
+        <input id="contact-email" name="email" type="email" placeholder="E-Mail" autocomplete="email" required />
+      </div>
+
+      <div class="form-field">
+        <label class="sr-only" for="contact-company">Unternehmen</label>
+        <input id="contact-company" name="company" type="text" placeholder="Unternehmen" autocomplete="organization" required />
+      </div>
+
+      {showPhone && (
+        <div class="form-field">
+          <label class="sr-only" for="contact-phone">Telefonnummer</label>
+          <input
+            id="contact-phone"
+            name="phone"
+            type="tel"
+            placeholder="Telefonnummer (optional)"
+            autocomplete="tel"
+            {...(phoneRequired ? { required: true } : {})}
+          />
+        </div>
+      )}
+
+      {showMessage && (
+        <div class="form-field">
+          <label class="sr-only" for="contact-message">{messageLabel}</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            placeholder={messageLabel}
+            maxlength={messageMaxLength}
+            rows="4"
+            required
+          ></textarea>
+          <small class="form-field__counter" data-counter-for="contact-message">
+            <span data-counter-used>0</span> / {messageMaxLength}
+          </small>
+        </div>
+      )}
+
+      <div class="form-field form-field--checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" name="privacy" required />
+          <span>
+            {privacyNote}
+            <a href={brand.legal.datenschutz}>Datenschutzerklärung</a>
+          </span>
+        </label>
+      </div>
+
+      <button class="btn btn--block contact-form__submit" type="submit">
+        {cta}
+      </button>
+
+      <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+
+  {(reassurance || address) && (
+    <div class="container contact-form__footer">
+      {reassurance && <p class="contact-form__reassurance">{reassurance}</p>}
+      {address && <p class="contact-form__address">{address}</p>}
+    </div>
+  )}
+</section>
+
+<style>
+  .contact-form {
+    /* section--dark ist bereits via class gesetzt; Brand-Styles via global.css */
+  }
+
+  .contact-form .container.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .contact-form .container.split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contact-form__hint {
+    margin-top: 1rem;
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    max-width: 38ch;
+  }
+
+  .contact-form__cta-secondary {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .contact-form__form {
+    display: grid;
+    gap: 0.875rem;
+  }
+
+  .form-field--row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 540px) {
+    .form-field--row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-field textarea {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-border, #e2e2e2);
+    border-radius: 0;
+    font: inherit;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    background: var(--color-white);
+    color: var(--color-black);
+    resize: vertical;
+    min-height: 5.5rem;
+    box-sizing: border-box;
+  }
+
+  .form-field textarea:focus {
+    outline: 2px solid var(--color-coral);
+    outline-offset: -2px;
+  }
+
+  .form-field__counter {
+    display: block;
+    text-align: right;
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+  }
+
+  .form-field--checkbox .checkbox-label {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .form-field--checkbox input {
+    margin-top: 0.2rem;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .form-field--checkbox a {
+    text-decoration: underline;
+  }
+
+  .contact-form__status {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .contact-form__status[data-state="error"] {
+    color: #ffb3a0;
+  }
+
+  .contact-form__footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .contact-form__reassurance,
+  .contact-form__address {
+    font-size: var(--text-sm);
+    opacity: 0.85;
+  }
+</style>
+
+<script>
+  const form = document.getElementById("landing-contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("contact-form-status");
+
+  // Live-Character-Counter
+  document.querySelectorAll<HTMLTextAreaElement>("#landing-contact-form textarea[maxlength]").forEach((ta) => {
+    const counterWrap = ta.parentElement?.querySelector<HTMLElement>("[data-counter-for]");
+    const used = counterWrap?.querySelector<HTMLElement>("[data-counter-used]");
+    const update = () => {
+      if (used) used.textContent = String(ta.value.length);
+    };
+    ta.addEventListener("input", update);
+    update();
+  });
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+
+    const portal = form.dataset.hubspotPortal;
+    const formId = form.dataset.hubspotForm;
+    const successMessage = form.dataset.success ?? "Vielen Dank!";
+    const submitBtn = form.querySelector<HTMLButtonElement>(".contact-form__submit");
+
+    submitBtn?.setAttribute("disabled", "true");
+    status.hidden = false;
+    status.dataset.state = "";
+    status.textContent = "Wird gesendet …";
+
+    const formData = new FormData(form);
+
+    const firstname = String(formData.get("firstname") ?? "").trim();
+    const lastname = String(formData.get("lastname") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    try {
+      if (!portal || !formId) {
+        throw new Error("Kein Formular-Ziel konfiguriert.");
+      }
+
+      const fields: any[] = [
+        { name: "firstname", value: firstname },
+        { name: "lastname", value: lastname },
+        { name: "email", value: email },
+      ];
+      if (company) fields.push({ name: "company", value: company });
+      if (phone) fields.push({ name: "phone", value: phone });
+      if (message) fields.push({ name: "message", value: message });
+
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${formId}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fields,
+            context: {
+              pageUri: window.location.href,
+              pageName: document.title,
+            },
+          }),
+        }
+      );
+
+      const rawBody = await response.text();
+      let body: any = {};
+      try { body = JSON.parse(rawBody); } catch { /* kein JSON */ }
+
+      if (!response.ok) {
+        console.error("HubSpot HTTP Error:", response.status, body);
+        const msg = body.message ?? body.errors?.[0]?.message ?? `HTTP ${response.status}`;
+        throw new Error(`HubSpot: ${msg}`);
+      }
+
+      if (body.errors && body.errors.length > 0) {
+        console.error("HubSpot Validation Errors:", body.errors);
+        throw new Error(`HubSpot: ${body.errors[0].message}`);
+      }
+
+      status.textContent = successMessage;
+      form.reset();
+      document.querySelectorAll<HTMLTextAreaElement>("#landing-contact-form textarea[maxlength]").forEach((ta) => {
+        const counterWrap = ta.parentElement?.querySelector<HTMLElement>("[data-counter-for]");
+        const used = counterWrap?.querySelector<HTMLElement>("[data-counter-used]");
+        if (used) used.textContent = "0";
+      });
+    } catch (err: any) {
+      status.dataset.state = "error";
+      status.textContent = err.message ?? "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+      console.error("Contact form submission error:", err);
+    } finally {
+      submitBtn?.removeAttribute("disabled");
+    }
+  });
+</script>
