@@ -314,6 +314,16 @@ const landingSchema = z.object({
   text_image_image_alt: z.string().optional(),
   text_image_layout: z.enum(["text-left-image-right", "image-left-text-right"]).optional(),
 
+  // Feature + Bild: Eyebrow + Headline + Text links, Bild rechts. Prominenter als text_image.
+  // Ideal für Phase-Beschreibungen, Vorher/Nachher mit visuellem Anker, Feature-Highlights.
+  feature_image_eyebrow: z.string().optional(),
+  feature_image_heading: z.string().optional(),
+  feature_image_intro: z.string().optional(),
+  feature_image_text: z.string().optional(),
+  feature_image_image: z.string().optional(),
+  feature_image_image_alt: z.string().optional(),
+  feature_image_layout: z.enum(["text-left-image-right", "image-left-text-right"]).optional(),
+
   /** Footer-Claim für die Landingpage (z.B. "Mutig. Prägend. Zukunftsgerichtet."). */
   footer_claim: z.string().optional(),
 

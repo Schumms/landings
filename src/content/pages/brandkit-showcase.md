@@ -26,6 +26,7 @@ section_order:
   - content_preview
   - testimonial
   - text_image
+  - feature_image
   - references
   - service_overview
   - comparison
@@ -52,6 +53,7 @@ sections:
   speakers: true
   testimonial: true
   text_image: true
+  feature_image: true
   references: true
   service_overview: true
   comparison: true
@@ -228,6 +230,14 @@ text_image_text: "Das ist die einfachste Form der Sektion. Wenn weder Bullets no
 text_image_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
 text_image_image_alt: "Platzhalter — modernes Büro als visueller Anker"
 text_image_layout: "text-left-image-right"
+
+# ── 11.6 Feature + Bild (NEU) ───────────────────────────────────
+feature_image_eyebrow: "Phase 01"
+feature_image_heading: "Feature + Bild — die prominente Split-Section"
+feature_image_intro: "Wenn eine Aussage mehr Gewicht braucht als text_image: Eyebrow-Tag oben links, große Headline, dann Intro und Body — Bild rechts."
+feature_image_text: "Einsatzorte sind Phase-Beschreibungen, prominente Vorher/Nachher-Vergleiche, oder Feature-Highlights, die visuell verankert werden sollen. Der Eyebrow erlaubt eine Nummerierung oder einen Kontext-Tag, bevor die Headline auf den Punkt kommt."
+feature_image_image: "/pages/hr-konferenz-wiesbaden/hero.jpg"
+feature_image_image_alt: "Platzhalter — visueller Anker für die Phase"
 
 # ── 12. Referenzen (B2B-Showcase) ────────────────────────────────
 references_heading: "Referenzen-Karten im Grid"
