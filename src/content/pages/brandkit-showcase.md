@@ -25,6 +25,7 @@ section_order:
   - speakers
   - content_preview
   - testimonial
+  - text_image
   - references
   - service_overview
   - comparison
@@ -50,6 +51,7 @@ sections:
   program: true
   speakers: true
   testimonial: true
+  text_image: true
   references: true
   service_overview: true
   comparison: true
@@ -218,6 +220,14 @@ testimonial_author: "Demo-Autor:in"
 testimonial_role: "Marketing"
 testimonial_company: "Schumm & Rösch (intern)"
 testimonial_image: "/pages/arbeitsplatz-fitness-check/testimonial.jpg"
+
+# ── 11.5 Text + Bild (NEU) ──────────────────────────────────────
+text_image_heading: "Text + Bild — die minimalistische Split-Section"
+text_image_intro: "Schlanker Aufbau: Headline + Intro + Body links, Bild rechts. Ideal für alles, was nicht in die komplexeren Sections (About, Content Preview, Location) passt — eine reine Aussage mit Bild."
+text_image_text: "Das ist die einfachste Form der Sektion. Wenn weder Bullets noch CTA noch besondere Strukturen gebraucht werden, reicht dieser Aufbau. Optional ist die Variante mit Bild links und Text rechts, wenn der visuelle Anker zuerst kommen soll."
+text_image_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
+text_image_image_alt: "Platzhalter — modernes Büro als visueller Anker"
+text_image_layout: "text-left-image-right"
 
 # ── 12. Referenzen (B2B-Showcase) ────────────────────────────────
 references_heading: "Referenzen-Karten im Grid"

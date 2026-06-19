@@ -305,6 +305,15 @@ const landingSchema = z.object({
   newsletter_hubspot_form_id: z.string().optional(),
   newsletter_webhook: z.string().url().optional(),
 
+  // Text + Bild: minimalistische Split-Section — Headline, Intro und Text links, Bild rechts.
+  // Optional Variante "image-left-text-right" für gespiegeltes Layout.
+  text_image_heading: z.string().optional(),
+  text_image_intro: z.string().optional(),
+  text_image_text: z.string().optional(),
+  text_image_image: z.string().optional(),
+  text_image_image_alt: z.string().optional(),
+  text_image_layout: z.enum(["text-left-image-right", "image-left-text-right"]).optional(),
+
   /** Footer-Claim für die Landingpage (z.B. "Mutig. Prägend. Zukunftsgerichtet."). */
   footer_claim: z.string().optional(),
 

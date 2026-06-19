@@ -29,6 +29,7 @@ export const CONTENT_SECTION_IDS = [
   "comparison",
   "cta_banner",
   "newsletter_signup",
+  "text_image",
 ] as const;
 
 export const LAYOUT_SECTION_IDS = ["nav", "footer"] as const;
@@ -70,6 +71,7 @@ export const DEFAULT_SECTION_VISIBILITY: Record<SectionId, boolean> = {
   comparison: false,
   cta_banner: false,
   newsletter_signup: false,
+  text_image: false,
   footer: true,
 };
 
@@ -113,5 +115,6 @@ export const SECTION_LABELS: Record<SectionId, string> = {
   comparison: "Vergleichstabelle",
   cta_banner: "CTA-Banner (Mid-Page)",
   newsletter_signup: "Newsletter-Signup",
+  text_image: "Text + Bild",
   footer: "Footer",
 };
