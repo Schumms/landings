@@ -190,13 +190,19 @@ speakers:
   - name: "Susanne Busshart"
     title: "Geschäftsführerin · Schumm & Rösch"
     bio: "Seit über 15 Jahren gestaltet Susanne Busshart Arbeitswelten für Unternehmen jeder Größe. Auf dieser Demo-Seite als Speaker-Platzhalter."
+    image: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
+    image_alt: "Portrait Susanne Busshart"
   - name: "Simon Busshart"
     title: "Geschäftsführer · Schumm & Rösch"
     bio: "Verantwortet Projekte, Kundenbeziehungen und den DACH-weiten Marktauftritt. Demo-Bio für die zweite Speaker-Karte."
+    image: "/pages/hr-konferenz-wiesbaden/speakers/simon-busshart.jpg"
+    image_alt: "Portrait Simon Busshart"
 
 # ── 10. Inhalt / Was du bekommst ────────────────────────────────
 content_preview_heading: "Was diese Section leistet"
 content_preview_intro: "Die Content-Preview-Section eignet sich für alles, was Besucher:innen vorab sehen sollen — Inhalte, Module, Programm-Highlights."
+content_preview_image: "/pages/default-landing/preview.jpg"
+content_preview_image_alt: "Platzhalter — Vorschau eines digitalen Inhalts"
 content_preview_items:
   - title: "Bullet-Liste mit Icons"
     description: "Drei bis sechs kurze Punkte — was die Zielgruppe erhält, lernt oder bekommt."
@@ -211,6 +217,7 @@ testimonial_quote: "Diese eine Seite spart uns drei Briefings pro neuer Landingp
 testimonial_author: "Demo-Autor:in"
 testimonial_role: "Marketing"
 testimonial_company: "Schumm & Rösch (intern)"
+testimonial_image: "/pages/arbeitsplatz-fitness-check/testimonial.jpg"
 
 # ── 12. Referenzen (B2B-Showcase) ────────────────────────────────
 references_heading: "Referenzen-Karten im Grid"
@@ -220,14 +227,20 @@ references:
     size: "ca. 250 Mitarbeitende"
     challenge: "Hier steht die Ausgangslage des Projekts — ein konkretes Problem, das gelöst wurde."
     result: "Hier steht das messbare oder qualitative Ergebnis nach dem Projekt."
+    image: "/pages/default-landing/preview.jpg"
+    image_alt: "Platzhalter — Bürofläche Beispiel A"
   - industry: "Beispiel-Branche B"
     size: "ca. 800 Mitarbeitende"
     challenge: "Ein anderes Problem aus einem anderen Kontext — zeigt die Bandbreite der Cases."
     result: "Das Ergebnis dazu, wieder knapp und konkret."
+    image: "/pages/arbeitsplatz-fitness-check/preview.jpg"
+    image_alt: "Platzhalter — Bürofläche Beispiel B"
   - industry: "Beispiel-Branche C"
     size: "ca. 60 Mitarbeitende"
     challenge: "Drittes Beispiel — kann auch eine ganz andere Branche oder Größe sein."
     result: "Passendes Ergebnis — idealerweise mit Zahl, Zeitraum oder konkretem Nutzen."
+    image: "/pages/workspace-day-september/preview.jpg"
+    image_alt: "Platzhalter — Bürofläche Beispiel C"
 references_cta_text: "Mehr Referenzen ansehen"
 references_cta_href: "https://www.schumms.com"
 references_closing_quote: "Drei Beispiele reichen, um Vertrauen aufzubauen — Quantität schlägt Qualität hier selten."
@@ -285,6 +298,8 @@ comparison:
 about_heading: "Wer diese Section pflegt"
 about_name: "Demo-Person"
 about_title: "Brand-Verantwortliche:r · Schumm & Rösch"
+about_image: "/pages/arbeitsplatz-fitness-check/about.jpg"
+about_image_alt: "Platzhalter — Portrait der Brand-Verantwortlichen"
 about_bio: "Diese Bio ist Platzhalter — auf echten Landingpages steht hier die Person hinter dem Projekt, mit Expertise und Erfahrung, die Vertrauen schafft."
 
 # ── 14. Location / Anfahrt (Event-Section) ──────────────────────
@@ -294,6 +309,8 @@ location_venue: "Schumm & Rösch Eventfläche"
 location_address: "Borsigstraße 20 · 65205 Wiesbaden"
 location_phone: "+49 (0)6122 727 555-0"
 location_email: "info@schumms.com"
+location_image: "/pages/hr-summit-wiesbaden-oktober-2026/location.jpg"
+location_image_alt: "Platzhalter — Eventfläche in Wiesbaden"
 
 # ── 15. FAQ ─────────────────────────────────────────────────────
 faq_heading: "Häufige Fragen zur Showcase-Seite"
