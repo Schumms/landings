@@ -1,0 +1,115 @@
+---
+import type { LandingPageData, SectionLayout } from "@lib/types";
+
+interface Props {
+  page: LandingPageData;
+  layout?: SectionLayout;
+}
+
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "stats",
+  "section",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
+
+// Section nur rendern, wenn Stats vorhanden sind.
+if (!page.stats?.length) {
+  return null;
+}
+---
+
+<section class:list={sectionClasses} id="stats" aria-labelledby="stats-heading">
+  <div class="container">
+    {(page.stats_heading || page.stats_intro) && (
+      <header class="stats__header">
+        {page.stats_heading && <h2 id="stats-heading">{page.stats_heading}</h2>}
+        {page.stats_intro && <p class="stats__intro">{page.stats_intro}</p>}
+      </header>
+    )}
+
+    <ul class="stats__grid" role="list">
+      {page.stats.map((stat) => (
+        <li class="stats__item">
+          <p class="stats__value">{stat.value}</p>
+          <p class="stats__label">{stat.label}</p>
+          {stat.subtext && <p class="stats__subtext">{stat.subtext}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats__header {
+    margin-bottom: 3rem;
+    max-width: 48rem;
+  }
+
+  .stats__intro {
+    margin-top: 1rem;
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .stats__grid {
+    display: grid;
+    gap: 2.5rem 2rem;
+    grid-template-columns: 1fr;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (min-width: 600px) {
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .stats__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stats__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stats__value {
+    font-size: clamp(2.75rem, 2rem + 3vw, 4rem);
+    font-weight: var(--font-weight-extrabold, 800);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight, -0.03em);
+    color: var(--color-black);
+    margin: 0;
+    max-width: none;
+  }
+
+  .stats__label {
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold, 600);
+    letter-spacing: var(--tracking-wide, 0.08em);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: none;
+  }
+
+  .stats__subtext {
+    margin-top: 0.25rem;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    max-width: 28ch;
+  }
+</style>

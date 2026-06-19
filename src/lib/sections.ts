@@ -25,6 +25,10 @@ export const CONTENT_SECTION_IDS = [
   "form",
   "contact_form",
   "secondary_cta",
+  "stats",
+  "comparison",
+  "cta_banner",
+  "newsletter_signup",
 ] as const;
 
 export const LAYOUT_SECTION_IDS = ["nav", "footer"] as const;
@@ -62,6 +66,10 @@ export const DEFAULT_SECTION_VISIBILITY: Record<SectionId, boolean> = {
   form: true,
   contact_form: false,
   secondary_cta: true,
+  stats: false,
+  comparison: false,
+  cta_banner: false,
+  newsletter_signup: false,
   footer: true,
 };
 
@@ -101,5 +109,9 @@ export const SECTION_LABELS: Record<SectionId, string> = {
   form: "Formular / CTA",
   contact_form: "Kontaktformular",
   secondary_cta: "Sekundärer CTA",
+  stats: "Stats / Key-Figures",
+  comparison: "Vergleichstabelle",
+  cta_banner: "CTA-Banner (Mid-Page)",
+  newsletter_signup: "Newsletter-Signup",
   footer: "Footer",
 };

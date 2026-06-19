@@ -1,0 +1,264 @@
+---
+import brand from "@data/brand";
+import type { LandingPageData, SectionLayout } from "@lib/types";
+
+interface Props {
+  page: LandingPageData;
+  layout?: SectionLayout;
+}
+
+const { page, layout } = Astro.props;
+
+const sectionClasses = [
+  "newsletter-signup",
+  "section",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
+
+// Section nur rendern, wenn Headline + CTA gesetzt sind.
+if (!page.newsletter_heading || !page.newsletter_cta) {
+  return null;
+}
+
+const privacyNote =
+  page.newsletter_privacy_note ??
+  "Ich willige ein, dass meine E-Mail-Adresse zur Versendung des Newsletters elektronisch erhoben und verarbeitet wird.";
+
+const successMessage =
+  page.newsletter_success_message ?? "Danke — bitte bestätige deine E-Mail-Adresse.";
+
+const placeholder = page.newsletter_placeholder ?? "Deine E-Mail-Adresse";
+---
+
+<section class:list={sectionClasses} id="newsletter-signup" aria-labelledby="newsletter-heading">
+  <div class="container split newsletter-signup__inner">
+    <div class="newsletter-signup__copy">
+      <h2 id="newsletter-heading">{page.newsletter_heading}</h2>
+      {page.newsletter_intro && <p class="newsletter-signup__intro">{page.newsletter_intro}</p>}
+
+      {page.newsletter_bullets?.length && (
+        <ul class="newsletter-signup__bullets" role="list">
+          {page.newsletter_bullets.map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <form
+      class="newsletter-signup__form"
+      id="newsletter-form"
+      data-hubspot-portal={page.newsletter_hubspot_portal_id ?? ""}
+      data-hubspot-form={page.newsletter_hubspot_form_id ?? ""}
+      data-webhook={page.newsletter_webhook ?? ""}
+      data-success={successMessage}
+    >
+      <div class="form-field">
+        <label class="sr-only" for="newsletter-email">E-Mail-Adresse</label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          placeholder={placeholder}
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="form-field form-field--checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" name="privacy" required />
+          <span>
+            {privacyNote}
+            <a href={brand.legal.datenschutz}>Datenschutzerklärung</a>
+          </span>
+        </label>
+      </div>
+
+      <button class="btn btn--coral btn--block newsletter-signup__submit" type="submit">
+        {page.newsletter_cta}
+      </button>
+
+      <p class="newsletter-signup__status" id="newsletter-status" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .newsletter-signup__inner {
+    align-items: start;
+  }
+
+  .newsletter-signup__intro {
+    margin-top: 1rem;
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: 44ch;
+  }
+
+  .newsletter-signup__bullets {
+    margin-top: 1.5rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .newsletter-signup__bullets li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  .newsletter-signup__bullets li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-coral);
+    font-weight: var(--font-weight-bold, 700);
+  }
+
+  .newsletter-signup__form {
+    display: grid;
+    gap: 0.875rem;
+  }
+
+  .newsletter-signup__form input[type="email"] {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-border, #e2e2e2);
+    border-radius: 0;
+    font: inherit;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    background: var(--color-white);
+    color: var(--color-black);
+    box-sizing: border-box;
+  }
+
+  .newsletter-signup__form input[type="email"]:focus {
+    outline: 2px solid var(--color-coral);
+    outline-offset: -2px;
+  }
+
+  .form-field--checkbox .checkbox-label {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .form-field--checkbox input {
+    margin-top: 0.2rem;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .form-field--checkbox a {
+    text-decoration: underline;
+  }
+
+  .newsletter-signup__status {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold, 600);
+    max-width: none;
+  }
+
+  .newsletter-signup__status[data-state="error"] {
+    color: #8b0000;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
+  const status = document.getElementById("newsletter-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+
+    const hubspotPortal = form.dataset.hubspotPortal;
+    const hubspotForm = form.dataset.hubspotForm;
+    const webhook = form.dataset.webhook;
+    const successMessage = form.dataset.success ?? "Danke!";
+    const submitBtn = form.querySelector<HTMLButtonElement>(".newsletter-signup__submit");
+
+    submitBtn?.setAttribute("disabled", "true");
+    status.hidden = false;
+    status.dataset.state = "";
+    status.textContent = "Wird gesendet …";
+
+    const email = String(new FormData(form).get("email") ?? "").trim();
+
+    try {
+      if (hubspotPortal && hubspotForm) {
+        // HubSpot Forms API — Email-Marketing-Subscription (mit Double-Opt-in in HubSpot konfiguriert)
+        const payload = {
+          fields: [{ name: "email", value: email }],
+          context: { pageUri: window.location.href, pageName: document.title },
+        };
+
+        const response = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${hubspotPortal}/${hubspotForm}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        const rawBody = await response.text();
+        let body: any = {};
+        try { body = JSON.parse(rawBody); } catch { /* kein JSON */ }
+
+        if (!response.ok) {
+          const msg = body.message ?? body.errors?.[0]?.message ?? `HTTP ${response.status}`;
+          throw new Error(`HubSpot: ${msg}`);
+        }
+        if (body.errors && body.errors.length > 0) {
+          throw new Error(`HubSpot: ${body.errors[0].message}`);
+        }
+      } else if (webhook) {
+        const response = await fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+        if (!response.ok) throw new Error("Webhook request failed");
+      } else {
+        throw new Error("Kein Newsletter-Ziel konfiguriert.");
+      }
+
+      status.textContent = successMessage;
+      form.reset();
+    } catch (err: any) {
+      status.dataset.state = "error";
+      status.textContent = err.message ?? "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+      console.error("Newsletter signup error:", err);
+    } finally {
+      submitBtn?.removeAttribute("disabled");
+    }
+  });
+</script>

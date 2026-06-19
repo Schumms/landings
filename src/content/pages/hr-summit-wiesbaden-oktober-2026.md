@@ -36,7 +36,7 @@ sections:
 nav_cta_text: "Ticket sichern"
 
 hero_eyebrow: "HR Summit · 22. Oktober 2026 · Wiesbaden"
-hero_title: "Die Zukunft arbeitet anders"
+hero_title: "Die Zukunft\narbeitet anders"
 hero_subtitle: "KI als Chance für Kultur, Rollen & Führung"
 hero_variant: "fullbleed"
 hero_image: "/pages/hr-summit-wiesbaden-oktober-2026/hero.jpg"
