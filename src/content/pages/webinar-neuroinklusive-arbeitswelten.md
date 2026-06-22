@@ -109,7 +109,8 @@ form_cta: "Anmelden"
 form_success_message: "Danke! Ihre Anmeldung ist eingegangen — Sie erhalten in Kürze die Zugangsdaten und Ihre Wunsch-Session-Bestätigung per E-Mail."
 form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei Schumm & Rösch gespeichert und über HubSpot verarbeitet werden."
 hubspot_portal_id: "146949753"
-hubspot_form_id: ""
+hubspot_form_id: "0c1cf63a-f91d-40d5-834e-7551778939f2"
+hubspot_embed: true
 
 faq_heading: "Häufige Fragen"
 faq_intro: "Die wichtigsten Antworten rund um Anmeldung, Ablauf und Zielgruppe."

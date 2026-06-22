@@ -229,6 +229,11 @@ const landingSchema = z.object({
 
   hubspot_portal_id: z.string().optional(),
   hubspot_form_id: z.string().optional(),
+  // Wenn true, wird statt der Forms-API-Implementierung der HubSpot-Embed
+  // (hbspt.forms.create) geladen. Nützlich für Felder, die das Template nicht
+  // nativ kennt (z.B. Anrede + Session-Auswahl in einem Schritt). Voraussetzung:
+  // hubspot_portal_id + hubspot_form_id sind gesetzt. Default false = Forms API.
+  hubspot_embed: z.boolean().optional(),
 
   // Zweite Form-Section (z.B. Kontaktformular am Seitenende).
   // Wenn vorhanden, wird sie als eigenständige Section gerendert.
