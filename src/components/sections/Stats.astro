@@ -60,7 +60,7 @@ if (!page.stats?.length) {
 
   .stats__grid {
     display: grid;
-    gap: 2.5rem 2rem;
+    gap: 3.5rem 2.5rem;
     grid-template-columns: 1fr;
     list-style: none;
     padding: 0;
@@ -69,13 +69,13 @@ if (!page.stats?.length) {
 
   @media (min-width: 600px) {
     .stats__grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     }
   }
 
   @media (min-width: 960px) {
     .stats__grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     }
   }
 

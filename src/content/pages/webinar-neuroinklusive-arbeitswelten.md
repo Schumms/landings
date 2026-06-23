@@ -20,6 +20,7 @@ sections_layout:
   stats:
     align: "center"
     background: "muted"
+    width: "wide"
   service_overview:
     background: "muted"
   secondary_cta:
@@ -68,7 +69,7 @@ stats:
     label: "der Gen Z identifizieren sich als neurodivergent"
   - value: "1"
     label: "Denkwelt"
-    subtext: "für die Räume & Strukturen meist gebaut sind"
+    subtext: "für die Räume & Strukturen, für die unsere Büros meist gebaut sind"
 
 service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
 service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
