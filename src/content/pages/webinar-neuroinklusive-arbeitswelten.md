@@ -44,9 +44,10 @@ sections:
 nav_cta_text: "Jetzt anmelden"
 
 hero_eyebrow: "Webinar · 23. & 29. Juli 2026 · Online · Kostenlos"
-hero_title: "Neuroinklusive Arbeitswelten: Wie Räume, Kultur und Organisation zusammenwirken"
-hero_subtitle: "Wie Arbeitswelten entstehen, die unterschiedliche Denk- und Arbeitsweisen nicht nur dulden, sondern gezielt unterstützen."
+hero_title: "Neuroinklusive Arbeitswelten"
+hero_subtitle: "Wie Räume, Kultur und Organisation zusammenwirken."
 hero_variant: "fullbleed"
+hero_size: "compact"
 hero_image: "/pages/webinar-neuroinklusive-arbeitswelten/hero.jpg"
 hero_image_alt: "Abstrakte Illustration verschiedener Denkmuster als Sprechblasen — visuelle Metapher für Neurodiversität"
 cta_text: "Jetzt anmelden"

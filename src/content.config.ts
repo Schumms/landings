@@ -87,6 +87,9 @@ const landingSchema = z.object({
   hero_image: z.string().optional(),
   hero_image_alt: z.string().optional(),
   hero_variant: z.enum(["default", "fullbleed"]).optional(),
+  // Per-Page Hero-Größe (nur in Verbindung mit hero_variant: "fullbleed" wirksam).
+  // "compact" reduziert min-height und Padding für kompaktere Hero-Bereiche.
+  hero_size: z.enum(["default", "compact"]).optional(),
   cta_text: z.string(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 
