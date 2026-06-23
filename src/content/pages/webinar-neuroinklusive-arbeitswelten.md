@@ -3,12 +3,12 @@ slug: webinar-neuroinklusive-arbeitswelten
 published: false
 
 title: "Webinar: Neuroinklusive Arbeitswelten gestalten"
-description: "Webinar am 16.07.2026 · 2 Sessions · Online & kostenlos. Wie Sie Räume, Kultur und Organisation neuroinklusiv gestalten — mit Susanne Busshart."
+description: "Webinar 23. & 29. Juli 2026 · Online & kostenlos. Neuroinklusive Arbeitswelten mit Susanne Busshart."
 
 section_order:
   - hero
-  - social_proof_bar
-  - problem
+  - stats
+  - service_overview
   - program
   - speakers
   - benefits
@@ -17,16 +17,19 @@ section_order:
   - secondary_cta
 
 sections_layout:
-  problem:
+  stats:
     align: "center"
-  secondary_cta:
     background: "muted"
+  service_overview:
+    background: "muted"
+  secondary_cta:
+    background: "default"
 
 sections:
   nav: true
   hero: true
-  social_proof_bar: true
-  problem: true
+  social_proof_bar: false
+  problem: false
   pricing: false
   program: true
   speakers: true
@@ -34,37 +37,50 @@ sections:
   form: true
   faq: true
   secondary_cta: true
+  stats: true
+  service_overview: true
   footer: true
 
 nav_cta_text: "Jetzt anmelden"
 
-hero_eyebrow: "Webinar · 16. Juli 2026 · Online · Kostenlos"
+hero_eyebrow: "Webinar · 23. & 29. Juli 2026 · Online · Kostenlos"
 hero_title: "Neuroinklusive Arbeitswelten: Wie Räume, Kultur und Organisation zusammenwirken"
 hero_subtitle: "Wie Arbeitswelten entstehen, die unterschiedliche Denk- und Arbeitsweisen nicht nur dulden, sondern gezielt unterstützen."
-hero_image: "/pages/webinar-neuroinklusive-arbeitswelten/hero.png"
+hero_variant: "fullbleed"
+hero_image: "/pages/webinar-neuroinklusive-arbeitswelten/hero.jpg"
 hero_image_alt: "Abstrakte Illustration verschiedener Denkmuster als Sprechblasen — visuelle Metapher für Neurodiversität"
 cta_text: "Jetzt anmelden"
 hero_trust_metrics:
-  - value: "16.07."
-    label: "2026"
-  - value: "10–13"
-    label: "Uhr · 2 Sessions"
+  - value: "23.07."
+    label: "Session 1 · 10–11 Uhr"
+  - value: "29.07."
+    label: "Session 2 · 12–13 Uhr"
   - value: "Online"
     label: "Kostenlos"
 
-social_proof_text: "Neurodiversität in Zahlen"
-social_proof_metrics:
+stats_heading: "Neurodiversität in Zahlen"
+stats_intro: "Die Vielfalt der Denkweisen ist längst Realität in unseren Organisationen — nur die Strukturen sind noch nicht darauf ausgerichtet."
+stats:
   - value: "15–20 %"
     label: "aller Menschen sind neurodivergent"
   - value: ">50 %"
-    label: "der Gen Z identifiziert sich als neurodivergent"
+    label: "der Gen Z identifizieren sich als neurodivergent"
+  - value: "1"
+    label: "Denkwelt"
+    subtext: "für die Räume & Strukturen meist gebaut sind"
 
-problem_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
-problem_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
-problem_points:
-  - "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent. Mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
-  - "Neurodivergente Mitarbeitende erleben die heutige Arbeitswelt häufig als belastend — nicht weil sie „nicht passen“, sondern weil Räume, Strukturen und Kommunikation oft nur für eine Denkwelt gebaut sind."
-  - "Das kostet Unternehmen Produktivität, Innovation und Talente."
+service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
+service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
+service_overview:
+  - eyebrow: "Vielfalt"
+    title: "Vielfalt der Denkweisen ist längst Realität"
+    description: "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent — mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
+  - eyebrow: "Standard"
+    title: "Räume, Strukturen und Kommunikation sind nur für eine Denkwelt gebaut"
+    description: "Neurodivergente Mitarbeitende erleben die heutige Arbeitswelt häufig als belastend — nicht weil sie „nicht passen“, sondern weil Räume, Strukturen und Kommunikation oft nur für eine Denkwelt gebaut sind."
+  - eyebrow: "Kosten"
+    title: "Was Unternehmen dadurch verlieren"
+    description: "Räume und Prozesse, die nur eine Denkwelt unterstützen, kosten Unternehmen Produktivität, Innovation und Talente."
 
 program_heading: "Inhalte · Webinar-Programm"
 program_intro: "Vier Themenblöcke, klare Fragen, konkrete Antworten — Susanne Busshart verbindet Raum, Sinne, Organisation und Führung."
@@ -104,9 +120,9 @@ benefits:
     description: "Gleiche Voraussetzungen für alle Denkweisen — von der Arbeitsorganisation über die Kommunikation bis zur Raumgestaltung."
 
 form_title: "Jetzt fürs Webinar anmelden"
-form_intro: "Mittwoch, 16. Juli 2026 · Session 1: 10:00–11:00 Uhr oder Session 2: 12:00–13:00 Uhr · Online · Kostenlos. Wählen Sie Ihre Wunsch-Session bei der Anmeldung."
+form_intro: "Donnerstag, 23. Juli 2026 · 10:00–11:00 Uhr oder Mittwoch, 29. Juli 2026 · 12:00–13:00 Uhr · Online · Kostenlos. Wählen Sie Ihren Wunsch-Termin bei der Anmeldung."
 form_cta: "Anmelden"
-form_success_message: "Danke! Ihre Anmeldung ist eingegangen — Sie erhalten in Kürze die Zugangsdaten und Ihre Wunsch-Session-Bestätigung per E-Mail."
+form_success_message: "Danke! Ihre Anmeldung ist eingegangen — Sie erhalten in Kürze die Zugangsdaten und Ihre Wunsch-Termin-Bestätigung per E-Mail."
 form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei Schumm & Rösch gespeichert und über HubSpot verarbeitet werden."
 hubspot_portal_id: "146949753"
 hubspot_form_id: "0c1cf63a-f91d-40d5-834e-7551778939f2"
@@ -116,7 +132,7 @@ faq_heading: "Häufige Fragen"
 faq_intro: "Die wichtigsten Antworten rund um Anmeldung, Ablauf und Zielgruppe."
 faq:
   - question: "Wann findet das Webinar statt?"
-    answer: "Mittwoch, 16. Juli 2026 — Session 1 von 10:00 bis 11:00 Uhr, Session 2 von 12:00 bis 13:00 Uhr. Sie können bei der Anmeldung Ihre Wunsch-Session wählen."
+    answer: "Donnerstag, 23. Juli 2026 von 10:00 bis 11:00 Uhr und Mittwoch, 29. Juli 2026 von 12:00 bis 13:00 Uhr. Sie können bei der Anmeldung Ihren Wunsch-Termin wählen."
   - question: "Wo findet das Webinar statt?"
     answer: "Online. Die Zugangsdaten erhalten Sie rechtzeitig per E-Mail."
   - question: "Was kostet die Teilnahme?"
