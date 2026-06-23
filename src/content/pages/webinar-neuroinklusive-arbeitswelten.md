@@ -73,16 +73,17 @@ stats:
 
 service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
 service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
+service_overview_layout: "rows"
 service_overview:
-  - eyebrow: "Vielfalt"
-    title: "Vielfalt der Denkweisen ist längst Realität"
+  - title: "Vielfalt der Denkweisen ist längst Realität"
     description: "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent — mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
-  - eyebrow: "Standard"
-    title: "Räume, Strukturen und Kommunikation sind nur für eine Denkwelt gebaut"
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/people.svg"
+  - title: "Räume, Strukturen und Kommunikation sind nur für eine Denkwelt gebaut"
     description: "Neurodivergente Mitarbeitende erleben die heutige Arbeitswelt häufig als belastend — nicht weil sie „nicht passen“, sondern weil Räume, Strukturen und Kommunikation oft nur für eine Denkwelt gebaut sind."
-  - eyebrow: "Kosten"
-    title: "Was Unternehmen dadurch verlieren"
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/building.svg"
+  - title: "Was Unternehmen dadurch verlieren"
     description: "Räume und Prozesse, die nur eine Denkwelt unterstützen, kosten Unternehmen Produktivität, Innovation und Talente."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/decline.svg"
 
 program_heading: "Inhalte · Webinar-Programm"
 program_intro: "Vier Themenblöcke, klare Fragen, konkrete Antworten — Susanne Busshart verbindet Raum, Sinne, Organisation und Führung."

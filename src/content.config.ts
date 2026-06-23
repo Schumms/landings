@@ -179,8 +179,10 @@ const landingSchema = z.object({
 
   // Service-Übersicht: 3–6 Cards mit Kernleistungen (z.B. Beratung / Planung / Einrichtung).
   // Jede Card hat optionale Eyebrow-Nummer, Title, Description, Bullets, Bild und CTA.
+  // Layout: "grid" (Default, 3 Spalten) oder "rows" (1 Spalte mit Icon links + Trennlinien).
   service_overview_heading: z.string().optional(),
   service_overview_intro: z.string().optional(),
+  service_overview_layout: z.enum(["grid", "rows"]).optional(),
   service_overview: z
     .array(
       z.object({
@@ -190,6 +192,7 @@ const landingSchema = z.object({
         bullets: z.array(z.string()).max(5).optional(),
         image: z.string().optional(),
         image_alt: z.string().optional(),
+        icon: z.string().optional(),
         cta_text: z.string().optional(),
         cta_href: z.string().optional(),
       }),
