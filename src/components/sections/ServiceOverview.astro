@@ -60,6 +60,11 @@ if (!page.service_overview?.length) {
     <ol class="service-overview__grid" role="list">
       {page.service_overview.map((service) => (
         <li class="service-overview__card">
+          {service.icon && (
+            <div class="service-overview__card-icon" aria-hidden="true">
+              <img src={service.icon} alt="" loading="lazy" />
+            </div>
+          )}
           {service.image && (
             <div class="service-overview__media">
               <img
@@ -136,8 +141,29 @@ if (!page.service_overview?.length) {
   .service-overview__card {
     display: flex;
     flex-direction: column;
-    border-top: 2px solid var(--color-coral);
-    padding-top: 1.75rem;
+    background: var(--color-white);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .service-overview__card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(253, 120, 87, 0.12);
+    border-radius: 999px;
+    color: var(--color-coral);
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .service-overview__card-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
   }
 
   .service-overview__media {

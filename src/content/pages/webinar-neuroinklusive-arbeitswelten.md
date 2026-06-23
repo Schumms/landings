@@ -18,7 +18,6 @@ section_order:
 
 sections_layout:
   stats:
-    align: "center"
     background: "muted"
     width: "wide"
   service_overview:
@@ -73,7 +72,7 @@ stats:
 
 service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
 service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
-service_overview_layout: "rows"
+service_overview_layout: "grid"
 service_overview:
   - title: "Vielfalt der Denkweisen ist längst Realität"
     description: "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent — mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
