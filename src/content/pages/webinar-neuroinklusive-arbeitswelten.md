@@ -18,7 +18,7 @@ section_order:
 
 sections_layout:
   stats:
-    background: "muted"
+    background: "default"
     width: "wide"
   service_overview:
     background: "muted"
