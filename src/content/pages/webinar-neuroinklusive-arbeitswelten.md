@@ -22,6 +22,7 @@ sections_layout:
     width: "wide"
   service_overview:
     background: "muted"
+    width: "wide"
   secondary_cta:
     background: "default"
 
@@ -100,7 +101,7 @@ program_items:
     title: "Führung & Zukunft"
     description: "Wie können Führungskräfte Stärken sehen und Leitplanken geben statt zu normieren? — Was gewinnen Unternehmen durch neuroinklusive Arbeitswelten? (Produktivität, Innovation, Chancengleichheit) — Welche Entwicklungen prägen den Arbeitsplatz von morgen?"
 
-speakers_heading: "Die Referentin"
+speakers_heading: "Referentin"
 speakers_tagline: "Expertin für den Arbeitsplatz der Zukunft — und für das, was Räume mit Menschen machen."
 speakers:
   - name: "Susanne Busshart"
@@ -109,11 +110,11 @@ speakers:
     image: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
     image_alt: "Portrait Susanne Busshart, Geschäftsführerin Schumm & Rösch"
 
-benefits_heading: "Was Sie aus dem Webinar mitnehmen"
+benefits_heading: "Was du aus dem Webinar mitnimmst"
 benefits_intro: "Vier Hebel, die neuroinklusive Arbeitswelten konkret verändern — jenseits von Buzzwords."
 benefits:
   - headline: "Produktivität"
-    description: "Räume und Prozesse, die unterschiedliche Denk- und Arbeitsweisen unterstützen, holen mehr aus den Stärken Ihrer Mitarbeitenden heraus."
+    description: "Räume und Prozesse, die unterschiedliche Denk- und Arbeitsweisen unterstützen, holen mehr aus den Stärken deiner Mitarbeitenden heraus."
   - headline: "Innovation"
     description: "Verschiedene Gehirne, verschiedene Perspektiven — neuroinklusive Teams finden Lösungen, die homogene Gruppen übersehen."
   - headline: "Talente binden"
@@ -122,9 +123,9 @@ benefits:
     description: "Gleiche Voraussetzungen für alle Denkweisen — von der Arbeitsorganisation über die Kommunikation bis zur Raumgestaltung."
 
 form_title: "Jetzt fürs Webinar anmelden"
-form_intro: "Donnerstag, 23. Juli 2026 · 10:00–11:00 Uhr oder Mittwoch, 29. Juli 2026 · 12:00–13:00 Uhr · Online · Kostenlos. Wählen Sie Ihren Wunsch-Termin bei der Anmeldung."
+form_intro: "Donnerstag, 23. Juli 2026 · 10:00–11:00 Uhr oder Mittwoch, 29. Juli 2026 · 12:00–13:00 Uhr · Online · Kostenlos. Wähle deinen Wunsch-Termin bei der Anmeldung."
 form_cta: "Anmelden"
-form_success_message: "Danke! Ihre Anmeldung ist eingegangen — Sie erhalten in Kürze die Zugangsdaten und Ihre Wunsch-Termin-Bestätigung per E-Mail."
+form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze die Zugangsdaten und deine Wunsch-Termin-Bestätigung per E-Mail."
 form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei Schumm & Rösch gespeichert und über HubSpot verarbeitet werden."
 hubspot_portal_id: "146949753"
 hubspot_form_id: "0c1cf63a-f91d-40d5-834e-7551778939f2"
@@ -134,18 +135,18 @@ faq_heading: "Häufige Fragen"
 faq_intro: "Die wichtigsten Antworten rund um Anmeldung, Ablauf und Zielgruppe."
 faq:
   - question: "Wann findet das Webinar statt?"
-    answer: "Donnerstag, 23. Juli 2026 von 10:00 bis 11:00 Uhr und Mittwoch, 29. Juli 2026 von 12:00 bis 13:00 Uhr. Sie können bei der Anmeldung Ihren Wunsch-Termin wählen."
+    answer: "Donnerstag, 23. Juli 2026 von 10:00 bis 11:00 Uhr und Mittwoch, 29. Juli 2026 von 12:00 bis 13:00 Uhr. Du kannst bei der Anmeldung deinen Wunsch-Termin wählen."
   - question: "Wo findet das Webinar statt?"
-    answer: "Online. Die Zugangsdaten erhalten Sie rechtzeitig per E-Mail."
+    answer: "Online. Die Zugangsdaten erhältst du rechtzeitig per E-Mail."
   - question: "Was kostet die Teilnahme?"
     answer: "Das Webinar ist kostenlos."
   - question: "Für wen ist das Webinar gedacht?"
     answer: "Geschäftsführung, HR, Führungskräfte und Workplace-Verantwortliche — also alle, die Räume, Kultur und Organisation aktiv gestalten."
   - question: "Wie kann ich mich auf das Webinar vorbereiten?"
-    answer: "Sie müssen nichts vorbereiten. Schreiben Sie sich gerne vorab schon Fragen auf — Susanne Busshart geht im Webinar auf konkrete Situationen aus Ihrem Arbeitsalltag ein."
+    answer: "Du musst nichts vorbereiten. Schreib dir gerne vorab schon Fragen auf — Susanne Busshart geht im Webinar auf konkrete Situationen aus deinem Arbeitsalltag ein."
 
 secondary_cta_heading: "Tiefer einsteigen — Workshops für neuroinklusive Arbeitswelten"
-secondary_cta_text: "Nach dem Webinar können Sie Ihr Wissen in unseren Workshops vertiefen — einzeln oder kombiniert buchbar, individuell angepasst. Exklusiv für Webinar-Teilnehmer: 20 % Rabatt auf jeden Workshop. Ihren persönlichen Rabatt-Code erhalten Sie direkt im Webinar."
+secondary_cta_text: "Nach dem Webinar kannst du dein Wissen in unseren Workshops vertiefen — einzeln oder kombiniert buchbar, individuell angepasst. Exklusiv für Webinar-Teilnehmer: 20 % Rabatt auf jeden Workshop. Deinen persönlichen Rabatt-Code erhältst du direkt im Webinar."
 secondary_cta_button: "Workshops entdecken"
 secondary_cta_href: ""
 ---
