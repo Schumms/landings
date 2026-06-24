@@ -267,29 +267,29 @@ references_closing_quote: "Drei Beispiele reichen, um Vertrauen aufzubauen — Q
 
 # ── 12.5 Service-Übersicht (neue Section) ───────────────────────
 service_overview_heading: "Service-Übersicht — die Card-Section"
-service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Mit Eyebrow-Nummer, Title, Description, Bullet-Liste, optionalem Bild und optionalem CTA."
+service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Jede Card hat einen hellen Hintergrund mit abgerundeten Ecken und leichtem Schatten. Optional mit Icon (heller Coral-Kreis oben links) ODER Eyebrow-Nummer — Title, Description, Bullet-Liste und CTA sind immer optional dabei."
 service_overview:
-  - eyebrow: "01"
-    title: "Demo-Service A"
+  - title: "Demo-Service A"
     description: "Kurze Beschreibung der ersten Kernleistung — was sie konkret liefert und für wen sie gedacht ist."
     bullets:
       - "Erster konkreter Baustein"
       - "Zweiter Baustein"
       - "Dritter Baustein"
-  - eyebrow: "02"
-    title: "Demo-Service B"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
+  - title: "Demo-Service B"
     description: "Kurze Beschreibung der zweiten Kernleistung — wie sie auf Service A aufbaut oder eigenständig funktioniert."
     bullets:
       - "Erster Baustein dieser Stufe"
       - "Zweiter Baustein"
       - "Dritter Baustein"
-  - eyebrow: "03"
-    title: "Demo-Service C"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/kiki-radicke.jpg"
+  - title: "Demo-Service C"
     description: "Kurze Beschreibung der dritten Kernleistung — der Abschluss, der die Wirkung sichtbar macht."
     bullets:
       - "Erster Abschluss-Baustein"
       - "Zweiter Abschluss-Baustein"
       - "Dritter Abschluss-Baustein"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/simon-busshart.jpg"
 
 # ── 12.7 Vergleichstabelle (NEU) ────────────────────────────────
 comparison_heading: "Vergleichstabelle — die Differenzierungs-Section"
