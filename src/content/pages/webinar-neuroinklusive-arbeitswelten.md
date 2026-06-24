@@ -18,7 +18,7 @@ section_order:
 
 sections_layout:
   stats:
-    background: "muted"
+    background: "default"
   service_overview:
     background: "muted"
   secondary_cta:
