@@ -176,6 +176,13 @@ const mountId = `hubspot-form-${formId.replace(/-/g, "").slice(0, 8)}`;
     line-height: inherit !important;
   }
 
+  /* Privacy-Text in der .legal-consent-container (Schumm und Rösch... Block):
+     fester 10px, line-height erbt aus dem Container. */
+  .hubspot-embed .legal-consent-container {
+    font-size: 10px !important;
+    line-height: inherit !important;
+  }
+
   .hubspot-embed .hs-form-field[type="checkbox"] input,
   .hubspot-embed .hs-form-field[class*="legal"] input,
   .hubspot-embed .hs-form-field[class*="bolean"] input {
