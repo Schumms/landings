@@ -189,6 +189,7 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     font-size: var(--text-lg);
     line-height: 1.55;
     max-width: 38ch;
+    white-space: pre-line; /* Erlaubt Zeilenumbrüche + Leerzeilen aus YAML-Block-Scalars */
   }
 
   .lead-form__benefits {

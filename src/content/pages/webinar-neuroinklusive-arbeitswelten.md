@@ -121,7 +121,7 @@ benefits:
     description: "Gleiche Voraussetzungen für alle Denkweisen — von der Arbeitsorganisation über die Kommunikation bis zur Raumgestaltung."
 
 form_title: "Jetzt fürs Webinar anmelden"
-form_intro: "Donnerstag, 23. Juli 2026 · 10:00–11:00 Uhr oder Mittwoch, 29. Juli 2026 · 12:00–13:00 Uhr · Online · Kostenlos. Wähle deinen Wunsch-Termin bei der Anmeldung."
+form_intro: "Wähle deinen Wunsch-Termin bei der Anmeldung.\n\nDonnerstag, 23. Juli 2026 · 10:00–11:00 Uhr\nMittwoch, 29. Juli 2026 · 12:00–13:00 Uhr\n\nOnline · Kostenlos"
 form_cta: "Anmelden"
 form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze die Zugangsdaten und deine Wunsch-Termin-Bestätigung per E-Mail."
 form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei Schumm & Rösch gespeichert und über HubSpot verarbeitet werden."
