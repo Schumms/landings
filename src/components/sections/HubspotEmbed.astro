@@ -162,6 +162,18 @@ const mountId = `hubspot-form-${formId.replace(/-/g, "").slice(0, 8)}`;
     display: flex !important;
     gap: 0.75rem !important;
     align-items: flex-start !important;
+    /* Consent-Text + Privacy-Blocks um 20% kleiner als Standard */
+    font-size: calc(var(--text-sm, 0.875rem) * 0.8) !important;
+    line-height: 1.5 !important;
+  }
+
+  .hubspot-embed .hs-form-field[type="checkbox"] p,
+  .hubspot-embed .hs-form-field[class*="legal"] p,
+  .hubspot-embed .hs-form-field[class*="bolean"] p,
+  .hubspot-embed .hs-form-field[class*="bolean"] ul,
+  .hubspot-embed .legal-consent-container {
+    font-size: inherit !important;
+    line-height: inherit !important;
   }
 
   .hubspot-embed .hs-form-field[type="checkbox"] input,

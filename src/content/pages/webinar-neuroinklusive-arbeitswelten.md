@@ -18,11 +18,9 @@ section_order:
 
 sections_layout:
   stats:
-    background: "default"
-    width: "wide"
+    background: "muted"
   service_overview:
     background: "muted"
-    width: "wide"
   secondary_cta:
     background: "default"
 
