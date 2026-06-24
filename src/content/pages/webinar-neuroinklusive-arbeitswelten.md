@@ -152,5 +152,5 @@ faq:
 secondary_cta_heading: "Tiefer einsteigen — Workshops für neuroinklusive Arbeitswelten"
 secondary_cta_text: "Nach dem Webinar kannst du dein Wissen in unseren Workshops vertiefen — einzeln oder kombiniert buchbar, individuell angepasst. Exklusiv für Webinar-Teilnehmer: 20 % Rabatt auf jeden Workshop. Deinen persönlichen Rabatt-Code erhältst du direkt im Webinar."
 secondary_cta_button: "Workshops entdecken"
-secondary_cta_href: "https://go.schumms.com/workshop-f%C3%BCr-neuroinklusive-arbeitswelten-neurodiversitaet-work"
+secondary_cta_href: "https://go.schumms.com/workshop-für-neuroinklusive-arbeitswelten-neurodiversitaet-work"
 ---
