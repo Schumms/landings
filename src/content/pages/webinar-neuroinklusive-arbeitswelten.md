@@ -1,6 +1,6 @@
 ---
 slug: webinar-neuroinklusive-arbeitswelten
-published: false
+published: true
 
 title: "Webinar: Neuroinklusive Arbeitswelten gestalten"
 description: "Webinar 23. & 29. Juli 2026 · Online & kostenlos. Neuroinklusive Arbeitswelten mit Susanne Busshart."
