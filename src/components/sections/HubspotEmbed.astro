@@ -158,9 +158,7 @@ const mountId = `hubspot-form-${formId.replace(/-/g, "").slice(0, 8)}`;
   /* DSGVO-Checkbox + Legal */
   .hubspot-embed .hs-form-field[type="checkbox"],
   .hubspot-embed .hs-form-field[class*="legal"],
-  .hubspot-embed .hs-form-field[class*="bolean"],
-  .hubspot-embed .hs-form-field[class*="boolean"],
-  .hubspot-embed .legal-consent-container {
+  .hubspot-embed .hs-form-field[class*="bolean"] {
     display: flex !important;
     gap: 0.75rem !important;
     align-items: flex-start !important;
@@ -172,37 +170,23 @@ const mountId = `hubspot-form-${formId.replace(/-/g, "").slice(0, 8)}`;
   .hubspot-embed .hs-form-field[type="checkbox"] p,
   .hubspot-embed .hs-form-field[class*="legal"] p,
   .hubspot-embed .hs-form-field[class*="bolean"] p,
-  .hubspot-embed .hs-form-field[class*="boolean"] p,
   .hubspot-embed .hs-form-field[class*="bolean"] ul,
   .hubspot-embed .legal-consent-container {
     font-size: inherit !important;
     line-height: inherit !important;
   }
 
-  /* Checkbox-Position in Consent-Feldern — leicht nach unten versetzt,
-     damit sie auf Höhe der x-Höhe (Mittelhöhe) der ersten Textzeile sitzt
-     statt am oberen Rand der Line-Box. */
-  .hubspot-embed .hs-form-field[type="checkbox"] input[type="checkbox"],
-  .hubspot-embed .hs-form-field[class*="legal"] input[type="checkbox"],
-  .hubspot-embed .hs-form-field[class*="bolean"] input[type="checkbox"],
-  .hubspot-embed .hs-form-field[class*="boolean"] input[type="checkbox"],
-  .hubspot-embed .legal-consent-container input[type="checkbox"],
-  .hubspot-embed input[type="checkbox"] {
+  .hubspot-embed .hs-form-field[type="checkbox"] input,
+  .hubspot-embed .hs-form-field[class*="legal"] input,
+  .hubspot-embed .hs-form-field[class*="bolean"] input {
     width: auto !important;
-    margin: 0.3rem 0 0 0 !important;
+    margin-top: 0.2rem !important;
     flex-shrink: 0 !important;
-    align-self: flex-start !important;
   }
 
-  /* Falls die Checkbox in einem <label> mit display:flex gewrappt ist,
-     sorgen wir dafür, dass sie an erster Stelle sitzt und der Text daneben. */
-  .hubspot-embed label[class*="hs-form-required"],
   .hubspot-embed .hs-form-field[type="checkbox"] label,
-  .hubspot-embed .legal-consent-container > label {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 0.75rem !important;
+  .hubspot-embed .hs-form-field[class*="legal"] label,
+  .hubspot-embed .hs-form-field[class*="bolean"] label {
     font-size: var(--text-sm) !important;
     text-transform: none !important;
     letter-spacing: normal !important;
