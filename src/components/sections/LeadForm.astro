@@ -1,6 +1,7 @@
 ---
 import type { LandingPageData, SectionLayout } from "@lib/types";
 import brand from "@data/brand";
+import HubspotEmbed from "./HubspotEmbed.astro";
 
 interface Props {
   page: LandingPageData;
@@ -68,6 +69,14 @@ const messageMaxLength = page.form_message_max_length ?? 300;
       )}
     </div>
 
+    {(page.hubspot_embed && page.hubspot_portal_id && page.hubspot_form_id) ? (
+      <HubspotEmbed
+        portalId={page.hubspot_portal_id}
+        formId={page.hubspot_form_id}
+        region="eu1"
+        successMessage={page.form_success_message}
+      />
+    ) : (
     <form
       class="lead-form__form"
       id="landing-form"
@@ -170,6 +179,7 @@ const messageMaxLength = page.form_message_max_length ?? 300;
       <p class="lead-form__note">Kein Spam. <a href={brand.legal.datenschutz}>Datenschutzerklärung</a>.</p>
       <p class="lead-form__status" id="form-status" role="status" aria-live="polite" hidden></p>
     </form>
+    )}
   </div>
 </section>
 
@@ -179,6 +189,7 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     font-size: var(--text-lg);
     line-height: 1.55;
     max-width: 38ch;
+    white-space: pre-line; /* Erlaubt Zeilenumbrüche + Leerzeilen aus YAML-Block-Scalars */
   }
 
   .lead-form__benefits {

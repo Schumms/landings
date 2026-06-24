@@ -1,0 +1,85 @@
+---
+import type { LandingPageData, SectionLayout } from "@lib/types";
+
+interface Props {
+  page: LandingPageData;
+  layout?: SectionLayout;
+}
+
+const { page, layout } = Astro.props;
+
+// Section nur rendern, wenn Headline + Bild gesetzt sind.
+if (!page.text_image_heading || !page.text_image_image) {
+  return null;
+}
+
+// Layout-Variante: Text links (default) oder Bild links.
+const variant = page.text_image_layout ?? "text-left-image-right";
+const orderClass =
+  variant === "image-left-text-right" ? "text-image__grid--reverse" : "text-image__grid";
+
+const sectionClasses = [
+  "text-image",
+  "section",
+  layout?.align && `section--align-${layout.align}`,
+  layout?.width && `section--width-${layout.width}`,
+  layout?.background && `section--bg-${layout.background}`,
+  layout?.text_align && `section--text-align-${layout.text_align}`,
+].filter(Boolean);
+---
+
+<section class:list={sectionClasses} id="text-image" aria-labelledby="text-image-heading">
+  <div class:list={["container", "split", "split--40-60", orderClass]}>
+    <div class="text-image__copy">
+      <h2 id="text-image-heading">{page.text_image_heading}</h2>
+      {page.text_image_intro && <p class="text-image__intro">{page.text_image_intro}</p>}
+      {page.text_image_text && <p class="text-image__text">{page.text_image_text}</p>}
+    </div>
+
+    <img
+      class="text-image__visual"
+      src={page.text_image_image}
+      alt={page.text_image_image_alt ?? page.text_image_heading}
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .text-image__intro {
+    margin-top: 1rem;
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .text-image__text {
+    margin-top: 1.25rem;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .text-image__visual {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  /* Variante: Bild links, Text rechts — nur Grid-Order umkehren. */
+  .text-image__grid--reverse {
+    direction: rtl;
+  }
+
+  .text-image__grid--reverse > * {
+    direction: ltr;
+  }
+
+  @media (max-width: 800px) {
+    .text-image__grid--reverse {
+      direction: ltr;
+    }
+  }
+</style>

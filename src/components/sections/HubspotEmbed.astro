@@ -1,0 +1,293 @@
+---
+// HubSpot-Embed-Komponente — Alternative zur LeadForm-Forms-API-Implementierung.
+// Wird eingebunden, wenn eine Page im Frontmatter `hubspot_embed: true` setzt.
+// Nützlich für Felder, die das Template nicht nativ kennt (z.B. Anrede +
+// Session-Auswahl). HubSpot rendert das komplette Formular inkl. Validierung,
+// Legal-Disclosure, Conditional Logic.
+//
+// Voraussetzung: hubspot_portal_id + hubspot_form_id sind gesetzt.
+
+interface Props {
+  portalId: string;
+  formId: string;
+  region?: string;
+  successMessage?: string;
+}
+
+const { portalId, formId, region = "eu1", successMessage } = Astro.props;
+
+// Eindeutige ID pro Embed, falls mehrere HubSpot-Forms auf einer Seite.
+const mountId = `hubspot-form-${formId.replace(/-/g, "").slice(0, 8)}`;
+---
+
+<div class="hubspot-embed" id={mountId} data-success={successMessage ?? ""}>
+  <noscript>Bitte JavaScript aktivieren, um das Anmeldeformular zu sehen.</noscript>
+</div>
+
+<script is:inline define:vars={{ portalId, formId, region, mountId }}>
+  (function () {
+    // HubSpot-Embed-Script nur einmal pro Seite laden.
+    var EMBED_SRC = "//js-eu1.hsforms.net/forms/embed/v2.js";
+    var existingScript = document.querySelector('script[src*="' + EMBED_SRC + '"]');
+    if (!existingScript) {
+      var s = document.createElement("script");
+      s.src = EMBED_SRC;
+      s.async = true;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+
+    // Form mounten, sobald window.hbspt bereitsteht.
+    function tryMount(retriesLeft) {
+      retriesLeft = retriesLeft || 50; // 50 * 100ms = 5s
+      if (window.hbspt && window.hbspt.forms) {
+        window.hbspt.forms.create({
+          portalId: portalId,
+          formId: formId,
+          region: region,
+          target: "#" + mountId,
+        });
+      } else if (retriesLeft > 0) {
+        setTimeout(function () { tryMount(retriesLeft - 1); }, 100);
+      } else {
+        var el = document.getElementById(mountId);
+        if (el) {
+          el.innerHTML =
+            '<p style="color:#8b0000;font-size:.875rem;">Das Anmeldeformular konnte nicht geladen werden. Bitte lade die Seite neu oder kontaktiere uns direkt unter <a href="mailto:info@schumms.com">info@schumms.com</a>.</p>';
+        }
+      }
+    }
+    tryMount();
+  })();
+</script>
+
+<style is:global>
+  /* S&R-Branding für HubSpot-Embed-Formulare */
+  /* Wir stylen die Standardklassen, die das HubSpot-Embed-Script rendert. */
+
+  .hubspot-embed {
+    /* Sichtbarer Lade-Hinweis während HubSpot rendert */
+    min-height: 4rem;
+    position: relative;
+  }
+
+  .hubspot-embed .hs-form {
+    display: grid !important;
+    gap: 0.875rem !important;
+    max-width: none !important;
+  }
+
+  .hubspot-embed .hs-form-field {
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    float: none !important;
+  }
+
+  .hubspot-embed .hs-form-field > label,
+  .hubspot-embed .hs-form-field > .hs-field-desc {
+    display: block !important;
+    font-size: var(--text-xs) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: var(--color-black) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .hubspot-embed .hs-form-field > .hs-field-desc {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: 400 !important;
+    font-size: var(--text-sm) !important;
+    color: var(--color-muted) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hubspot-embed input[type="text"],
+  .hubspot-embed input[type="email"],
+  .hubspot-embed input[type="tel"],
+  .hubspot-embed input[type="number"],
+  .hubspot-embed input[type="url"],
+  .hubspot-embed select,
+  .hubspot-embed textarea {
+    width: 100% !important;
+    padding: 0.75rem 0.875rem !important;
+    border: 1px solid var(--color-border, #e2e2e2) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-body, "Inter", system-ui, sans-serif) !important;
+    font-size: var(--text-base, 1rem) !important;
+    line-height: 1.5 !important;
+    background: var(--color-white, #ffffff) !important;
+    color: var(--color-black, #000000) !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  .hubspot-embed input[type="text"]:focus,
+  .hubspot-embed input[type="email"]:focus,
+  .hubspot-embed input[type="tel"]:focus,
+  .hubspot-embed input[type="number"]:focus,
+  .hubspot-embed input[type="url"]:focus,
+  .hubspot-embed select:focus,
+  .hubspot-embed textarea:focus {
+    outline: 2px solid var(--color-coral, #fd7857) !important;
+    outline-offset: -2px !important;
+    border-color: var(--color-coral, #fd7857) !important;
+  }
+
+  .hubspot-embed select {
+    appearance: none !important;
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-muted, #525252) 50%),
+      linear-gradient(135deg, var(--color-muted, #525252) 50%, transparent 50%) !important;
+    background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50% !important;
+    background-size: 5px 5px !important;
+    background-repeat: no-repeat !important;
+    padding-right: 2.5rem !important;
+  }
+
+  /* Required-Markierung */
+  .hubspot-embed label .hs-form-required {
+    color: var(--color-coral, #fd7857) !important;
+    margin-left: 0.15rem !important;
+  }
+
+  /* DSGVO-Checkbox + Legal */
+  .hubspot-embed .hs-form-field[type="checkbox"],
+  .hubspot-embed .hs-form-field[class*="legal"],
+  .hubspot-embed .hs-form-field[class*="bolean"] {
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+    /* Consent-Text + Privacy-Blocks um 20% kleiner als Standard */
+    font-size: calc(var(--text-sm, 0.875rem) * 0.8) !important;
+    line-height: 1.5 !important;
+  }
+
+  .hubspot-embed .hs-form-field[type="checkbox"] p,
+  .hubspot-embed .hs-form-field[class*="legal"] p,
+  .hubspot-embed .hs-form-field[class*="bolean"] p,
+  .hubspot-embed .hs-form-field[class*="bolean"] ul,
+  .hubspot-embed .legal-consent-container {
+    font-size: 10px !important;
+    line-height: inherit !important;
+  }
+
+  /* Privacy-Text in der .legal-consent-container (Schumm und Rösch... Block):
+     fester 10px, line-height erbt aus dem Container. */
+  .hubspot-embed .legal-consent-container {
+    font-size: 10px !important;
+    line-height: inherit !important;
+  }
+
+  .hubspot-embed .hs-form-field[type="checkbox"] input,
+  .hubspot-embed .hs-form-field[class*="legal"] input,
+  .hubspot-embed .hs-form-field[class*="bolean"] input {
+    width: auto !important;
+    margin-top: 0.2rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hubspot-embed .hs-form-field[type="checkbox"] label,
+  .hubspot-embed .hs-form-field[class*="legal"] label,
+  .hubspot-embed .hs-form-field[class*="bolean"] label {
+    font-size: var(--text-sm) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: 400 !important;
+    color: var(--color-black) !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Submit-Button — schwarz, beim Hover Coral */
+  .hubspot-embed input[type="submit"],
+  .hubspot-embed button[type="submit"],
+  .hubspot-embed .hs-button {
+    width: 100% !important;
+    padding: 1rem 1.5rem !important;
+    background: var(--color-black, #000000) !important;
+    color: var(--color-white, #ffffff) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-family: var(--font-body, "Inter", system-ui, sans-serif) !important;
+    font-size: var(--text-sm) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: background-color 0.15s ease !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .hubspot-embed input[type="submit"]:hover,
+  .hubspot-embed button[type="submit"]:hover,
+  .hubspot-embed .hs-button:hover {
+    background: var(--color-coral, #fd7857) !important;
+  }
+
+  /* Fehler-Meldungen */
+  .hubspot-embed .hs-error-msg,
+  .hubspot-embed .hs-error-msgs label {
+    color: #8b0000 !important;
+    font-size: var(--text-sm) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: 400 !important;
+    margin-top: 0.25rem !important;
+  }
+
+  .hubspot-embed .hs-error-msgs {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0.25rem 0 0 !important;
+  }
+
+  .hubspot-embed .hs-error-msgs label {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  /* Validierungs-Feld-Highlight (rot) */
+  .hubspot-embed .hs-form-field.hs-field-invalid input,
+  .hubspot-embed .hs-form-field.hs-field-invalid select,
+  .hubspot-embed .hs-form-field.hs-field-invalid textarea {
+    border-color: #8b0000 !important;
+  }
+
+  /* Submitting-State */
+  .hubspot-embed input[type="submit"]:disabled,
+  .hubspot-embed button[type="submit"]:disabled,
+  .hubspot-embed .hs-button:disabled {
+    opacity: 0.5 !important;
+    cursor: wait !important;
+  }
+
+  /* Success-Message nach Submit */
+  .hubspot-embed .submitted-message {
+    padding: 1rem !important;
+    background: rgba(253, 120, 87, 0.08) !important;
+    border-left: 3px solid var(--color-coral, #fd7857) !important;
+    color: var(--color-black) !important;
+    font-weight: 500 !important;
+  }
+
+  /* HubSpot-Default-Powered-by-Footer ausblenden */
+  .hubspot-embed .hs-form .legal-consent-container,
+  .hubspot-embed .hs-form .hs-fieldtype-bolean {
+    margin-top: 0 !important;
+  }
+
+  /* Responsive Anpassungen */
+  @media (max-width: 540px) {
+    .hubspot-embed input[type="text"],
+    .hubspot-embed input[type="email"],
+    .hubspot-embed select,
+    .hubspot-embed textarea {
+      font-size: 1rem !important; /* Verhindert iOS-Zoom auf Focus */
+    }
+  }
+</style>

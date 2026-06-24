@@ -25,6 +25,8 @@ section_order:
   - speakers
   - content_preview
   - testimonial
+  - text_image
+  - feature_image
   - references
   - service_overview
   - comparison
@@ -50,6 +52,8 @@ sections:
   program: true
   speakers: true
   testimonial: true
+  text_image: true
+  feature_image: true
   references: true
   service_overview: true
   comparison: true
@@ -219,6 +223,22 @@ testimonial_role: "Marketing"
 testimonial_company: "Schumm & Rösch (intern)"
 testimonial_image: "/pages/arbeitsplatz-fitness-check/testimonial.jpg"
 
+# ── 11.5 Text + Bild (NEU) ──────────────────────────────────────
+text_image_heading: "Text + Bild — die minimalistische Split-Section"
+text_image_intro: "Schlanker Aufbau: Headline + Intro + Body links, Bild rechts. Ideal für alles, was nicht in die komplexeren Sections (About, Content Preview, Location) passt — eine reine Aussage mit Bild."
+text_image_text: "Das ist die einfachste Form der Sektion. Wenn weder Bullets noch CTA noch besondere Strukturen gebraucht werden, reicht dieser Aufbau. Optional ist die Variante mit Bild links und Text rechts, wenn der visuelle Anker zuerst kommen soll."
+text_image_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
+text_image_image_alt: "Platzhalter — modernes Büro als visueller Anker"
+text_image_layout: "text-left-image-right"
+
+# ── 11.6 Feature + Bild (NEU) ───────────────────────────────────
+feature_image_eyebrow: "Phase 01"
+feature_image_heading: "Feature + Bild — die prominente Split-Section"
+feature_image_intro: "Wenn eine Aussage mehr Gewicht braucht als text_image: Eyebrow-Tag oben links, große Headline, dann Intro und Body — Bild rechts."
+feature_image_text: "Einsatzorte sind Phase-Beschreibungen, prominente Vorher/Nachher-Vergleiche, oder Feature-Highlights, die visuell verankert werden sollen. Der Eyebrow erlaubt eine Nummerierung oder einen Kontext-Tag, bevor die Headline auf den Punkt kommt."
+feature_image_image: "/pages/hr-konferenz-wiesbaden/hero.jpg"
+feature_image_image_alt: "Platzhalter — visueller Anker für die Phase"
+
 # ── 12. Referenzen (B2B-Showcase) ────────────────────────────────
 references_heading: "Referenzen-Karten im Grid"
 references_intro: "Drei Spalten, Bild + Branche + Herausforderung + Ergebnis — für Case Studies oder Kundenprojekte."
@@ -247,29 +267,29 @@ references_closing_quote: "Drei Beispiele reichen, um Vertrauen aufzubauen — Q
 
 # ── 12.5 Service-Übersicht (neue Section) ───────────────────────
 service_overview_heading: "Service-Übersicht — die Card-Section"
-service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Mit Eyebrow-Nummer, Title, Description, Bullet-Liste, optionalem Bild und optionalem CTA."
+service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Jede Card hat einen hellen Hintergrund mit abgerundeten Ecken und leichtem Schatten. Optional mit Icon (heller Coral-Kreis oben links) ODER Eyebrow-Nummer — Title, Description, Bullet-Liste und CTA sind immer optional dabei."
 service_overview:
-  - eyebrow: "01"
-    title: "Demo-Service A"
+  - title: "Demo-Service A"
     description: "Kurze Beschreibung der ersten Kernleistung — was sie konkret liefert und für wen sie gedacht ist."
     bullets:
       - "Erster konkreter Baustein"
       - "Zweiter Baustein"
       - "Dritter Baustein"
-  - eyebrow: "02"
-    title: "Demo-Service B"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/susanne-busshart.jpg"
+  - title: "Demo-Service B"
     description: "Kurze Beschreibung der zweiten Kernleistung — wie sie auf Service A aufbaut oder eigenständig funktioniert."
     bullets:
       - "Erster Baustein dieser Stufe"
       - "Zweiter Baustein"
       - "Dritter Baustein"
-  - eyebrow: "03"
-    title: "Demo-Service C"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/kiki-radicke.jpg"
+  - title: "Demo-Service C"
     description: "Kurze Beschreibung der dritten Kernleistung — der Abschluss, der die Wirkung sichtbar macht."
     bullets:
       - "Erster Abschluss-Baustein"
       - "Zweiter Abschluss-Baustein"
       - "Dritter Abschluss-Baustein"
+    icon: "/pages/hr-konferenz-wiesbaden/speakers/simon-busshart.jpg"
 
 # ── 12.7 Vergleichstabelle (NEU) ────────────────────────────────
 comparison_heading: "Vergleichstabelle — die Differenzierungs-Section"

@@ -24,6 +24,8 @@ import Stats from "@components/sections/Stats.astro";
 import Comparison from "@components/sections/Comparison.astro";
 import CtaBanner from "@components/sections/CtaBanner.astro";
 import NewsletterSignup from "@components/sections/NewsletterSignup.astro";
+import TextImage from "@components/sections/TextImage.astro";
+import FeatureImage from "@components/sections/FeatureImage.astro";
 
 interface Props {
   page: LandingPageData;
@@ -88,6 +90,10 @@ const layoutFor = (id: string) => page.sections_layout?.[id];
         return <CtaBanner page={page} layout={layoutFor("cta_banner")} />;
       case "newsletter_signup":
         return <NewsletterSignup page={page} layout={layoutFor("newsletter_signup")} />;
+      case "text_image":
+        return <TextImage page={page} layout={layoutFor("text_image")} />;
+      case "feature_image":
+        return <FeatureImage page={page} layout={layoutFor("feature_image")} />;
       default:
         return null;
     }

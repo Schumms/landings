@@ -10,10 +10,12 @@ const { page, layout } = Astro.props;
 
 const heroVariant = page.hero_variant ?? "default";
 const isFullbleed = heroVariant === "fullbleed";
+const isCompact = isFullbleed && page.hero_size === "compact";
 
 const sectionClasses = [
   "hero",
   isFullbleed && "hero--fullbleed",
+  isCompact && "hero--compact",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
@@ -171,6 +173,13 @@ const sectionClasses = [
     display: flex;
     align-items: center;
     padding-block: clamp(3rem, 10vw, 7rem);
+  }
+
+  /* Kompaktere Variante für fullbleed (per Frontmatter hero_size: "compact").
+     Volle Breite bleibt erhalten, Höhe und Padding sind reduziert. */
+  .hero--fullbleed.hero--compact {
+    min-height: clamp(20rem, 50vh, 30rem);
+    padding-block: clamp(1.5rem, 5vw, 3rem);
   }
 
   .hero--fullbleed .hero__bg {

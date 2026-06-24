@@ -87,6 +87,9 @@ const landingSchema = z.object({
   hero_image: z.string().optional(),
   hero_image_alt: z.string().optional(),
   hero_variant: z.enum(["default", "fullbleed"]).optional(),
+  // Per-Page Hero-Größe (nur in Verbindung mit hero_variant: "fullbleed" wirksam).
+  // "compact" reduziert min-height und Padding für kompaktere Hero-Bereiche.
+  hero_size: z.enum(["default", "compact"]).optional(),
   cta_text: z.string(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 
@@ -176,8 +179,10 @@ const landingSchema = z.object({
 
   // Service-Übersicht: 3–6 Cards mit Kernleistungen (z.B. Beratung / Planung / Einrichtung).
   // Jede Card hat optionale Eyebrow-Nummer, Title, Description, Bullets, Bild und CTA.
+  // Layout: "grid" (Default, 3 Spalten) oder "rows" (1 Spalte mit Icon links + Trennlinien).
   service_overview_heading: z.string().optional(),
   service_overview_intro: z.string().optional(),
+  service_overview_layout: z.enum(["grid", "rows"]).optional(),
   service_overview: z
     .array(
       z.object({
@@ -187,6 +192,7 @@ const landingSchema = z.object({
         bullets: z.array(z.string()).max(5).optional(),
         image: z.string().optional(),
         image_alt: z.string().optional(),
+        icon: z.string().optional(),
         cta_text: z.string().optional(),
         cta_href: z.string().optional(),
       }),
@@ -229,6 +235,11 @@ const landingSchema = z.object({
 
   hubspot_portal_id: z.string().optional(),
   hubspot_form_id: z.string().optional(),
+  // Wenn true, wird statt der Forms-API-Implementierung der HubSpot-Embed
+  // (hbspt.forms.create) geladen. Nützlich für Felder, die das Template nicht
+  // nativ kennt (z.B. Anrede + Session-Auswahl in einem Schritt). Voraussetzung:
+  // hubspot_portal_id + hubspot_form_id sind gesetzt. Default false = Forms API.
+  hubspot_embed: z.boolean().optional(),
 
   // Zweite Form-Section (z.B. Kontaktformular am Seitenende).
   // Wenn vorhanden, wird sie als eigenständige Section gerendert.
@@ -304,6 +315,25 @@ const landingSchema = z.object({
   newsletter_hubspot_portal_id: z.string().optional(),
   newsletter_hubspot_form_id: z.string().optional(),
   newsletter_webhook: z.string().url().optional(),
+
+  // Text + Bild: minimalistische Split-Section — Headline, Intro und Text links, Bild rechts.
+  // Optional Variante "image-left-text-right" für gespiegeltes Layout.
+  text_image_heading: z.string().optional(),
+  text_image_intro: z.string().optional(),
+  text_image_text: z.string().optional(),
+  text_image_image: z.string().optional(),
+  text_image_image_alt: z.string().optional(),
+  text_image_layout: z.enum(["text-left-image-right", "image-left-text-right"]).optional(),
+
+  // Feature + Bild: Eyebrow + Headline + Text links, Bild rechts. Prominenter als text_image.
+  // Ideal für Phase-Beschreibungen, Vorher/Nachher mit visuellem Anker, Feature-Highlights.
+  feature_image_eyebrow: z.string().optional(),
+  feature_image_heading: z.string().optional(),
+  feature_image_intro: z.string().optional(),
+  feature_image_text: z.string().optional(),
+  feature_image_image: z.string().optional(),
+  feature_image_image_alt: z.string().optional(),
+  feature_image_layout: z.enum(["text-left-image-right", "image-left-text-right"]).optional(),
 
   /** Footer-Claim für die Landingpage (z.B. "Mutig. Prägend. Zukunftsgerichtet."). */
   footer_claim: z.string().optional(),
