@@ -12,8 +12,7 @@ section_order:
   - speakers
   - location
   - faq
-  - pricing
-  - form
+  - secondary_cta
 
 sections:
   nav: true
@@ -25,14 +24,14 @@ sections:
   speakers: true
   location: true
   faq: true
-  form: true
+  form: false
   social_proof_bar: false
   transformation: false
   process: false
   testimonial: false
   about: false
   content_preview: false
-  secondary_cta: false
+  secondary_cta: true
   footer: true
 
 nav_cta_text: "Ticket sichern"
@@ -159,21 +158,14 @@ faq:
   - question: "Gibt es Gruppenrabatte?"
     answer: "Ja, ab drei Teilnehmer:innen aus dem gleichen Unternehmen. Schreib uns einfach an info@schumms.com — wir machen dir ein passendes Angebot."
 
-form_title: "Sichere dir dein Ticket!"
-form_intro: "Sichere dir jetzt dein Early-Bird-Ticket für 49 € — inklusive Catering, Kaffee und Networking."
+secondary_cta_heading: "Bereit, die Zukunft der Arbeit mitzugestalten?"
+secondary_cta_text: "Sichere dir jetzt dein Ticket für den HR Summit Wiesbaden — Early-Bird nur 49 €, inklusive Catering und Networking."
+secondary_cta_button: "Ticket sichern"
+secondary_cta_href: "https://forms.example.com/hr-summit-ticket"
+
+# Pflichtfelder im Schema — Form-Section ist deaktiviert, Werte werden nicht gerendert
+form_title: "Ticket sichern"
 form_cta: "Ticket sichern"
-form_webhook: "https://n8n.schumms.com/webhook/DEIN-WEBHOOK"
-form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze eine Bestätigung per E-Mail."
 
 social_proof_text: "Unsere Partner"
-social_proof_logos_monochrome: false
-social_proof_logos:
-  - name: "Adacor"
-    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/adacor.png"
-  - name: "Elevate to Success"
-    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/elevate.png"
-  - name: "NieOhneKI"
-    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/nieohneki.png"
-  - name: "Wilkhahn"
-    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/wilkhahn.svg"
 ---
