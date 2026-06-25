@@ -13,6 +13,7 @@ section_order:
   - location
   - faq
   - secondary_cta
+  - social_proof_bar
 
 sections:
   nav: true
@@ -25,7 +26,7 @@ sections:
   location: true
   faq: true
   form: false
-  social_proof_bar: false
+  social_proof_bar: true
   transformation: false
   process: false
   testimonial: false
@@ -168,4 +169,14 @@ form_title: "Ticket sichern"
 form_cta: "Ticket sichern"
 
 social_proof_text: "Unsere Partner"
+social_proof_logos_monochrome: true
+social_proof_logos:
+  - name: "Adacor"
+    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/adacor.png"
+  - name: "Elevate to Success"
+    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/elevate.png"
+  - name: "NieOhneKI"
+    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/nieohneki.png"
+  - name: "Wilkhahn"
+    image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/wilkhahn.svg"
 ---
