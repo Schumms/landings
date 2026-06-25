@@ -4,20 +4,21 @@ published: false
 
 title: "HR Summit Wiesbaden — Die Zukunft arbeitet anders"
 description: "HR Summit Wiesbaden 22.10.2026: Wie KI Kultur, Rollen & Führung verändert. 4 Speaker, 49 € Early Bird."
-
 section_order:
   - hero
-  - problem
   - benefits
+  - problem
   - program
   - speakers
   - location
+  - pricing
   - form
+
 sections:
   nav: true
   hero: true
   problem: true
-  pricing: false
+  pricing: true
   benefits: true
   program: true
   speakers: true
@@ -136,9 +137,16 @@ location_email: "info@schumms.com"
 location_image: "/pages/hr-summit-wiesbaden-oktober-2026/location.jpg"
 location_image_alt: "Eventfläche Schumm & Rösch — Wiesbaden"
 
+pricing_eyebrow: "Early-Bird-Sonderpreis"
+pricing_label: "Jetzt für nur"
+pricing_amount: "49"
+pricing_currency: "€"
+pricing_text: "inklusive Catering, Kaffee und Networking. Begrenzte Anzahl an Plätzen."
+pricing_cta: "Ticket sichern"
+
 form_title: "Sichere dir dein Ticket!"
-form_intro: "Early-Bird-Sonderpreis: jetzt 49 € statt später 89 € — inklusive Catering, Kaffee und Networking."
-form_cta: "Ticket sichern (49 € Early Bird)"
+form_intro: "Sichere dir jetzt dein Early-Bird-Ticket für 49 € — inklusive Catering, Kaffee und Networking."
+form_cta: "Ticket sichern"
 form_webhook: "https://n8n.schumms.com/webhook/DEIN-WEBHOOK"
 form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze eine Bestätigung per E-Mail."
 

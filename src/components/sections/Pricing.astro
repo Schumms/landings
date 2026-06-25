@@ -19,7 +19,7 @@ const sectionClasses = [
   layout?.text_align && `section--text-align-${layout.text_align}`,
 ].filter(Boolean);
 
-if (!page.pricing_amount || page.problem_intro) {
+if (!page.pricing_amount) {
   return null;
 }
 ---
