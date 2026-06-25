@@ -11,6 +11,7 @@ section_order:
   - program
   - speakers
   - location
+  - faq
   - pricing
   - form
 
@@ -23,6 +24,7 @@ sections:
   program: true
   speakers: true
   location: true
+  faq: true
   form: true
   social_proof_bar: false
   transformation: false
@@ -30,7 +32,6 @@ sections:
   testimonial: false
   about: false
   content_preview: false
-  faq: false
   secondary_cta: false
   footer: true
 
@@ -143,6 +144,20 @@ pricing_amount: "49"
 pricing_currency: "€"
 pricing_text: "inklusive Catering, Kaffee und Networking. Begrenzte Anzahl an Plätzen."
 pricing_cta: "Ticket sichern"
+
+faq_heading: "Gut zu wissen"
+faq_intro: "Die häufigsten Fragen rund um Anfahrt, Übernachtung und Organisation — kurz beantwortet."
+faq:
+  - question: "Wie komme ich zum Schumm & Rösch Eventspace?"
+    answer: "Mit dem PKW: Parkplätze stehen direkt vor Ort (Borsigstraße 20, 65205 Wiesbaden) zur Verfügung. Mit der Bahn: Ab Wiesbaden Hauptbahnhof sind es ca. 10 Minuten mit Taxi oder Uber. Aus Frankfurt: Die S-Bahn braucht etwa 30 Minuten bis Wiesbaden HBF."
+  - question: "Wo kann ich übernachten?"
+    answer: "In unmittelbarer Nähe gibt es vier Hotels für unterschiedliche Ansprüche: Radisson Blu Schwarzer Bock (klassisches Businesshotel, zentral), Hotel am Landeshaus (ruhig, gut für Overnight-Gäste), Marriott Wiesbaden (gehobener Standard, beliebt bei Businessreisenden) und Motel One Wiesbaden (günstig, modern, zentral)."
+  - question: "Ist das Event auch für Führungskräfte ohne HR-Hintergrund geeignet?"
+    answer: "Ja. KI, Kultur und Führung betrifft jeden Bereich — wir hatten bereits Teilnehmer:innen aus Produktentwicklung, IT, Operations und Geschäftsführung. Die Inhalte sind bewusst fachübergreifend formuliert."
+  - question: "Was, wenn ich allein komme?"
+    answer: "Du bist in bester Gesellschaft — die meisten Teilnehmer:innen kommen allein. Das Worldcafé am Mittag und die Networking-Pausen sind explizit für den persönlichen Austausch auf Augenhöhe da."
+  - question: "Gibt es Gruppenrabatte?"
+    answer: "Ja, ab drei Teilnehmer:innen aus dem gleichen Unternehmen. Schreib uns einfach an info@schumms.com — wir machen dir ein passendes Angebot."
 
 form_title: "Sichere dir dein Ticket!"
 form_intro: "Sichere dir jetzt dein Early-Bird-Ticket für 49 € — inklusive Catering, Kaffee und Networking."
