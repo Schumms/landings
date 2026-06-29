@@ -10,7 +10,10 @@ const { page, layout } = Astro.props;
 
 const heroVariant = page.hero_variant ?? "default";
 const isFullbleed = heroVariant === "fullbleed";
-const isCompact = isFullbleed && page.hero_size === "compact";
+// "compact" wirkt in beiden Varianten:
+// - fullbleed: reduziert min-height und Padding (Original-Verhalten)
+// - default: skaliert die Headline auf 70% für leisere Hero-Optik
+const isCompact = page.hero_size === "compact";
 
 const sectionClasses = [
   "hero",
@@ -114,6 +117,18 @@ const sectionClasses = [
     line-height: 1.6;
     color: var(--color-text-muted);
     max-width: 44ch;
+    white-space: pre-line;
+  }
+
+  /* "compact" im default-Hero (Split-Layout): Headline auf 70% skalieren
+     für leisere Optik. Wirkt NICHT in fullbleed-Variante (die hat eigenes Styling). */
+  .hero:not(.hero--fullbleed).hero--compact .hero__copy h1 {
+    font-size: clamp(1.925rem, 1.4rem + 2.45vw, 3.85rem);
+    max-width: 20ch;
+  }
+
+  .hero:not(.hero--fullbleed).hero--compact .hero__cta {
+    margin-top: 1.5rem;
   }
 
   .hero__cta {

@@ -43,19 +43,15 @@ sections:
 nav_cta_text: "Check starten"
 
 # ── SEKTION 1 — HERO ─────────────────────────────────────────────
-hero_eyebrow: "New Work Beratung · Strategisch · Ganzheitlich"
 hero_title: "Dein Büro sieht aus wie 2018. Deine Mitarbeitenden arbeiten wie 2025."
-hero_subtitle: "Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht. Wir entwickeln Konzepte, die nicht nur gut aussehen, sondern wirklich funktionieren."
+hero_subtitle: |-
+  Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht.
+
+  Wir entwickeln Konzepte, die nicht nur gut aussehen, sondern wirklich funktionieren.
 hero_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
 hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug"
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
-hero_trust_metrics:
-  - value: "2 Min"
-    label: "Ausfüllzeit"
-  - value: "Kostenlos"
-    label: "Erstgespräch"
-  - value: "25+ MA"
-    label: "Unternehmensgröße"
+hero_size: "compact"
 
 # ── SEKTION 1b — Sekundärer CTA (Erstgespräch) ───────────────────
 secondary_cta_heading: "Lieber direkt mit uns reden?"
