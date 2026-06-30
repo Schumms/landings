@@ -127,6 +127,11 @@ const sectionClasses = [
     max-width: 20ch;
   }
 
+  /* compact-Hero: Text oben bündig mit Bild (default ist vertikal zentriert) */
+  .hero:not(.hero--fullbleed).hero--compact .hero__grid {
+    align-items: start;
+  }
+
   .hero:not(.hero--fullbleed).hero--compact .hero__cta {
     margin-top: 1.5rem;
   }
