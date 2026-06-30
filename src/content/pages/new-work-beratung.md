@@ -56,20 +56,20 @@ cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
 cta_href: "https://newwork-check.schumms.com"
 hero_size: "compact"
 
-# ── SEKTION 2 — 3-CARD-SECTION (Service Overview, layout: grid) ──
+# ── SEKTION 2 — 3-Card Pain-Points (Service Overview grid) ─────────
 service_overview_layout: "grid"
-service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
-service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
+service_overview_heading: "Kommt euch das bekannt vor?"
+service_overview_intro: "Fast jedes Unternehmen, mit dem wir sprechen, kämpft gerade mit denselben drei Dingen. Nicht, weil sie schlechte Arbeit leisten. Sondern weil sich die Arbeitswelt schneller verändert hat als die Büros, in denen sie stattfindet."
 service_overview:
-  - title: "Vielfalt der Denkweisen ist längst Realität"
-    description: "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent — mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
-    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/people.svg"
-  - title: "Räume, Strukturen und Kommunikation sind nur für eine Denkwelt gebaut"
-    description: "Neurodivergente Mitarbeitende erleben die heutige Arbeitswelt häufig als belastend — nicht weil sie „nicht passen“, sondern weil Räume, Strukturen und Kommunikation oft nur für eine Denkwelt gebaut sind."
-    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/building.svg"
-  - title: "Was Unternehmen dadurch verlieren"
-    description: "Räume und Prozesse, die nur eine Denkwelt unterstützen, kosten Unternehmen Produktivität, Innovation und Talente."
+  - title: "Teure Fläche, die kaum jemand nutzt."
+    description: "Ihr zahlt Miete für Flächen, die täglich halb leer stehen. Der Präsenzanteil ist gesunken, die Quadratmeterkosten sind geblieben. Und niemand weiß wirklich, wie die Leute den Raum eigentlich nutzen."
     icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/decline.svg"
+  - title: "Hybrid klappt auf dem Papier, nicht im Raum."
+    description: "Homeoffice ist fix. Teamtage auch. Aber im Büro gibt's weder genug Fokuszonen noch gute Kollaborationsbereiche. Jeder sucht sich irgendwie einen Platz – und der Raum unterstützt die Zusammenarbeit kaum."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/building.svg"
+  - title: "Das Büro verliert den Wettbewerb um Talente."
+    description: "Neue Mitarbeitende kommen am ersten Tag und sind enttäuscht. Bestehende fragen sich, warum sie überhaupt ins Büro fahren sollen. Und Bewerbungen kommen seltener, weil das Arbeitsumfeld keine Wirkung entfaltet."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/people.svg"
 
 # ── SEKTION 1b — Sekundärer CTA (Erstgespräch) ───────────────────
 secondary_cta_heading: "Lieber direkt mit uns reden?"
