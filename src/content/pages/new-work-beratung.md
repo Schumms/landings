@@ -11,7 +11,6 @@ section_order:
   - hero
   - service_overview
   - secondary_cta
-  - problem
   - process
   - references
   - transformation
@@ -23,7 +22,7 @@ sections:
   nav: true
   hero: true
   social_proof_bar: false
-  problem: true
+  problem: false
   process: true
   transformation: true
   testimonial: false
