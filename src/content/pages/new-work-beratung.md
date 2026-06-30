@@ -51,6 +51,7 @@ hero_subtitle: |-
 hero_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
 hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug"
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
+cta_href: "https://newwork-check.schumms.com"
 hero_size: "compact"
 
 # ── SEKTION 1b — Sekundärer CTA (Erstgespräch) ───────────────────

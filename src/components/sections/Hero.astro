@@ -42,7 +42,7 @@ const sectionClasses = [
       {page.hero_eyebrow && <p class="hero__eyebrow">{page.hero_eyebrow}</p>}
       <h1 id="hero-heading">{page.hero_title}</h1>
       <p class="hero__subtitle">{page.hero_subtitle}</p>
-      <a class="btn btn--coral hero__cta" href="#lead-form">{page.cta_text}</a>
+      <a class="btn btn--coral hero__cta" href={page.cta_href ?? "#lead-form"}>{page.cta_text}</a>
 
       {
         page.hero_trust_metrics?.length && (

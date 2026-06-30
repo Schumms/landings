@@ -91,6 +91,7 @@ const landingSchema = z.object({
   // "compact" reduziert min-height und Padding für kompaktere Hero-Bereiche.
   hero_size: z.enum(["default", "compact"]).optional(),
   cta_text: z.string(),
+  cta_href: z.string().url().optional(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 
   social_proof_text: z.string().optional(),
