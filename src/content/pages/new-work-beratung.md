@@ -9,6 +9,7 @@ description: "New Work Konzepte und moderne Bürowelten für Unternehmen ab 25 M
 # Sichtbarkeit + Reihenfolge — orientiert am Mockup
 section_order:
   - hero
+  - service_overview
   - secondary_cta
   - problem
   - process
@@ -39,6 +40,7 @@ sections:
   content_preview: false
   benefits: false
   faq: false
+  service_overview: true
 
 nav_cta_text: "Check starten"
 
@@ -53,6 +55,21 @@ hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
 cta_href: "https://newwork-check.schumms.com"
 hero_size: "compact"
+
+# ── SEKTION 2 — 3-CARD-SECTION (Service Overview, layout: grid) ──
+service_overview_layout: "grid"
+service_overview_heading: "Vielfalt der Denkweisen bleibt oft unsichtbar"
+service_overview_intro: "Viele Unternehmen sprechen über Diversität — Generationen, Geschlecht, Herkunft. Was dabei fast immer unsichtbar bleibt: die Vielfalt der Denkweisen."
+service_overview:
+  - title: "Vielfalt der Denkweisen ist längst Realität"
+    description: "Schätzungen zufolge sind 15–20 % aller Menschen neurodivergent — mehr als 50 % der Gen Z identifizieren sich als neurodivergent."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/people.svg"
+  - title: "Räume, Strukturen und Kommunikation sind nur für eine Denkwelt gebaut"
+    description: "Neurodivergente Mitarbeitende erleben die heutige Arbeitswelt häufig als belastend — nicht weil sie „nicht passen“, sondern weil Räume, Strukturen und Kommunikation oft nur für eine Denkwelt gebaut sind."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/building.svg"
+  - title: "Was Unternehmen dadurch verlieren"
+    description: "Räume und Prozesse, die nur eine Denkwelt unterstützen, kosten Unternehmen Produktivität, Innovation und Talente."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/decline.svg"
 
 # ── SEKTION 1b — Sekundärer CTA (Erstgespräch) ───────────────────
 secondary_cta_heading: "Lieber direkt mit uns reden?"
