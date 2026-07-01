@@ -11,9 +11,9 @@
   --color-muted: #525252;
   --color-line: #000000;
 
-  /* Akzent — Newsletter / Lead-Sections (Services-Page) */
-  --color-coral: #fd7857;
-  --color-coral-dark: #e5623e;
+  /* Primary accent — #01DBA2 (S&R primary brand accent as of June 2026) */
+  --color-coral: #01DBA2;
+  --color-coral-dark: #01B386;
 
   /* Optional: Subpage-Header (Team etc.) */
   --color-violet: #827afe;
