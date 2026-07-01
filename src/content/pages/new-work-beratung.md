@@ -53,6 +53,7 @@ hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
 cta_href: "https://newwork-check.schumms.com"
 hero_size: "compact"
+accent_color: "turquoise"
 
 # ── SEKTION 2 — 3-Card Pain-Points (Service Overview grid) ─────────
 service_overview_layout: "grid"

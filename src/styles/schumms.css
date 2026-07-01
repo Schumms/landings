@@ -11,12 +11,16 @@
   --color-muted: #525252;
   --color-line: #000000;
 
-  /* Primary accent — #01DBA2 (S&R primary brand accent as of June 2026) */
-  --color-coral: #01DBA2;
-  --color-coral-dark: #01B386;
+  /* Primary brand accent. Default: coral. Per-page override via data-accent
+     attribute on <html> — set "turquoise" or "violet" to swap. */
+  --color-coral: #fd7857;
+  --color-coral-dark: #e5623e;
 
-  /* Optional: Subpage-Header (Team etc.) */
+  /* Alternative accent palette (set via :root[data-accent="…"]) */
+  --color-turquoise: #01DBA2;
+  --color-turquoise-dark: #01B386;
   --color-violet: #827afe;
+  --color-violet-dark: #5C5BD9;
 
   /* Semantic */
   --color-text: var(--color-black);
@@ -25,7 +29,19 @@
   --color-background: var(--color-white);
   --color-accent-section: var(--color-coral);
   --color-border: #e2e2e2;
+}
 
+:root[data-accent="turquoise"] {
+  --color-coral: var(--color-turquoise);
+  --color-coral-dark: var(--color-turquoise-dark);
+}
+
+:root[data-accent="violet"] {
+  --color-coral: var(--color-violet);
+  --color-coral-dark: var(--color-violet-dark);
+}
+
+:root {
   /* Typography — Inter wie schumms.com */
   --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
