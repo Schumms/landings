@@ -10,7 +10,6 @@ description: "New Work Konzepte und moderne Bürowelten für Unternehmen ab 25 M
 section_order:
   - hero
   - service_overview
-  - secondary_cta
   - process
   - references
   - transformation
@@ -30,7 +29,7 @@ sections:
   about: true
   form: true
   contact_form: true
-  secondary_cta: true
+  secondary_cta: false
   footer: true
   pricing: false
   program: false
