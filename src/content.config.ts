@@ -138,6 +138,7 @@ const landingSchema = z.object({
   benefits: z.array(benefitItem).min(3).max(5).optional(),
 
   process_heading: z.string().optional(),
+  process_heading_accent: z.string().optional(),
   process_steps: z.array(processStep).min(3).max(8).optional(),
 
   testimonial_heading: z.string().optional(),

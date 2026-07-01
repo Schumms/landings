@@ -25,7 +25,12 @@ if (!page.process_steps?.length) {
 <section class:list={sectionClasses} id="process" aria-labelledby="process-heading">
   <div class="container split split--40-60">
     <div>
-      <h2 id="process-heading">{page.process_heading ?? "So funktioniert's"}</h2>
+      <h2 id="process-heading">
+        {page.process_heading ?? "So funktioniert's"}
+        {page.process_heading_accent && (
+          <> <span class="text-accent">{page.process_heading_accent}</span></>
+        )}
+      </h2>
     </div>
 
     <ol class="divider-list">
@@ -49,10 +54,9 @@ if (!page.process_steps?.length) {
     font-size: var(--text-base);
     font-weight: var(--font-weight-semibold);
     margin-bottom: 0.35rem;
-    color: var(--color-coral);
   }
 
-  .process h2 {
+  .process .text-accent {
     color: var(--color-coral);
   }
 

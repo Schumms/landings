@@ -85,7 +85,8 @@ problem_points:
   - "**Das Büro verliert den Wettbewerb um Talente.** Neue Mitarbeitende kommen am ersten Tag und sind enttäuscht. Bestehende fragen sich, warum sie überhaupt ins Büro fahren sollen. Und Bewerbungen kommen seltener, weil das Arbeitsumfeld keine Wirkung entfaltet."
 
 # ── SEKTION 3 — PROZESS (Lösung) ─────────────────────────────────
-process_heading: "Von der Analyse bis zum fertigen Büro. Alles aus einer Hand."
+process_heading: "Von der Analyse bis zum fertigen Büro."
+process_heading_accent: "Alles aus einer Hand."
 process_intro: "Die meisten Unternehmen, die mit uns sprechen, haben vorher schon mit Einrichtern, Planern oder Beratern gearbeitet – aber nie mit jemandem, der den ganzen Weg mitgeht. Genau das ist unser Ansatz."
 process_steps:
   - title: "Beratung & Analyse"
