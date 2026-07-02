@@ -92,6 +92,18 @@ const ogImageUrl = ogImage
         font-display: swap;
         src: url('/fonts/Inter-800.ttf') format('truetype');
       }
+
+      /* Buenos Aires — Display-Font von Luzi Type (Black/800)
+         Font-Files müssen in /public/fonts/ liegen: BuenosAiresWeb-Black.woff2 + .woff
+         Solange die Files fehlen, fällt der Browser auf den Inter-Fallback zurück. */
+      @font-face {
+        font-family: 'BuenosAires';
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url('/fonts/BuenosAiresWeb-Black.woff2') format('woff2'),
+             url('/fonts/BuenosAiresWeb-Black.woff') format('woff');
+      }
     </style>
   </head>
   <body>
