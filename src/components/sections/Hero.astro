@@ -14,11 +14,15 @@ const isFullbleed = heroVariant === "fullbleed";
 // - fullbleed: reduziert min-height und Padding (Original-Verhalten)
 // - default: skaliert die Headline auf 70% für leisere Hero-Optik
 const isCompact = page.hero_size === "compact";
+// Trust-Metrics Layout: "stacked" (default, Bold-Value + Label)
+// oder "inline" (kompakte Pills in einer Zeile für Datum/Uhrzeit/Ort).
+const isInlineMetrics = layout?.metrics_layout === "inline";
 
 const sectionClasses = [
   "hero",
   isFullbleed && "hero--fullbleed",
   isCompact && "hero--compact",
+  isInlineMetrics && "hero--metrics-inline",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
@@ -47,14 +51,24 @@ const sectionClasses = [
       {
         page.hero_trust_metrics?.length && (
           <div class="hero__trust" aria-label="Vertrauenssignale">
-            <ul class="hero__metrics" role="list">
-              {page.hero_trust_metrics.map((metric) => (
-                <li>
-                  <span class="hero__metric-value">{metric.value}</span>
-                  <span class="hero__metric-label">{metric.label}</span>
-                </li>
-              ))}
-            </ul>
+            {isInlineMetrics ? (
+              <ul class="hero__metrics hero__metrics--inline" role="list">
+                {page.hero_trust_metrics.map((metric) => (
+                  <li class="hero__metric-inline">
+                    <span>{metric.value}{metric.label ? ` · ${metric.label}` : ""}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul class="hero__metrics" role="list">
+                {page.hero_trust_metrics.map((metric) => (
+                  <li>
+                    <span class="hero__metric-value">{metric.value}</span>
+                    <span class="hero__metric-label">{metric.label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )
       }
@@ -173,6 +187,33 @@ const sectionClasses = [
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     color: var(--color-text-muted);
+  }
+
+  /* Inline-Variante: kompakte Pills in einer Zeile, 20% kleinere Schrift.
+     Aktiviert per sections_layout.hero.metrics_layout: "inline". */
+  .hero__metrics--inline {
+    flex-wrap: nowrap;
+    gap: 0;
+    align-items: center;
+  }
+
+  .hero__metrics--inline li {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Trenner-Punkt zwischen Items (alle außer dem letzten) */
+  .hero__metrics--inline li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.6rem;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .hero__metric-inline {
+    font-size: calc(var(--text-sm) * 0.8); /* 20% kleiner als text-sm */
+    color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
   .hero__visual img,

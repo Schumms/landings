@@ -21,7 +21,9 @@ const processStep = z.object({
 
 const metricItem = z.object({
   value: z.string(),
-  label: z.string(),
+  // Label optional — bei inline-Layouts (z.B. Datum/Uhrzeit) kann es
+  // weggelassen werden, wenn die ganze Info bereits im value steht.
+  label: z.string().optional(),
 });
 
 const logoItem = z.object({
@@ -80,6 +82,10 @@ const sectionLayoutSchema = z
       .string()
       .regex(/^#[0-9a-fA-F]{6}$/)
       .optional(),
+    // Hero: Layout-Modus für Trust-Metrics.
+    // "stacked" (default): Bold-Value oben, Label darunter (für Zahlen).
+    // "inline": kompakte Pills in einer Zeile (für Datum/Uhrzeit/Ort etc.).
+    metrics_layout: z.enum(["stacked", "inline"]).optional(),
   })
   .optional();
 
