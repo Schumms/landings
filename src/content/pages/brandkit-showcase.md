@@ -67,6 +67,13 @@ sections:
   newsletter_signup: true
   footer: true
 
+# Brandkit-Showcase bleibt auf neutraler Optik — Card-Hintergrund explizit
+# weiß, damit die Demo-Cards nicht das Akzent-Auto-Mapping der ServiceOverview
+# auslösen.
+sections_layout:
+  service_overview:
+    card_background: "#FFFFFF"
+
 # ── Navigation ───────────────────────────────────────────────────
 nav_cta_text: "Zur Form-Section"
 
@@ -267,7 +274,7 @@ references_closing_quote: "Drei Beispiele reichen, um Vertrauen aufzubauen — Q
 
 # ── 12.5 Service-Übersicht (neue Section) ───────────────────────
 service_overview_heading: "Service-Übersicht — die Card-Section"
-service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Jede Card hat einen hellen Hintergrund mit abgerundeten Ecken und leichtem Schatten. Optional mit Icon (heller Coral-Kreis oben links) ODER Eyebrow-Nummer — Title, Description, Bullet-Liste und CTA sind immer optional dabei. Card-Hintergrund folgt der Page-Akzentfarbe (siehe letzte drei Karten)."
+service_overview_intro: "Drei bis sechs Karten nebeneinander — passend für alles, was sich als Kernleistung strukturiert erzählen lässt. Jede Card hat einen hellen Hintergrund mit abgerundeten Ecken und leichtem Schatten. Optional mit Icon (heller Coral-Kreis oben links) ODER Eyebrow-Nummer — Title, Description, Bullet-Liste und CTA sind immer optional dabei."
 service_overview:
   - title: "Demo-Service A"
     description: "Kurze Beschreibung der ersten Kernleistung — was sie konkret liefert und für wen sie gedacht ist."
@@ -290,16 +297,6 @@ service_overview:
       - "Zweiter Abschluss-Baustein"
       - "Dritter Abschluss-Baustein"
     icon: "/pages/hr-konferenz-wiesbaden/speakers/simon-busshart.jpg"
-  # ── Card-Hintergrund pro Akzentfarbe (Design-System) ──────────
-  - title: "Card-BG: Coral-Akzent"
-    description: "Wenn die Page-Akzentfarbe auf 'coral' steht (oder kein Akzent gesetzt ist), bekommen Cards automatisch diesen Pastell-Coral-Hintergrund: #FEDCD4."
-    card_background: "#FEDCD4"
-  - title: "Card-BG: Türkis-Akzent"
-    description: "Wenn die Page-Akzentfarbe auf 'turquoise' steht, bekommen Cards automatisch diesen Pastell-Grün-Hintergrund: #DEEFE6."
-    card_background: "#DEEFE6"
-  - title: "Card-BG: Violet-Akzent"
-    description: "Wenn die Page-Akzentfarbe auf 'violet' steht, bekommen Cards automatisch diesen kühlen Hellblau-Hintergrund: #E3F1FE."
-    card_background: "#E3F1FE"
 
 # ── 12.7 Vergleichstabelle (NEU) ────────────────────────────────
 comparison_heading: "Vergleichstabelle — die Differenzierungs-Section"
