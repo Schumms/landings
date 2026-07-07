@@ -21,9 +21,15 @@ const sectionClasses = [
 if (!page.stats?.length) {
   return null;
 }
+
+// Per-Section data-attribute für CSS-Hooks (z.B. value_color: accent).
+const sectionDataAttrs: Record<string, string> = {};
+if (layout?.value_color === "accent") {
+  sectionDataAttrs["data-stats-value-color"] = "accent";
+}
 ---
 
-<section class:list={sectionClasses} id="stats" aria-labelledby="stats-heading">
+<section class:list={sectionClasses} id="stats" aria-labelledby="stats-heading" {...sectionDataAttrs}>
   <div class="container">
     {(page.stats_heading || page.stats_intro) && (
       <header class="stats__header">
@@ -93,6 +99,13 @@ if (!page.stats?.length) {
     color: var(--color-black);
     margin: 0;
     max-width: none;
+  }
+
+  /* Section-Layout "value_color: accent" → Zahlen in Page-Akzentfarbe
+     (folgt via :root[data-accent="…"] dem globalen Color-Swap). */
+  .stats[style*="--section-value-color"] .stats__value,
+  [data-stats-value-color="accent"] .stats__value {
+    color: var(--color-coral);
   }
 
   .stats__label {

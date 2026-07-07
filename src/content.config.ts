@@ -86,6 +86,10 @@ const sectionLayoutSchema = z
     // "stacked" (default): Bold-Value oben, Label darunter (für Zahlen).
     // "inline": kompakte Pills in einer Zeile (für Datum/Uhrzeit/Ort etc.).
     metrics_layout: z.enum(["stacked", "inline"]).optional(),
+    // Section-spezifische Wertfarbe für Zahlen/Headlines.
+    // "accent" folgt der Page-Akzentfarbe (z.B. lila Zahlen bei violet-Akzent).
+    // "black" (default) bleibt klassisch schwarz.
+    value_color: z.enum(["accent", "black"]).optional(),
   })
   .optional();
 

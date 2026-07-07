@@ -17,6 +17,10 @@ section_order:
   - form
   - secondary_cta
 
+sections_layout:
+  stats:
+    value_color: "accent"
+
 sections:
   nav: true
   hero: true
