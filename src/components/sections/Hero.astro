@@ -189,6 +189,21 @@ const sectionClasses = [
     color: var(--color-text-muted);
   }
 
+  /* Compact-Mode: auch die Trust-Metrics auf 80% skalieren, damit der
+     Hero-Bereich insgesamt leiser wirkt. Gilt für stacked UND fullbleed. */
+  .hero--compact .hero__metric-value {
+    font-size: calc(var(--text-2xl) * 0.8);
+  }
+
+  .hero--compact .hero__metric-label {
+    font-size: calc(var(--text-xs) * 0.8);
+  }
+
+  .hero--compact.hero--fullbleed .hero__metric-value,
+  .hero--compact.hero--fullbleed .hero__metric-label {
+    font-size: calc(var(--text-base) * 0.8);
+  }
+
   /* Inline-Variante: kompakte Pills in einer Zeile, 20% kleinere Schrift.
      Aktiviert per sections_layout.hero.metrics_layout: "inline". */
   .hero__metrics--inline {

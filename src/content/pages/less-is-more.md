@@ -17,10 +17,6 @@ section_order:
   - form
   - secondary_cta
 
-sections_layout:
-  hero:
-    metrics_layout: "inline"
-
 sections:
   nav: true
   hero: true
@@ -58,8 +54,11 @@ hero_image_alt: "Zwei Kolleg:innen arbeiten kollaborativ an einem Laptop auf ein
 cta_text: "Jetzt kostenlos anmelden"
 hero_trust_metrics:
   - value: "[Datum]"
-  - value: "11:00 – 12:00 Uhr"
-  - value: "Online · Kostenlos"
+    label: "wird nachgetragen"
+  - value: "11:00 – 12:00"
+    label: "Uhr"
+  - value: "Online"
+    label: "Zoom · Kostenlos"
 
 stats_heading: "Flächenoptimierung in Zahlen"
 stats_intro: "Was passiert, wenn weniger Fläche nicht Verlust, sondern Hebel wird."
