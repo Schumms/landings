@@ -238,6 +238,21 @@ const sectionClasses = [
     object-fit: cover;
   }
 
+  /* Compact-Modus: Bild passt sich an die Höhe des linken Content-Blocks
+     an (Eyebrow → Subtitle → CTA → Trust-Metrics). So endet das Bild
+     bündig mit den Metrics, statt sehr viel höher zu sein. */
+  .hero--compact:not(.hero--fullbleed) .hero__visual {
+    align-self: stretch;
+    display: flex;
+  }
+
+  .hero--compact:not(.hero--fullbleed) .hero__visual img,
+  .hero--compact:not(.hero--fullbleed) .hero__visual-fallback {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
+  }
+
   .hero__visual-fallback {
     background: linear-gradient(160deg, #2a2a2a 0%, #0a0a0a 100%);
   }
