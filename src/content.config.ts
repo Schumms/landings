@@ -213,7 +213,13 @@ const landingSchema = z.object({
         image_alt: z.string().optional(),
         icon: z.string().optional(),
         cta_text: z.string().optional(),
-        cta_href: z.string().optional(),
+        cta_href: z.string().url().optional(),
+        // Per-Item Card-Hintergrund. Überschreibt Sections-Layout und
+        // Akzent-Mapping. Hex-Wert (z.B. "#E3F1FE").
+        card_background: z
+          .string()
+          .regex(/^#[0-9a-fA-F]{6}$/)
+          .optional(),
       }),
     )
     .min(3)

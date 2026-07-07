@@ -11,20 +11,11 @@ section_order:
   - stats
   - problem
   - service_overview
-  - program
   - benefits
   - speakers
   - faq
   - form
   - secondary_cta
-
-sections_layout:
-  program:
-    compact: true
-    hide_meta: true
-    two_column: true
-  service_overview:
-    card_background: "#E3F1FE"
 
 sections:
   nav: true
@@ -32,7 +23,6 @@ sections:
   stats: true
   problem: true
   service_overview: true
-  program: true
   benefits: true
   speakers: true
   faq: true
@@ -101,25 +91,6 @@ service_overview:
   - title: "Gar nicht gehandelt"
     description: "Leerstand kostet täglich Geld, das Team leidet unter schlechter Raumatmosphäre, und der ROI von Bürofläche bleibt unsichtbar. Wer abwartet, zahlt doppelt."
     icon: ""
-
-program_heading: "Agenda"
-program_intro: "60 Minuten. Klarer Kopf danach."
-program_items:
-  - type: ""
-    title: "Begrüßung & Check-in"
-    description: "Wir starten locker und stimmen uns auf das Thema ein."
-  - type: ""
-    title: "Warum „Less“ gerade jetzt drängt"
-    description: "Auslastung, Leerstand und der reale Kostendruck — die Fakten, die den Handlungsdruck erzeugen."
-  - type: ""
-    title: "Der Denkfehler"
-    description: "Warum weniger Fläche nicht automatisch weniger Qualität heißt."
-  - type: ""
-    title: "Was „More“ bedeutet"
-    description: "Zonierung, Akustik, Materialqualität — wie Verdichtung zur Aufwertung wird."
-  - type: ""
-    title: "Offenes Q&A"
-    description: "Deine Fragen, Susannes Antworten. Direkt, ohne Filter."
 
 benefits_heading: "Für wen ist dieses Webinar?"
 benefits_intro: "Dieses Webinar ist für dich, wenn …"

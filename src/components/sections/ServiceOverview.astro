@@ -13,6 +13,20 @@ const { page, layout } = Astro.props;
 const layoutMode = page.service_overview_layout ?? "grid";
 const isRowsLayout = layoutMode === "rows";
 
+// Card-Hintergrund: Per-Item Override > Sections-Layout Override > Auto-Mapping
+// aus Akzentfarbe. Das Auto-Mapping folgt dem Brand-System:
+//   Akzent "violet"     → #E3F1FE (kühles Hellblau)
+//   Akzent "turquoise"  → #DEEFE6 (Pastell-Grün)
+//   Akzent "coral"      → #FEDCD4 (Pastell-Coral)
+//   Default / kein Set  → #FEDCD4 (Coral)
+const accentCardBackground: Record<string, string> = {
+  violet: "#E3F1FE",
+  turquoise: "#DEEFE6",
+  coral: "#FEDCD4",
+};
+const defaultCardBackground =
+  accentCardBackground[page.accent_color ?? "coral"] ?? "#FEDCD4";
+
 const sectionClasses = [
   "service-overview",
   "section",
@@ -58,10 +72,16 @@ if (!page.service_overview?.length) {
       </ol>
     ) : (
     <ol class="service-overview__grid" role="list">
-      {page.service_overview.map((service) => (
+      {page.service_overview.map((service) => {
+        // Reihenfolge: per-item > sections-layout > Akzent-Auto-Mapping
+        const cardBg =
+          service.card_background ??
+          layout?.card_background ??
+          defaultCardBackground;
+        return (
         <li
           class="service-overview__card"
-          style={layout?.card_background ? `background:${layout.card_background};` : undefined}
+          style={`background:${cardBg};`}
         >
           {service.icon && (
             <div class="service-overview__card-icon" aria-hidden="true">
@@ -100,7 +120,8 @@ if (!page.service_overview?.length) {
             )}
           </div>
         </li>
-      ))}
+        );
+      })}
     </ol>
     )}
   </div>
