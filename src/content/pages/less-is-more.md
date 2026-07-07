@@ -4,6 +4,7 @@ published: false
 
 title: "Less is More: Flächenoptimierung mit Qualitätsgewinn"
 description: "Kostenloses Webinar: Weniger Bürofläche, mehr Qualität. Mit Susanne B. Busshart, Schumm & Rösch."
+accent_color: "violet"
 
 section_order:
   - hero
@@ -155,7 +156,9 @@ form_intro: |-
   Online · Zoom
 form_cta: "Jetzt kostenlos anmelden"
 form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze die Zugangsdaten per E-Mail."
-form_privacy_note: "Ich willige ein, dass meine Angaben zur Veranstaltungsanmeldung bei Schumm & Rösch gespeichert und über HubSpot verarbeitet werden."
+hubspot_portal_id: "146949753"
+hubspot_form_id: "fbd52fec-9b2b-4a69-81b6-ffba4e3f5b7d"
+hubspot_embed: true
 
 secondary_cta_heading: "Tiefer rein? Die Workshops warten."
 secondary_cta_text: "Nach dem Webinar erhältst du 20 % Rabatt auf unsere Flächenanalyse-Workshops. Wir rechnen gemeinsam deinen konkreten ROI durch — praxisnah, auf dein Unternehmen zugeschnitten."
