@@ -68,6 +68,12 @@ const sectionLayoutSchema = z
     // Section-spezifischer Compact-Modus. Wird von Components erkannt, die ihn
     // unterstützen (z.B. Program — kleinere Schrift, weniger Padding).
     compact: z.boolean().optional(),
+    // Hex-Farbe für Card-Hintergründe (z.B. service-overview-Cards).
+    // Wird nur von Sections interpretiert, die es unterstützen.
+    card_background: z
+      .string()
+      .regex(/^#[0-9a-fA-F]{6}$/)
+      .optional(),
   })
   .optional();
 

@@ -21,6 +21,8 @@ section_order:
 sections_layout:
   program:
     compact: true
+  service_overview:
+    card_background: "#E3F1FE"
 
 sections:
   nav: true

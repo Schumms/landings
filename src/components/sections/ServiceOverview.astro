@@ -59,7 +59,10 @@ if (!page.service_overview?.length) {
     ) : (
     <ol class="service-overview__grid" role="list">
       {page.service_overview.map((service) => (
-        <li class="service-overview__card">
+        <li
+          class="service-overview__card"
+          style={layout?.card_background ? `background:${layout.card_background};` : undefined}
+        >
           {service.icon && (
             <div class="service-overview__card-icon" aria-hidden="true">
               <img src={service.icon} alt="" loading="lazy" />
