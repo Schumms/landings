@@ -68,6 +68,12 @@ const sectionLayoutSchema = z
     // Section-spezifischer Compact-Modus. Wird von Components erkannt, die ihn
     // unterstützen (z.B. Program — kleinere Schrift, weniger Padding).
     compact: z.boolean().optional(),
+    // Meta-Block (z.B. Zeit-Badge, Org-Logo) ausblenden. Wirkt nur auf Sections,
+    // die Meta rendern (z.B. Program).
+    hide_meta: z.boolean().optional(),
+    // Two-Column-Layout: Titel links, Beschreibung rechts. Wirkt nur auf
+    // Sections, die es unterstützen (z.B. Program).
+    two_column: z.boolean().optional(),
     // Hex-Farbe für Card-Hintergründe (z.B. service-overview-Cards).
     // Wird nur von Sections interpretiert, die es unterstützen.
     card_background: z

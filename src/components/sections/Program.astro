@@ -17,6 +17,7 @@ const sectionClasses = [
   layout?.background && `section--bg-${layout.background}`,
   layout?.text_align && `section--text-align-${layout.text_align}`,
   layout?.compact && "program--compact",
+  layout?.two_column && "program--two-column",
 ].filter(Boolean);
 
 if (!page.program_items?.length) {
@@ -35,6 +36,7 @@ if (!page.program_items?.length) {
       {
         page.program_items.map((item) => (
           <li class="program__item">
+            {!layout?.hide_meta && (
             <div class="program__meta">
               {item.type && <span class="program__type">{item.type}</span>}
               {item.organization_logo && (
@@ -46,6 +48,7 @@ if (!page.program_items?.length) {
                 />
               )}
             </div>
+            )}
             <h3 class="program__title">{item.title}</h3>
             {(item.speaker || item.role) && (
               <p class="program__speaker">
@@ -166,5 +169,24 @@ if (!page.program_items?.length) {
     font-size: calc(var(--text-base) * 0.8);
     margin-top: 0.5rem;
     line-height: 1.5;
+  }
+
+  /* Two-Column-Layout: Titel links, Beschreibung rechts. */
+  /* Aktiviert per sections_layout.program.two_column: true im Frontmatter. */
+  @media (min-width: 720px) {
+    .program--two-column .program__item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      column-gap: 2.5rem;
+      align-items: start;
+    }
+
+    .program--two-column .program__title {
+      margin-top: 0;
+    }
+
+    .program--two-column .program__description {
+      margin-top: 0;
+    }
   }
 </style>

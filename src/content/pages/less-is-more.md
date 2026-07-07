@@ -21,6 +21,8 @@ section_order:
 sections_layout:
   program:
     compact: true
+    hide_meta: true
+    two_column: true
   service_overview:
     card_background: "#E3F1FE"
 
@@ -103,19 +105,19 @@ service_overview:
 program_heading: "Agenda"
 program_intro: "60 Minuten. Klarer Kopf danach."
 program_items:
-  - type: "0 – 5 min"
+  - type: ""
     title: "Begrüßung & Check-in"
     description: "Wir starten locker und stimmen uns auf das Thema ein."
-  - type: "5 – 15 min"
+  - type: ""
     title: "Warum „Less“ gerade jetzt drängt"
     description: "Auslastung, Leerstand und der reale Kostendruck — die Fakten, die den Handlungsdruck erzeugen."
-  - type: "15 – 22 min"
+  - type: ""
     title: "Der Denkfehler"
     description: "Warum weniger Fläche nicht automatisch weniger Qualität heißt."
-  - type: "22 – 30 min"
+  - type: ""
     title: "Was „More“ bedeutet"
     description: "Zonierung, Akustik, Materialqualität — wie Verdichtung zur Aufwertung wird."
-  - type: "30 – 60 min"
+  - type: ""
     title: "Offenes Q&A"
     description: "Deine Fragen, Susannes Antworten. Direkt, ohne Filter."
 
