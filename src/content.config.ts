@@ -65,6 +65,9 @@ const sectionLayoutSchema = z
       .enum(["default", "muted", "dark", "accent"])
       .optional(),
     text_align: z.enum(["left", "center"]).optional(),
+    // Section-spezifischer Compact-Modus. Wird von Components erkannt, die ihn
+    // unterstützen (z.B. Program — kleinere Schrift, weniger Padding).
+    compact: z.boolean().optional(),
   })
   .optional();
 

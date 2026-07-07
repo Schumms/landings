@@ -18,6 +18,10 @@ section_order:
   - form
   - secondary_cta
 
+sections_layout:
+  program:
+    compact: true
+
 sections:
   nav: true
   hero: true

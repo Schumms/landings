@@ -16,6 +16,7 @@ const sectionClasses = [
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
   layout?.text_align && `section--text-align-${layout.text_align}`,
+  layout?.compact && "program--compact",
 ].filter(Boolean);
 
 if (!page.program_items?.length) {
@@ -131,5 +132,39 @@ if (!page.program_items?.length) {
     line-height: 1.6;
     color: var(--color-text-muted);
     max-width: none;
+  }
+
+  /* Compact-Modus: 20% kleinere Schrift, weniger Padding, dichtere Items.
+     Aktiviert per sections_layout.program.compact: true im Frontmatter. */
+  .program--compact .program__header {
+    margin-bottom: 1rem;
+  }
+
+  .program--compact .program__intro {
+    font-size: calc(var(--text-lg) * 0.8);
+  }
+
+  .program--compact .program__item {
+    padding: 0.75rem 0;
+  }
+
+  .program--compact .program__type {
+    font-size: calc(var(--text-xs) * 0.8);
+  }
+
+  .program--compact .program__title {
+    font-size: calc(var(--text-xl) * 0.8);
+  }
+
+  .program--compact .program__speaker,
+  .program--compact .program__org {
+    font-size: calc(var(--text-sm) * 0.8);
+    margin-top: 0.25rem;
+  }
+
+  .program--compact .program__description {
+    font-size: calc(var(--text-base) * 0.8);
+    margin-top: 0.5rem;
+    line-height: 1.5;
   }
 </style>
