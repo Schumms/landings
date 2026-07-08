@@ -128,6 +128,10 @@ const landingSchema = z.object({
 
   problem_heading: z.string().optional(),
   problem_intro: z.string().optional(),
+  // Optionales Bild neben dem Intro-Text (16:9). Wenn gesetzt, wird die
+  // Section zum zweispaltigen Layout (Text links, Bild rechts).
+  problem_image: z.string().optional(),
+  problem_image_alt: z.string().optional(),
   problem_points: z.array(z.string()).min(1).max(3).optional(),
 
   pricing_eyebrow: z.string().optional(),

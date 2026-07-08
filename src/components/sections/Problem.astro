@@ -26,7 +26,7 @@ if (!page.problem_points?.length && !page.problem_intro) {
 const hasPricing = Boolean(page.pricing_amount);
 ---
 
-<section class:list={sectionClasses} id="problem" aria-labelledby="problem-heading">
+<section class:list={[...sectionClasses, page.problem_image && "problem--with-image"]} id="problem" aria-labelledby="problem-heading">
   <div class="container">
     <div class:list={["split", hasPricing && "split--intro-pricing", "problem__layout"]}>
       <div class="problem__intro">
@@ -38,6 +38,16 @@ const hasPricing = Boolean(page.pricing_amount);
         <aside class="problem__pricing" aria-label="Ticket-Preis">
           <PricingCard page={page} />
         </aside>
+      )}
+
+      {!hasPricing && page.problem_image && (
+        <figure class="problem__media">
+          <img
+            src={page.problem_image}
+            alt={page.problem_image_alt ?? ""}
+            loading="lazy"
+          />
+        </figure>
       )}
     </div>
 
@@ -86,5 +96,23 @@ const hasPricing = Boolean(page.pricing_amount);
   .problem__list {
     margin-top: 2.5rem;
     max-width: 48rem;
+  }
+
+  /* Bild neben dem Intro (16:9). Überschreibt das bestehende Split-Layout
+     nur, wenn problem_image gesetzt ist und keine Pricing-Card da ist. */
+  .problem--with-image .problem__layout {
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .problem__media {
+    margin: 0;
+  }
+
+  .problem__media img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
   }
 </style>

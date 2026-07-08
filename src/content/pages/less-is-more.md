@@ -81,6 +81,8 @@ problem_intro: |
   Viele Büros stehen heute zur Hälfte leer — und gleichzeitig wachsen die Ansprüche an die verbleibende Fläche. Wer einfach nur Schreibtische wegnimmt, verschärft Lärm, Unterbrechungen und Stress. Wer aber klug verdichtet, gewinnt: weniger Fläche, mehr Qualität, niedrigere Kosten.
 
   Das ist kein Widerspruch — das ist die eigentliche Chance, die in „Less is More“ steckt.
+problem_image: "/pages/less-is-more/problem-placeholder.svg"
+problem_image_alt: "Platzhalter für Foto zum Thema Flächenoptimierung — durch echtes Bild ersetzen"
 
 service_overview_heading: "Der Denkfehler"
 service_overview_intro: "Kleiner ist nicht schlimm. Schlecht gemacht ist schlimm."
