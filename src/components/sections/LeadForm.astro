@@ -268,6 +268,21 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     accent-color: var(--color-coral);
   }
 
+  /* Submit-Button auf weißem BG mit Burgundy-Text, wenn body_color: white
+     gesetzt ist. Wirkt auf Forms auf dunklem Brand-Hintergrund (z.B.
+     less-is-more: Form auf #522633). */
+  .section--body-white .lead-form__submit {
+    background: var(--color-white);
+    border-color: var(--color-white);
+    color: #522633;
+  }
+
+  .section--body-white .lead-form__submit:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #522633;
+  }
+
   .section--body-muted .lead-form__hint,
   .section--body-muted .lead-form__benefits-heading,
   .section--body-muted .lead-form__benefits-list li {
