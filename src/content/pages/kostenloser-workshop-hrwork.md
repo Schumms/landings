@@ -47,14 +47,14 @@ sections:
 
 nav_cta_text: "Termin anfragen"
 
-hero_variant: "default"
+hero_variant: "fullbleed"
 hero_size: "compact"
 
 hero_eyebrow: "Kostenloser Workshop"
 hero_title: "HR@WORK"
 hero_subtitle: "Talente · Kultur · Office"
-hero_image: "/pages/kostenloser-workshop-hrwork/hero.png"
-hero_image_alt: "Zwei Frauen im Workshop-Gespräch — offener Austausch über HR-Themen und Arbeitswelten"
+hero_image: "/pages/kostenloser-workshop-hrwork/hero.jpg"
+hero_image_alt: "Zwei Frauen im offenen Workshop-Gespräch am Laptop — modernes Büro-Setting"
 cta_text: "Kostenlosen Termin anfragen"
 hero_trust_metrics:
   - value: "Kostenlos"
