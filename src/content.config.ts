@@ -81,6 +81,9 @@ const sectionLayoutSchema = z
     // Two-Column-Layout: Titel links, Beschreibung rechts. Wirkt nur auf
     // Sections, die es unterstützen (z.B. Program).
     two_column: z.boolean().optional(),
+    // Split-Image-Layout: Text links (40%), großes Bild rechts (60%).
+    // Wirkt nur auf Sections, die es unterstützen (z.B. Program).
+    split_image: z.boolean().optional(),
     // Hex-Farbe für Card-Hintergründe (z.B. service-overview-Cards).
     // Wird nur von Sections interpretiert, die es unterstützen.
     card_background: z
