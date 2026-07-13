@@ -20,6 +20,10 @@ section_order:
 sections_layout:
   stats:
     value_color: "accent"
+  form:
+    background: "#522633"
+    title_color: "accent"
+    body_color: "white"
 
 sections:
   nav: true

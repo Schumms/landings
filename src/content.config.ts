@@ -64,7 +64,12 @@ const sectionLayoutSchema = z
     align: z.enum(["left", "center"]).optional(),
     width: z.enum(["narrow", "normal", "wide", "full"]).optional(),
     background: z
-      .enum(["default", "muted", "dark", "accent"])
+      .union([
+        z.enum(["default", "muted", "dark", "accent"]),
+        // Custom Hex-Farbe für Sections, die einen Brand-Spezialfall brauchen
+        // (z.B. Form-Section auf einem dunklen Brand-Ton wie #522633).
+        z.string().regex(/^#[0-9a-fA-F]{6}$/),
+      ])
       .optional(),
     text_align: z.enum(["left", "center"]).optional(),
     // Section-spezifischer Compact-Modus. Wird von Components erkannt, die ihn
@@ -90,6 +95,13 @@ const sectionLayoutSchema = z
     // "accent" folgt der Page-Akzentfarbe (z.B. lila Zahlen bei violet-Akzent).
     // "black" (default) bleibt klassisch schwarz.
     value_color: z.enum(["accent", "black"]).optional(),
+    // Section-spezifische Title-Farbe (z.B. Hero-Headline, Section-H2).
+    // "accent" → Page-Akzentfarbe, "white" → für Dark-Backgrounds.
+    title_color: z.enum(["accent", "white", "black"]).optional(),
+    // Section-spezifische Body-Text-Farbe (für Intro/Description auf
+    // farbigen Backgrounds). Default ist Brand-Standard (schwarz auf hell,
+    // weiß auf dark).
+    body_color: z.enum(["white", "black", "muted"]).optional(),
   })
   .optional();
 
