@@ -117,6 +117,8 @@ const landingSchema = z.object({
   sections_layout: sectionsLayoutSchema,
 
   nav_cta_text: z.string().optional(),
+  nav_cta_href: z.string().url().optional(),
+  cta_href: z.string().url().optional(),
 
   hero_eyebrow: z.string().optional(),
   hero_title: z.string().max(80),

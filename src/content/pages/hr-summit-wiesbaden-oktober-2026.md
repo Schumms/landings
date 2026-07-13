@@ -162,14 +162,16 @@ faq:
 secondary_cta_heading: "Bereit, die Zukunft der Arbeit mitzugestalten?"
 secondary_cta_text: "Sichere dir jetzt dein Ticket für den HR Summit Wiesbaden — Early-Bird nur 49 €, inklusive Catering und Networking."
 secondary_cta_button: "Ticket sichern"
-secondary_cta_href: "https://forms.example.com/hr-summit-ticket"
+secondary_cta_href: "https://payments-eu1.hubspot.com/payments/purchase/hscs_eu1_wzendQPCwOjPCsnpwvGHufNBeGIeRV5AlVpbvw0cYTHx4dkSO5lQE8puRCL2KIwO?referrer=PAYMENT_LINK"
 
 # Pflichtfelder im Schema — Form-Section ist deaktiviert, Werte werden nicht gerendert
 form_title: "Ticket sichern"
 form_cta: "Ticket sichern"
 
+cta_href: "https://payments-eu1.hubspot.com/payments/purchase/hscs_eu1_wzendQPCwOjPCsnpwvGHufNBeGIeRV5AlVpbvw0cYTHx4dkSO5lQE8puRCL2KIwO?referrer=PAYMENT_LINK"
+
 social_proof_text: "Unsere Partner"
-social_proof_logos_monochrome: true
+social_proof_logos_monochrome: false
 social_proof_logos:
   - name: "Adacor"
     image: "/pages/hr-summit-wiesbaden-oktober-2026/partners/adacor.png"

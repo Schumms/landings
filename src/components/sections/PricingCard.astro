@@ -20,7 +20,7 @@ const { page, class: className = "" } = Astro.props;
     {page.pricing_amount}
   </p>
   {page.pricing_text && <p class="pricing-card__text">{page.pricing_text}</p>}
-  <a class="btn btn--coral pricing-card__cta" href="#lead-form">{page.pricing_cta ?? page.cta_text}</a>
+  <a class="btn btn--coral pricing-card__cta" href={page.cta_href ?? "#lead-form"}>{page.pricing_cta ?? page.cta_text}</a>
 </div>
 
 <style>
