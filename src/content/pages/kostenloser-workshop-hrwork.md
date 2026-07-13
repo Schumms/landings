@@ -13,7 +13,6 @@ section_order:
   - problem
   - benefits
   - program
-  - about
   - process
   - faq
   - form
@@ -30,7 +29,7 @@ sections:
   benefits: true
   process: true
   testimonial: false
-  about: true
+  about: false
   content_preview: false
   location: false
   faq: true
@@ -104,15 +103,6 @@ program_items:
     title: "Identifikation zentraler Handlungsfelder und Entwicklung erster Ideen"
     description: "Am Ende steht ein klares Bild: Was sind eure drei wichtigsten Handlungsfelder? Welche ersten Maßnahmen haben den größten Hebel? Ihr nehmt konkrete Ideen mit, die direkt umsetzbar sind."
 
-about_heading: "Was ist HR@WORK?"
-about_intro: "Wir glauben: HR trägt heute mehr denn je Verantwortung für die Gestaltung moderner Arbeitswelten – und dazu gehören auch Räume."
-about_text: |
-  Der Workshop ist ein kompakter, strukturierter Review eurer HR-Strategie im Hinblick auf eure Arbeitsumgebung. Gemeinsam analysieren wir, wie eure Arbeitswelt gestaltet ist und welches Potenzial darin steckt.
-
-  Wir prüfen, wie Räume dazu beitragen können, Talente zu gewinnen und langfristig zu binden, wie eure Offices eure Unternehmenskultur widerspiegeln, und wie Themen wie „Back to Office“ sinnvoll und nachhaltig integriert werden können.
-
-  Dabei steht der Mensch immer im Mittelpunkt – wir beginnen mit dem Warum.
-
 process_heading: "So läuft der Workshop"
 process_intro: "Kompakt, strukturiert und mit klarem Ergebnis — in vier Schritten."
 process_steps:
@@ -146,6 +136,8 @@ faq:
     answer: "Nein. Wir bringen die Struktur mit. Hilfreich ist, wenn ihr vorab eure aktuellen Themen und offenen Fragen notiert — damit wir die Zeit im Workshop optimal nutzen können."
   - question: "Wie geht es nach dem Workshop weiter?"
     answer: "Ihr entscheidet selbst, ob und wie ihr die Ergebnisse umsetzt. Auf Wunsch begleiten wir euch weiter — aber es gibt keinerlei Verpflichtung."
+  - question: "Was unterscheidet HR@WORK von anderen HR-Workshops?"
+    answer: "Wir glauben: HR trägt heute mehr denn je Verantwortung für die Gestaltung moderner Arbeitswelten – und dazu gehören auch Räume. Unser Workshop ist deshalb kein klassisches HR-Training, sondern ein kompakter, strukturierter Review eurer HR-Strategie im Hinblick auf eure Arbeitsumgebung. Wir prüfen, wie Räume dazu beitragen können, Talente zu gewinnen und langfristig zu binden, wie eure Offices eure Unternehmenskultur widerspiegeln — und wie Themen wie „Back to Office“ sinnvoll integriert werden können. Dabei steht der Mensch immer im Mittelpunkt – wir beginnen mit dem Warum."
 
 form_title: "Kostenlosen Workshop-Termin anfragen"
 form_intro: |
