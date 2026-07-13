@@ -47,7 +47,7 @@ sections:
 
 nav_cta_text: "Termin anfragen"
 
-hero_variant: "fullbleed"
+hero_variant: "default"
 hero_size: "compact"
 
 hero_eyebrow: "Kostenloser Workshop"
