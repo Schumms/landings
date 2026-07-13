@@ -35,6 +35,10 @@ sections:
   secondary_cta: true
   footer: true
 
+sections_layout:
+  program:
+    split_image: true
+
 nav_cta_text: "Ticket sichern"
 
 hero_eyebrow: "HR Summit · 22. Oktober 2026 · Wiesbaden"
@@ -69,39 +73,30 @@ benefits:
   - headline: "Vernetzung auf Augenhöhe"
     description: "Austausch mit anderen Führungskräften, die dieselben Fragen haben — in Wiesbaden, persönlich. Inklusive der strategischen Frage, wie physische Räume und KI gemeinsam Begeisterung erzeugen und Talente binden."
 
-program_heading: "Programm · 9:00 – 17:00 Uhr"
+program_heading: "Agenda"
+program_intro: "9:00 – 17:00 Uhr · inkl. Catering, Kaffee & Networking"
 program_items:
-  - type: "Keynote"
+  - type: "09:30"
     title: "KI & Führung in der Praxis"
-    speaker: "David Hillmer"
-    role: "Gründer und Geschäftsführer · Hello Agile"
-    organization: "Hello Agile"
+    speaker: "David Hillmer · Hello Agile"
     description: "Wie gelingt Führung, wenn KI Aufgaben übernimmt? David Hillmer zeigt konkrete Use Cases aus der Arbeit mit agilen Teams und skizziert, welche Rollen Führungskräfte künftig brauchen, um den Wandel wirksam zu gestalten — ohne die Menschen aus dem Blick zu verlieren."
-  - type: "Keynote"
+  - type: "10:15"
     title: "Arbeitsplatz 2030"
-    speaker: "Simon Busshart"
-    role: "Gründer · Fluesta"
-    organization: "Fluesta"
-    organization_logo: "/pages/hr-summit-wiesbaden-oktober-2026/partners/nieohneki.png"
+    speaker: "Simon Busshart · Fluesta"
     description: "Was passiert, wenn KI echte Aufgaben übernimmt — und was bleibt dann für Menschen? Simon Busshart spricht über seine Erfahrungen beim Aufbau eines AI-nativen Unternehmens und darüber, was in 2–3 Jahren Normalität sein wird."
-  - type: "Breakout"
-    title: "Worldcafé: Dein Use Case, deine Fragen"
-    description: "In wechselnden Gruppen werden die Impulse aus den Keynotes in konkrete Fragen übersetzt: Wo kann KI heute bereits sinnvoll unterstützen — von Führung über HR-Prozesse bis zur Zusammenarbeit? Ziel: praxisnahe Ansätze für die eigene Organisation mitnehmen."
-  - type: "Keynote"
+  - type: "11:30"
     title: "KI im Alltag wirklich ankommen lassen"
-    speaker: "Jessica Turner"
-    role: "Unternehmerin · Investorin · Autorin"
-    organization: "Elevate to Success"
-    organization_logo: "/pages/hr-summit-wiesbaden-oktober-2026/partners/elevate.png"
+    speaker: "Jessica Turner · Elevate to Success"
     description: "Viele Diskussionen über KI bleiben auf Strategieebene. Jessica Turner zeigt, wie Assistenzsysteme Führung, Priorisierung und Entscheidungsprozesse praktisch unterstützen — mit dem virtuellen Product Owner als Sparringspartner im Tagesgeschäft."
-  - type: "Keynote"
+  - type: "12:15"
+    title: "Worldcafé: Dein Use Case, deine Fragen"
+    description: "In wechselnden Gruppen werden die Impulse aus den Keynotes in konkrete Fragen übersetzt: Wo kann KI heute bereits sinnvoll unterstützen — von Führung über HR-Prozesse bis zur Zusammenarbeit?"
+  - type: "14:30"
     title: "Raum, Mensch & KI"
-    speaker: "Susanne Busshart"
-    role: "Geschäftsführerin · Schumm & Rösch"
-    organization: "Schumm & Rösch"
+    speaker: "Susanne Busshart · Schumm & Rösch"
     description: "Wie physische Arbeitsräume und KI gemeinsam Begeisterung erzeugen — und warum du beide Dimensionen strategisch gestalten musst, um Talente zu gewinnen und zu halten. Susanne Busshart verbindet Raumkonzepte mit der Frage, wie moderne Arbeitswelten entstehen."
-  - type: "Panel"
-    title: "Arbeitsplatz 2030: Mensch, KI und Raum im Zusammenspiel"
+  - type: "15:15"
+    title: "Arbeitsplatz 2030 — Panel"
     speaker: "Susanne Busshart, David Hillmer, Jessica Turner, Simon Busshart"
     description: "Das Panel führt die zentralen Fragen des Tages zusammen: Wie verändert KI unsere Arbeit wirklich? Welche Chancen entstehen für Führung, HR und Zusammenarbeit — und welche Hürden müssen Unternehmen überwinden?"
 
