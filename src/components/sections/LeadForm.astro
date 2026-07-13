@@ -229,6 +229,45 @@ const messageMaxLength = page.form_message_max_length ?? 300;
     color: var(--color-white);
   }
 
+  /* Inputs und Placeholder in weiß, wenn body_color: white gesetzt ist.
+     AGBs-/Datenschutz-Checkbox-Text bleibt weiß. */
+  .section--body-white .form-field input,
+  .section--body-white .form-field select,
+  .section--body-white .form-field textarea {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+  }
+
+  .section--body-white .form-field input::placeholder,
+  .section--body-white .form-field select {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .section--body-white .form-field select option {
+    color: var(--color-black);
+  }
+
+  .section--body-white .form-field input:focus,
+  .section--body-white .form-field select:focus,
+  .section--body-white .form-field textarea:focus {
+    border-color: var(--color-white);
+    outline-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .section--body-white .lead-form__privacy,
+  .section--body-white .lead-form__privacy a,
+  .section--body-white .lead-form__note,
+  .section--body-white .lead-form__note a {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .section--body-white .lead-form__privacy input[type="checkbox"],
+  .section--body-white .lead-form__note input[type="checkbox"] {
+    border-color: rgba(255, 255, 255, 0.6);
+    accent-color: var(--color-coral);
+  }
+
   .section--body-muted .lead-form__hint,
   .section--body-muted .lead-form__benefits-heading,
   .section--body-muted .lead-form__benefits-list li {

@@ -134,8 +134,6 @@ faq:
     answer: "Ja. Die Prinzipien der Flächenoptimierung greifen ab wenigen hundert Quadratmetern genauso wie bei großen Flächen."
   - question: "Brauche ich Vorwissen?"
     answer: "Nein. Das Webinar ist verständlich für alle, die Verantwortung für Räume, Kosten oder Teams tragen."
-  - question: "Gibt es ein Teilnahmezertifikat?"
-    answer: "Auf Wunsch stellen wir dir danach eine Bestätigung aus."
 
 form_title: "Jetzt fürs Webinar anmelden"
 form_intro: |-
