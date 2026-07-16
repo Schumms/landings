@@ -1,15 +1,63 @@
 ---
 import { getCollection } from "astro:content";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/global/Nav.astro";
 import Footer from "@components/global/Footer.astro";
 import brand from "@data/brand";
 
+// ── Markdown-Pages aus Content Collection ──
 const allPages = await getCollection("pages");
 const sorted = allPages.sort((a, b) => a.data.title.localeCompare(b.data.title, "de"));
 
 const published = sorted.filter(p => p.data.published);
 const drafts = sorted.filter(p => !p.data.published);
+
+// ── Gebündelte HTML-Pages in public/[slug]/index.html ──
+// Manche Landingpages (z.B. HR@WORK) sind als self-contained Bundle direkt
+// unter public/ abgelegt — sie umgehen die Content Collection und werden
+// unverändert von Astro kopiert. Damit sie im Dashboard erscheinen, scannen
+// wir public/ zur Build-Zeit nach [slug]/index.html.
+const bundledPaths = Object.keys(import.meta.glob('/public/*/index.html'));
+
+const bundledPages = bundledPaths.map((p) => {
+  const slug = p.split('/')[2]; // /public/[slug]/index.html → [slug]
+
+  // Versuche, einen sauberen Titel aus dem <title>-Tag der HTML zu extrahieren.
+  // Schema: "<title>HR-Workshop ... · Schumm & Rösch</title>" → "HR-Workshop ..."
+  let title = slug
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+  try {
+    const html = readFileSync(join(process.cwd(), 'public', slug, 'index.html'), 'utf-8');
+    const m = html.match(/<title>([^<]+)<\/title>/);
+    if (m) {
+      const raw = m[1].trim();
+      // Brand-Suffix entfernen: alles ab " · Schumm" / " — Schumm" / " - Schumm"
+      title = raw.replace(/\s*[·|—–-]\s*Schumm.*$/i, '').trim() || title;
+    }
+  } catch {
+    // Fallback: Slug als Title
+  }
+  return { slug, title, isBundle: true };
+});
+
+// Duplikate raus: gebündelte Pages, für die es bereits eine veröffentlichte
+// Markdown-Page gibt, werden nicht doppelt gelistet.
+const markdownSlugs = new Set(published.map((p) => p.data.slug));
+const filteredBundled = bundledPages.filter((b) => !markdownSlugs.has(b.slug));
+
+// ── Vereinheitlichte Published-Liste ──
+const allPublished = [
+  ...published.map((p) => ({
+    slug: p.data.slug,
+    title: p.data.title,
+    isBundle: false,
+  })),
+  ...filteredBundled,
+].sort((a, b) => a.title.localeCompare(b.title, 'de'));
 ---
 
 <BaseLayout
@@ -27,16 +75,16 @@ const drafts = sorted.filter(p => !p.data.published);
         Entwürfe sind mit einem Badge markiert.
       </p>
 
-      {published.length > 0 && (
+      {allPublished.length > 0 && (
         <>
           <h2 class="index__section-title">Veröffentlicht</h2>
           <ul class="index__list divider-list" role="list">
             {
-              published.map((entry) => (
+              allPublished.map((entry) => (
                 <li class="divider-list__item index__item">
                   <div>
-                    <a class="index__link" href={`/${entry.data.slug}/`}>
-                      {entry.data.title}
+                    <a class="index__link" href={`/${entry.slug}/`}>
+                      {entry.title}
                     </a>
                   </div>
                   <span class="index__badge index__badge--live">Live</span>
