@@ -105,7 +105,10 @@ if (!page.speakers?.length) {
     font-size: var(--text-base);
     line-height: 1.6;
     color: var(--color-text-muted);
-    max-width: none;
+    /* ~8 Wörter pro Zeile bei normalem deutschsprachigem Text + Inter.
+       Wirkt auf 1-Speaker-Pages (volle Halb-Spalte oder Mobile), engt die
+       Lesebreite auf mehreren Cards nicht weiter ein. */
+    max-width: 32rem;
   }
 
   .speakers__name {

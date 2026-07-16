@@ -67,6 +67,13 @@ sections:
   newsletter_signup: true
   footer: true
 
+# Brandkit-Showcase bleibt auf neutraler Optik — Card-Hintergrund explizit
+# weiß, damit die Demo-Cards nicht das Akzent-Auto-Mapping der ServiceOverview
+# auslösen.
+sections_layout:
+  service_overview:
+    card_background: "#FFFFFF"
+
 # ── Navigation ───────────────────────────────────────────────────
 nav_cta_text: "Zur Form-Section"
 

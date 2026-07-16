@@ -4,7 +4,6 @@ published: false
 
 title: "HR Summit Wiesbaden — Die Zukunft arbeitet anders"
 description: "HR Summit Wiesbaden 22.10.2026: Wie KI Kultur, Rollen & Führung verändert. 4 Speaker, 49 € Early Bird."
-
 section_order:
   - hero
   - problem
@@ -12,26 +11,33 @@ section_order:
   - program
   - speakers
   - location
-  - form
+  - faq
+  - secondary_cta
+  - social_proof_bar
+
 sections:
   nav: true
   hero: true
   problem: true
-  pricing: false
+  pricing: true
   benefits: true
   program: true
   speakers: true
   location: true
-  form: true
-  social_proof_bar: false
+  faq: true
+  form: false
+  social_proof_bar: true
   transformation: false
   process: false
   testimonial: false
   about: false
   content_preview: false
-  faq: false
-  secondary_cta: false
+  secondary_cta: true
   footer: true
+
+sections_layout:
+  program:
+    split_image: true
 
 nav_cta_text: "Ticket sichern"
 
@@ -67,39 +73,30 @@ benefits:
   - headline: "Vernetzung auf Augenhöhe"
     description: "Austausch mit anderen Führungskräften, die dieselben Fragen haben — in Wiesbaden, persönlich. Inklusive der strategischen Frage, wie physische Räume und KI gemeinsam Begeisterung erzeugen und Talente binden."
 
-program_heading: "Programm · 9:00 – 17:00 Uhr"
+program_heading: "Agenda"
+program_intro: "9:00 – 17:00 Uhr · inkl. Catering, Kaffee & Networking"
 program_items:
-  - type: "Keynote"
+  - type: "09:30"
     title: "KI & Führung in der Praxis"
-    speaker: "David Hillmer"
-    role: "Gründer und Geschäftsführer · Hello Agile"
-    organization: "Hello Agile"
+    speaker: "David Hillmer · Hello Agile"
     description: "Wie gelingt Führung, wenn KI Aufgaben übernimmt? David Hillmer zeigt konkrete Use Cases aus der Arbeit mit agilen Teams und skizziert, welche Rollen Führungskräfte künftig brauchen, um den Wandel wirksam zu gestalten — ohne die Menschen aus dem Blick zu verlieren."
-  - type: "Keynote"
+  - type: "10:15"
     title: "Arbeitsplatz 2030"
-    speaker: "Simon Busshart"
-    role: "Gründer · Fluesta"
-    organization: "Fluesta"
-    organization_logo: "/pages/hr-summit-wiesbaden-oktober-2026/partners/nieohneki.png"
+    speaker: "Simon Busshart · Fluesta"
     description: "Was passiert, wenn KI echte Aufgaben übernimmt — und was bleibt dann für Menschen? Simon Busshart spricht über seine Erfahrungen beim Aufbau eines AI-nativen Unternehmens und darüber, was in 2–3 Jahren Normalität sein wird."
-  - type: "Breakout"
-    title: "Worldcafé: Dein Use Case, deine Fragen"
-    description: "In wechselnden Gruppen werden die Impulse aus den Keynotes in konkrete Fragen übersetzt: Wo kann KI heute bereits sinnvoll unterstützen — von Führung über HR-Prozesse bis zur Zusammenarbeit? Ziel: praxisnahe Ansätze für die eigene Organisation mitnehmen."
-  - type: "Keynote"
+  - type: "11:30"
     title: "KI im Alltag wirklich ankommen lassen"
-    speaker: "Jessica Turner"
-    role: "Unternehmerin · Investorin · Autorin"
-    organization: "Elevate to Success"
-    organization_logo: "/pages/hr-summit-wiesbaden-oktober-2026/partners/elevate.png"
+    speaker: "Jessica Turner · Elevate to Success"
     description: "Viele Diskussionen über KI bleiben auf Strategieebene. Jessica Turner zeigt, wie Assistenzsysteme Führung, Priorisierung und Entscheidungsprozesse praktisch unterstützen — mit dem virtuellen Product Owner als Sparringspartner im Tagesgeschäft."
-  - type: "Keynote"
+  - type: "12:15"
+    title: "Worldcafé: Dein Use Case, deine Fragen"
+    description: "In wechselnden Gruppen werden die Impulse aus den Keynotes in konkrete Fragen übersetzt: Wo kann KI heute bereits sinnvoll unterstützen — von Führung über HR-Prozesse bis zur Zusammenarbeit?"
+  - type: "14:30"
     title: "Raum, Mensch & KI"
-    speaker: "Susanne Busshart"
-    role: "Geschäftsführerin · Schumm & Rösch"
-    organization: "Schumm & Rösch"
+    speaker: "Susanne Busshart · Schumm & Rösch"
     description: "Wie physische Arbeitsräume und KI gemeinsam Begeisterung erzeugen — und warum du beide Dimensionen strategisch gestalten musst, um Talente zu gewinnen und zu halten. Susanne Busshart verbindet Raumkonzepte mit der Frage, wie moderne Arbeitswelten entstehen."
-  - type: "Panel"
-    title: "Arbeitsplatz 2030: Mensch, KI und Raum im Zusammenspiel"
+  - type: "15:15"
+    title: "Arbeitsplatz 2030 — Panel"
     speaker: "Susanne Busshart, David Hillmer, Jessica Turner, Simon Busshart"
     description: "Das Panel führt die zentralen Fragen des Tages zusammen: Wie verändert KI unsere Arbeit wirklich? Welche Chancen entstehen für Führung, HR und Zusammenarbeit — und welche Hürden müssen Unternehmen überwinden?"
 
@@ -136,11 +133,37 @@ location_email: "info@schumms.com"
 location_image: "/pages/hr-summit-wiesbaden-oktober-2026/location.jpg"
 location_image_alt: "Eventfläche Schumm & Rösch — Wiesbaden"
 
-form_title: "Sichere dir dein Ticket!"
-form_intro: "Early-Bird-Sonderpreis: jetzt 49 € statt später 89 € — inklusive Catering, Kaffee und Networking."
-form_cta: "Ticket sichern (49 € Early Bird)"
-form_webhook: "https://n8n.schumms.com/webhook/DEIN-WEBHOOK"
-form_success_message: "Danke! Deine Anmeldung ist eingegangen — du erhältst in Kürze eine Bestätigung per E-Mail."
+pricing_eyebrow: "Early-Bird-Sonderpreis"
+pricing_label: "Jetzt für nur"
+pricing_amount: "49"
+pricing_currency: "€"
+pricing_text: "inklusive Catering, Kaffee und Networking. Begrenzte Anzahl an Plätzen."
+pricing_cta: "Ticket sichern"
+
+faq_heading: "Gut zu wissen"
+faq_intro: "Die häufigsten Fragen rund um Anfahrt, Übernachtung und Organisation — kurz beantwortet."
+faq:
+  - question: "Wie komme ich zum Schumm & Rösch Eventspace?"
+    answer: "Mit dem PKW: Parkplätze stehen direkt vor Ort (Borsigstraße 20, 65205 Wiesbaden) zur Verfügung. Mit der Bahn: Ab Wiesbaden Hauptbahnhof sind es ca. 10 Minuten mit Taxi oder Uber. Aus Frankfurt: Die S-Bahn braucht etwa 30 Minuten bis Wiesbaden HBF."
+  - question: "Wo kann ich übernachten?"
+    answer: "In unmittelbarer Nähe gibt es vier Hotels für unterschiedliche Ansprüche: Radisson Blu Schwarzer Bock (klassisches Businesshotel, zentral), Hotel am Landeshaus (ruhig, gut für Overnight-Gäste), Marriott Wiesbaden (gehobener Standard, beliebt bei Businessreisenden) und Motel One Wiesbaden (günstig, modern, zentral)."
+  - question: "Ist das Event auch für Führungskräfte ohne HR-Hintergrund geeignet?"
+    answer: "Ja. KI, Kultur und Führung betrifft jeden Bereich — wir hatten bereits Teilnehmer:innen aus Produktentwicklung, IT, Operations und Geschäftsführung. Die Inhalte sind bewusst fachübergreifend formuliert."
+  - question: "Was, wenn ich allein komme?"
+    answer: "Du bist in bester Gesellschaft — die meisten Teilnehmer:innen kommen allein. Das Worldcafé am Mittag und die Networking-Pausen sind explizit für den persönlichen Austausch auf Augenhöhe da."
+  - question: "Gibt es Gruppenrabatte?"
+    answer: "Ja, ab drei Teilnehmer:innen aus dem gleichen Unternehmen. Schreib uns einfach an info@schumms.com — wir machen dir ein passendes Angebot."
+
+secondary_cta_heading: "Bereit, die Zukunft der Arbeit mitzugestalten?"
+secondary_cta_text: "Sichere dir jetzt dein Ticket für den HR Summit Wiesbaden — Early-Bird nur 49 €, inklusive Catering und Networking."
+secondary_cta_button: "Ticket sichern"
+secondary_cta_href: "https://payments-eu1.hubspot.com/payments/purchase/hscs_eu1_wzendQPCwOjPCsnpwvGHufNBeGIeRV5AlVpbvw0cYTHx4dkSO5lQE8puRCL2KIwO?referrer=PAYMENT_LINK"
+
+# Pflichtfelder im Schema — Form-Section ist deaktiviert, Werte werden nicht gerendert
+form_title: "Ticket sichern"
+form_cta: "Ticket sichern"
+
+cta_href: "https://payments-eu1.hubspot.com/payments/purchase/hscs_eu1_wzendQPCwOjPCsnpwvGHufNBeGIeRV5AlVpbvw0cYTHx4dkSO5lQE8puRCL2KIwO?referrer=PAYMENT_LINK"
 
 social_proof_text: "Unsere Partner"
 social_proof_logos_monochrome: false

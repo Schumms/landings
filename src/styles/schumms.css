@@ -11,12 +11,16 @@
   --color-muted: #525252;
   --color-line: #000000;
 
-  /* Akzent — Newsletter / Lead-Sections (Services-Page) */
+  /* Primary brand accent. Default: coral. Per-page override via data-accent
+     attribute on <html> — set "turquoise" or "violet" to swap. */
   --color-coral: #fd7857;
   --color-coral-dark: #e5623e;
 
-  /* Optional: Subpage-Header (Team etc.) */
+  /* Alternative accent palette (set via :root[data-accent="…"]) */
+  --color-turquoise: #01DBA2;
+  --color-turquoise-dark: #01B386;
   --color-violet: #827afe;
+  --color-violet-dark: #5C5BD9;
 
   /* Semantic */
   --color-text: var(--color-black);
@@ -25,11 +29,27 @@
   --color-background: var(--color-white);
   --color-accent-section: var(--color-coral);
   --color-border: #e2e2e2;
+}
 
+:root[data-accent="turquoise"] {
+  --color-coral: var(--color-turquoise);
+  --color-coral-dark: var(--color-turquoise-dark);
+}
+
+:root[data-accent="violet"] {
+  --color-coral: var(--color-violet);
+  --color-coral-dark: var(--color-violet-dark);
+}
+
+:root {
   /* Typography — Inter wie schumms.com */
   --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-display);
+
+  /* Buenos Aires — Display-Font für besondere Textblöcke (z.B. references__quote).
+     Font-Files müssen unter /public/fonts/ liegen. Fallback: Inter. */
+  --font-buenos-aires: "BuenosAires", "Inter", sans-serif;
 
   --text-hero: clamp(2.75rem, 2rem + 3.5vw, 5.5rem);
   --text-2xl: clamp(2rem, 1.5rem + 2vw, 3.75rem);

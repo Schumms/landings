@@ -45,7 +45,7 @@ const heading = page.benefits_heading ?? "Deine Vorteile";
           ))
         }
       </ol>
-      <a class="btn btn--block benefits__cta" href="#lead-form">{page.cta_text}</a>
+      <a class="btn btn--block benefits__cta" href={page.cta_href ?? "#lead-form"}>{page.cta_text}</a>
     </div>
   </div>
 </section>

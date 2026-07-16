@@ -21,7 +21,9 @@ const processStep = z.object({
 
 const metricItem = z.object({
   value: z.string(),
-  label: z.string(),
+  // Label optional — bei inline-Layouts (z.B. Datum/Uhrzeit) kann es
+  // weggelassen werden, wenn die ganze Info bereits im value steht.
+  label: z.string().optional(),
 });
 
 const logoItem = z.object({
@@ -62,9 +64,47 @@ const sectionLayoutSchema = z
     align: z.enum(["left", "center"]).optional(),
     width: z.enum(["narrow", "normal", "wide", "full"]).optional(),
     background: z
-      .enum(["default", "muted", "dark", "accent"])
+      .union([
+        z.enum(["default", "muted", "dark", "accent"]),
+        // Custom Hex-Farbe für Sections, die einen Brand-Spezialfall brauchen
+        // (z.B. Form-Section auf einem dunklen Brand-Ton wie #522633).
+        z.string().regex(/^#[0-9a-fA-F]{6}$/),
+      ])
       .optional(),
     text_align: z.enum(["left", "center"]).optional(),
+    // Section-spezifischer Compact-Modus. Wird von Components erkannt, die ihn
+    // unterstützen (z.B. Program — kleinere Schrift, weniger Padding).
+    compact: z.boolean().optional(),
+    // Meta-Block (z.B. Zeit-Badge, Org-Logo) ausblenden. Wirkt nur auf Sections,
+    // die Meta rendern (z.B. Program).
+    hide_meta: z.boolean().optional(),
+    // Two-Column-Layout: Titel links, Beschreibung rechts. Wirkt nur auf
+    // Sections, die es unterstützen (z.B. Program).
+    two_column: z.boolean().optional(),
+    // Split-Image-Layout: Text links (40%), großes Bild rechts (60%).
+    // Wirkt nur auf Sections, die es unterstützen (z.B. Program).
+    split_image: z.boolean().optional(),
+    // Hex-Farbe für Card-Hintergründe (z.B. service-overview-Cards).
+    // Wird nur von Sections interpretiert, die es unterstützen.
+    card_background: z
+      .string()
+      .regex(/^#[0-9a-fA-F]{6}$/)
+      .optional(),
+    // Hero: Layout-Modus für Trust-Metrics.
+    // "stacked" (default): Bold-Value oben, Label darunter (für Zahlen).
+    // "inline": kompakte Pills in einer Zeile (für Datum/Uhrzeit/Ort etc.).
+    metrics_layout: z.enum(["stacked", "inline"]).optional(),
+    // Section-spezifische Wertfarbe für Zahlen/Headlines.
+    // "accent" folgt der Page-Akzentfarbe (z.B. lila Zahlen bei violet-Akzent).
+    // "black" (default) bleibt klassisch schwarz.
+    value_color: z.enum(["accent", "black"]).optional(),
+    // Section-spezifische Title-Farbe (z.B. Hero-Headline, Section-H2).
+    // "accent" → Page-Akzentfarbe, "white" → für Dark-Backgrounds.
+    title_color: z.enum(["accent", "white", "black"]).optional(),
+    // Section-spezifische Body-Text-Farbe (für Intro/Description auf
+    // farbigen Backgrounds). Default ist Brand-Standard (schwarz auf hell,
+    // weiß auf dark).
+    body_color: z.enum(["white", "black", "muted"]).optional(),
   })
   .optional();
 
@@ -80,6 +120,8 @@ const landingSchema = z.object({
   sections_layout: sectionsLayoutSchema,
 
   nav_cta_text: z.string().optional(),
+  nav_cta_href: z.string().url().optional(),
+  cta_href: z.string().url().optional(),
 
   hero_eyebrow: z.string().optional(),
   hero_title: z.string().max(80),
@@ -91,6 +133,9 @@ const landingSchema = z.object({
   // "compact" reduziert min-height und Padding für kompaktere Hero-Bereiche.
   hero_size: z.enum(["default", "compact"]).optional(),
   cta_text: z.string(),
+  cta_href: z.string().url().optional(),
+  // Per-Page-Akzentfarbe. Default "coral" wenn nicht gesetzt.
+  accent_color: z.enum(["coral", "turquoise", "violet"]).optional(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 
   social_proof_text: z.string().optional(),
@@ -100,6 +145,10 @@ const landingSchema = z.object({
 
   problem_heading: z.string().optional(),
   problem_intro: z.string().optional(),
+  // Optionales Bild neben dem Intro-Text (16:9). Wenn gesetzt, wird die
+  // Section zum zweispaltigen Layout (Text links, Bild rechts).
+  problem_image: z.string().optional(),
+  problem_image_alt: z.string().optional(),
   problem_points: z.array(z.string()).min(1).max(3).optional(),
 
   pricing_eyebrow: z.string().optional(),
@@ -135,6 +184,7 @@ const landingSchema = z.object({
   benefits: z.array(benefitItem).min(3).max(5).optional(),
 
   process_heading: z.string().optional(),
+  process_heading_accent: z.string().optional(),
   process_steps: z.array(processStep).min(3).max(8).optional(),
 
   testimonial_heading: z.string().optional(),
@@ -194,7 +244,13 @@ const landingSchema = z.object({
         image_alt: z.string().optional(),
         icon: z.string().optional(),
         cta_text: z.string().optional(),
-        cta_href: z.string().optional(),
+        cta_href: z.string().url().optional(),
+        // Per-Item Card-Hintergrund. Überschreibt Sections-Layout und
+        // Akzent-Mapping. Hex-Wert (z.B. "#E3F1FE").
+        card_background: z
+          .string()
+          .regex(/^#[0-9a-fA-F]{6}$/)
+          .optional(),
       }),
     )
     .min(3)

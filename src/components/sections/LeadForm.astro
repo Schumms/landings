@@ -10,15 +10,33 @@ interface Props {
 
 const { page, layout } = Astro.props;
 
+// Wenn background ein Hex-String ist (custom Brand-Ton), setze die Farbe als
+// CSS-Variable. Title/Body-Farbe kommen aus title_color / body_color.
+const bgIsHex =
+  typeof layout?.background === "string" &&
+  layout.background.startsWith("#");
+const sectionStyle = bgIsHex
+  ? `--section-bg-color:${layout!.background};`
+  : undefined;
+
 const sectionClasses = [
   "form",
   "section",
-  "section--coral",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
-  layout?.background && `section--bg-${layout.background}`,
+  layout?.background &&
+    !bgIsHex &&
+    `section--bg-${layout.background}`,
   layout?.text_align && `section--text-align-${layout.text_align}`,
+  bgIsHex && "section--bg-custom",
+  layout?.title_color && `section--title-${layout.title_color}`,
+  layout?.body_color && `section--body-${layout.body_color}`,
 ].filter(Boolean);
+
+// data-attribute für Form-spezifische Hooks (Form behält seine eigenen Klassen,
+// kann aber via CSS-Variablen überschrieben werden).
+const sectionDataAttrs: Record<string, string> = {};
+if (bgIsHex) sectionDataAttrs["data-section-bg"] = "custom";
 
 const hasHubSpot = !!page.hubspot_portal_id && !!page.hubspot_form_id;
 const hasWebhook = !!page.form_webhook;
@@ -49,7 +67,7 @@ const messageLabel = page.form_message_label ?? "Dein Anlass";
 const messageMaxLength = page.form_message_max_length ?? 300;
 ---
 
-<section class:list={sectionClasses} id="lead-form" aria-labelledby="form-heading">
+<section class:list={sectionClasses} id="lead-form" aria-labelledby="form-heading" style={sectionStyle} {...sectionDataAttrs}>
   <div class="container split">
     <div class="lead-form__intro">
       <h2 id="form-heading">{page.form_title}</h2>
@@ -184,6 +202,99 @@ const messageMaxLength = page.form_message_max_length ?? 300;
 </section>
 
 <style>
+  /* Section-Layout-Hooks: Custom Background, Title-Color, Body-Color.
+     Aktiviert per sections_layout.<section>.{background,title_color,body_color}. */
+  .section--bg-custom {
+    background-color: var(--section-bg-color, var(--color-black));
+  }
+
+  .section--title-accent h2,
+  .section--title-accent .form-heading {
+    color: var(--color-coral);
+  }
+
+  .section--title-white h2,
+  .section--title-white .form-heading {
+    color: var(--color-white);
+  }
+
+  .section--title-black h2,
+  .section--title-black .form-heading {
+    color: var(--color-black);
+  }
+
+  .section--body-white .lead-form__hint,
+  .section--body-white .lead-form__benefits-heading,
+  .section--body-white .lead-form__benefits-list li {
+    color: var(--color-white);
+  }
+
+  /* Inputs und Placeholder in weiß, wenn body_color: white gesetzt ist.
+     AGBs-/Datenschutz-Checkbox-Text bleibt weiß. */
+  .section--body-white .form-field input,
+  .section--body-white .form-field select,
+  .section--body-white .form-field textarea {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+  }
+
+  .section--body-white .form-field input::placeholder,
+  .section--body-white .form-field select {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .section--body-white .form-field select option {
+    color: var(--color-black);
+  }
+
+  .section--body-white .form-field input:focus,
+  .section--body-white .form-field select:focus,
+  .section--body-white .form-field textarea:focus {
+    border-color: var(--color-white);
+    outline-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .section--body-white .lead-form__privacy,
+  .section--body-white .lead-form__privacy a,
+  .section--body-white .lead-form__note,
+  .section--body-white .lead-form__note a {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .section--body-white .lead-form__privacy input[type="checkbox"],
+  .section--body-white .lead-form__note input[type="checkbox"] {
+    border-color: rgba(255, 255, 255, 0.6);
+    accent-color: var(--color-coral);
+  }
+
+  /* Submit-Button auf weißem BG mit Burgundy-Text, wenn body_color: white
+     gesetzt ist. Wirkt auf Forms auf dunklem Brand-Hintergrund (z.B.
+     less-is-more: Form auf #522633). */
+  .section--body-white .lead-form__submit {
+    background: var(--color-white);
+    border-color: var(--color-white);
+    color: #522633;
+  }
+
+  .section--body-white .lead-form__submit:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #522633;
+  }
+
+  .section--body-muted .lead-form__hint,
+  .section--body-muted .lead-form__benefits-heading,
+  .section--body-muted .lead-form__benefits-list li {
+    color: var(--color-text-muted);
+  }
+
+  .section--body-black .lead-form__hint,
+  .section--body-black .lead-form__benefits-heading,
+  .section--body-black .lead-form__benefits-list li {
+    color: var(--color-black);
+  }
+
   .lead-form__hint {
     margin-top: 1rem;
     font-size: var(--text-lg);

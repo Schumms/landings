@@ -248,9 +248,15 @@ a {
 
 @media (min-width: 768px) {
   .split--intro-pricing {
-    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 22rem);
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
     gap: clamp(2rem, 4vw, 3.5rem);
     align-items: start;
+  }
+}
+
+@media (min-width: 1100px) {
+  .split--intro-pricing {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 32rem);
   }
 }
 

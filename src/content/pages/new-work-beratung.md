@@ -9,8 +9,7 @@ description: "New Work Konzepte und moderne Bürowelten für Unternehmen ab 25 M
 # Sichtbarkeit + Reihenfolge — orientiert am Mockup
 section_order:
   - hero
-  - secondary_cta
-  - problem
+  - service_overview
   - process
   - references
   - transformation
@@ -22,7 +21,7 @@ sections:
   nav: true
   hero: true
   social_proof_bar: false
-  problem: true
+  problem: false
   process: true
   transformation: true
   testimonial: false
@@ -30,7 +29,7 @@ sections:
   about: true
   form: true
   contact_form: true
-  secondary_cta: true
+  secondary_cta: false
   footer: true
   pricing: false
   program: false
@@ -39,23 +38,37 @@ sections:
   content_preview: false
   benefits: false
   faq: false
+  service_overview: true
 
 nav_cta_text: "Check starten"
 
 # ── SEKTION 1 — HERO ─────────────────────────────────────────────
-hero_eyebrow: "New Work Beratung · Strategisch · Ganzheitlich"
 hero_title: "Dein Büro sieht aus wie 2018. Deine Mitarbeitenden arbeiten wie 2025."
-hero_subtitle: "Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht. Wir entwickeln Konzepte, die nicht nur gut aussehen, sondern wirklich funktionieren."
+hero_subtitle: |-
+  Hybrides Arbeiten, Desk Sharing, New Work – das sind keine Trends mehr. Das ist der Alltag deiner Leute. Höchste Zeit, dass dein Büro mitzieht.
+
+  Wir entwickeln Konzepte, die nicht nur gut aussehen, sondern wirklich funktionieren.
 hero_image: "/pages/arbeitsplatz-fitness-check/hero.jpg"
 hero_image_alt: "Modernes Büro mit Zonen für Fokus, Kollaboration und Rückzug"
 cta_text: "Mach den New Work Check – 2 Minuten, klares Ergebnis"
-hero_trust_metrics:
-  - value: "2 Min"
-    label: "Ausfüllzeit"
-  - value: "Kostenlos"
-    label: "Erstgespräch"
-  - value: "25+ MA"
-    label: "Unternehmensgröße"
+cta_href: "https://newwork-check.schumms.com"
+hero_size: "compact"
+accent_color: "turquoise"
+
+# ── SEKTION 2 — 3-Card Pain-Points (Service Overview grid) ─────────
+service_overview_layout: "grid"
+service_overview_heading: "Kommt euch das bekannt vor?"
+service_overview_intro: "Fast jedes Unternehmen, mit dem wir sprechen, kämpft gerade mit denselben drei Dingen. Nicht, weil sie schlechte Arbeit leisten. Sondern weil sich die Arbeitswelt schneller verändert hat als die Büros, in denen sie stattfindet."
+service_overview:
+  - title: "Teure Fläche, die kaum jemand nutzt."
+    description: "Ihr zahlt Miete für Flächen, die täglich halb leer stehen. Der Präsenzanteil ist gesunken, die Quadratmeterkosten sind geblieben. Und niemand weiß wirklich, wie die Leute den Raum eigentlich nutzen."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/decline.svg"
+  - title: "Hybrid klappt auf dem Papier, nicht im Raum."
+    description: "Homeoffice ist fix. Teamtage auch. Aber im Büro gibt's weder genug Fokuszonen noch gute Kollaborationsbereiche. Jeder sucht sich irgendwie einen Platz – und der Raum unterstützt die Zusammenarbeit kaum."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/building.svg"
+  - title: "Das Büro verliert den Wettbewerb um Talente."
+    description: "Neue Mitarbeitende kommen am ersten Tag und sind enttäuscht. Bestehende fragen sich, warum sie überhaupt ins Büro fahren sollen. Und Bewerbungen kommen seltener, weil das Arbeitsumfeld keine Wirkung entfaltet."
+    icon: "/pages/webinar-neuroinklusive-arbeitswelten/icons/people.svg"
 
 # ── SEKTION 1b — Sekundärer CTA (Erstgespräch) ───────────────────
 secondary_cta_heading: "Lieber direkt mit uns reden?"
@@ -72,7 +85,8 @@ problem_points:
   - "**Das Büro verliert den Wettbewerb um Talente.** Neue Mitarbeitende kommen am ersten Tag und sind enttäuscht. Bestehende fragen sich, warum sie überhaupt ins Büro fahren sollen. Und Bewerbungen kommen seltener, weil das Arbeitsumfeld keine Wirkung entfaltet."
 
 # ── SEKTION 3 — PROZESS (Lösung) ─────────────────────────────────
-process_heading: "Von der Analyse bis zum fertigen Büro. Alles aus einer Hand."
+process_heading: "Von der Analyse bis zum fertigen Büro."
+process_heading_accent: "Alles aus einer Hand."
 process_intro: "Die meisten Unternehmen, die mit uns sprechen, haben vorher schon mit Einrichtern, Planern oder Beratern gearbeitet – aber nie mit jemandem, der den ganzen Weg mitgeht. Genau das ist unser Ansatz."
 process_steps:
   - title: "Beratung & Analyse"

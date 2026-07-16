@@ -10,12 +10,19 @@ const { page, layout } = Astro.props;
 
 const heroVariant = page.hero_variant ?? "default";
 const isFullbleed = heroVariant === "fullbleed";
-const isCompact = isFullbleed && page.hero_size === "compact";
+// "compact" wirkt in beiden Varianten:
+// - fullbleed: reduziert min-height und Padding (Original-Verhalten)
+// - default: skaliert die Headline auf 70% für leisere Hero-Optik
+const isCompact = page.hero_size === "compact";
+// Trust-Metrics Layout: "stacked" (default, Bold-Value + Label)
+// oder "inline" (kompakte Pills in einer Zeile für Datum/Uhrzeit/Ort).
+const isInlineMetrics = layout?.metrics_layout === "inline";
 
 const sectionClasses = [
   "hero",
   isFullbleed && "hero--fullbleed",
   isCompact && "hero--compact",
+  isInlineMetrics && "hero--metrics-inline",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
@@ -39,19 +46,29 @@ const sectionClasses = [
       {page.hero_eyebrow && <p class="hero__eyebrow">{page.hero_eyebrow}</p>}
       <h1 id="hero-heading">{page.hero_title}</h1>
       <p class="hero__subtitle">{page.hero_subtitle}</p>
-      <a class="btn btn--coral hero__cta" href="#lead-form">{page.cta_text}</a>
+      <a class="btn btn--coral hero__cta" href={page.cta_href ?? "#lead-form"}>{page.cta_text}</a>
 
       {
         page.hero_trust_metrics?.length && (
           <div class="hero__trust" aria-label="Vertrauenssignale">
-            <ul class="hero__metrics" role="list">
-              {page.hero_trust_metrics.map((metric) => (
-                <li>
-                  <span class="hero__metric-value">{metric.value}</span>
-                  <span class="hero__metric-label">{metric.label}</span>
-                </li>
-              ))}
-            </ul>
+            {isInlineMetrics ? (
+              <ul class="hero__metrics hero__metrics--inline" role="list">
+                {page.hero_trust_metrics.map((metric) => (
+                  <li class="hero__metric-inline">
+                    <span>{metric.value}{metric.label ? ` · ${metric.label}` : ""}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul class="hero__metrics" role="list">
+                {page.hero_trust_metrics.map((metric) => (
+                  <li>
+                    <span class="hero__metric-value">{metric.value}</span>
+                    <span class="hero__metric-label">{metric.label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )
       }
@@ -114,6 +131,26 @@ const sectionClasses = [
     line-height: 1.6;
     color: var(--color-text-muted);
     max-width: 44ch;
+    white-space: pre-line;
+  }
+
+  /* "compact" im default-Hero (Split-Layout): Headline auf 70% skalieren
+     für leisere Optik. Wirkt NICHT in fullbleed-Variante (die hat eigenes Styling). */
+  .hero:not(.hero--fullbleed).hero--compact .hero__copy h1 {
+    font-size: clamp(1.925rem, 1.4rem + 2.45vw, 3.85rem);
+    max-width: 20ch;
+    /* Negativer margin-top kompensiert Line-Height-Ascender, damit die
+       sichtbare Text-Oberkante exakt auf Höhe der Bildoberkante sitzt. */
+    margin-top: -0.12em;
+  }
+
+  /* compact-Hero: Text oben bündig mit Bild (default ist vertikal zentriert) */
+  .hero:not(.hero--fullbleed).hero--compact .hero__grid {
+    align-items: start;
+  }
+
+  .hero:not(.hero--fullbleed).hero--compact .hero__cta {
+    margin-top: 1.5rem;
   }
 
   .hero__cta {
@@ -152,11 +189,68 @@ const sectionClasses = [
     color: var(--color-text-muted);
   }
 
+  /* Compact-Mode: auch die Trust-Metrics auf 80% skalieren, damit der
+     Hero-Bereich insgesamt leiser wirkt. Gilt für stacked UND fullbleed. */
+  .hero--compact .hero__metric-value {
+    font-size: calc(var(--text-2xl) * 0.8);
+  }
+
+  .hero--compact .hero__metric-label {
+    font-size: calc(var(--text-xs) * 0.8);
+  }
+
+  .hero--compact.hero--fullbleed .hero__metric-value,
+  .hero--compact.hero--fullbleed .hero__metric-label {
+    font-size: calc(var(--text-base) * 0.8);
+  }
+
+  /* Inline-Variante: kompakte Pills in einer Zeile, 20% kleinere Schrift.
+     Aktiviert per sections_layout.hero.metrics_layout: "inline". */
+  .hero__metrics--inline {
+    flex-wrap: nowrap;
+    gap: 0;
+    align-items: center;
+  }
+
+  .hero__metrics--inline li {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Trenner-Punkt zwischen Items (alle außer dem letzten) */
+  .hero__metrics--inline li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.6rem;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .hero__metric-inline {
+    font-size: calc(var(--text-sm) * 0.8); /* 20% kleiner als text-sm */
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
   .hero__visual img,
   .hero__visual-fallback {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
+  }
+
+  /* Compact-Modus: Bild passt sich an die Höhe des linken Content-Blocks
+     an (Eyebrow → Subtitle → CTA → Trust-Metrics). So endet das Bild
+     bündig mit den Metrics, statt sehr viel höher zu sein. */
+  .hero--compact:not(.hero--fullbleed) .hero__visual {
+    align-self: stretch;
+    display: flex;
+  }
+
+  .hero--compact:not(.hero--fullbleed) .hero__visual img,
+  .hero--compact:not(.hero--fullbleed) .hero__visual-fallback {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
   }
 
   .hero__visual-fallback {
@@ -229,7 +323,6 @@ const sectionClasses = [
     color: rgba(255, 255, 255, 0.92);
     max-width: 52ch;
     margin-inline: auto;
-    font-size: calc(var(--text-lg) * 1.3);
   }
 
   .hero--fullbleed .hero__trust {
@@ -239,13 +332,10 @@ const sectionClasses = [
 
   .hero--fullbleed .hero__metric-label {
     color: rgba(255, 255, 255, 0.75);
-    font-size: calc(var(--text-xs) * 1.3);
   }
 
   .hero--fullbleed .hero__cta {
     margin-inline: auto;
-    font-size: calc(var(--text-base) * 0.91);
-    padding: 0.75rem 1.5rem;
   }
 
   .hero--fullbleed .hero__metrics {
@@ -260,16 +350,12 @@ const sectionClasses = [
   .hero--fullbleed .hero__copy {
     color: var(--color-white);
     max-width: 56rem;
-    margin-inline: auto;
-    text-align: center;
   }
 
   .hero--fullbleed .hero__copy h1 {
     max-width: 18ch;
     margin-inline: auto;
     color: var(--color-white);
-    font-size: calc(var(--text-hero) * 1.17);
-    text-align: center;
     white-space: pre-line;
   }
 
@@ -277,9 +363,5 @@ const sectionClasses = [
     text-align: center;
     margin-inline: auto;
   }
-
-  .hero--fullbleed .hero__metric-value {
-    font-size: calc(var(--text-xl) * 1.3);
-    text-align: center;
   }
 </style>

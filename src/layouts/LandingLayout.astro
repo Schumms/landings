@@ -22,10 +22,11 @@ const navCta = page.nav_cta_text ?? page.cta_text;
   description={page.description}
   ogImage={page.hero_image}
   robots={page.published ? "index, follow" : "noindex, nofollow"}
+  accent={page.accent_color}
 >
   {
     visibility.nav && (
-      <Nav landing ctaText={navCta} ctaHref="#lead-form" />
+      <Nav landing ctaText={navCta} ctaHref={page.cta_href ?? page.nav_cta_href ?? "#lead-form"} />
     )
   }
   <main id="main-content">

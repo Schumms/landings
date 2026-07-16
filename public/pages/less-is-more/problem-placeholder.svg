@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bildplatzhalter 16:9">
+  <defs>
+    <pattern id="diag" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#e5e5e5" stroke-width="20"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#f5f5f5"/>
+  <rect width="1600" height="900" fill="url(#diag)"/>
+  <g fill="#9ca3af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="800" y="430" font-size="56" font-weight="600" letter-spacing="2">BILDPLATZHALTER</text>
+    <text x="800" y="500" font-size="28" font-weight="400" fill="#6b7280">16 : 9 · durch echtes Foto ersetzen</text>
+  </g>
+</svg>
