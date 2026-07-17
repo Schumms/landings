@@ -1,0 +1,60 @@
+---
+// Button.astro
+// Usage: <Button variant="primary" size="lg" href="#kontakt">Text →</Button>
+//        <Button variant="primary" as="button" type="submit" fullWidth>Send</Button>
+interface Props {
+  variant?: 'primary' | 'dark' | 'outline';
+  size?: 'sm' | 'lg';
+  as?: 'a' | 'button';
+  href?: string;
+  type?: 'button' | 'submit';
+  fullWidth?: boolean;
+  disabled?: boolean;
+}
+const {
+  variant = 'primary',
+  size = 'lg',
+  as = 'a',
+  href,
+  type = 'button',
+  fullWidth = false,
+  disabled = false,
+} = Astro.props;
+
+const Tag = as;
+const classes = ['btn', `btn-${variant}`, `btn-${size}`, fullWidth ? 'btn-full' : ''].join(' ').trim();
+---
+{as === 'a' ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} disabled={disabled} class={classes}>
+    <slot />
+  </button>
+)}
+
+<style>
+  /* Values copied 1:1 from the existing page markup — do not restyle here. */
+  .btn {
+    font-family: var(--font-brand);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background var(--dur-base) var(--ease-out);
+  }
+  .btn-primary { background: var(--sur-green); color: var(--sur-ink); }
+  .btn-primary:hover { background: var(--green-500); }
+  .btn-dark { background: var(--sur-ink); color: #fff; }
+  .btn-dark:hover { background: var(--sur-ink-soft); }
+  .btn-outline { background: transparent; border: 1.5px solid currentColor; color: inherit; }
+  .btn-sm { padding: 9px 18px; font-size: 0.9rem; }
+  .btn-lg { padding: 15px 24px; font-size: 1.05rem; }
+  .btn-full { width: 100%; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+</style>

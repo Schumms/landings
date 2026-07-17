@@ -1,0 +1,43 @@
+---
+// Input.astro
+// Usage: <Input id="hf-firstname" label="Vorname*" placeholder="Vorname" />
+//        <Input id="hf-email" label="E-Mail*" type="email" placeholder="du@firma.de" />
+interface Props {
+  id: string;
+  label: string;
+  type?: string;
+  placeholder?: string;
+}
+const { id, label, type = 'text', placeholder = '' } = Astro.props;
+---
+<div>
+  <label for={id} class="form-label">{label}</label>
+  <input id={id} name={id} type={type} placeholder={placeholder} class="form-input" />
+</div>
+
+<style>
+  .form-label {
+    font-family: var(--font-brand);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .form-input {
+    font-family: var(--font-brand);
+    font-size: 0.9375rem;
+    color: var(--sur-ink);
+    background: #fff;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border-default);
+    border-radius: 0;
+    outline: none;
+    width: 100%;
+  }
+  .form-input:focus {
+    border-color: var(--sur-ink);
+    box-shadow: var(--shadow-focus);
+  }
+</style>

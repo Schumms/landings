@@ -1,0 +1,21 @@
+---
+// Eyebrow.astro
+// Usage: <Eyebrow color="var(--sur-green)">Grundlagen</Eyebrow>
+interface Props {
+  color?: string;
+}
+const { color = 'var(--sur-green)' } = Astro.props;
+---
+<span class="eyebrow" style={`color: ${color};`}>
+  <slot />
+</span>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-brand);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+</style>

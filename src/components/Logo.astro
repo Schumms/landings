@@ -1,0 +1,20 @@
+---
+// Logo.astro
+// Usage: <Logo color="black" /> or <Logo color="white" />
+interface Props {
+  color?: 'black' | 'white';
+}
+const { color = 'black' } = Astro.props;
+---
+<span class="logo" style={`color: ${color === 'white' ? '#fff' : 'var(--sur-ink)'};`}>
+  Schumm &amp; Rösch
+</span>
+
+<style>
+  /* Placeholder wordmark — swap for the real logo SVG/image when available. */
+  .logo {
+    font-family: var(--font-brand);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+</style>
