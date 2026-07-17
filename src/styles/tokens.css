@@ -1,0 +1,195 @@
+/* ============================================================
+   Schumm & Rösch — Design Tokens
+   Extracted from Claude Design export, 2026-07-16
+   This is the single source of truth for color / type / spacing.
+   Import once globally (e.g. src/styles/tokens.css in Astro).
+   ============================================================ */
+
+:root {
+  /* ---- Brand core ---- */
+  --sur-green: #01DBA2;   /* primary — "Mint" / signal color */
+  --sur-orange: #FD7857;  /* secondary — "Coral" */
+  --sur-purple: #827AFE;  /* secondary — "Periwinkle" */
+
+  /* ---- Ink (near-black) & paper ---- */
+  --sur-ink: #14201C;      /* near-black with a green undertone */
+  --sur-ink-soft: #2C3A35;
+  --sur-paper: #FFFFFF;
+  --sur-bone: #F4F3EE;     /* warm off-white surface */
+  --sur-mist: #ECF7F2;     /* pale green-tinted surface */
+
+  /* ---- Green ramp ---- */
+  --green-50:  #E6FBF4;
+  --green-100: #C2F5E4;
+  --green-200: #8AECCB;
+  --green-300: #4DE3B5;
+  --green-400: #01DBA2;
+  --green-500: #00C190;
+  --green-600: #009B74;
+  --green-700: #007557;
+  --green-800: #00513C;
+
+  /* ---- Orange ramp ---- */
+  --orange-100: #FFE2D8;
+  --orange-300: #FFA488;
+  --orange-400: #FD7857;
+  --orange-600: #E2542F;
+  --orange-800: #9C3417;
+
+  /* ---- Purple ramp ---- */
+  --purple-100: #E6E3FF;
+  --purple-300: #ADA6FF;
+  --purple-400: #827AFE;
+  --purple-600: #5B51E6;
+  --purple-800: #372EA0;
+
+  /* ---- Neutral / grey ramp (warm) ---- */
+  --grey-50:  #F7F7F4;
+  --grey-100: #EDEDE8;
+  --grey-200: #DCDCD5;
+  --grey-300: #C2C2B9;
+  --grey-400: #9A9A90;
+  --grey-500: #71716A;
+  --grey-600: #51514B;
+  --grey-700: #353531;
+  --grey-800: #20201D;
+  --grey-900: #14201C;
+
+  /* ---- Semantic status ---- */
+  --status-success: #00C190;
+  --status-warning: #FD7857;
+  --status-danger:  #E2542F;
+  --status-info:    #827AFE;
+
+  /* ---- Semantic aliases — reference these in UI, not raw ramps ---- */
+  --text-primary:   var(--sur-ink);
+  --text-secondary: var(--grey-600);
+  --text-muted:     var(--grey-400);
+  --text-inverse:   #FFFFFF;
+  --text-accent:    var(--green-600);
+
+  --surface-page:   var(--sur-paper);
+  --surface-bone:   var(--sur-bone);
+  --surface-card:   #FFFFFF;
+  --surface-sunken: var(--grey-50);
+  --surface-ink:    var(--sur-ink);
+  --surface-mint:   var(--sur-mist);
+
+  --border-subtle:  var(--grey-200);
+  --border-default: var(--grey-300);
+  --border-strong:  var(--sur-ink);
+
+  --accent-primary: var(--sur-green);
+  --accent-hover:   var(--green-500);
+  --accent-press:   var(--green-600);
+  --accent-on:      var(--sur-ink);  /* text/icon on top of green */
+
+  --focus-ring: var(--purple-400);
+
+  /* ---- Typography ---- */
+  --font-brand: "Buenos Aires", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-brand);
+  --font-body: var(--font-brand);
+
+  --fw-thin: 100;
+  --fw-light: 300;
+  --fw-book: 350;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* Display scale (uppercase headlines — set TIGHT & HEAVY) */
+  --text-hero: clamp(3.5rem, 7vw, 6rem); /* 56–96px */
+  --text-d1: 4rem;      /* 64 */
+  --text-d2: 3rem;      /* 48 */
+  --text-d3: 2.25rem;   /* 36 */
+
+  --text-h1: 2rem;      /* 32 */
+  --text-h2: 1.5rem;    /* 24 */
+  --text-h3: 1.25rem;   /* 20 */
+
+  --text-lg: 1.125rem;  /* 18 */
+  --text-base: 1rem;    /* 16 */
+  --text-sm: 0.875rem;  /* 14 */
+  --text-xs: 0.75rem;   /* 12 */
+
+  --lh-tight: 0.95;
+  --lh-snug: 1.1;
+  --lh-heading: 1.15;
+  --lh-body: 1.55;
+  --lh-relaxed: 1.7;
+
+  --ls-display: -0.02em;
+  --ls-tight: -0.01em;
+  --ls-normal: 0;
+  --ls-label: 0.08em;
+  --ls-wide: 0.16em;
+
+  /* ---- Spacing — 4px base ---- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* ---- Radius — restrained. Brand reads architectural & precise. ---- */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-card: 6px; /* max rounding allowed on cards/surfaces */
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Borders ---- */
+  --border-hairline: 1px;
+  --border-regular: 1.5px;
+  --border-bold: 2px;
+
+  /* ---- Shadows — soft, low, neutral. No colored glows. ---- */
+  --shadow-xs: 0 1px 2px rgba(20, 32, 28, 0.06);
+  --shadow-sm: 0 2px 8px rgba(20, 32, 28, 0.07);
+  --shadow-md: 0 8px 24px rgba(20, 32, 28, 0.09);
+  --shadow-lg: 0 20px 48px rgba(20, 32, 28, 0.13);
+  --shadow-focus: 0 0 0 3px rgba(130, 122, 254, 0.45);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 220ms;
+  --dur-slow: 420ms;
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --container-narrow: 760px;
+}
+
+/* ---- Base resets (brand defaults) ---- */
+body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+a { color: var(--green-600); text-decoration: none; }
+a:hover { color: var(--green-700); }
+
+/* Imagery is always square. Never round photos/graphics — brand rule. */
+img, picture, video, svg { border-radius: 0; }
