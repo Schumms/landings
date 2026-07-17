@@ -1,0 +1,31 @@
+---
+// Card.astro
+// Usage: <Card variant="default"><div class="num">01</div><h3>Title</h3></Card>
+//        <Card variant="elevated" padding="36px">form contents</Card>
+interface Props {
+  variant?: 'default' | 'elevated';
+  padding?: string;
+  interactive?: boolean;
+  background?: string;
+}
+const {
+  variant = 'default',
+  padding = '28px',
+  interactive = false,
+  background,
+} = Astro.props;
+
+const classes = ['card', `card-${variant}`, interactive ? 'card-interactive' : ''].join(' ').trim();
+const style = `padding: ${padding};${background ? ` background: ${background};` : ''}`;
+---
+<div class={classes} style={style}>
+  <slot />
+</div>
+
+<style>
+  .card { border-radius: var(--radius-card); }
+  .card-default { background: #E3F1FE; }
+  .card-elevated { background: #fff; box-shadow: var(--shadow-md); }
+  .card-interactive { transition: transform var(--dur-base) var(--ease-out); }
+  .card-interactive:hover { transform: translateY(-2px); }
+</style>
