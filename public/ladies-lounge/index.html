@@ -240,11 +240,11 @@
       <span class="eyebrow" style="color: #E95088;">Auf unserer Fläche</span>
       <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px; color: var(--sur-ink)">#gemeinsamstark</h2>
       <div class="ll-gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: clamp(220px, 26vw, 320px); gap: 16px;">
-        <div class="img-placeholder" style="grid-column: span 2;"><span>Bild: Frauennetzwerk auf unserer Fläche</span></div>
-        <div class="img-placeholder"><span>Bild: Networking</span></div>
-        <div class="img-placeholder"><span>Bild: Sweet Table</span></div>
-        <div class="img-placeholder"><span>Bild: Pinke Drinks</span></div>
-        <div class="img-placeholder"><span>Bild: Gäste</span></div>
+        <div style="grid-column: span 2; overflow: hidden;"><img src="images/frauen-1.webp" alt="Frauennetzwerk auf unserer Eventfläche" width="1590" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="overflow: hidden;"><img src="images/frauen-2.webp" alt="Networking bei der Ladies Lounge" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="overflow: hidden;"><img src="images/frauen-3.webp" alt="Rosa Sweet Table" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="overflow: hidden;"><img src="images/frauen-4.webp" alt="Pinke Drinks" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="overflow: hidden;"><img src="images/frauen-5.webp" alt="Gäste der Ladies Lounge" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
       </div>
     </div>
   </section>
@@ -253,15 +253,15 @@
   <section id="info" style="background: var(--pink-pale); padding: var(--space-9) 40px;">
     <div style="max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1.5px solid var(--pink-mid); border-bottom: 1.5px solid var(--pink-mid);" class="ll-info-grid">
       <div style="padding: 36px 40px; border-right: 1.5px solid var(--pink-mid);">
-        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FF3A5E;">Datum</span>
+        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E95088;">Datum</span>
         <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px; color: var(--sur-ink)">10.09.</div>
       </div>
       <div style="padding: 36px 40px; border-right: 1.5px solid var(--pink-mid);">
-        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FF3A5E;">Uhrzeit</span>
+        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E95088;">Uhrzeit</span>
         <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px; color: var(--sur-ink)">ab 16:00 Uhr</div>
       </div>
       <div style="padding: 36px 40px;">
-        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FF3A5E;">Ort</span>
+        <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E95088;">Ort</span>
         <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px; line-height: 1.2; color: var(--sur-ink)">Schumms Eventfläche<br>Borsigstraße 20, 65205 Wiesbaden</div>
       </div>
     </div>
@@ -287,9 +287,9 @@
             <label for="anrede" style="font-family: var(--font-brand); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary);">Anrede</label>
             <select required name="anrede" id="anrede" style="font-family: var(--font-brand); font-size: 0.9375rem; color: var(--text-primary); background: #fff; padding: 11px 14px; border: 1.5px solid var(--border-default); border-radius: 0; outline: none;">
               <option value="">Bitte auswählen</option>
-              <option value="Frau">Frau</option>
               <option value="Herr">Herr</option>
-              <option value="Divers">Divers</option>
+              <option value="Frau">Frau</option>
+              <option value="Keine Angabe">Keine Angabe</option>
             </select>
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -301,7 +301,7 @@
             <input type="text" required name="lastname" id="lastname" style="font-family: var(--font-brand); font-size: 0.9375rem; color: var(--text-primary); background: #fff; padding: 11px 14px; border: 1.5px solid var(--border-default); border-radius: 0; outline: none;">
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px;">
-            <label for="company" style="font-family: var(--font-brand); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary);">Netzwerk / Firma</label>
+            <label for="company" style="font-family: var(--font-brand); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary);">Unternehmensname</label>
             <input type="text" name="company" id="company" style="font-family: var(--font-brand); font-size: 0.9375rem; color: var(--text-primary); background: #fff; padding: 11px 14px; border: 1.5px solid var(--border-default); border-radius: 0; outline: none;">
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -314,9 +314,9 @@
           </div>
           <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; margin-top: 4px;">
             <input type="checkbox" required name="consent" id="consent" style="width: 18px; height: 18px; margin-top: 2px; accent-color: var(--pink-hot); flex-shrink: 0;">
-            <span style="font-size: 0.8125rem; line-height: 1.5; color: var(--text-secondary);">Mit Klick auf „Anmeldung senden" akzeptiere ich die <a href="#">Veranstaltungsbedingungen</a> und bestätige, dass ich die <a href="#">Datenschutzerklärung</a> zur Kenntnis genommen habe.</span>
+            <span style="font-size: 0.8125rem; line-height: 1.5; color: var(--text-secondary);">Mit Klick auf „Kostenlos registrieren" akzeptiere ich die <a href="#">Veranstaltungsbedingungen</a> und bestätige, dass ich die <a href="#">Datenschutzerklärung</a> zur Kenntnis genommen habe.</span>
           </label>
-          <button type="submit" style="display: block; width: 100%; padding: 16px; color: #fff; font-family: var(--font-brand); font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; border: none; cursor: pointer; background-color: #E95088">Anmeldung senden</button>
+          <button type="submit" style="display: block; width: 100%; padding: 16px; color: #fff; font-family: var(--font-brand); font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; border: none; cursor: pointer; background-color: #E95088">Kostenlos registrieren</button>
         </form>
         <!-- Error message (hidden by default) -->
         <div id="form-error" class="form-error" hidden style="margin-top: 16px;">
