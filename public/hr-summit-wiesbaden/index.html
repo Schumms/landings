@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="HR Summit Wiesbaden — KI & Führung 2026">
   <meta name="twitter:description" content="KI als Chance für Kultur, Rollen & Führung. 22. Oktober 2026 in Wiesbaden. Early Bird 49 €.">
   <meta name="twitter:image" content="https://landing.schumms.com/hr-summit-wiesbaden/images/hero-event.webp">
-  <meta name="robots" content="noindex,nofollow">
+  <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://landing.schumms.com/hr-summit-wiesbaden/">
   <link rel="preconnect" href="https://www.google.com" crossorigin>
   <link rel="preconnect" href="https://payments-eu1.hubspot.com" crossorigin>
@@ -324,19 +324,6 @@
     <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:stretch">
       <div style="display:flex;flex-direction:column">
         <div style="flex:1;min-height:320px;border-radius:0;overflow:hidden;position:relative;box-shadow:0 24px 48px -24px rgba(0,0,0,.3)"><iframe title="Karte Schumm und Rösch Eventspace" src="https://www.google.com/maps?q=Borsigstraße+20,+65205+Wiesbaden&amp;output=embed" style="border:0;width:100%;height:calc(100% + 48px);position:absolute;top:0;left:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""></iframe></div>
-        <div style="margin-top:22px;position:relative;height:96px">
-          <div style="overflow:hidden;height:100%">
-            <div id="loc-strip" style="display:flex;gap:10px;height:100%;transform:translateX(0px);transition:transform .4s ease">
-              <img src="images/min/loc1.webp" alt="Eventimpression" onclick="lbOpen(0)" loading="lazy" decoding="async" style="flex:none;width:calc((100% - 30px) / 4);height:100%;object-fit:cover;border-radius:0;cursor:pointer;display:block">
-              <img src="images/min/loc2.webp" alt="Eventimpression" onclick="lbOpen(1)" loading="lazy" decoding="async" style="flex:none;width:calc((100% - 30px) / 4);height:100%;object-fit:cover;border-radius:0;cursor:pointer;display:block">
-              <img src="images/min/loc3.webp" alt="Eventimpression" onclick="lbOpen(2)" loading="lazy" decoding="async" style="flex:none;width:calc((100% - 30px) / 4);height:100%;object-fit:cover;border-radius:0;cursor:pointer;display:block">
-              <img src="images/min/loc4.webp" alt="Eventimpression" onclick="lbOpen(3)" loading="lazy" decoding="async" style="flex:none;width:calc((100% - 30px) / 4);height:100%;object-fit:cover;border-radius:0;cursor:pointer;display:block">
-              <img src="images/min/loc5.webp" alt="Eventimpression" onclick="lbOpen(4)" loading="lazy" decoding="async" style="flex:none;width:calc((100% - 30px) / 4);height:100%;object-fit:cover;border-radius:0;cursor:pointer;display:block">
-            </div>
-          </div>
-          <button id="loc-prev" onclick="thGo(-1)" aria-label="Zurück" style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:0;border:none;background:var(--sur-ink);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);opacity:0">←</button>
-          <button id="loc-next" onclick="thGo(1)" aria-label="Weiter" style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:0;border:none;background:var(--sur-ink);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);opacity:1">→</button>
-        </div>
       </div>
       <div>
         <div style="font:600 11px var(--font-brand);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)">Location &amp; Anfahrt</div>
@@ -416,13 +403,7 @@
   <div style="max-width:1120px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font:400 12px var(--font-brand);color:rgba(255,255,255,.4)">© 2026 Schumm und Rösch. Alle Rechte vorbehalten.</div>
 </div>
 
-<!-- ============ LIGHTBOX ============ -->
-<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:40px">
-  <button onclick="lbClose()" aria-label="Schließen" style="position:absolute;top:24px;right:28px;width:48px;height:48px;border-radius:0;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer">×</button>
-  <button onclick="lbGo(-1)" aria-label="Zurück" style="position:absolute;left:28px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:0;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer">←</button>
-  <img id="lb-img" src="" alt="Eventimpression" onclick="event.stopPropagation()" style="max-width:90vw;max-height:82vh;object-fit:contain;border-radius:0;box-shadow:0 30px 80px rgba(0,0,0,.6)">
-  <button onclick="lbGo(1)" aria-label="Weiter" style="position:absolute;right:28px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:0;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer">→</button>
-</div>
+<!-- ============ LIGHTBOX REMOVED ============ -->
 
 <script>
 // ---- SPEAKER DATA ----
@@ -490,34 +471,6 @@ setInterval(function() {
   agendaPhotos[agendaIdx].style.opacity = '1';
 }, 3000);
 
-// ---- LOCATION THUMBNAILS + LIGHTBOX ----
-var locPhotos = ['assets/min/loc1.webp','assets/min/loc2.webp','assets/min/loc3.webp','assets/min/loc4.webp','assets/min/loc5.webp'];
-var thumbIdx = 0;
-var thumbMax = Math.max(0, locPhotos.length - 4);
-var lbEl = document.getElementById('lightbox');
-var lbImg = document.getElementById('lb-img');
-var lbIndex = 0;
-
-function thUpdate() {
-  document.getElementById('loc-strip').style.transform = 'translateX(calc(' + thumbIdx + ' * (-25% - 2.5px)))';
-  document.getElementById('loc-prev').style.opacity = thumbIdx <= 0 ? '0' : '1';
-  document.getElementById('loc-next').style.opacity = thumbIdx >= thumbMax ? '0' : '1';
-}
-function thGo(d) {
-  thumbIdx = Math.max(0, Math.min(thumbMax, thumbIdx + d));
-  thUpdate();
-}
-function lbOpen(idx) { lbIndex = idx; lbImg.src = locPhotos[idx]; lbEl.style.display = 'flex'; }
-function lbClose() { lbEl.style.display = 'none'; }
-function lbGo(d) { lbIndex = (lbIndex + d + locPhotos.length) % locPhotos.length; lbImg.src = locPhotos[lbIndex]; }
-// Keyboard nav for lightbox
-document.addEventListener('keydown', function(e) {
-  if (lbEl.style.display === 'none' || lbEl.style.display === '') return;
-  if (e.key === 'Escape') lbClose();
-  if (e.key === 'ArrowRight') lbGo(1);
-  if (e.key === 'ArrowLeft') lbGo(-1);
-});
-thUpdate();
 </script>
 </body>
 </html>
