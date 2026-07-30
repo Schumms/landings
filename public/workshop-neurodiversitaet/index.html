@@ -158,7 +158,7 @@ ul{margin:0}
 .contact__grid{padding-block:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:start}
 .contact__title{font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.02em;margin:20px 0 16px;max-width:14ch}
 .contact__body{font-weight:350;font-size:1.1rem;line-height:1.55;color:var(--text-secondary);max-width:44ch}
-.cform{display:flex;flex-direction:column;gap:16px}
+.cform:not([hidden]){display:flex;flex-direction:column;gap:16px}
 .cform__row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cform__error{font-size:.85rem;color:var(--orange-600);background:#FEDCD4;border:1.5px solid var(--orange-300);padding:10px 12px;border-radius:var(--radius-card);margin:0}
 .cform__legal{font-size:.8rem;color:var(--text-secondary);margin:0;line-height:1.5}
