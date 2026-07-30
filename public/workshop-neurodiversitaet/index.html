@@ -25,6 +25,17 @@
 <link rel="sitemap" href="/sitemap-index.xml">
 <link rel="preconnect" href="https://api.hsforms.com" crossorigin>
 <link rel="preload" as="image" href="images/hero-neurodiversitaet.webp" fetchpriority="high">
+
+<!-- Cookiebot Consent -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d0352724-f562-4300-8d47-a6506fcce5c4" data-blockingmode="auto" type="text/javascript"></script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDNB35DX');</script>
+<!-- End Google Tag Manager -->
 <style>
 @font-face{font-family:"Buenos Aires";src:url("fonts/BuenosAires-Light.woff2") format("woff2");font-weight:300;font-display:swap}
 @font-face{font-family:"Buenos Aires";src:url("fonts/BuenosAires-Book.woff2") format("woff2");font-weight:350;font-display:swap}
@@ -176,6 +187,11 @@ ul{margin:0}
 </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDNB35DX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header class="nav"><div class="container nav__inner">
   <a href="#" aria-label="Startseite"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:26px;width:auto;display:block"></a>
@@ -340,7 +356,7 @@ document.querySelectorAll('.cform').forEach(function(form){
     if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Wird gesendet …';}
     var payload={fields:fields.map(function(name){return {name:name,value:val(name)};}),context:{pageUri:location.href,pageName:document.title}};
     fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(res){if(!res.ok)throw new Error(String(res.status));window.location.href='danke/';})
+      .then(function(res){if(!res.ok)throw new Error(String(res.status));window.dataLayer=window.dataLayer||[];window.dataLayer.push({'event':'form_submission','form_id':'neurodiversitaet_workshop'});window.location.href='danke/';})
       .catch(function(){showError(true);if(submitBtn){submitBtn.disabled=false;submitBtn.textContent='Anfrage senden →';}});
   });
 });
