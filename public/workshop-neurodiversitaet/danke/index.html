@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danke für deine Anfrage | Schumm und Rösch</title>
+<meta name="description" content="Deine Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden bei dir.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.schumms.com/workshop-neuroinklusive-arbeitswelten">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<style>
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-Book.woff2") format("woff2");font-weight:350;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("../fonts/BuenosAires-Black.woff2") format("woff2");font-weight:900;font-display:swap}
+:root{
+  --sur-green:#01DBA2;--sur-orange:#FD7857;--sur-purple:#827AFE;--sur-ink:#14201C;--sur-paper:#FFFFFF;--sur-mist:#ECF7F2;
+  --green-50:#E6FBF4;--green-100:#C2F5E4;--green-200:#8AECCB;--green-600:#009B74;--green-700:#007557;
+  --orange-300:#FFA488;--orange-600:#E2542F;
+  --grey-50:#F7F7F4;--grey-100:#EDEDE8;--grey-200:#DCDCD5;--grey-300:#C2C2B9;--grey-400:#9A9A90;--grey-600:#51514B;
+  --text-primary:var(--sur-ink);--text-secondary:var(--grey-600);--text-muted:var(--grey-400);--text-accent:var(--sur-green);
+  --border-subtle:var(--grey-200);--border-default:var(--grey-300);
+  --font-brand:"Buenos Aires","Helvetica Neue",Arial,sans-serif;
+  --radius-card:0;--radius-md:0;--radius-lg:0;--radius-pill:0;
+  --shadow-md:0 8px 24px rgba(20,32,28,.09);--shadow-lg:0 20px 48px rgba(20,32,28,.13);
+  --ease-standard:cubic-bezier(.22,.61,.36,1);--dur-fast:120ms;--dur-base:220ms;
+  --container-max:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-brand);font-weight:400;font-size:1rem;line-height:1.55;color:var(--text-primary);background:var(--sur-paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,p{margin:0}
+img,svg{max-width:100%}
+a{color:var(--green-600);text-decoration:none;transition:color var(--dur-fast) var(--ease-standard)}
+a:hover{color:var(--green-700)}
+.container{max-width:var(--container-max);margin:0 auto;padding-inline:32px}
+@media(max-width:640px){.container{padding-inline:20px}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1;cursor:pointer;text-decoration:none;border:1.5px solid transparent;transition:transform var(--dur-fast) var(--ease-standard),filter var(--dur-fast) var(--ease-standard)}
+.btn:active{transform:translateY(1px)}
+.btn:hover{filter:brightness(.94)}
+.btn--primary{background:var(--sur-green);color:var(--sur-paper);border-color:var(--sur-green);padding:14px 28px;font-size:.9375rem}
+.btn--outline{background:transparent;color:var(--sur-ink);border-color:var(--sur-ink);padding:14px 28px;font-size:.9375rem}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.2}
+.eyebrow i{width:22px;height:2px;background:currentColor;display:inline-block;flex-shrink:0}
+
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,64px);background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle)}
+.header__logo{height:26px;width:auto;display:block}
+
+.danke{min-height:calc(100vh - 62px - 140px);display:flex;align-items:center;justify-content:center;padding:64px 32px}
+.danke__inner{max-width:640px;text-align:center;width:100%}
+.danke__check{width:72px;height:72px;border-radius:50%;background:var(--sur-green);display:flex;align-items:center;justify-content:center;margin:0 auto 32px}
+.danke__check svg{width:36px;height:36px;color:#fff}
+.danke__title{font-weight:900;font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:-.02em;color:var(--sur-ink);margin-bottom:16px}
+.danke__lead{font-size:1.125rem;font-weight:350;line-height:1.55;color:var(--text-secondary);max-width:44ch;margin:0 auto 48px}
+
+.steps{display:flex;flex-direction:column;gap:20px;text-align:left;margin-bottom:48px}
+.step{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--grey-50);border:1px solid var(--border-subtle)}
+.step__n{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--sur-green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9375rem}
+.step__body{flex:1}
+.step__title{font-weight:700;font-size:1.0625rem;color:var(--sur-ink);margin-bottom:4px}
+.step__desc{font-size:.9375rem;font-weight:350;line-height:1.5;color:var(--text-secondary)}
+.step__desc strong{font-weight:600;color:var(--sur-ink)}
+
+.danke__actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.danke__back{margin-top:32px;font-size:.875rem;color:var(--text-muted)}
+
+.footer{background:var(--sur-ink);color:#fff;padding:36px 32px}
+.footer__inner{max-width:var(--container-max);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.footer__tag{font-size:.8125rem;color:rgba(255,255,255,.6);margin-top:6px}
+.footer__logo{height:26px;width:auto;display:block}
+.footer__meta{display:flex;flex-wrap:wrap;gap:20px;font-size:.8125rem;color:rgba(255,255,255,.6)}
+.footer__meta a{color:rgba(255,255,255,.6)}
+.footer__meta a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="../" aria-label="Zurück zur Startseite"><img src="../images/sur-logo-black.webp" alt="Schumm und Rösch" class="header__logo" width="1000" height="84"></a>
+</header>
+
+<main class="danke">
+  <div class="danke__inner">
+    <div class="danke__check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <span class="eyebrow" style="color:var(--sur-green);justify-content:center"><i></i>Anfrage eingegangen</span>
+    <h1 class="danke__title">Danke!</h1>
+    <p class="danke__lead">Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden persönlich bei dir.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step__n">1</div>
+        <div class="step__body">
+          <div class="step__title">E-Mail bestätigen</div>
+          <div class="step__desc">Du erhältst in wenigen Minuten eine <strong>Bestätigungsmail</strong> von uns. Bitte prüfe auch deinen <strong>Spam-Ordner</strong>, falls die Mail nicht ankommt.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">2</div>
+        <div class="step__body">
+          <div class="step__title">Persönlicher Rückruf</div>
+          <div class="step__desc">Einer unserer Berater meldet sich <strong>innerhalb von 24 Stunden</strong> telefonisch bei dir, um eure Situation und die passenden Workshop-Formate zu besprechen.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">3</div>
+        <div class="step__body">
+          <div class="step__title">Maßgeschneiderter Workshop</div>
+          <div class="step__desc">Gemeinsam legen wir fest, welches Format am besten passt – <strong>„Neurodiversität wirkt."</strong>, <strong>NeuroSpace &amp; Framework</strong> oder eine Kombination aus beiden.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="danke__actions">
+      <a href="../" class="btn btn--primary">Zurück zur Übersicht →</a>
+      <a href="https://www.schumms.com" class="btn btn--outline">Schumm &amp; Rösch Website</a>
+    </div>
+
+    <p class="danke__back">Fragen? Schreib uns an <a href="mailto:info@schumms.com">info@schumms.com</a></p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <img src="../images/sur-logo-white.webp" alt="Schumm und Rösch" class="footer__logo" width="1000" height="84">
+      <p class="footer__tag">Mutig. Prägend. Zukunftsgerichtet. Arbeitswelten als strategischer Hebel.</p>
+    </div>
+    <div class="footer__meta">
+      <span>© 2026 Schumm und Rösch Planen + Einrichten GmbH</span>
+      <span><a href="https://www.schumms.com/impressum" target="_blank" rel="noopener">Impressum</a> &nbsp;|&nbsp; <a href="https://www.schumms.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

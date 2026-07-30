@@ -340,7 +340,7 @@ document.querySelectorAll('.cform').forEach(function(form){
     if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Wird gesendet …';}
     var payload={fields:fields.map(function(name){return {name:name,value:val(name)};}),context:{pageUri:location.href,pageName:document.title}};
     fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(res){if(!res.ok)throw new Error(String(res.status));form.hidden=true;if(doneEl)doneEl.hidden=false;})
+      .then(function(res){if(!res.ok)throw new Error(String(res.status));window.location.href='danke/';})
       .catch(function(){showError(true);if(submitBtn){submitBtn.disabled=false;submitBtn.textContent='Anfrage senden →';}});
   });
 });
