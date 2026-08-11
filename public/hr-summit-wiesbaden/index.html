@@ -187,16 +187,12 @@
 
     /* ---- 5. AGENDA ---- */
     #agenda { padding: 56px 20px !important; }
-    /* Stack: images first (under subtitle), then agenda timeline, then drinks box */
+    /* Stack to 1 column */
     #agenda > div { grid-template-columns: 1fr !important; gap: 24px !important; }
-    /* Image carousel moves to top (under the subtitle) */
-    #agenda > div > div:last-child { position: static !important; order: -1; }
-    /* Images 50% smaller: min-height 560→280 */
-    #agenda > div > div:last-child > div:first-child { min-height: 240px !important; }
-    /* Drinks & Essen box stays under image carousel, before timeline */
-    /* Reorder: images (order -1) → drinks box (order 0) → timeline (order 1) */
-    #agenda > div > div:last-child { order: -1; }
-    #agenda > div > div:first-child { order: 1; }
+    /* Sidebar not sticky on mobile */
+    #agenda > div > div:last-child { position: static !important; }
+    /* Images 50% smaller */
+    #agenda-img { min-height: 240px !important; }
 
     /* ---- 6. TICKETS ---- */
     #tickets { padding: 56px 20px !important; }
@@ -372,7 +368,7 @@
       </div>
     </div>
     <div style="position:sticky;top:96px;display:flex;flex-direction:column;gap:20px">
-      <div style="border-radius:0;overflow:hidden;position:relative;min-height:560px;background:var(--sur-ink);box-shadow:0 24px 48px -24px rgba(0,0,0,.35)">
+      <div id="agenda-img" style="border-radius:0;overflow:hidden;position:relative;min-height:560px;background:var(--sur-ink);box-shadow:0 24px 48px -24px rgba(0,0,0,.35)">
         <img src="images/min/ablauf1.webp" alt="Eventimpression Arbeitswelt Summit" loading="lazy" decoding="async" class="agenda-photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 1s ease">
         <img src="images/min/ablauf2.webp" alt="Eventimpression Arbeitswelt Summit" loading="lazy" decoding="async" class="agenda-photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease">
         <img src="images/min/ablauf3.webp" alt="Eventimpression Arbeitswelt Summit" loading="lazy" decoding="async" class="agenda-photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease">
@@ -380,7 +376,7 @@
         <img src="images/min/ablauf5.webp" alt="Eventimpression Arbeitswelt Summit" loading="lazy" decoding="async" class="agenda-photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease">
         <img src="images/min/ablauf6.webp" alt="Eventimpression Arbeitswelt Summit" loading="lazy" decoding="async" class="agenda-photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease">
       </div>
-      <div style="background:#E3F1FE;border-radius:0;padding:22px 24px"><div style="font:700 1.1rem var(--font-brand)">Drinks &amp; Essen</div><p style="margin-top:5px;font:400 .98rem/1.5 var(--font-brand);color:var(--grey-600)">Begrüßungskaffee, Mittagessen und Kaffeepausen inklusive — konzentrier dich aufs Wesentliche.</p></div>
+      <div id="agenda-drinks" style="background:#E3F1FE;border-radius:0;padding:22px 24px"><div style="font:700 1.1rem var(--font-brand)">Drinks &amp; Essen</div><p style="margin-top:5px;font:400 .98rem/1.5 var(--font-brand);color:var(--grey-600)">Begrüßungskaffee, Mittagessen und Kaffeepausen inklusive — konzentrier dich aufs Wesentliche.</p></div>
     </div>
   </div>
 </div>
@@ -572,6 +568,28 @@ setInterval(function() {
   agendaIdx = (agendaIdx + 1) % agendaPhotos.length;
   agendaPhotos[agendaIdx].style.opacity = '1';
 }, 3000);
+
+// ---- AGENDA MOBILE REORDER ----
+// On mobile: title → images → timeline → drinks box
+function agendaMobileReorder() {
+  var agendaGrid = document.querySelector('#agenda > div');
+  if (!agendaGrid) return;
+  var timelineCol = agendaGrid.children[0];
+  var imgDiv = document.getElementById('agenda-img');
+  var drinksDiv = document.getElementById('agenda-drinks');
+  var subtitleP = timelineCol.querySelector('p');
+  var timelineItems = timelineCol.querySelector('div[style*="flex-direction:column"]');
+  
+  if (window.innerWidth <= 768) {
+    if (imgDiv && subtitleP && imgDiv.parentElement !== timelineCol) {
+      subtitleP.insertAdjacentElement('afterend', imgDiv);
+    }
+    if (drinksDiv && timelineItems && drinksDiv.parentElement !== timelineCol) {
+      timelineCol.appendChild(drinksDiv);
+    }
+  }
+}
+agendaMobileReorder();
 
 </script>
 </body>
