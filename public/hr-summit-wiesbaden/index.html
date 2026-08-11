@@ -138,64 +138,95 @@
     body > div:first-child > div:first-child > span { display: none !important; }
     body > div:first-child > div:last-child { gap: 10px !important; }
     body > div:first-child > div:last-child > a:not(:last-child) { display: none !important; }
-    body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; }
+    body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
 
-    /* ---- HERO ---- */
+    /* ---- 1. HERO ---- */
     body > div:nth-child(2) > div > div:first-child { padding: 60px 20px 40px !important; }
+    /* Stack: headline first, then blurred box underneath */
     body > div:nth-child(2) > div > div:first-child > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
-    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child { max-width: 100% !important; }
+    /* Subtext smaller so more text fits per line */
+    body > div:nth-child(2) > div > div:first-child > div:first-child > div:first-child > p { font-size: 1.05rem !important; }
+    /* Blurred box: move below subtitle, full width, not cut off */
+    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child { max-width: 100% !important; justify-self: stretch !important; }
+    /* Inner grid of blurred box: stack Wann/Wo vertically */
+    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child > div:first-child { grid-template-columns: 1fr !important; gap: 12px !important; }
+    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child > div:first-child > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.16) !important; padding-top: 12px !important; }
+    /* Pain statement section: reduce top margin */
     body > div:nth-child(2) > div > div:first-child > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
 
-    /* ---- DAS NIMMST DU MIT ---- */
+    /* ---- 2. DAS NIMMST DU MIT ---- */
     body > div:nth-child(3) { padding: 56px 20px !important; }
+    /* All 6 items stack underneath each other (1 column) */
     body > div:nth-child(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 28px !important; }
+    /* Description text 30% smaller so more words per line */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > p { font-size: 0.71rem !important; line-height: 1.5 !important; }
+    /* Title text stays as is, icons stay as is */
+    /* CTA button row: 1 column, button full width */
     body > div:nth-child(3) > div > div:last-child { grid-template-columns: 1fr !important; }
     body > div:nth-child(3) > div > div:last-child > a { grid-column: 1 !important; }
 
-    /* ---- SPEAKER ---- */
+    /* ---- 3. CTA BUTTON (Das nimmst du mit section) ---- */
+    /* Ensure "Ticket sichern →" stays on one line (words + arrow together) */
+    body > div:nth-child(3) > div > div:last-child > a { white-space: nowrap !important; }
+
+    /* ---- 4. SPEAKER ---- */
     #speaker { padding: 56px 20px !important; }
-    #speaker > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    /* Stack: image carousel on top, text below */
+    #speaker > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+    /* Image carousel moves above text */
     #speaker > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
-    #spk-strip > div { width: 300px !important; max-width: 85vw !important; height: 360px !important; }
+    /* Speaker images 20% smaller: 420→336 width, 440→352 height */
+    #spk-strip > div { width: 280px !important; max-width: 80vw !important; height: 320px !important; }
+    /* Speaker number smaller on mobile */
+    #spk-num { font-size: 2.4rem !important; }
+    /* Speaker name smaller */
+    #spk-name { font-size: 1.6rem !important; }
+    /* Arrows stay, keep tappable size */
+    #speaker > div > div[style*="grid-template-columns"] > div:first-child > div:last-child > button { width: 48px !important; height: 48px !important; }
 
-    /* ---- AGENDA ---- */
+    /* ---- 5. AGENDA ---- */
     #agenda { padding: 56px 20px !important; }
-    #agenda > div { grid-template-columns: 1fr !important; gap: 32px !important; }
-    #agenda > div > div:last-child { position: static !important; }
-    #agenda > div > div:last-child > div:first-child { min-height: 300px !important; }
+    /* Stack: images first (under subtitle), then agenda timeline, then drinks box */
+    #agenda > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+    /* Image carousel moves to top (under the subtitle) */
+    #agenda > div > div:last-child { position: static !important; order: -1; }
+    /* Images 50% smaller: min-height 560→280 */
+    #agenda > div > div:last-child > div:first-child { min-height: 240px !important; }
+    /* Drinks & Essen box stays under image carousel, before timeline */
+    /* Reorder: images (order -1) → drinks box (order 0) → timeline (order 1) */
+    #agenda > div > div:last-child { order: -1; }
+    #agenda > div > div:first-child { order: 1; }
 
-    /* ---- TICKETS ---- */
+    /* ---- 6. TICKETS ---- */
     #tickets { padding: 56px 20px !important; }
+    /* Everything stacks: 1 element at a time, nothing side-by-side */
     #tickets > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
-    #tickets > div > div[style*="grid-template-columns"] > div:last-child { padding: 28px 24px !important; }
-
-    /* ---- COUNTDOWN: wrap to 2x2 ---- */
+    /* Pricing card full width, not cut off */
+    #tickets > div > div[style*="grid-template-columns"] > div:last-child { padding: 28px 24px !important; max-width: 100% !important; }
+    /* Countdown: wrap to 2x2 grid */
     #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] { flex-wrap: wrap !important; gap: 8px !important; }
     #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div { min-width: 0 !important; flex: 1 1 calc(50% - 4px) !important; padding: 12px 4px !important; }
 
-    /* ---- LOCATION ---- */
+    /* ---- 7. LOCATION ---- */
     body > div:nth-child(8) { padding: 56px 20px !important; }
+    /* Stack: map on top, info below */
     body > div:nth-child(8) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
-    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 260px !important; }
-
-    /* ---- FAQ ---- */
-    body > div:nth-child(9) { padding: 56px 20px !important; }
-
-    /* ---- PARTNER ---- */
-    body > div:nth-child(10) { padding: 40px 20px !important; }
-    body > div:nth-child(10) > div > div:last-child { gap: 24px !important; }
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 240px !important; }
+    /* Transport info: stack to 1 column (not 2x2) */
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
 
     /* ---- FINAL CTA ---- */
     body > div:nth-child(11) { padding: 56px 20px !important; }
     body > div:nth-child(11) > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
-    body > div:nth-child(11) > div > a { width: 100% !important; }
+    body > div:nth-child(11) > div > a { width: 100% !important; white-space: nowrap !important; }
 
     /* ---- FOOTER ---- */
     body > div:nth-child(12) { padding: 40px 20px !important; }
   }
 
   @media (max-width: 400px) {
-    #spk-strip > div { width: 280px !important; height: 320px !important; }
+    /* Extra small: speaker images even smaller */
+    #spk-strip > div { width: 260px !important; height: 280px !important; }
     body > div:nth-child(2) > div > div:first-child > div:first-child h1 { font-size: 2.5rem !important; }
   }
   </style>
