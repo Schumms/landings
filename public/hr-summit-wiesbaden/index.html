@@ -614,20 +614,24 @@ agendaMobileReorder();
 // ---- LOCATION MOBILE REORDER ----
 // On mobile: title → address → map → PKW/Bahn → hotels
 function locationMobileReorder() {
-  var locGrid = document.querySelector('body > div:nth-child(8) > div > div[style*="grid-template-columns"]');
+  // Find location section by text content (more reliable than nth-child)
+  var allDivs = document.querySelectorAll('body > div');
+  var locGrid = null;
+  for (var i = 0; i < allDivs.length; i++) {
+    if (allDivs[i].textContent.indexOf('Location & Anfahrt') !== -1) {
+      locGrid = allDivs[i].querySelector('[style*="grid-template-columns"]');
+      break;
+    }
+  }
   if (!locGrid) return;
   var mapCol = document.getElementById('loc-map');
-  var infoCol = locGrid.children[1]; // right column with text
+  var infoCol = locGrid.children[1];
   if (!mapCol || !infoCol) return;
   
-  // Find the address paragraph (Borsigstr. 20)
   var addrP = infoCol.querySelector('p');
-  // Find the transport grid (PKW/Bahn)
-  var transportGrid = infoCol.querySelector('div[style*="grid-template-columns:1fr 1fr"]');
   
   if (window.innerWidth <= 768) {
-    // Move map after address, before transport
-    if (addrP && transportGrid && mapCol.parentElement !== infoCol) {
+    if (addrP && mapCol.parentElement !== infoCol) {
       addrP.insertAdjacentElement('afterend', mapCol);
     }
   }
