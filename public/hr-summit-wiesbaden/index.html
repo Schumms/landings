@@ -141,6 +141,7 @@
     /* ---- NAV ---- */
     body > div:first-child { padding: 12px 16px !important; }
     body > div:first-child > div:first-child > span { display: none !important; }
+    body > div:first-child > div:first-child > img { height: 14px !important; }
     body > div:first-child > div:last-child { gap: 10px !important; }
     body > div:first-child > div:last-child > a:not(:last-child) { display: none !important; }
     body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
@@ -164,17 +165,15 @@
     body > div:nth-child(3) { padding: 48px 20px !important; }
     /* All 6 items stack underneath each other (1 column) */
     body > div:nth-child(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 20px !important; }
-    /* Each item: icon LEFT, text RIGHT (flex row) */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] > div { display: flex !important; align-items: flex-start !important; gap: 14px !important; }
+    /* Each item: icon + title in a ROW, description BELOW (full width) */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; gap: 14px !important; }
     /* Icon: no margin-bottom, shrink to fit */
     body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
     body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
-    /* Text wrapper: title + desc next to icon */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:last-child { flex: 1 !important; }
-    /* Title text scaled down */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div[style*="font:700"] { font-size: 0.95rem !important; line-height: 1.25 !important; }
-    /* Description text smaller so more words per line */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > p { font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 4px !important; }
+    /* Title next to icon */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div[style*="font:700"] { flex: 1 !important; font-size: 0.95rem !important; line-height: 1.25 !important; }
+    /* Description UNDERNEATH icon+title (full width) */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > p { flex-basis: 100% !important; font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 2px !important; padding-left: 58px !important; }
     /* Section heading smaller */
     body > div:nth-child(3) > div > h2 { font-size: 1.6rem !important; margin: 12px 0 28px !important; }
     /* CTA button row: 1 column, button full width */
@@ -215,15 +214,21 @@
     #tickets > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     /* Pricing card full width, not cut off */
     #tickets > div > div[style*="grid-template-columns"] > div:last-child { padding: 28px 24px !important; max-width: 100% !important; }
-    /* Countdown: wrap to 2x2 grid */
-    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] { flex-wrap: wrap !important; gap: 8px !important; }
-    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div { min-width: 0 !important; flex: 1 1 calc(50% - 4px) !important; padding: 12px 4px !important; }
+    /* Countdown: all 4 tiles in one line, smaller */
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] { flex-wrap: nowrap !important; gap: 4px !important; }
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div { min-width: 0 !important; flex: 1 1 25% !important; padding: 8px 2px !important; }
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div > div:first-child { font-size: 1.4rem !important; }
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div > div:last-child { font-size: 8px !important; margin-top: 3px !important; }
 
     /* ---- 7. LOCATION ---- */
     body > div:nth-child(8) { padding: 56px 20px !important; }
-    /* Stack: map on top, info below */
-    body > div:nth-child(8) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
-    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 240px !important; }
+    /* Stack to 1 column: info text first, map second */
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+    /* Info column (right on desktop) moves to top */
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
+    /* Map moves below address — but after the address+title, before PKW/Bahn */
+    /* We'll handle the map insertion via JS to place it after the address paragraph */
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 200px !important; }
     /* Transport info: stack to 1 column (not 2x2) */
     body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
 
@@ -434,7 +439,7 @@
 <div style="background:#fff;padding:96px 40px">
   <div style="max-width:1120px;margin:0 auto">
     <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:stretch">
-      <div style="display:flex;flex-direction:column">
+      <div id="loc-map" style="display:flex;flex-direction:column">
         <div style="flex:1;min-height:320px;border-radius:0;overflow:hidden;position:relative;box-shadow:0 24px 48px -24px rgba(0,0,0,.3)"><iframe title="Karte Schumm und Rösch Eventspace" src="https://www.google.com/maps?q=Borsigstraße+20,+65205+Wiesbaden&amp;output=embed" style="border:0;width:100%;height:calc(100% + 48px);position:absolute;top:0;left:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""></iframe></div>
       </div>
       <div>
@@ -605,6 +610,29 @@ function agendaMobileReorder() {
   }
 }
 agendaMobileReorder();
+
+// ---- LOCATION MOBILE REORDER ----
+// On mobile: title → address → map → PKW/Bahn → hotels
+function locationMobileReorder() {
+  var locGrid = document.querySelector('body > div:nth-child(8) > div > div[style*="grid-template-columns"]');
+  if (!locGrid) return;
+  var mapCol = document.getElementById('loc-map');
+  var infoCol = locGrid.children[1]; // right column with text
+  if (!mapCol || !infoCol) return;
+  
+  // Find the address paragraph (Borsigstr. 20)
+  var addrP = infoCol.querySelector('p');
+  // Find the transport grid (PKW/Bahn)
+  var transportGrid = infoCol.querySelector('div[style*="grid-template-columns:1fr 1fr"]');
+  
+  if (window.innerWidth <= 768) {
+    // Move map after address, before transport
+    if (addrP && transportGrid && mapCol.parentElement !== infoCol) {
+      addrP.insertAdjacentElement('afterend', mapCol);
+    }
+  }
+}
+locationMobileReorder();
 
 </script>
 </body>
