@@ -141,18 +141,19 @@
     body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
 
     /* ---- 1. HERO ---- */
-    body > div:nth-child(2) > div > div:first-child { padding: 60px 20px 40px !important; }
-    /* Stack: headline first, then blurred box underneath */
-    body > div:nth-child(2) > div > div:first-child > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
+    /* Content div: reduce padding */
+    body > div:nth-child(2) > div:nth-child(3) { padding: 60px 20px 40px !important; }
+    /* Grid div: stack to 1 column (headline above, glass box below) */
+    body > div:nth-child(2) > div:nth-child(3) > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
     /* Subtext smaller so more text fits per line */
-    body > div:nth-child(2) > div > div:first-child > div:first-child > div:first-child > p { font-size: 1.05rem !important; }
-    /* Blurred box: move below subtitle, full width, not cut off */
-    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child { max-width: 100% !important; justify-self: stretch !important; }
-    /* Inner grid of blurred box: stack Wann/Wo vertically */
-    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child > div:first-child { grid-template-columns: 1fr !important; gap: 12px !important; }
-    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child > div:first-child > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.16) !important; padding-top: 12px !important; }
+    body > div:nth-child(2) > div:nth-child(3) > div:first-child > div:first-child > p { font-size: 1.05rem !important; }
+    /* Glass box: full width, not cut off, below subtitle */
+    body > div:nth-child(2) > div:nth-child(3) > div:first-child > div:last-child { max-width: 100% !important; justify-self: stretch !important; }
+    /* Inner grid of glass box: stack Wann/Wo vertically */
+    body > div:nth-child(2) > div:nth-child(3) > div:first-child > div:last-child > div:first-child { grid-template-columns: 1fr !important; gap: 12px !important; }
+    body > div:nth-child(2) > div:nth-child(3) > div:first-child > div:last-child > div:first-child > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.16) !important; padding-top: 12px !important; }
     /* Pain statement section: reduce top margin */
-    body > div:nth-child(2) > div > div:first-child > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
+    body > div:nth-child(2) > div:nth-child(3) > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
 
     /* ---- 2. DAS NIMMST DU MIT ---- */
     body > div:nth-child(3) { padding: 56px 20px !important; }
