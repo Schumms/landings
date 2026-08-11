@@ -133,6 +133,11 @@
 
   <style id="mobile-responsive">
   @media (max-width: 768px) {
+    /* ---- GLOBAL: scale down text ---- */
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.1rem !important; }
+    p { font-size: 0.9rem !important; line-height: 1.5 !important; }
+
     /* ---- NAV ---- */
     body > div:first-child { padding: 12px 16px !important; }
     body > div:first-child > div:first-child > span { display: none !important; }
@@ -156,12 +161,22 @@
     body > div:nth-child(2) > div:nth-child(3) > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
 
     /* ---- 2. DAS NIMMST DU MIT ---- */
-    body > div:nth-child(3) { padding: 56px 20px !important; }
+    body > div:nth-child(3) { padding: 48px 20px !important; }
     /* All 6 items stack underneath each other (1 column) */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 28px !important; }
-    /* Description text 30% smaller so more words per line */
-    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > p { font-size: 0.71rem !important; line-height: 1.5 !important; }
-    /* Title text stays as is, icons stay as is */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 20px !important; }
+    /* Each item: icon LEFT, text RIGHT (flex row) */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div { display: flex !important; align-items: flex-start !important; gap: 14px !important; }
+    /* Icon: no margin-bottom, shrink to fit */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
+    /* Text wrapper: title + desc next to icon */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div:last-child { flex: 1 !important; }
+    /* Title text scaled down */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > div[style*="font:700"] { font-size: 0.95rem !important; line-height: 1.25 !important; }
+    /* Description text smaller so more words per line */
+    body > div:nth-child(3) > div > div[style*="repeat(3"] > div > p { font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 4px !important; }
+    /* Section heading smaller */
+    body > div:nth-child(3) > div > h2 { font-size: 1.6rem !important; margin: 12px 0 28px !important; }
     /* CTA button row: 1 column, button full width */
     body > div:nth-child(3) > div > div:last-child { grid-template-columns: 1fr !important; }
     body > div:nth-child(3) > div > div:last-child > a { grid-column: 1 !important; }
@@ -286,7 +301,7 @@
 <div style="background:#fff;padding:96px 40px">
   <div style="max-width:1120px;margin:0 auto">
     <div style="font:600 11px var(--font-brand);letter-spacing:.14em;text-transform:uppercase;color:#01DBA2">Das nimmst du mit</div>
-    <h2 style="margin:16px 0 48px;font:900 clamp(2.2rem,4vw,3.2rem)/0.98 var(--font-brand);letter-spacing:-.02em;max-width:760px">Kein Theorie-Tag.<br>Ein Werkzeugkasten für Montag.</h2>
+    <h2 style="margin:16px 0 48px;font:900 clamp(2.2rem,4vw,3.2rem)/0.98 var(--font-brand);letter-spacing:-.02em;max-width:760px">Kein Theorie-Tag.<br>Ein Werkzeug für Montag.</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:44px 40px">
       <div><div style="width:56px;height:56px;border-radius:999px;background:#DEEFE6;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:#01DBA2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg></div><div style="font:700 1.25rem/1.3 var(--font-brand)">Konkrete KI-Anwendungen für deinen Führungsalltag</div><p style="margin-top:8px;font:400 1.02rem/1.55 var(--font-brand);color:var(--grey-600)">Keine Theorie, sondern Use Cases, die du nächste Woche einsetzen kannst — z. B. der virtuelle Product Owner als Sparringspartner.</p></div>
       <div><div style="width:56px;height:56px;border-radius:999px;background:#E3F1FE;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:#827AFE"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div style="font:700 1.25rem/1.3 var(--font-brand)">Klarheit über KI-Rollen in deinem Team</div><p style="margin-top:8px;font:400 1.02rem/1.55 var(--font-brand);color:var(--grey-600)">Wer macht was, wenn KI Aufgaben übernimmt? Wie baust du dein Team neu auf?</p></div>
