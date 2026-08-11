@@ -130,6 +130,75 @@
     .hover-green-ink:hover { background: var(--sur-green); color: var(--sur-ink); }
     .hover-light:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.4); }
   </style>
+
+  <style id="mobile-responsive">
+  @media (max-width: 768px) {
+    /* ---- NAV ---- */
+    body > div:first-child { padding: 12px 16px !important; }
+    body > div:first-child > div:first-child > span { display: none !important; }
+    body > div:first-child > div:last-child { gap: 10px !important; }
+    body > div:first-child > div:last-child > a:not(:last-child) { display: none !important; }
+    body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; }
+
+    /* ---- HERO ---- */
+    body > div:nth-child(2) > div > div:first-child { padding: 60px 20px 40px !important; }
+    body > div:nth-child(2) > div > div:first-child > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
+    body > div:nth-child(2) > div > div:first-child > div:first-child > div:last-child { max-width: 100% !important; }
+    body > div:nth-child(2) > div > div:first-child > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
+
+    /* ---- DAS NIMMST DU MIT ---- */
+    body > div:nth-child(3) { padding: 56px 20px !important; }
+    body > div:nth-child(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 28px !important; }
+    body > div:nth-child(3) > div > div:last-child { grid-template-columns: 1fr !important; }
+    body > div:nth-child(3) > div > div:last-child > a { grid-column: 1 !important; }
+
+    /* ---- SPEAKER ---- */
+    #speaker { padding: 56px 20px !important; }
+    #speaker > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    #speaker > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
+    #spk-strip > div { width: 300px !important; max-width: 85vw !important; height: 360px !important; }
+
+    /* ---- AGENDA ---- */
+    #agenda { padding: 56px 20px !important; }
+    #agenda > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+    #agenda > div > div:last-child { position: static !important; }
+    #agenda > div > div:last-child > div:first-child { min-height: 300px !important; }
+
+    /* ---- TICKETS ---- */
+    #tickets { padding: 56px 20px !important; }
+    #tickets > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    #tickets > div > div[style*="grid-template-columns"] > div:last-child { padding: 28px 24px !important; }
+
+    /* ---- COUNTDOWN: wrap to 2x2 ---- */
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] { flex-wrap: wrap !important; gap: 8px !important; }
+    #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div { min-width: 0 !important; flex: 1 1 calc(50% - 4px) !important; padding: 12px 4px !important; }
+
+    /* ---- LOCATION ---- */
+    body > div:nth-child(8) { padding: 56px 20px !important; }
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    body > div:nth-child(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 260px !important; }
+
+    /* ---- FAQ ---- */
+    body > div:nth-child(9) { padding: 56px 20px !important; }
+
+    /* ---- PARTNER ---- */
+    body > div:nth-child(10) { padding: 40px 20px !important; }
+    body > div:nth-child(10) > div > div:last-child { gap: 24px !important; }
+
+    /* ---- FINAL CTA ---- */
+    body > div:nth-child(11) { padding: 56px 20px !important; }
+    body > div:nth-child(11) > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+    body > div:nth-child(11) > div > a { width: 100% !important; }
+
+    /* ---- FOOTER ---- */
+    body > div:nth-child(12) { padding: 40px 20px !important; }
+  }
+
+  @media (max-width: 400px) {
+    #spk-strip > div { width: 280px !important; height: 320px !important; }
+    body > div:nth-child(2) > div > div:first-child > div:first-child h1 { font-size: 2.5rem !important; }
+  }
+  </style>
 </head>
 <body>
 
@@ -423,7 +492,8 @@ function spkUpdate() {
   document.getElementById('spk-name').textContent = s.name;
   document.getElementById('spk-role').textContent = s.role;
   document.getElementById('spk-desc').textContent = s.desc;
-  spkStrip.style.transform = 'translateX(-' + (spkIdx * 444) + 'px)';
+  var cardW = spkStrip.children[0].offsetWidth + 24;
+  spkStrip.style.transform = 'translateX(-' + (spkIdx * cardW) + 'px)';
 }
 function spkGo(d) {
   spkIdx = (spkIdx + d + speakers.length) % speakers.length;
