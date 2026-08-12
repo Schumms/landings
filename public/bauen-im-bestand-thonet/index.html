@@ -139,7 +139,7 @@
     .bb-nav-links { display: none !important; }
     .bb-hero-title { font-size: 2.5rem !important; }
     .bb-hero-flex { flex-direction: column !important; min-height: auto !important; }
-    .bb-hero-media { min-height: 320px; }
+    .bb-hero-media { min-height: 320px; order: -1; }
     .bb-2col { grid-template-columns: 1fr !important; }
     .bb-themen-grid { grid-template-columns: 1fr !important; }
     .bb-gallery-grid { grid-template-columns: 1fr 1fr !important; }
@@ -154,7 +154,7 @@
     h3 { font-size: 1.125rem !important; }
     p { font-size: 0.9375rem !important; }
     [style*="padding: var(--space-9) 40px"] { padding-left: 20px !important; padding-right: 20px !important; }
-    .bb-hero-title { font-size: 2rem !important; }
+    .bb-hero-title { font-size: 2.4rem !important; }
   }
 </style>
 </head>
@@ -162,13 +162,13 @@
 <body>
 
 <!-- NAV -->
-<header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);">
-  <div style="display: flex; align-items: center; gap: 18px;">
-    <span style="font-weight: 900; font-size: 1rem; letter-spacing: -0.01em; text-transform: uppercase;">Schumm und Rösch</span>
-    <span style="width: 1px; height: 20px; background: var(--border-default);"></span>
-    <img src="images/thonet-logo.webp" alt="Thonet" width="361" height="90" style="height: 16px; width: auto; display: block;" decoding="async">
+<header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="/images/schumms-logo-black.png" alt="Schumm und Rösch" style="height: 14px; width: auto; display: block;" decoding="async">
+    <span style="width: 1px; height: 16px; background: var(--border-default);"></span>
+    <img src="images/thonet-logo.webp" alt="Thonet" width="361" height="90" style="height: 12px; width: auto; display: block;" decoding="async">
   </div>
-  <a href="#anmeldung" class="btn-dark" style="display: inline-flex; align-items: center; justify-content: center; padding: 9px 22px; background: var(--sur-ink); color: #fff; font-family: var(--font-brand); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; min-width: 140px;">Anmelden</a>
+  <a href="#anmeldung" class="btn-dark" style="display: inline-flex; align-items: center; justify-content: center; padding: 7px 16px; background: var(--sur-ink); color: #fff; font-family: var(--font-brand); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;">Anmelden</a>
 </header>
 
 <main>
@@ -176,8 +176,8 @@
 <!-- HERO -->
 <section class="bb-hero-flex" style="position: relative; min-height: 92vh; display: flex; overflow: hidden; background: var(--sur-ink);">
   <div style="flex: 1 1 56%; min-width: 320px; display: flex; flex-direction: column; justify-content: center; padding: 64px 56px; color: #fff;">
-    <span class="eyebrow" style="color: #EFA0AC;">Schumm und Rösch × Thonet · Pink Month</span>
-    <h1 class="bb-hero-title" style="font-size: clamp(2.75rem, 6vw, 4.75rem); font-weight: 900; line-height: 0.95; letter-spacing: 0em; text-transform: none; margin: 18px 0 22px;">Bauen im Bestand<br>trifft Thonet.</h1>
+    <span class="eyebrow" style="color: #EFA0AC; display: inline-flex; align-items: center; gap: 10px;"><i style="width: 22px; height: 2px; background: currentColor; display: inline-block;"></i>Schumm und Rösch × Thonet · Pink Month</span>
+    <h1 class="bb-hero-title" style="font-size: clamp(3.3rem, 6vw, 5.7rem); font-weight: 900; line-height: 0.95; letter-spacing: 0em; text-transform: none; margin: 18px 0 22px;">Bauen im Bestand<br>Talkrunde.</h1>
     <p style="font-size: 1.125rem; font-weight: 350; line-height: 1.55; max-width: 520px; margin: 0 0 36px; opacity: 0.92;">Der ganze September steht bei uns im Zeichen von Pink. Ein Nachmittag, an dem wir über das sprechen, was wirklich zählt, wenn aus Bestand wieder Zukunft wird — mit 200 Jahre Handwerksgeschichte von Thonet mittendrin.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 14px 32px; align-items: center; margin-bottom: 36px; font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.02em;">
       <span>03.09.</span>
@@ -197,8 +197,8 @@
 <!-- KONZEPT -->
 <section id="konzept" style="max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;" class="bb-2col">
   <div>
-    <span class="eyebrow" style="color: #EFA0AC;">Das Konzept</span>
-    <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 0;">Weiterdenken<br>statt Abreißen.</h2>
+    <span class="eyebrow" style="color: #EFA0AC; display: inline-flex; align-items: center; gap: 10px;"><i style="width: 22px; height: 2px; background: currentColor; display: inline-block;"></i>Das Konzept</span>
+    <h2 style="font-size: clamp(2.6rem, 4vw, 3.9rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 0;">Weiterdenken<br>statt Abreißen.</h2>
   </div>
   <div style="padding-top: 8px;">
     <p style="font-size: 1.125rem; line-height: 1.55; margin: 0 0 20px; font-weight: 350;">Der ganze September steht bei uns im Zeichen von Pink. Am 03.09. machen wir daraus einen Nachmittag ganz im Zeichen von Bauen im Bestand: Wie aus einer alten Fläche wieder ein Ort mit Zukunft wird — geplant, gedacht und eingerichtet mit Sitzmöbeln von Thonet, die schon seit 200 Jahren gebogen, nicht neu gebaut werden.</p>
@@ -209,8 +209,8 @@
 <!-- THEMEN -->
 <section id="themen" style="padding: var(--space-9) 40px; background-color: #F1F1F1;">
   <div style="max-width: var(--container-max); margin: 0 auto;">
-    <span class="eyebrow" style="color: #EFA0AC;">Der Talk</span>
-    <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px;">Vier Fragen, die uns beschäftigen.</h2>
+    <span class="eyebrow" style="color: #EFA0AC; display: inline-flex; align-items: center; gap: 10px;"><i style="width: 22px; height: 2px; background: currentColor; display: inline-block;"></i>Der Talk</span>
+    <h2 style="font-size: clamp(2.6rem, 4vw, 3.9rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px;">Vier Fragen, die uns beschäftigen.</h2>
     <div class="bb-themen-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rosa); border: 1px solid var(--rosa);">
       <div style="background: #fff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
         <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; color: var(--rosa-ink);">01</span>
@@ -239,10 +239,10 @@
 <!-- SHOWROOM GALLERY -->
 <section id="showroom" style="background: var(--sur-ink); padding: var(--space-9) 40px; color: #fff;">
   <div style="max-width: var(--container-max); margin: 0 auto;">
-    <span class="eyebrow" style="color: #EFA0AC;">Handwerk &amp; Bestand</span>
-    <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px; color: #fff;">Gebogen, nicht neu gebaut.</h2>
+    <span class="eyebrow" style="color: #EFA0AC; display: inline-flex; align-items: center; gap: 10px;"><i style="width: 22px; height: 2px; background: currentColor; display: inline-block;"></i>Handwerk &amp; Bestand</span>
+    <h2 style="font-size: clamp(2.6rem, 4vw, 3.9rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px; color: #fff;">Gebogen, nicht neu gebaut.</h2>
     <div class="bb-gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: clamp(220px, 26vw, 320px); gap: 16px;">
-      <div style="grid-column: span 2; overflow: hidden;">
+      <div style="overflow: hidden;">
         <img src="images/handwerk-1.webp" alt="Thonet Handwerk — Biegen" width="1600" height="1065" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <div style="overflow: hidden;">
@@ -262,19 +262,19 @@
 </section>
 
 <!-- EVENT INFO -->
-<section id="info" style="padding: var(--space-9) 40px; background-color: #F1F1F1;">
-  <div style="max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;" class="bb-info-grid">
+<section id="info" style="padding: 32px 40px; background-color: #F1F1F1;">
+  <div style="max-width: var(--container-max); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px 48px; align-items: baseline;" class="bb-info-grid">
     <div>
-      <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Datum</span>
-      <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px;">03.09.</div>
+      <span style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Datum</span>
+      <span style="font-size: 1rem; font-weight: 900; margin-left: 8px;">03.09.</span>
     </div>
     <div>
-      <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Uhrzeit</span>
-      <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px;">15:00 Uhr</div>
+      <span style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Uhrzeit</span>
+      <span style="font-size: 1rem; font-weight: 900; margin-left: 8px;">15:00 Uhr</span>
     </div>
     <div>
-      <span style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Ort</span>
-      <div style="font-size: 1.5rem; font-weight: 900; margin-top: 8px; line-height: 1.2;">Schumms Eventfläche<br>Borsigstraße 20, 65205 Wiesbaden</div>
+      <span style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);">Ort</span>
+      <span style="font-size: 1rem; font-weight: 900; margin-left: 8px;">Schumms Eventfläche, Borsigstraße 20, 65205 Wiesbaden</span>
     </div>
   </div>
 </section>
@@ -282,8 +282,8 @@
 <!-- SIGNUP -->
 <div id="hubspot-hidden-form" style="display: none;"></div>
 <section id="anmeldung" style="max-width: 640px; margin: 0 auto; padding: var(--space-9) 40px;">
-  <span class="eyebrow" style="color: #EFA0AC;">Anmeldung</span>
-  <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 12px;">Sei am 03.09. dabei.</h2>
+  <span class="eyebrow" style="color: #EFA0AC; display: inline-flex; align-items: center; gap: 10px;"><i style="width: 22px; height: 2px; background: currentColor; display: inline-block;"></i>Anmeldung</span>
+  <h2 style="font-size: clamp(2.6rem, 4vw, 3.9rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 12px;">Sei am 03.09. dabei.</h2>
   <p style="font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.55; margin: 0 0 40px;">Plätze sind begrenzt. Wir freuen uns auf dich.</p>
 
   <div class="form-success" id="form-success" hidden>
