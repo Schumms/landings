@@ -144,28 +144,31 @@
 
   /* Responsive — tablet */
   @media (max-width: 860px) {
-    .ll-hero-title { font-size: 2.5rem !important; }
-    .ll-hero-flex { flex-direction: column !important; min-height: auto !important; }
+    .ll-hero-title { font-size: 2.75rem !important; }
+    .ll-hero-flex { flex-direction: column-reverse !important; min-height: auto !important; }
     .ll-hero-media { min-height: 320px; }
     .ll-2col { grid-template-columns: 1fr !important; }
     .ll-erwartet-grid { grid-template-columns: 1fr 1fr !important; }
     .ll-gallery-grid { grid-template-columns: 1fr 1fr !important; }
-    .ll-gallery-grid > .img-placeholder:first-child { grid-column: span 2 !important; }
     .ll-info-grid { grid-template-columns: 1fr !important; }
     .ll-info-grid > div { border-right: none !important; border-bottom: 1.5px solid var(--pink-mid); }
     .ll-info-grid > div:last-child { border-bottom: none; }
+    /* Section titles 10% bigger on tablet */
+    h1 { font-size: calc(2.75rem * 1.1) !important; }
+    h2 { font-size: calc(clamp(2rem, 4vw, 3rem) * 1.1) !important; }
+    h3 { font-size: calc(1.25rem * 1.1) !important; }
   }
 
   /* Responsive — mobile */
   @media (max-width: 480px) {
     .ll-erwartet-grid { grid-template-columns: 1fr !important; }
     .ll-gallery-grid { grid-template-columns: 1fr !important; }
-    .ll-gallery-grid > .img-placeholder:first-child { grid-column: span 1 !important; }
     header { padding: 12px 16px !important; }
     [style*="padding: var(--space-9) 40px"] { padding-left: 20px !important; padding-right: 20px !important; }
-    h1 { font-size: 1.75rem !important; }
-    h2 { font-size: 1.5rem !important; }
-    h3 { font-size: 1.125rem !important; }
+    /* Section titles 10% bigger on mobile */
+    h1 { font-size: 1.925rem !important; }
+    h2 { font-size: 1.65rem !important; }
+    h3 { font-size: 1.375rem !important; }
     p { font-size: 0.9375rem !important; }
   }
 </style>
@@ -253,7 +256,7 @@
       <span class="eyebrow" style="color: #E95088;">Auf unserer Fläche</span>
       <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; margin: 18px 0 48px; max-width: 700px; color: var(--sur-ink)">#gemeinsamstark</h2>
       <div class="ll-gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: clamp(220px, 26vw, 320px); gap: 16px;">
-        <div style="grid-column: span 2; overflow: hidden;"><img src="images/frauen-1.webp" alt="Frauennetzwerk auf unserer Eventfläche" width="1590" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="overflow: hidden;"><img src="images/frauen-1.webp" alt="Frauennetzwerk auf unserer Eventfläche" width="1590" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
         <div style="overflow: hidden;"><img src="images/frauen-2.webp" alt="Networking bei der Ladies Lounge" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
         <div style="overflow: hidden;"><img src="images/frauen-3.webp" alt="Rosa Sweet Table" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
         <div style="overflow: hidden;"><img src="images/frauen-4.webp" alt="Pinke Drinks" width="778" height="640" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"></div>
