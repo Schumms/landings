@@ -207,17 +207,25 @@ ul{margin:0}
   .prob-col:first-child{border-top:none;padding-top:0}
   [data-hide-narrow]{display:none!important}
   .begleitung__grid{gap:24px!important}
+  .begleitung__photos{gap:12px!important}
+  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:202/254;object-fit:cover}
+  /* Mobile hero: image first, then text */
+  .hero__grid{display:flex!important;flex-direction:column-reverse!important}
+  .hero__figure{height:auto!important;margin-bottom:0!important;max-height:300px;overflow:hidden}
+  .hero__figure img{width:100%!important;height:auto!important;max-height:300px;object-fit:cover}
 }
 @media(max-width:560px){.benefit-grid{grid-template-columns:1fr!important}.cform__row{grid-template-columns:1fr}}
 @media(max-width:480px){
-  h1{font-size:1.75rem!important}
-  h2{font-size:1.5rem!important}
+  h1{font-size:3.3rem!important}
+  h2{font-size:1.65rem!important}
   h3{font-size:1.125rem!important}
   p{font-size:0.9375rem!important}
   .nav{padding:14px 16px!important}
+  .nav img{height:22px!important;width:auto!important;object-fit:contain}
   .was{padding-left:20px!important;padding-right:20px!important}
   .was p{font-size:1rem!important}
   [style*="padding:clamp(56px,8vw,104px) clamp(40px,6vw,80px)"]{padding-left:20px!important;padding-right:20px!important}
+  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:202/254;object-fit:cover}
 }
 </style>
 </head>
@@ -229,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav class="nav">
-  <a href="https://www.schumms.com" style="display:flex;"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" style="height:26px;width:auto" decoding="async"></a>
+  <a href="https://www.schumms.com" style="display:flex;align-items:center;"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" style="height:26px;width:auto;object-fit:contain" decoding="async"></a>
   <div style="display:flex;align-items:center;gap:24px;">
     <span style="display:none;font-size:.8125rem;font-weight:600;letter-spacing:.04em;color:var(--text-secondary)" data-hide-narrow="">Bei euch oder bei uns · Kostenlos</span>
     <a data-component="Button" data-component-variant="dark,sm" href="#anmelden" class="btn btn--dark btn--sm">Termin sichern</a>
