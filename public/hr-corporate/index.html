@@ -498,7 +498,7 @@ if ('IntersectionObserver' in window) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
 } else {
   document.querySelectorAll('[data-reveal]').forEach(function(el) { el.classList.add('revealed'); });
