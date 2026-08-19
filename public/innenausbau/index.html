@@ -214,9 +214,12 @@ a:hover { color: var(--green-800); }
   /* Form fields stacking */
   form [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
   
-  /* Section padding reduction */
-  section[style*="padding:96px 0"] { padding: 48px 0 !important; }
-  section[style*="padding:96px 32px"] { padding: 48px 20px !important; }
+  /* Section padding reduction — unified 20px left/right */
+  section { padding-left: 20px !important; padding-right: 20px !important; }
+  section > div[style*="max-width"] { padding-left: 20px !important; padding-right: 20px !important; }
+  section[style*="padding:96px 0"], section[style*="padding: 96px 0"] { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
+  section[style*="padding:96px 32px"], section[style*="padding: 96px 32px"] { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
+  section[style*="padding:64px 0"], section[style*="padding: 64px 0"] { padding-top: 32px !important; padding-bottom: 32px !important; padding-left: 20px !important; padding-right: 20px !important; }
   
   /* Nav links hidden on mobile */
   nav[style*="display:flex; align-items:center; gap:32px"] { display: none !important; }
