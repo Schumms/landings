@@ -229,7 +229,6 @@ a:hover { color: var(--green-800); }
       <nav style="display:flex; align-items:center; gap:32px;">
         <a href="#leistung" style="font-family:var(--font-brand); font-size:0.9rem; font-weight:500; color:var(--grey-600); text-decoration:none;">Leistung</a>
         <a href="#vorgehen" style="font-family:var(--font-brand); font-size:0.9rem; font-weight:500; color:var(--grey-600); text-decoration:none;">Vorgehen</a>
-        <a href="#referenzen" style="font-family:var(--font-brand); font-size:0.9rem; font-weight:500; color:var(--grey-600); text-decoration:none;">Referenzen</a>
         <a href="#kontakt" class="btn btn-dark btn-sm hover-dim">Gespräch buchen →</a>
       </nav>
     </div>
@@ -535,8 +534,8 @@ a:hover { color: var(--green-800); }
       </div>
       <form id="contact-form" style="background:#fff; border:1px solid var(--grey-200); padding:40px;">
         <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:20px;">
-          <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">Anrede*</label>
-          <select name="salutation" required style="font-family:var(--font-brand); font-size:0.9375rem; color:var(--grey-600); background:#fff; padding:11px 14px; border:1.5px solid var(--grey-300);">
+          <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">Anrede</label>
+          <select name="salutation" style="font-family:var(--font-brand); font-size:0.9375rem; color:var(--grey-600); background:#fff; padding:11px 14px; border:1.5px solid var(--grey-300);">
             <option value="">Bitte auswählen</option>
             <option value="Herr">Herr</option>
             <option value="Frau">Frau</option>
@@ -554,8 +553,8 @@ a:hover { color: var(--green-800); }
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:20px;">
-          <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">Unternehmensname*</label>
-          <input name="company" required placeholder="Firma" style="font-family:var(--font-brand); font-size:0.9375rem; color:var(--sur-ink); background:#fff; padding:11px 14px; border:1.5px solid var(--grey-300);">
+          <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">Unternehmensname</label>
+          <input name="company" placeholder="Firma" style="font-family:var(--font-brand); font-size:0.9375rem; color:var(--sur-ink); background:#fff; padding:11px 14px; border:1.5px solid var(--grey-300);">
         </div>
         <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:20px;">
           <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">E-Mail*</label>
@@ -569,9 +568,9 @@ a:hover { color: var(--green-800); }
           <label style="font-family:var(--font-brand); font-size:0.8125rem; font-weight:700; color:var(--sur-ink);">Nachricht*</label>
           <textarea name="message" required placeholder="Erzähl uns kurz von eurer Situation …" rows="4" style="font-family:var(--font-brand); font-size:0.9375rem; color:var(--sur-ink); background:#fff; padding:11px 14px; border:1.5px solid var(--grey-300); resize:vertical;"></textarea>
         </div>
-        <button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn-full hover-dim">ERSTGESPRÄCH BUCHEN →</button>
+        <button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn-full hover-dim">Senden</button>
         <p id="form-status" style="font-family:var(--font-brand); font-size:0.9rem; line-height:1.5; color:var(--sur-ink); margin:16px 0 0; display:none;"></p>
-        <p style="font-size:0.8rem; line-height:1.5; color:var(--grey-400); margin:16px 0 0;">Mit einem Klick auf „Erstgespräch buchen" stimme ich zu, Benachrichtigungen von Schumm und Rösch Planen + Einrichten GmbH zu erhalten und bestätige, dass ich die <a href="https://www.schumms.com/datenschutz" style="color:var(--sur-green);">Datenschutzerklärung</a> zur Kenntnis genommen habe.</p>
+        <p style="font-size:0.8rem; line-height:1.5; color:var(--grey-400); margin:16px 0 0;">Mit einem Klick auf „Senden" stimme ich zu, Benachrichtigungen von Schumm und Rösch Planen + Einrichten GmbH zu erhalten und bestätige, dass ich die <a href="https://www.schumms.com/datenschutz" style="color:var(--sur-green);">Datenschutzerklärung</a> zur Kenntnis genommen habe.</p>
       </form>
     </div>
     <div id="hs-hidden-form" aria-hidden="true" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none;"></div>
