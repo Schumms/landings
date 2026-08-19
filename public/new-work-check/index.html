@@ -89,13 +89,18 @@ a[href="https://newwork-check.schumms.com"]{border-radius:0!important}
   [data-steps-grid] [data-sticky]{position:static!important}
 }
 @media(max-width:480px){
-  h1{font-size:1.75rem!important}
-  h2{font-size:1.5rem!important}
+  h1{font-size:2.1rem!important}
+  h2{font-size:1.8rem!important}
   h3{font-size:1.125rem!important}
   p{font-size:0.9375rem!important}
   nav{padding:14px 16px!important}
   [style*="padding:clamp(56px,8vw,104px) clamp(40px,6vw,80px)"]{padding-left:20px!important;padding-right:20px!important}
   [style*="padding:clamp(40px,6vw,72px) clamp(40px,6vw,80px)"]{padding-left:20px!important;padding-right:20px!important}
+}
+@media(max-width:860px){
+  [data-hero-grid] > div:first-child{order:2}
+  [data-hero-grid] > div:last-child{order:1}
+  [data-compare-grid] > div:first-child{padding-left:0!important;padding-right:0!important}
 }
 </style>
 </head>
@@ -107,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="width:100%;overflow-x:hidden;">
 
 <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,64px);background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);">
-  <a href="https://www.schumms.com" style="display:flex;"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" width="1000" height="84" decoding="async" style="height:24px;width:auto"></a>
+  <a href="https://www.schumms.com" style="display:flex;"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" width="1000" height="84" decoding="async" style="height:24px;width:auto;object-fit:contain"></a>
   <a data-component="Button" data-component-variant="green (custom — not a documented Button variant, see README),sm" href="https://newwork-check.schumms.com" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:var(--sur-green);color:var(--sur-ink);font-weight:700;font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase;">Check starten</a>
 </nav>
 
