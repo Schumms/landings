@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danke für Deine Anfrage | Schumm &amp; Rösch</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#14201C">
+
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/BuenosAires-Black900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/BuenosAires-Regular400.woff2">
+
+<style>
+:root {
+  --sur-green: #01DBA2;
+  --sur-ink: #14201C;
+  --sur-paper: #FFFFFF;
+  --sur-bone: #F4F3EE;
+  --grey-400: #9A9A90;
+  --grey-600: #51514B;
+  --font-brand: "Buenos Aires", "Helvetica Neue", Arial, sans-serif;
+}
+@font-face { font-family: "Buenos Aires"; src: url("/fonts/BuenosAires-Black900.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Buenos Aires"; src: url("/fonts/BuenosAires-Bold700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Buenos Aires"; src: url("/fonts/BuenosAires-Regular400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-brand); background: var(--sur-ink); color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; }
+.container { max-width: 600px; text-align: center; }
+.checkmark { width: 64px; height: 64px; margin: 0 auto 32px; }
+h1 { font-family: var(--font-brand); font-weight: 900; font-size: 2.8rem; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin: 0 0 24px; }
+p { font-size: 1.1rem; line-height: 1.55; color: var(--sur-bone); margin: 0 0 40px; }
+.steps { text-align: left; margin: 0 0 48px; padding: 0; list-style: none; }
+.steps li { display: flex; align-items: flex-start; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.steps li:last-child { border-bottom: none; }
+.steps .num { flex-shrink: 0; width: 32px; height: 32px; background: var(--sur-green); color: var(--sur-ink); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; }
+.steps .text { font-size: 0.95rem; line-height: 1.5; color: var(--sur-bone); padding-top: 4px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-brand); font-weight: 700; font-size: 1rem; padding: 16px 28px; text-decoration: none; cursor: pointer; border: none; transition: filter 0.22s; }
+.btn:hover { filter: brightness(0.94); }
+.btn-primary { background: var(--sur-green); color: var(--sur-ink); }
+.btn-ghost { background: transparent; color: var(--sur-bone); border: 1px solid rgba(255,255,255,0.2); margin-left: 12px; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  p { font-size: 1rem; }
+  .btn-ghost { margin-left: 0; margin-top: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <svg class="checkmark" viewBox="0 0 64 64" fill="none">
+    <circle cx="32" cy="32" r="30" stroke="#01DBA2" stroke-width="3"/>
+    <path d="M20 33 L28 41 L44 25" stroke="#01DBA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h1>Danke! Wir melden uns<br>innerhalb von 24 Stunden.</h1>
+  <p>Deine Anfrage ist angekommen. Leonard Jelifanow meldet sich persönlich bei Dir.</p>
+  <ul class="steps">
+    <li><span class="num">1</span><span class="text">Wir prüfen Deine Anfrage und melden uns innerhalb von 24 Stunden.</span></li>
+    <li><span class="num">2</span><span class="text">Im 30-minütigen Erstgespräch schauen wir uns Fläche, Zeitplan und Budget an.</span></li>
+    <li><span class="num">3</span><span class="text">Du erhältst eine ehrliche Einschätzung – ob und wie wir helfen können.</span></li>
+  </ul>
+  <div>
+    <a href="../" class="btn btn-primary">Zurück zur Seite</a>
+    <a href="https://www.schumms.com" class="btn btn-ghost">Zur Website</a>
+  </div>
+</div>
+</body>
+</html>
