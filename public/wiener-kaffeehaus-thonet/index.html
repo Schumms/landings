@@ -108,10 +108,10 @@ img, picture, video, svg { border-radius:0; }
 
 /* MOBILE OVERRIDES — using IDs for higher specificity than inline styles */
 @media (max-width:860px) {
-  /* 1. NAV: hide text, show logo, smaller */
-  #kh-nav { padding:12px 16px !important; }
-  #kh-nav .kh-nav-text { display:none !important; }
-  #kh-nav .kh-nav-logo { display:block !important; height:14px !important; }
+  /* 1. NAV: smaller padding on mobile, hide Thonet center logo */
+  #kh-nav { padding:12px 16px !important; position:relative !important; }
+  #kh-nav > div span { font-size:0.8125rem !important; }
+  #kh-nav > img { display:none !important; }
 
   /* 2. HERO: column layout, image FIRST */
   #kh-hero { flex-direction:column !important; min-height:auto !important; }
@@ -189,10 +189,9 @@ img, picture, video, svg { border-radius:0; }
   <!-- NAV -->
   <nav id="kh-nav" style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 40px; background:rgba(255,255,255,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border-subtle);">
     <div style="display:flex; align-items:center; gap:14px;">
-      <span class="kh-nav-text" style="font-weight:900; font-size:1rem; letter-spacing:-0.01em; text-transform:uppercase;">Schumm und Rösch</span>
-      <span class="kh-nav-text" style="width:1px; height:20px; background:var(--border-default);"></span>
-      <img class="kh-nav-logo" src="images/thonet-logo.webp" alt="Thonet" width="80" height="20" decoding="async" style="height:18px; width:auto; display:none;">
+      <span style="font-weight:900; font-size:1rem; letter-spacing:-0.01em; text-transform:uppercase;">Schumm und Rösch</span>
     </div>
+    <img src="images/thonet-logo.webp" alt="Thonet" width="64" height="16" decoding="async" style="height:16px; width:auto; display:block; position:absolute; left:50%; transform:translateX(-50%);">
     <a href="#anmeldung" class="focus-visible" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 20px; background:var(--sur-ink); color:#fff; font-family:var(--font-brand); font-size:0.875rem; font-weight:700; letter-spacing:0.02em; text-transform:uppercase; text-decoration:none;">Anmelden</a>
   </nav>
 
