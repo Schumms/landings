@@ -126,9 +126,10 @@ img, picture, video, svg { border-radius:0; }
   #kh-gallery img:first-child { grid-column:span 1 !important; }
 
   /* 5. Form: tighter spacing */
-  #kh-signup-outer { padding:1rem 16px !important; }
-  #anmeldung { padding:1.5rem 16px !important; gap:20px !important; grid-template-columns:1fr !important; }
+  #kh-signup-outer { padding:0.5rem 16px !important; }
+  #anmeldung { padding:1rem 16px !important; gap:16px !important; grid-template-columns:1fr !important; }
   .kh-signup-desc { margin-bottom:8px !important; }
+  #kh-signup-img { width:180px !important; height:auto !important; margin:0 auto !important; }
 
   /* General mobile */
   .kh-2col { grid-template-columns:1fr !important; gap:32px !important; }
@@ -298,7 +299,7 @@ img, picture, video, svg { border-radius:0; }
         <div style="font-size:0.8125rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--rosa-deep);">Anmeldung</div>
         <h2 class="kh-section-title" style="font-size:clamp(2rem,4vw,3rem); font-weight:900; line-height:0.98; letter-spacing:-0.02em; text-transform:none; margin:18px 0 12px;">Wir freuen uns auf dich.</h2>
         <p class="kh-signup-desc" style="font-size:1.0625rem; color:var(--text-secondary); line-height:1.55; margin:0 0 16px;">Sag uns kurz Bescheid, wenn du im September auf einen Kaffee vorbeikommen möchtest — oder melde dich direkt zu einem der beiden Termine oben an.</p>
-        <img src="images/coffee-illustration.webp" alt="Kaffee illustration" width="360" height="469" loading="lazy" decoding="async" style="width:360px; height:469px; display:block; max-width:100%;">
+        <img id="kh-signup-img" src="images/coffee-illustration.webp" alt="Kaffee illustration" width="360" height="469" loading="lazy" decoding="async" style="width:360px; height:469px; display:block; max-width:100%;">
       </div>
       <div>
         <!-- Success message (hidden by default) -->
