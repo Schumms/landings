@@ -1,9 +1,20 @@
 ---
-# Agent-Vorlage: Alle Sections (Legacy-Showcase)
-# Für Lead-Magnet bevorzugt: _template.leadmagnet.md
-# Für Events: _template.event.md
-# Kopieren → umbenennen → published: true
-# Dateiname: mein-slug.md (Unterstrich am Anfang = wird nicht gebaut)
+# DEPRECATED — Nutze die spezialisierten Templates
+#
+# Dieses Template ist veraltet und dient nur noch als Referenz.
+# Für neue Pages bitte die spezialisierten Templates verwenden:
+#
+#   • Sales / Leadmagnet / Download  →  _template.leadmagnet.md
+#   • Event / Workshop / Webinar     →  _template.event.md
+#   • Vollständige Feld-Referenz     →  _template.master.md
+#
+# Alle neuen Features (accent_color, hero_variant, hero_size, sections_layout,
+# hubspot_embed, contact_form, stats, service_overview, etc.) sind nur in den
+# spezialisierten Templates und im Master-Template dokumentiert.
+#
+# Wenn du diese Datei kopierst, fehlen dir die meisten der 25 Sections und
+# alle Layout-Override-Optionen.
+# ═══════════════════════════════════════════════════════════════════════════════
 
 slug: mein-slug
 published: false

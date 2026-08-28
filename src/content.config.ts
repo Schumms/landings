@@ -129,8 +129,9 @@ const landingSchema = z.object({
   hero_image: z.string().optional(),
   hero_image_alt: z.string().optional(),
   hero_variant: z.enum(["default", "fullbleed"]).optional(),
-  // Per-Page Hero-Größe (nur in Verbindung mit hero_variant: "fullbleed" wirksam).
-  // "compact" reduziert min-height und Padding für kompaktere Hero-Bereiche.
+  // Per-Page Hero-Größe. Wirkt in BEIDEN Varianten (fullbleed + default-Split):
+  //   "default" → Standard-Höhe
+  //   "compact" → fullbleed: reduzierte min-height; default: Headline auf 70%
   hero_size: z.enum(["default", "compact"]).optional(),
   cta_text: z.string(),
   cta_href: z.string().url().optional(),
