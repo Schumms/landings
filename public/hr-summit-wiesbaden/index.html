@@ -139,12 +139,12 @@
     p { font-size: 0.9rem !important; line-height: 1.5 !important; }
 
     /* ---- NAV ---- */
-    body > div:first-of-type { padding: 12px 16px !important; }
-    body > div:first-of-type > div:first-child > span { display: none !important; }
-    body > div:first-of-type > div:first-child > img { height: 14px !important; }
-    body > div:first-of-type > div:last-child { gap: 10px !important; }
-    body > div:first-of-type > div:last-child > a:not(:last-child) { display: none !important; }
-    body > div:first-of-type > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
+    body > div:first-child { padding: 12px 16px !important; }
+    body > div:first-child > div:first-child > span { display: none !important; }
+    body > div:first-child > div:first-child > img { height: 14px !important; }
+    body > div:first-child > div:last-child { gap: 10px !important; }
+    body > div:first-child > div:last-child > a:not(:last-child) { display: none !important; }
+    body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
 
     /* ---- 1. HERO ---- */
     /* Content div: reduce padding */
@@ -221,24 +221,24 @@
     #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div > div:last-child { font-size: 8px !important; margin-top: 3px !important; }
 
     /* ---- 7. LOCATION ---- */
-    body > div:nth-of-type(8) { padding: 56px 20px !important; }
+    body > div:nth-of-type(7) { padding: 56px 20px !important; }
     /* Stack to 1 column: info text first, map second */
-    body > div:nth-of-type(8) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
     /* Info column (right on desktop) moves to top */
-    body > div:nth-of-type(8) > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
+    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
     /* Map moves below address — but after the address+title, before PKW/Bahn */
     /* We'll handle the map insertion via JS to place it after the address paragraph */
-    body > div:nth-of-type(8) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 200px !important; }
+    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 200px !important; }
     /* Transport info: stack to 1 column (not 2x2) */
-    body > div:nth-of-type(8) > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
+    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
 
     /* ---- FINAL CTA ---- */
-    body > div:nth-of-type(11) { padding: 56px 20px !important; }
-    body > div:nth-of-type(11) > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
-    body > div:nth-of-type(11) > div > a { width: 100% !important; white-space: nowrap !important; }
+    body > div:nth-of-type(10) { padding: 56px 20px !important; }
+    body > div:nth-of-type(10) > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+    body > div:nth-of-type(10) > div > a { width: 100% !important; white-space: nowrap !important; }
 
     /* ---- FOOTER ---- */
-    body > div:nth-of-type(12) { padding: 40px 20px !important; }
+    body > div:nth-of-type(11) { padding: 40px 20px !important; }
   }
 
   @media (max-width: 400px) {
@@ -578,7 +578,7 @@ if ('IntersectionObserver' in window) {
 
 // ---- COUNTDOWN ----
 function cdCalc() {
-  var target = new Date('2026-09-30T23:59:59');
+  var target = new Date('2026-08-31T23:59:59');
   var diff = Math.max(0, target - new Date());
   var s = Math.floor(diff / 1000);
   return { days: Math.floor(s/86400), hours: Math.floor((s%86400)/3600), mins: Math.floor((s%3600)/60), secs: s%60 };
