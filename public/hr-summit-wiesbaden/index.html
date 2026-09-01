@@ -139,50 +139,50 @@
     p { font-size: 0.9rem !important; line-height: 1.5 !important; }
 
     /* ---- NAV ---- */
-    body > div:first-child { padding: 12px 16px !important; }
-    body > div:first-child > div:first-child > span { display: none !important; }
-    body > div:first-child > div:first-child > img { height: 14px !important; }
-    body > div:first-child > div:last-child { gap: 10px !important; }
-    body > div:first-child > div:last-child > a:not(:last-child) { display: none !important; }
-    body > div:first-child > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
+    #sr-nav { padding: 12px 16px !important; }
+    #sr-nav > div:first-child > span { display: none !important; }
+    #sr-nav > div:first-child > img { height: 14px !important; }
+    #sr-nav > div:last-child { gap: 10px !important; }
+    #sr-nav > div:last-child > a:not(:last-child) { display: none !important; }
+    #sr-nav > div:last-child > a:last-child { padding: 8px 12px !important; font-size: 0.75rem !important; white-space: nowrap !important; }
 
     /* ---- 1. HERO ---- */
     /* Content div: reduce padding */
-    body > div:nth-of-type(2) > div:nth-child(3) { padding: 60px 20px 40px !important; }
+    #sr-hero > div:nth-child(3) { padding: 60px 20px 40px !important; }
     /* Grid div: stack to 1 column (headline above, glass box below) */
-    body > div:nth-of-type(2) > div:nth-child(3) > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
+    #sr-hero > div:nth-child(3) > div:first-child { grid-template-columns: 1fr !important; gap: 24px !important; }
     /* Subtext smaller so more text fits per line */
-    body > div:nth-of-type(2) > div:nth-child(3) > div:first-child > div:first-child > p { font-size: 1.05rem !important; }
+    #sr-hero > div:nth-child(3) > div:first-child > div:first-child > p { font-size: 1.05rem !important; }
     /* Glass box: full width, not cut off, below subtitle */
-    body > div:nth-of-type(2) > div:nth-child(3) > div:first-child > div:last-child { max-width: 100% !important; justify-self: stretch !important; }
+    #sr-hero > div:nth-child(3) > div:first-child > div:last-child { max-width: 100% !important; justify-self: stretch !important; }
     /* Inner grid of glass box: stack Wann/Wo vertically */
-    body > div:nth-of-type(2) > div:nth-child(3) > div:first-child > div:last-child > div:first-child { grid-template-columns: 1fr !important; gap: 12px !important; }
-    body > div:nth-of-type(2) > div:nth-child(3) > div:first-child > div:last-child > div:first-child > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.16) !important; padding-top: 12px !important; }
+    #sr-hero > div:nth-child(3) > div:first-child > div:last-child > div:first-child { grid-template-columns: 1fr !important; gap: 12px !important; }
+    #sr-hero > div:nth-child(3) > div:first-child > div:last-child > div:first-child > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.16) !important; padding-top: 12px !important; }
     /* Pain statement section: reduce top margin */
-    body > div:nth-of-type(2) > div:nth-child(3) > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
+    #sr-hero > div:nth-child(3) > div:last-child { margin: 60px auto 0 !important; padding: 0 20px !important; }
 
     /* ---- 2. DAS NIMMST DU MIT ---- */
-    body > div:nth-of-type(3) { padding: 48px 20px !important; }
+    #sr-benefits { padding: 48px 20px !important; }
     /* All 6 items stack underneath each other (1 column) */
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 20px !important; }
+    #sr-benefits > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 20px !important; }
     /* Each item: icon + title in a ROW, description BELOW (full width) */
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] > div { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; gap: 14px !important; }
+    #sr-benefits > div > div[style*="repeat(3"] > div { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; gap: 14px !important; }
     /* Icon: no margin-bottom, shrink to fit */
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
+    #sr-benefits > div > div[style*="repeat(3"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
+    #sr-benefits > div > div[style*="repeat(3"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
     /* Title next to icon */
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] > div > div[style*="font:700"] { flex: 1 !important; font-size: 0.95rem !important; line-height: 1.25 !important; }
+    #sr-benefits > div > div[style*="repeat(3"] > div > div[style*="font:700"] { flex: 1 !important; font-size: 0.95rem !important; line-height: 1.25 !important; }
     /* Description UNDERNEATH icon+title (full width) */
-    body > div:nth-of-type(3) > div > div[style*="repeat(3"] > div > p { flex-basis: 100% !important; font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 2px !important; padding-left: 58px !important; }
+    #sr-benefits > div > div[style*="repeat(3"] > div > p { flex-basis: 100% !important; font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 2px !important; padding-left: 58px !important; }
     /* Section heading smaller */
-    body > div:nth-of-type(3) > div > h2 { font-size: 1.6rem !important; margin: 12px 0 28px !important; }
+    #sr-benefits > div > h2 { font-size: 1.6rem !important; margin: 12px 0 28px !important; }
     /* CTA button row: 1 column, button full width */
-    body > div:nth-of-type(3) > div > div:last-child { grid-template-columns: 1fr !important; }
-    body > div:nth-of-type(3) > div > div:last-child > a { grid-column: 1 !important; }
+    #sr-benefits > div > div:last-child { grid-template-columns: 1fr !important; }
+    #sr-benefits > div > div:last-child > a { grid-column: 1 !important; }
 
     /* ---- 3. CTA BUTTON (Das nimmst du mit section) ---- */
     /* Ensure "Ticket sichern →" stays on one line (words + arrow together) */
-    body > div:nth-of-type(3) > div > div:last-child > a { white-space: nowrap !important; }
+    #sr-benefits > div > div:last-child > a { white-space: nowrap !important; }
 
     /* ---- 4. SPEAKER ---- */
     #speaker { padding: 56px 20px !important; }
@@ -221,30 +221,30 @@
     #tickets > div > div[style*="grid-template-columns"] > div:first-child > div[style*="display:flex;gap:14px"] > div > div:last-child { font-size: 8px !important; margin-top: 3px !important; }
 
     /* ---- 7. LOCATION ---- */
-    body > div:nth-of-type(7) { padding: 56px 20px !important; }
+    #sr-location { padding: 56px 20px !important; }
     /* Stack to 1 column: info text first, map second */
-    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+    #sr-location > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 24px !important; }
     /* Info column (right on desktop) moves to top */
-    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
+    #sr-location > div > div[style*="grid-template-columns"] > div:last-child { order: -1; }
     /* Map moves below address — but after the address+title, before PKW/Bahn */
     /* We'll handle the map insertion via JS to place it after the address paragraph */
-    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 200px !important; }
+    #sr-location > div > div[style*="grid-template-columns"] > div:first-child > div { min-height: 200px !important; }
     /* Transport info: stack to 1 column (not 2x2) */
-    body > div:nth-of-type(7) > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
+    #sr-location > div > div[style*="grid-template-columns"] > div:last-child > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; }
 
     /* ---- FINAL CTA ---- */
-    body > div:nth-of-type(10) { padding: 56px 20px !important; }
-    body > div:nth-of-type(10) > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
-    body > div:nth-of-type(10) > div > a { width: 100% !important; white-space: nowrap !important; }
+    #sr-final-cta { padding: 56px 20px !important; }
+    #sr-final-cta > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+    #sr-final-cta > div > a { width: 100% !important; white-space: nowrap !important; }
 
     /* ---- FOOTER ---- */
-    body > div:nth-of-type(11) { padding: 40px 20px !important; }
+    #sr-footer { padding: 40px 20px !important; }
   }
 
   @media (max-width: 400px) {
     /* Extra small: speaker images even smaller */
     #spk-strip > div { width: 260px !important; height: 280px !important; }
-    body > div:nth-of-type(2) > div > div:first-child > div:first-child h1 { font-size: 2.5rem !important; }
+    #sr-hero > div > div:first-child > div:first-child h1 { font-size: 2.5rem !important; }
   }
   </style>
 <!-- Google Tag Manager -->
@@ -265,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <!-- ============ NAV ============ -->
-<div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(20,32,28,.92);backdrop-filter:blur(12px)">
+<div id="sr-nav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(20,32,28,.92);backdrop-filter:blur(12px)">
   <div style="display:flex;align-items:center;gap:20px">
     <img src="images/logos/SuR_Logo_white.png" alt="Schumm und Rösch" style="height:24px;width:auto;display:block" decoding="async">
     <span style="font:700 11px var(--font-brand);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);padding-left:20px;border-left:1px solid rgba(255,255,255,.2)">HR Summit · 22.10.26 · Wiesbaden</span>
@@ -279,7 +279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ HERO + PAIN ============ -->
-<div style="position:relative;background:#000;overflow:hidden">
+<div id="sr-hero" style="position:relative;background:#000;overflow:hidden">
   <img src="images/hero-event.webp" alt="HR Summit Eventspace Wiesbaden" decoding="async" fetchpriority="high" width="1920" height="1280" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35) 0%,rgba(0,0,0,.4) 30%,rgba(0,0,0,.75) 58%,#000 74%)"></div>
   <div style="position:relative;padding:120px 40px 48px">
@@ -317,7 +317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ DAS NIMMST DU MIT ============ -->
-<div style="background:#fff;padding:96px 40px">
+<div id="sr-benefits" style="background:#fff;padding:96px 40px">
   <div style="max-width:1120px;margin:0 auto">
     <div style="font:600 11px var(--font-brand);letter-spacing:.14em;text-transform:uppercase;color:#01DBA2">Das nimmst du mit</div>
     <h2 style="margin:16px 0 48px;font:900 clamp(2.2rem,4vw,3.2rem)/0.98 var(--font-brand);letter-spacing:-.02em;max-width:760px">Kein Theorie-Tag.<br>Ein Werkzeug für Montag.</h2>
@@ -450,7 +450,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ LOCATION ============ -->
-<div style="background:#fff;padding:96px 40px">
+<div id="sr-location" style="background:#fff;padding:96px 40px">
   <div style="max-width:1120px;margin:0 auto">
     <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:stretch">
       <div id="loc-map" style="display:flex;flex-direction:column">
@@ -506,7 +506,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ FINAL CTA ============ -->
-<div style="background:var(--sur-green);padding:80px 40px">
+<div id="sr-final-cta" style="background:var(--sur-green);padding:80px 40px">
   <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
     <div><div style="font:900 clamp(2.2rem,4vw,3.2rem)/0.95 var(--font-brand);letter-spacing:-.025em;color:var(--sur-ink)">Wie arbeitet dein Team<br>in der Zukunft?</div><div style="margin-top:14px;font:400 1.15rem var(--font-brand);color:rgba(20,32,28,.72)">22. Oktober 2026 · Wiesbaden · 49 € Early Bird</div></div>
     <a href="https://payments-eu1.hubspot.com/payments/4ZtKjrWYXv?referrer=PAYMENT_LINK" target="_blank" rel="noopener" class="hover-dim" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;font:700 1.0625rem var(--font-brand);letter-spacing:.04em;text-transform:uppercase;line-height:1;border-radius:0;cursor:pointer;text-decoration:none;background:var(--sur-ink);color:#fff;border:1.5px solid var(--sur-ink);transition:filter .15s">Ticket sichern →</a>
@@ -514,7 +514,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ FOOTER ============ -->
-<div style="background:var(--sur-ink);padding:48px 40px">
+<div id="sr-footer" style="background:var(--sur-ink);padding:48px 40px">
   <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start">
     <div style="display:flex;flex-direction:column;gap:14px">
       <img src="images/logos/SuR_Logo_white.png" alt="Schumm und Rösch" loading="lazy" decoding="async" style="height:24px;width:auto;display:block">
