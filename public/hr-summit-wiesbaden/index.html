@@ -164,16 +164,16 @@
     /* ---- 2. DAS NIMMST DU MIT ---- */
     #sr-benefits { padding: 48px 20px !important; }
     /* All 6 items stack underneath each other (1 column) */
-    #sr-benefits > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 20px !important; }
+    #sr-benefits > div > div[style*="repeat"] { grid-template-columns: 1fr !important; gap: 20px !important; }
     /* Each item: icon + title in a ROW, description BELOW (full width) */
-    #sr-benefits > div > div[style*="repeat(3"] > div { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; gap: 14px !important; }
+    #sr-benefits > div > div[style*="repeat"] > div { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; gap: 14px !important; }
     /* Icon: no margin-bottom, shrink to fit */
-    #sr-benefits > div > div[style*="repeat(3"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
-    #sr-benefits > div > div[style*="repeat(3"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
+    #sr-benefits > div > div[style*="repeat"] > div > div:first-child { margin-bottom: 0 !important; flex: none !important; width: 44px !important; height: 44px !important; }
+    #sr-benefits > div > div[style*="repeat"] > div > div:first-child svg { width: 22px !important; height: 22px !important; }
     /* Title next to icon */
-    #sr-benefits > div > div[style*="repeat(3"] > div > div[style*="font:700"] { flex: 1 !important; font-size: 0.95rem !important; line-height: 1.25 !important; }
+    #sr-benefits > div > div[style*="repeat"] > div > div[style*="font:700"] { flex: 1 !important; font-size: 0.95rem !important; line-height: 1.25 !important; }
     /* Description UNDERNEATH icon+title (full width) */
-    #sr-benefits > div > div[style*="repeat(3"] > div > p { flex-basis: 100% !important; font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 2px !important; padding-left: 58px !important; }
+    #sr-benefits > div > div[style*="repeat"] > div > p { flex-basis: 100% !important; font-size: 0.75rem !important; line-height: 1.45 !important; margin-top: 2px !important; padding-left: 58px !important; }
     /* Section heading smaller */
     #sr-benefits > div > h2 { font-size: 1.6rem !important; margin: 12px 0 28px !important; }
     /* CTA button row: 1 column, button full width */
@@ -239,6 +239,7 @@
 
     /* ---- FOOTER ---- */
     #sr-footer { padding: 40px 20px !important; }
+    #sr-footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
   }
 
   @media (max-width: 400px) {
