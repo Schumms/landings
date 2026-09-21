@@ -386,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div style="font:600 11px var(--font-brand);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-600)">Der Ablauf · 22. Oktober</div>
       <h2 style="margin:16px 0 6px;font:900 clamp(2.2rem,4vw,3.2rem)/0.98 var(--font-brand);letter-spacing:-.02em">Ein durchdachter Tag.</h2>
-      <p style="margin:0 0 36px;font:400 1.05rem var(--font-brand);color:var(--grey-500)">09:00–15:15 Uhr · inkl. Verpflegung</p>
+      <p style="margin:0 0 36px;font:400 1.05rem var(--font-brand);color:var(--grey-500)">09:00–16:00 Uhr · inkl. Verpflegung</p>
       <div style="display:flex;flex-direction:column">
         <div style="display:flex;align-items:center;gap:18px;padding:18px 0;border-top:1.5px solid var(--grey-200)"><div style="flex:none;background:var(--sur-ink);color:#fff;font:700 12px var(--font-brand);letter-spacing:.08em;padding:8px 0;width:66px;text-align:center;box-sizing:border-box;border-radius:0">09:00</div><div><div style="font:700 1.2rem/1.25 var(--font-brand)">Einlass &amp; Begrüßungskaffee</div></div></div>
         <div style="display:flex;align-items:center;gap:18px;padding:18px 0;border-top:1.5px solid var(--grey-200)"><div style="flex:none;background:var(--sur-ink);color:#fff;font:700 12px var(--font-brand);letter-spacing:.08em;padding:8px 0;width:66px;text-align:center;box-sizing:border-box;border-radius:0">09:30</div><div><div style="font:700 1.2rem/1.25 var(--font-brand)">KI &amp; Führung in der Praxis</div><div style="margin-top:5px;font:700 11px var(--font-brand);letter-spacing:.06em;text-transform:uppercase"><span style="color:var(--sur-ink)">Keynote 1</span> <span style="color:var(--grey-400)">-</span> <span style="color:var(--purple-600)">David Hillmer</span></div></div></div>
@@ -576,7 +576,7 @@ if ('IntersectionObserver' in window) {
 
 // ---- COUNTDOWN ----
 function cdCalc() {
-  var target = new Date('2026-09-30T23:59:59');
+  var target = new Date('2026-10-10T23:59:59');
   var diff = Math.max(0, target - new Date());
   var s = Math.floor(diff / 1000);
   return { days: Math.floor(s/86400), hours: Math.floor((s%86400)/3600), mins: Math.floor((s%3600)/60), secs: s%60 };
