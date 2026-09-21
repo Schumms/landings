@@ -36,11 +36,28 @@
 <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin>
 <link rel="preconnect" href="https://api.hsforms.com" crossorigin>
 
+<link rel="preconnect" href="https://js-eu1.hsforms.net" crossorigin>
+
 <!-- Cookiebot -->
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d0352724-f562-4300-8d47-a6506fcce5c4" type="text/javascript" async></script>
 
 <!-- HubSpot Tracking Pixel -->
 <script type="text/javascript" id="hs-script-loader" async defer src="https://js-eu1.hs-scripts.com/146949753.js"></script>
+
+<!-- HubSpot Forms Embed (background loader — form styling stays custom, not HubSpot default) -->
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+<script>
+window.addEventListener('load', function() {
+  if (typeof hbspt !== 'undefined') {
+    hbspt.forms.create({
+      portalId: "146949753",
+      formId: "f9b6015b-7d6c-4e0e-a53e-d466e601bffc",
+      region: "eu1",
+      target: "#hs-form-hidden"
+    });
+  }
+});
+</script>
 
 <style>
 /* ===== Tokens (1:1 with the shared Schumm und Rösch design system; --radius-* zeroed is a deliberate page-level override — see README) ===== */
@@ -373,6 +390,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="card card--elevated" data-component="Card" data-component-variant="elevated" style="padding:36px">
+    <!-- Hidden HubSpot embed target (for form field sync, not visible) -->
+    <div id="hs-form-hidden" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"></div>
     <!-- FUNCTIONAL: HubSpot Forms v3 submission, see README -->
     <form class="cform" data-portal-id="146949753" data-form-id="f9b6015b-7d6c-4e0e-a53e-d466e601bffc" novalidate>
       <p class="cform__error" data-error hidden>Bitte fülle alle Pflichtfelder korrekt aus — inklusive Einwilligung.</p>
