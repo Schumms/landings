@@ -112,6 +112,11 @@ a:hover{color:var(--green-700)}
 .checkfield{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--text-secondary);line-height:1.5}
 .checkfield input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--sur-ink)}
 
+/* hero nav */
+.hero__nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hero__nav-logo{height:26px;width:auto;display:block;object-fit:contain}
+.hero__nav-cta{flex-shrink:0}
+
 /* hero */
 .hero{background-color:#133F42}
 .hero .container{padding:28px 32px 84px}
@@ -198,6 +203,8 @@ html{overflow-x:hidden}
 body{overflow-x:hidden;max-width:100vw}
 
 @media(max-width:860px){
+  .hero__nav-logo{height:16px!important}
+  .hero__nav-cta{padding:8px 14px;font-size:.75rem}
   .hero .container{padding:20px 20px 48px}
   .hero__grid{display:flex!important;flex-direction:column-reverse!important;gap:24px}
   .hero__photo{height:auto!important;max-height:300px;overflow:hidden}
@@ -238,6 +245,8 @@ body{overflow-x:hidden;max-width:100vw}
 }
 
 @media(max-width:480px){
+  .hero__nav-logo{height:14px!important}
+  .hero__nav-cta{padding:7px 12px;font-size:.7rem;letter-spacing:.02em}
   h1{font-size:calc(2.3rem*0.9)!important}
   h2{font-size:1.5rem!important}
   h3{font-size:1.125rem!important}
@@ -288,7 +297,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
 <section class="hero" id="sr-hero"><div class="container">
-  <img data-component="Logo" data-component-variant="white" src="images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:26px;width:auto;display:block" loading="eager" decoding="async">
+  <nav class="hero__nav">
+    <a href="https://www.schumms.com" aria-label="Schumm und Rösch — Startseite"><img data-component="Logo" data-component-variant="white" src="images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" class="hero__nav-logo" loading="eager" decoding="async"></a>
+    <a class="btn btn--primary btn--md hero__nav-cta" href="#kontakt">Beratung anfragen →</a>
+  </nav>
   <div class="hero__grid">
     <div>
       <span class="eyebrow" data-component="Eyebrow" data-component-variant="green" style="color:var(--sur-green)"><i></i>Büroplanung</span>
