@@ -110,7 +110,7 @@ a:hover{color:var(--green-700)}
 .field select{cursor:pointer;appearance:none;-webkit-appearance:none}
 .field input:focus,.field select:focus{border-color:var(--sur-ink);box-shadow:var(--shadow-focus)}
 .checkfield{display:block;font-size:.85rem;color:var(--text-secondary);line-height:1.5;padding-left:26px;position:relative}
-.checkfield input{position:absolute;left:0;top:3px;width:16px;height:16px;accent-color:var(--sur-ink);flex-shrink:0}
+.checkfield input{position:absolute;left:0;top:3px;width:16px;height:16px;accent-color:var(--sur-ink)}
 
 /* hero nav */
 .hero__nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -423,8 +423,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="field" data-component="Input"><label for="f-email">E-Mail*</label><input id="f-email" name="email" type="email" placeholder="du@firma.de" required></div>
       <div class="field" data-component="Input"><label for="f-phone">Telefonnummer*</label><input id="f-phone" name="phone" type="tel" placeholder="+49 …" required></div>
       <div class="cform__row">
-        <div class="field" data-component="Input"><label for="f-date">Wunschdatum*</label><input id="f-date" name="preferred_date" type="date" required></div>
-        <div class="field" data-component="Input"><label for="f-time">Uhrzeit*</label><input id="f-time" name="preferred_time" type="time" required></div>
+        <div class="field" data-component="Input"><label for="f-date">Wunschdatum</label><input id="f-date" name="preferred_date" type="date"></div>
+        <div class="field" data-component="Input"><label for="f-time">Uhrzeit</label><input id="f-time" name="preferred_time" type="time"></div>
       </div>
       <label class="checkfield" data-component="Checkbox"><input type="checkbox" name="dsgvo" required>Ich willige in die Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage ein und habe die <a href="https://www.schumms.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen.*</label>
       <button type="submit" class="btn btn--primary btn--full btn--md cform__submit" data-component="Button" data-component-variant="primary/full">Kostenloses Erstgespräch buchen →</button>
@@ -466,7 +466,8 @@ document.querySelectorAll('.cform').forEach(function(form){
     var fields=['salutation','firstname','lastname','company','email','phone','preferred_date','preferred_time'];
     var emailOk=/.+@.+\..+/.test(val('email'));
     var dsgvoOk=form.querySelector('[name="dsgvo"]').checked;
-    var complete=fields.every(function(f){return val(f);})&&emailOk&&dsgvoOk;
+    var requiredFields=['salutation','firstname','lastname','company','email','phone'];
+    var complete=requiredFields.every(function(f){return val(f);})&&emailOk&&dsgvoOk;
     if(!complete){showError(true);return;}
     showError(false);
     if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Wird gesendet …';}
