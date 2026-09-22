@@ -471,9 +471,12 @@ document.querySelectorAll('.cform').forEach(function(form){
     if(!complete){showError(true);return;}
     showError(false);
     if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Wird gesendet …';}
-    var payload={fields:fields.map(function(name){return {name:name,value:val(name)};}),context:{pageUri:location.href,pageName:document.title}};
+    // Map HTML field names to HubSpot internal property names
+    var fieldMap={'salutation':'anrede','firstname':'firstname','lastname':'lastname','company':'company','email':'email','phone':'phone','preferred_date':'preferred_date','preferred_time':'preferred_time'};
+    var payload={fields:fields.map(function(name){return {name:fieldMap[name]||name,value:val(name)};}),context:{pageUri:location.href,pageName:document.title}};
     fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(res){if(!res.ok)throw new Error(String(res.status));window.location.href='danke/';})
+      .then(function(res){return res.json();})
+      .then(function(data){if(data.redirectUri){window.location.href=data.redirectUri;}else{window.location.href='danke/';}})
       .catch(function(){showError(true);if(submitBtn){submitBtn.disabled=false;submitBtn.textContent='Kostenloses Erstgespräch buchen →';}});
   });
 });
