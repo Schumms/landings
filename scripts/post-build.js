@@ -40,6 +40,11 @@ if (BRANCH === 'main') {
   <title>Schumm &amp; Rösch</title>
   <link rel="canonical" href="https://schumms.com/">
   <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <style>
     body {
       font-family: system-ui, -apple-system, sans-serif;
