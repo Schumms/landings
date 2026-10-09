@@ -57,15 +57,16 @@ body{overflow-x:hidden;max-width:100vw;font-family:'Buenos Aires',system-ui,-app
 #sr-formwrap{width:100%;max-width:520px;}
 
 #sr-form{display:flex;flex-direction:column;gap:1.25rem;}
+.sr-row2col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
 .sr-field label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dark);margin-bottom:6px;}
 .sr-field .req{color:var(--mint);}
-#sr-form input[type="email"]{
+#sr-form input[type="email"],#sr-form input[type="text"],#sr-form input[type="tel"]{
   width:100%;border:1px solid #D8DDE1;border-radius:4px;padding:12px 14px;
   font-family:inherit;font-size:1rem;color:var(--text-dark);background:#fff;outline:none;
   transition:border-color .15s ease, box-shadow .15s ease;
 }
-#sr-form input[type="email"]::placeholder{color:var(--placeholder);}
-#sr-form input[type="email"]:focus{border-color:var(--mint);box-shadow:0 0 0 2px rgba(0,209,163,0.25);}
+#sr-form input[type="email"]::placeholder,#sr-form input[type="text"]::placeholder,#sr-form input[type="tel"]::placeholder{color:var(--placeholder);}
+#sr-form input[type="email"]:focus,#sr-form input[type="text"]:focus,#sr-form input[type="tel"]:focus{border-color:var(--mint);box-shadow:0 0 0 2px rgba(0,209,163,0.25);}
 #sr-form input.sr-invalid{border-color:#8b0000;}
 
 .sr-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.75rem;line-height:1.55;color:var(--text-dark);cursor:pointer;}
@@ -127,10 +128,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="sr-right">
     <div id="sr-formwrap">
       <form id="sr-form" novalidate>
+        <div class="sr-row2col">
+          <div class="sr-field">
+            <label for="sr-firstname">Vorname <span class="req">*</span></label>
+            <input type="text" id="sr-firstname" name="firstname" placeholder="Vorname" required autocomplete="given-name">
+          </div>
+          <div class="sr-field">
+            <label for="sr-lastname">Nachname <span class="req">*</span></label>
+            <input type="text" id="sr-lastname" name="lastname" placeholder="Nachname" required autocomplete="family-name">
+          </div>
+        </div>
         <div class="sr-field">
           <label for="sr-email">E-Mail <span class="req">*</span></label>
           <input type="email" id="sr-email" name="email" placeholder="du@firma.de" required autocomplete="email">
-          <p class="sr-error" id="sr-email-error" hidden>Bitte gib eine gültige E-Mail-Adresse ein.</p>
+        </div>
+        <div class="sr-field">
+          <label for="sr-phone">Telefonnummer <span class="req">*</span></label>
+          <input type="tel" id="sr-phone" name="phone" placeholder="+49 ..." required autocomplete="tel">
+        </div>
+        <div class="sr-field">
+          <label for="sr-company">Unternehmen <span class="req">*</span></label>
+          <input type="text" id="sr-company" name="company" placeholder="Firma" required autocomplete="organization">
+        </div>
+        <div class="sr-field">
+          <label for="sr-jobtitle">Jobtitel <span class="req">*</span></label>
+          <input type="text" id="sr-jobtitle" name="jobtitle" placeholder="z.B. HR Manager" required autocomplete="organization-title">
         </div>
         <label class="sr-consent">
           <input type="checkbox" id="sr-consent">
@@ -148,30 +170,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function(){
   var form = document.getElementById('sr-form');
-  var emailInput = document.getElementById('sr-email');
-  var emailError = document.getElementById('sr-email-error');
-  var consent = document.getElementById('sr-consent');
   var msg = document.getElementById('sr-formmsg');
   var button = form.querySelector('button[type="submit"]');
+  var consent = document.getElementById('sr-consent');
   var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/21ad3bbe-8fd7-4af2-99d7-175d7a1c1ac0';
 
   function validEmail(v){
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
 
+  function clearInvalid(input){
+    input.classList.remove('sr-invalid');
+  }
+  form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(inp){
+    inp.addEventListener('input', function(){ clearInvalid(inp); });
+  });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     msg.hidden = true;
-    var email = String(emailInput.value || '').trim();
 
-    if(!validEmail(email)){
-      emailError.hidden = false;
-      emailInput.classList.add('sr-invalid');
-      emailInput.focus();
+    var firstInvalid = null;
+    var fields = [];
+
+    form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(inp){
+      var value = String(inp.value || '').trim();
+      var isEmail = inp.type === 'email';
+      var bad = (inp.required && !value) || (isEmail && value && !validEmail(value));
+      if(bad){
+        inp.classList.add('sr-invalid');
+        if(!firstInvalid) firstInvalid = inp;
+      } else {
+        fields.push({name: inp.name, value: value});
+      }
+    });
+
+    if(firstInvalid){
+      firstInvalid.focus();
       return;
     }
-    emailError.hidden = true;
-    emailInput.classList.remove('sr-invalid');
 
     if(!consent.checked){
       msg.className = 'sr-formmsg err';
@@ -186,7 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        fields: [{name: 'email', value: email}],
+        fields: fields,
         context: {pageName: 'HR Ticket Verlosung'}
       })
     }).then(function(res){
@@ -203,11 +240,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = 'Das hat leider nicht geklappt. Bitte versuch es noch einmal — oder schreib uns an info@schumms.com.';
       msg.hidden = false;
     });
-  });
-
-  emailInput.addEventListener('input', function(){
-    emailError.hidden = true;
-    emailInput.classList.remove('sr-invalid');
   });
 })();
 </script>
