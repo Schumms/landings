@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Interne Case-Study-Erfassung des Marketing-Teams — Schumm + Rösch.">
+<title>Case-Study-Umfrage – Schumm + Rösch</title>
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+/* Buenos Aires — self-hosted, kein Third-Party-Request */
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Regular400.woff2") format("woff2"),url("/fonts/BuenosAires-Regular400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-SemiBold600.woff2") format("woff2"),url("/fonts/BuenosAires-SemiBold600.woff") format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Bold700.woff2") format("woff2"),url("/fonts/BuenosAires-Bold700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Black900.woff2") format("woff2"),url("/fonts/BuenosAires-Black900.woff") format("woff");font-weight:800 900;font-style:normal;font-display:swap}
+
+:root{
+  --bg:#F1F1F1; --surface:#FFFFFF; --ink:#16161A; --ink-2:#3D3C37; --ink-3:#5C5B55;
+  --border:#D6D5CF; --placeholder:#76756F;
+  --green:#01DBA2; --purple:#827AFE;
+  --radius-card:20px; --radius-input:10px; --radius-pill:999px;
+  --font:'Buenos Aires','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:hidden}
+body{overflow-x:hidden;max-width:100vw;margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);min-height:100vh}
+
+/* Header */
+#sr-top{background:var(--ink);color:#fff}
+#sr-top .top-in{max-width:880px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.brand{font-weight:800;font-size:20px;letter-spacing:-0.01em}
+.sub{font-size:14px;color:#C9C8C2}
+
+#sr-main{max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px}
+.hero{display:flex;flex-direction:column;gap:20px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-weight:600;font-size:13px;padding:6px 12px;border-radius:var(--radius-pill);background:#fff;border:1px solid var(--border)}
+.badge.green{background:var(--green);border-color:var(--green);font-weight:700}
+h1{margin:0;font-size:clamp(36px,6vw,60px);line-height:1.02;font-weight:800;letter-spacing:-0.03em}
+.lead{margin:0;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:640px}
+.note{margin:0;font-size:14px;color:var(--ink-3)}
+
+form{display:flex;flex-direction:column;gap:40px}
+.card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:28px}
+.card-head{display:flex;gap:16px;align-items:center}
+.num{width:40px;height:40px;flex:none;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800}
+h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em}
+.intro{margin:0;font-size:16px;line-height:1.5;color:var(--ink-3)}
+
+.fields{display:flex;flex-wrap:wrap;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px;flex:1 1 280px}
+.field.full{flex-basis:100%}
+.label .req{color:var(--ink)}
+.hint{font-weight:400;font-size:14px;color:var(--ink-3)}
+.in{width:100%;font:inherit;font-size:16px;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-input);padding:13px 14px;min-height:48px}
+.in::placeholder{color:var(--placeholder)}
+textarea.in{min-height:128px;resize:vertical;line-height:1.5}
+.in:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+
+.group{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.group legend{padding:0;margin-bottom:12px;font-weight:600;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative;display:inline-flex;cursor:pointer}
+.chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);border:1.5px solid var(--border);background:#fff;font-size:15px;font-weight:600}
+.chip svg{display:none}
+.chip:hover span{border-color:var(--ink)}
+.chip:has(input:checked) span{background:var(--green);border-color:var(--green)}
+.chip:has(input:checked) svg{display:block}
+.chip:has(input:focus-visible) span{outline:3px solid var(--purple);outline-offset:2px}
+
+.error{margin:0;font-size:14px;font-weight:600;color:#B3261E}
+
+.submit-row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.submit-row p{margin:0;font-size:14px;color:var(--ink-3);max-width:420px}
+.btn{font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border-radius:var(--radius-pill)}
+.btn.primary{min-height:56px;padding:16px 32px;border:0;background:var(--green);color:var(--ink);font-size:18px;font-weight:800}
+.btn.outline{min-height:52px;padding:14px 26px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:16px;font-weight:700}
+.btn:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.btn:disabled{opacity:.6;cursor:progress}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.done{padding-top:120px;padding-bottom:120px;align-items:flex-start;gap:24px}
+.done-icon{width:64px;height:64px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.done h1{font-size:clamp(36px,6vw,56px);line-height:1.05}
+.form-error{margin:0;font-size:14px;font-weight:600;color:#B3261E;max-width:420px}
+
+/* ---- Mobile Optimization (Mobile Optimization Brief) ---- */
+@media (max-width:860px){
+  #sr-top .top-in{padding:14px 20px}
+  #sr-main{padding:48px 20px 72px}
+  .card{padding:24px 20px}
+  h2{font-size:24px}
+}
+@media (max-width:480px){
+  #sr-top .top-in{padding:12px 16px}
+  #sr-main{padding:36px 16px 56px;gap:28px}
+  .brand{font-size:17px}
+  .sub{font-size:12px}
+  h1{font-size:clamp(30px,9vw,36px)}
+  .lead{font-size:17px}
+  h2{font-size:22px}
+  .field{flex:1 1 100%}
+  .fields{gap:16px}
+  .chips{gap:8px}
+  .chip span{font-size:14px;padding:9px 14px;min-height:44px}
+  .submit-row{flex-direction:column;align-items:stretch}
+  .submit-row p{max-width:none}
+  .btn.primary{width:100%;justify-content:center}
+  .done{padding-top:64px;padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+<header id="sr-top"><div class="top-in"><div class="brand">Schumm + Rösch</div><div class="sub">Case-Study-Erfassung · intern</div></div></header>
+
+<main id="formview" class="wrap" style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px">
+<section class="hero">
+<div class="badges"><span class="badge green">Interne Umfrage</span><span class="badge">7 Minuten</span></div>
+<h1>Erzähl uns von deinem Projekt.</h1>
+<p class="lead">Mit deinen Antworten bauen wir unsere Case-Study-Sammlung auf. Die Kategorien, die du auswählst, werden später zu Filtern – je sorgfältiger du sie setzt, desto leichter finden wir dein Projekt wieder.</p>
+<p class="note">Felder mit * sind Pflichtfelder.</p>
+</section>
+
+<form id="survey" novalidate>
+<div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+<section class="card" aria-labelledby="h-projekt">
+<div class="card-head"><span class="num" aria-hidden="true">1</span><h2 id="h-projekt">Das Projekt</h2></div>
+<div class="fields">
+<label class="field full"><span class="label">Kunde / Unternehmen <span class="req" aria-hidden="true">*</span></span><input class="in" type="text" name="kunde" placeholder="Name des Unternehmens" required maxlength="200"></label>
+<label class="field half"><span class="label">Ansprechpartner</span><input class="in" type="text" name="ansprechpartner" placeholder="Name, Funktion beim Kunden" maxlength="200"></label>
+<label class="field half"><span class="label">E-Mail / Kontakt</span><input class="in" type="text" name="kontakt" placeholder="E-Mail oder Telefon" maxlength="200"></label>
+<label class="field half"><span class="label">Standort <span class="req" aria-hidden="true">*</span></span><input class="in" type="text" name="standort" placeholder="Stadt" required maxlength="200"></label>
+<label class="field half"><span class="label">Fertigstellung</span><input class="in" type="month" name="fertigstellung"></label>
+<label class="field half"><span class="label">Dein Name <span class="req" aria-hidden="true">*</span></span><input class="in" type="text" name="einreicher_name" placeholder="Vor- und Nachname" autocomplete="name" required maxlength="200"></label>
+<label class="field half"><span class="label">Deine E-Mail <span class="req" aria-hidden="true">*</span></span><input class="in" type="email" name="einreicher_email" placeholder="name@schumms.com" autocomplete="email" required maxlength="200"></label>
+</div>
+<fieldset class="group">
+<legend>Fläche</legend>
+<div class="chips">
+<label class="chip"><input type="radio" name="flaeche" value="bis 500 m²"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>bis 500 m²</span></label>
+<label class="chip"><input type="radio" name="flaeche" value="500–1.000 m²"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>500–1.000 m²</span></label>
+<label class="chip"><input type="radio" name="flaeche" value="1.000–2.500 m²"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>1.000–2.500 m²</span></label>
+<label class="chip"><input type="radio" name="flaeche" value="2.500–5.000 m²"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>2.500–5.000 m²</span></label>
+<label class="chip"><input type="radio" name="flaeche" value="5.000+ m²"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>5.000+ m²</span></label>
+</div>
+</fieldset>
+<fieldset class="group">
+<legend>Anzahl Mitarbeitende am Standort</legend>
+<div class="chips">
+<label class="chip"><input type="radio" name="mitarbeitende" value="bis 50"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>bis 50</span></label>
+<label class="chip"><input type="radio" name="mitarbeitende" value="50–200"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>50–200</span></label>
+<label class="chip"><input type="radio" name="mitarbeitende" value="200–500"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>200–500</span></label>
+<label class="chip"><input type="radio" name="mitarbeitende" value="über 500"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>über 500</span></label>
+</div>
+</fieldset>
+</section>
+
+<section class="card" aria-labelledby="h-einordnung">
+<div class="card-head"><span class="num" aria-hidden="true">2</span><h2 id="h-einordnung">Einordnung</h2></div>
+<p class="intro">Mehrfachauswahl möglich. Aus diesen Tags entstehen die Filter im Case-Study-Dashboard.</p>
+<fieldset class="group" data-required-group>
+<legend>Branche des Kunden <span class="req" aria-hidden="true">*</span></legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="branche" value="Technologie &amp; IT"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Technologie &amp; IT</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Finanzen &amp; Versicherung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Finanzen &amp; Versicherung</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Beratung &amp; Dienstleistung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Beratung &amp; Dienstleistung</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Industrie &amp; Produktion"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Industrie &amp; Produktion</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Ämter &amp; Behörden"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Ämter &amp; Behörden</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Gesundheit &amp; Pharma"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Gesundheit &amp; Pharma</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Bildung &amp; Forschung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Bildung &amp; Forschung</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Immobilien"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Immobilien</span></label>
+<label class="chip"><input type="checkbox" name="branche" value="Sonstige"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Sonstige</span></label>
+</div>
+<p class="error" role="alert" hidden>Bitte wähle mindestens eine Option.</p>
+</fieldset>
+<fieldset class="group" data-required-group>
+<legend>Unsere Leistungen im Projekt <span class="req" aria-hidden="true">*</span></legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="leistungen" value="Workplace-Strategie (Consulting)"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Workplace-Strategie (Consulting)</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Bedarfs- &amp; Nutzungsanalyse"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Bedarfs- &amp; Nutzungsanalyse</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Innenarchitektur &amp; Design"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Innenarchitektur &amp; Design</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Möblierungskonzept"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Möblierungskonzept</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Akustik &amp; Licht"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Akustik &amp; Licht</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Projektmanagement und Logistik"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Projektmanagement und Logistik</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Schreiner"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Schreiner</span></label>
+<label class="chip"><input type="checkbox" name="leistungen" value="Innenausbau"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Innenausbau</span></label>
+</div>
+<p class="error" role="alert" hidden>Bitte wähle mindestens eine Option.</p>
+</fieldset>
+<fieldset class="group" data-required-group>
+<legend>Projektumfang <span class="req" aria-hidden="true">*</span></legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="projektumfang" value="Open Space"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Open Space</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Einzel-/Gruppenbüros"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Einzel-/Gruppenbüros</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Sonderzone(n)"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Sonderzone(n)</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Meetingräume"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Meetingräume</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Think tanks/Telefonbox"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Think tanks/Telefonbox</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Küche / Bistro"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Küche / Bistro</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Besonderer Highlight-Special"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Besonderer Highlight-Special</span></label>
+<label class="chip"><input type="checkbox" name="projektumfang" value="Andere"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Andere</span></label>
+</div>
+<p class="error" role="alert" hidden>Bitte wähle mindestens eine Option.</p>
+</fieldset>
+<fieldset class="group">
+<legend>Themen &amp; Schwerpunkte</legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="themen" value="Hybrides Arbeiten"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Hybrides Arbeiten</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Activity Based Working"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Activity Based Working</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Neuroinklusion"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Neuroinklusion</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="New Work &amp; Kultur"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>New Work &amp; Kultur</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Nachhaltigkeit"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Nachhaltigkeit</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Biophilic Design"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Biophilic Design</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Wohlbefinden &amp; Gesundheit"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Wohlbefinden &amp; Gesundheit</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Flächeneffizienz"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Flächeneffizienz</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Employer Branding"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Employer Branding</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Flächenverkleinerung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Flächenverkleinerung</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Flächenvergrößerung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Flächenvergrößerung</span></label>
+<label class="chip"><input type="checkbox" name="themen" value="Nutzungsänderung"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Nutzungsänderung</span></label>
+</div>
+</fieldset>
+</section>
+
+<section class="card" aria-labelledby="h-geschichte">
+<div class="card-head"><span class="num" aria-hidden="true">3</span><h2 id="h-geschichte">Die Geschichte</h2></div>
+<label class="field full"><span class="label">Ausgangssituation <span class="req" aria-hidden="true">*</span></span><span class="hint">Wo stand der Kunde, bevor wir eingestiegen sind?</span><textarea class="in" name="ausgangssituation" rows="5" maxlength="5000" required></textarea></label>
+<label class="field full"><span class="label">Herausforderung</span><span class="hint">Was war das eigentliche Problem oder Ziel?</span><textarea class="in" name="herausforderung" rows="5" maxlength="5000"></textarea></label>
+<label class="field full"><span class="label">Lösung &amp; Ansatz <span class="req" aria-hidden="true">*</span></span><span class="hint">Wie sind wir vorgegangen, was haben wir entwickelt?</span><textarea class="in" name="loesung" rows="5" maxlength="5000" required></textarea></label>
+<label class="field full"><span class="label">Ergebnis &amp; Wirkung <span class="req" aria-hidden="true">*</span></span><span class="hint">Was hat sich für die Menschen im Raum verändert?</span><textarea class="in" name="ergebnis" rows="5" maxlength="5000" required></textarea></label>
+<label class="field full"><span class="label">Kundenzitat</span><span class="hint">Wörtlich, und nur wenn es freigegeben ist oder freigegeben werden kann.</span><textarea class="in" name="zitat" rows="3" maxlength="5000"></textarea></label>
+<div class="fields">
+<label class="field full"><span class="label">Zitat von</span><input class="in" type="text" name="zitat_person" placeholder="Name, Funktion" maxlength="200"></label>
+</div>
+</section>
+
+<section class="card" aria-labelledby="h-material">
+<div class="card-head"><span class="num" aria-hidden="true">4</span><h2 id="h-material">Material &amp; Freigabe</h2></div>
+<fieldset class="group">
+<legend>Welches Bildmaterial gibt es?</legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="bildmaterial" value="Professionelle Fotos"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Professionelle Fotos</span></label>
+<label class="chip"><input type="checkbox" name="bildmaterial" value="Eigene Fotos"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Eigene Fotos</span></label>
+<label class="chip"><input type="checkbox" name="bildmaterial" value="Renderings &amp; Pläne"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Renderings &amp; Pläne</span></label>
+<label class="chip"><input type="checkbox" name="bildmaterial" value="Noch keins"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Noch keins</span></label>
+</div>
+</fieldset>
+<fieldset class="group">
+<legend>Fotos</legend>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="fotos" value="Ausgangslage/Bestand"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Ausgangslage/Bestand</span></label>
+<label class="chip"><input type="checkbox" name="fotos" value="Ausbau/Rohbau und Montage"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Ausbau/Rohbau und Montage</span></label>
+<label class="chip"><input type="checkbox" name="fotos" value="Ergebnis"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Ergebnis</span></label>
+</div>
+</fieldset>
+<div class="fields">
+<label class="field full"><span class="label">Pfad zum Bildmaterial</span><span class="hint">Pfadkopie des Ordners, in dem das Bildmaterial auf dem Server liegt.</span><input class="in" type="text" name="bild_pfad" placeholder="Pfad des Ordners einfügen" maxlength="200"></label>
+</div>
+<fieldset class="group" data-required-group>
+<legend>Darf das Projekt veröffentlicht werden? <span class="req" aria-hidden="true">*</span></legend>
+<div class="chips">
+<label class="chip"><input type="radio" name="freigabe" value="Ja, schriftlich"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Ja, schriftlich</span></label>
+<label class="chip"><input type="radio" name="freigabe" value="Mündlich zugesagt"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Mündlich zugesagt</span></label>
+<label class="chip"><input type="radio" name="freigabe" value="Noch offen"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Noch offen</span></label>
+<label class="chip"><input type="radio" name="freigabe" value="Nein, nur intern"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Nein, nur intern</span></label>
+</div>
+<p class="error" role="alert" hidden>Bitte wähle mindestens eine Option.</p>
+</fieldset>
+<label class="field full"><span class="label">Anmerkungen</span><textarea class="in" name="anmerkungen" rows="3" maxlength="5000"></textarea></label>
+</section>
+
+<div class="submit-row">
+<div>
+<p>Nach dem Absenden landet deine Case Study direkt in der Übersicht des Marketing-Teams.</p>
+<p class="form-error" id="formerror" role="alert" hidden>Das Absenden hat leider nicht geklappt. Bitte versuche es in ein paar Minuten noch einmal. Deine Eingaben sind noch da.</p>
+</div>
+<button class="btn primary" type="submit" id="submitbtn">Case Study einreichen<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+</div>
+</form>
+</main>
+
+<main id="done" class="wrap done" hidden style="max-width:880px;margin:0 auto;padding:120px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:24px">
+<span class="done-icon"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" stroke="#16161A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+<h1>Danke – deine Case Study ist da.</h1>
+<p class="lead">Wir melden uns, falls Fragen offen sind oder Bildmaterial fehlt.</p>
+<button id="again" class="btn outline" type="button">Weiteres Projekt erfassen</button>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  // Public NocoDB Form-Endpoint — kein Token nötig, Secret bleibt serverseitig.
+  var SUBMIT_URL = 'https://ki-backend.schumms.com/api/v1/db/public/shared-view/8b5bdbbc-296c-4fb0-9431-6a4469c8370b/rows';
+
+  var form = document.getElementById('survey');
+  var formView = document.getElementById('formview');
+  var doneView = document.getElementById('done');
+  var submitBtn = document.getElementById('submitbtn');
+  var formError = document.getElementById('formerror');
+
+  function values(name) {
+    return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return i.value; });
+  }
+  function one(name) {
+    var v = values(name);
+    return v.length ? v[0] : '';
+  }
+  function text(name) {
+    var el = form.elements[name];
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function buildPayload() {
+    var d = {
+      Kunde: text('kunde'),
+      Ansprechpartner: text('ansprechpartner'),
+      Kontakt: text('kontakt'),
+      Standort: text('standort'),
+      Einreicher_Name: text('einreicher_name'),
+      Einreicher_Email: text('einreicher_email'),
+      Ausgangssituation: text('ausgangssituation'),
+      Herausforderung: text('herausforderung'),
+      Loesung: text('loesung'),
+      Ergebnis: text('ergebnis'),
+      Zitat: text('zitat'),
+      Zitat_Person: text('zitat_person'),
+      Bild_Pfad: text('bild_pfad'),
+      Anmerkungen: text('anmerkungen'),
+      Status: 'Neu'
+    };
+    var flaeche = one('flaeche'); if (flaeche) d.Flaeche = flaeche;
+    var mitarb = one('mitarbeitende'); if (mitarb) d.Mitarbeitende = mitarb;
+    var freigabe = one('freigabe'); if (freigabe) d.Freigabe = freigabe;
+    var monat = text('fertigstellung');
+    if (/^\d{4}-\d{2}$/.test(monat)) d.Fertigstellung = monat + '-01';
+    var multi = ['branche', 'leistungen', 'projektumfang', 'themen', 'bildmaterial', 'fotos'];
+    var cols = { branche: 'Branche', leistungen: 'Leistungen', projektumfang: 'Projektumfang', themen: 'Themen', bildmaterial: 'Bildmaterial', fotos: 'Fotos' };
+    multi.forEach(function (n) {
+      var v = values(n);
+      if (v.length) d[cols[n]] = v;
+    });
+    return { data: d };
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formError.hidden = true;
+
+    // Pflicht-Textfelder
+    var firstBad = null;
+    form.querySelectorAll('input[required], textarea[required]').forEach(function (el) {
+      var bad = !el.value.trim() || (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+      if (bad && !firstBad) firstBad = el;
+    });
+    // Pflicht-Gruppen (mindestens eine Option)
+    form.querySelectorAll('fieldset[data-required-group]').forEach(function (fs) {
+      var ok = !!fs.querySelector('input:checked');
+      fs.querySelector('.error').hidden = ok;
+      if (!ok && !firstBad) firstBad = fs;
+    });
+    if (firstBad) {
+      if (firstBad.scrollIntoView) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (firstBad.focus) { try { firstBad.focus(); } catch (err) {} }
+      return;
+    }
+
+    // Honeypot: gefüllt → vorgetäuschter Erfolg, nichts speichern
+    if (form.elements.website && form.elements.website.value) {
+      formView.hidden = true; doneView.hidden = false; window.scrollTo(0, 0);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    var label = submitBtn.firstChild;
+    if (label && label.nodeType === 3) label.textContent = 'Wird gesendet … ';
+
+    fetch(SUBMIT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildPayload())
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      formView.hidden = true; doneView.hidden = false; window.scrollTo(0, 0);
+    }).catch(function () {
+      formError.hidden = false;
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).finally(function () {
+      submitBtn.disabled = false;
+      if (label && label.nodeType === 3) label.textContent = 'Case Study einreichen';
+    });
+  });
+
+  document.getElementById('again').addEventListener('click', function () {
+    form.reset();
+    doneView.hidden = true;
+    formView.hidden = false;
+    window.scrollTo(0, 0);
+  });
+})();
+</script>
+</body>
+</html>
