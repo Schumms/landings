@@ -117,7 +117,22 @@ textarea.in{min-height:128px;resize:vertical;line-height:1.5}
 <body>
 <header id="sr-top"><div class="top-in"><img src="/images/schumms-logo-white.png" alt="Schumm und Rösch" style="height:20px;width:auto;display:block"><div class="sub">Case-Study-Erfassung · intern</div></div></header>
 
-<main id="formview" class="wrap" style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px">
+<main id="gateview" style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px">
+<section class="hero">
+<div class="badges"><span class="badge green">Interne Umfrage</span><span class="badge">Geschützt</span></div>
+<h1 style="font-size:clamp(28px,5vw,44px)">Bitte gib das Passwort ein.</h1>
+<p class="lead">Diese Seite ist nur für das Team von Schumm + Rösch. Passwort erhalten? Dann leg los.</p>
+</section>
+<section class="card" style="max-width:460px">
+<form id="gateform" novalidate>
+<label class="field full"><span class="label">Passwort</span><input class="in" type="password" name="gatepass" id="gatepass" autocomplete="off" required></label>
+<p class="error" id="gateerror" role="alert" hidden style="margin:8px 0 0">Das Passwort ist leider falsch. Bitte versuche es noch einmal.</p>
+<button class="btn primary" type="submit" id="gatebtn" style="margin-top:16px;width:100%;justify-content:center">Umfrage öffnen<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+</form>
+</section>
+</main>
+
+<main id="formview" class="wrap" style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px" hidden>
 <section class="hero">
 <div class="badges"><span class="badge green">Interne Umfrage</span><span class="badge">7 Minuten</span></div>
 <h1>Erzähl uns von deinem Projekt.</h1>
@@ -299,6 +314,51 @@ textarea.in{min-height:128px;resize:vertical;line-height:1.5}
   var doneView = document.getElementById('done');
   var submitBtn = document.getElementById('submitbtn');
   var formError = document.getElementById('formerror');
+
+  // ---- Passwort-Gate (SHA-256-Hash, kein Klartext im Quellcode) ----
+  var gateView = document.getElementById('gateview');
+  var gateForm = document.getElementById('gateform');
+  var gateInput = document.getElementById('gatepass');
+  var gateError = document.getElementById('gateerror');
+  var PASS_HASH = '766f5696122f2743bc962696467f182421bce370ccba703aee318f70312db1d8';
+  var STORE_KEY = 'csu_unlocked';
+
+  function unlock() {
+    gateView.hidden = true;
+    formView.hidden = false;
+    try { sessionStorage.setItem(STORE_KEY, '1'); } catch (e) {}
+    var first = form.querySelector('input[name="kunde"]');
+    if (first) { try { first.focus(); } catch (e) {} }
+  }
+
+  (function checkSession() {
+    try { if (sessionStorage.getItem(STORE_KEY) === '1') unlock(); } catch (e) {}
+  })();
+
+  function sha256(str) {
+    if (window.crypto && crypto.subtle) {
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)).then(function (buf) {
+        return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+          return ('0' + b.toString(16)).slice(-2);
+        }).join('');
+      });
+    }
+    return Promise.reject(new Error('no-crypto'));
+  }
+
+  gateForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    gateError.hidden = true;
+    var val = (gateInput.value || '').trim();
+    if (!val) { gateInput.focus(); return; }
+    sha256(val).then(function (h) {
+      if (h === PASS_HASH) { unlock(); }
+      else { gateError.hidden = false; gateInput.select(); }
+    }).catch(function () {
+      gateError.hidden = false;
+      gateError.textContent = 'Die Seite konnte nicht entsperrt werden. Bitte nutze einen aktuellen Browser.';
+    });
+  });
 
   function values(name) {
     return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return i.value; });
