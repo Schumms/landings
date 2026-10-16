@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:'Buenos Aires';src:url('/fonts/BuenosAires-Black900.woff2') format('woff2');font-weight:900;font-style:normal;}
+@font-face{font-family:'Buenos Aires';src:url('/fonts/BuenosAires-SemiBold600.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'Buenos Aires';src:url('/fonts/BuenosAires-Regular400.woff2') format('woff2');font-weight:400;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{overflow:hidden;}
+body{width:1200px;height:630px;font-family:'Buenos Aires',system-ui,sans-serif;background:#133F42;color:#fff;}
+#wrap{width:100%;height:100%;padding:80px 96px;display:flex;flex-direction:column;justify-content:space-between;}
+.logos{display:flex;align-items:center;gap:22px;}
+.logos img.sr{height:20px;width:auto;display:block;}
+.logos img.kn{height:34px;width:auto;display:block;filter:brightness(0) invert(1);}
+.logos .x{color:rgba(255,255,255,0.55);font-size:0.9rem;font-weight:600;}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:#01DBA2;font-size:1.1rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;}
+.eyebrow i{width:30px;height:3px;background:currentColor;display:inline-block;}
+h1{font-size:5.4rem;font-weight:900;line-height:1.05;margin-top:22px;}
+h1 .accent{color:#01DBA2;}
+.badge{display:inline-flex;flex-direction:column;gap:5px;background:#FD7857;color:#3B130A;border-radius:8px;padding:16px 24px;margin-top:36px;width:fit-content;}
+.badge strong{font-size:1.5rem;font-weight:900;letter-spacing:0.01em;}
+.badge span{font-size:1rem;font-weight:600;opacity:0.85;}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="logos">
+    <img class="sr" src="/images/schumms-logo-white.png" alt="Schumm und Rösch">
+    <span class="x">×</span>
+    <img class="kn" src="/images/logos/schumms-partners/koenig-neurath.svg" alt="König + Neurath">
+  </div>
+  <div>
+    <span class="eyebrow"><i></i>ASAP Schnell-Lieferprogramm</span>
+    <h1>Sitzt. Steht. Lehnt.<br><span class="accent">Ab 5 Werktagen.</span></h1>
+    <div class="badge">
+      <strong>Sonderkonditionen bis 30.11.2026</strong>
+      <span>JET.III SE · ACTIVE.T SE · QUICK.III — Made in Germany</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
