@@ -109,6 +109,16 @@ a[href="https://newwork-check.schumms.com"]{border-radius:0!important}
   [data-nav-brands]{gap:10px!important}
   [data-nav-divider],[data-nav-logo-vitra]{display:none!important}
 }
+/* Karussell */
+[data-carousel-track]::-webkit-scrollbar{display:none}
+[data-carousel]{touch-action:pan-x;user-select:none;-webkit-user-select:none}
+[data-carousel-arrow]{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;border-radius:999px;background:rgba(255,255,255,.9);color:var(--sur-ink);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .15s ease;box-shadow:0 4px 14px rgba(20,32,28,.25)}
+[data-carousel-arrow]:hover{background:#fff}
+[data-carousel-arrow="prev"]{left:12px}
+[data-carousel-arrow="next"]{right:12px}
+[data-carousel-dots]{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;background:rgba(20,32,28,.35);padding:8px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+[data-carousel-dots] button{width:8px;height:8px;border:none;border-radius:999px;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:background .15s ease,width .15s ease}
+[data-carousel-dots] button[aria-current="true"]{background:#fff;width:20px}
 </style>
 </head>
 <body>
@@ -122,7 +132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div data-nav-brands="" style="display:flex;align-items:center;gap:16px;min-width:0;">
     <a href="https://www.schumms.com" style="display:flex;"><img data-component="Logo" src="images/sur-logo-black.webp" alt="Schumm und Rösch" width="1000" height="84" decoding="async" style="height:19px;width:auto;object-fit:contain"></a>
     <span aria-hidden="true" data-nav-divider="" style="width:1px;height:20px;background:var(--grey-300);flex-shrink:0;"></span>
-    <img data-nav-logo-vitra="" src="images/vitra-logo.svg" alt="Vitra" width="199" height="64" decoding="async" style="height:14px;width:auto;display:block;flex-shrink:0;">
+    <img data-nav-logo-vitra="" src="images/vitra-logo.svg" alt="Vitra" width="199" height="64" decoding="async" style="height:16px;width:auto;display:block;flex-shrink:0;">
   </div>
   <a data-component="Button" data-component-variant="green (custom — not a documented Button variant, see README),sm" href="https://newwork-check.schumms.com" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:var(--sur-green);color:var(--sur-ink);font-weight:700;font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase;">Check starten</a>
 </nav>
@@ -280,6 +290,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section style="padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px);background:var(--sur-ink);">
+  <div data-compare-grid="" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,32px);align-items:stretch;">
+    <div style="padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;justify-content:center;">
+      <span data-component="Eyebrow" style="display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sur-purple);"><i style="width:22px;height:2px;background:currentColor;display:inline-block;"></i>Deine Chance</span>
+      <h2 class="disp" style="font-size:clamp(1.75rem,3.4vw,2.5rem);margin:18px 0 0;line-height:1.15;"><span style="color:#fff;">Was sich verändert, wenn</span> <span style="color:var(--sur-purple);">Fläche strategisch gedacht wird.</span></h2>
+      <p class="lede" style="font-size:1.0625rem;margin:22px 0 0;max-width:44ch;color:rgba(255,255,255,.9);">Eine Fläche, die zu eurer Arbeitsweise passt. Zonen, die messbar genutzt werden. Ein Büro, das Talente anzieht – statt sie zu verlieren.</p>
+    </div>
+    <div data-carousel="" style="position:relative;width:100%;overflow:hidden;">
+      <div data-carousel-track="" style="display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;">
+        <!-- Karussell-Slides: weitere Bilder als zusätzliche <figure data-carousel-slide> ergänzen -->
+        <figure data-carousel-slide="" style="flex:0 0 100%;margin:0;scroll-snap-align:center;">
+          <img src="images/buero-heute-danach.webp" alt="Modernes Büro" width="1148" height="765" loading="lazy" decoding="async" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="check" style="padding:clamp(64px,9vw,120px) clamp(20px,5vw,64px);background:#F1F1F1;">
   <div style="max-width:1180px;margin:0 auto;">
     <div data-form-grid="" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
@@ -314,6 +342,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://www.schumms.com/datenschutz" target="_blank" rel="noopener" style="font-size:.8125rem;color:rgba(255,255,255,.5);">Datenschutz</a>
   </div>
 </footer>
+
+<script>
+(function(){
+  var chevPrev='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+  var chevNext='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+  document.querySelectorAll('[data-carousel]').forEach(function(car){
+    var track=car.querySelector('[data-carousel-track]');
+    if(!track)return;
+    var slides=Array.prototype.slice.call(track.querySelectorAll('[data-carousel-slide]'));
+    if(slides.length<2)return; /* Pfeile & Punkte erst ab 2 Slides */
+    function current(){return Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/track.clientWidth)))}
+    function goTo(i){track.scrollTo({left:Math.max(0,Math.min(slides.length-1,i))*track.clientWidth,behavior:'smooth'})}
+    var dots=document.createElement('div');dots.setAttribute('data-carousel-dots','');
+    slides.forEach(function(_,i){
+      var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Bild '+(i+1));
+      b.addEventListener('click',function(){goTo(i)});dots.appendChild(b);
+    });
+    car.appendChild(dots);
+    ['prev','next'].forEach(function(dir){
+      var a=document.createElement('button');a.type='button';a.setAttribute('data-carousel-arrow',dir);
+      a.setAttribute('aria-label',dir==='prev'?'Vorheriges Bild':'Nächstes Bild');
+      a.innerHTML=dir==='prev'?chevPrev:chevNext;
+      a.addEventListener('click',function(){goTo(current()+(dir==='prev'?-1:1))});
+      car.appendChild(a);
+    });
+    function sync(){var i=current();dots.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')})}
+    track.addEventListener('scroll',sync,{passive:true});sync();
+    /* Desktop: Ziehen mit der Maus */
+    var down=false,sx=0,sl=0;
+    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;sx=e.clientX;sl=track.scrollLeft;track.style.scrollSnapType='none';track.style.cursor='grabbing'});
+    window.addEventListener('pointermove',function(e){if(!down)return;track.scrollLeft=sl-(e.clientX-sx)});
+    window.addEventListener('pointerup',function(){if(!down)return;down=false;track.style.scrollSnapType='';track.style.cursor='';goTo(current())});
+  });
+})();
+</script>
 
 </body>
 </html>
