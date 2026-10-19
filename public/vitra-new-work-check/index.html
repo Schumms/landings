@@ -301,9 +301,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div data-carousel-track="" style="display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;">
         <!-- Karussell-Slides: weitere Bilder als zusätzliche <figure data-carousel-slide> ergänzen -->
         <figure data-carousel-slide="" style="flex:0 0 100%;margin:0;scroll-snap-align:center;">
-          <img src="images/vitra-01.webp" alt="Helles, offenes Büro mit modularen Arbeitsplätzen und Loungebereich" width="1200" height="900" loading="lazy" decoding="async" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </figure>
-        <figure data-carousel-slide="" style="flex:0 0 100%;margin:0;scroll-snap-align:center;">
           <img src="images/vitra-02.webp" alt="Mobile Möbelsysteme: Kleiderregal, Whiteboard, Medienschränk und Schreibtisch auf Rollen" width="1200" height="813" loading="lazy" decoding="async" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;">
         </figure>
         <figure data-carousel-slide="" style="flex:0 0 100%;margin:0;scroll-snap-align:center;">
@@ -359,33 +356,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function(){
   var chevPrev='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
   var chevNext='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-carousel]').forEach(function(car){
     var track=car.querySelector('[data-carousel-track]');
     if(!track)return;
     var slides=Array.prototype.slice.call(track.querySelectorAll('[data-carousel-slide]'));
-    if(slides.length<2)return; /* Pfeile & Punkte erst ab 2 Slides */
-    function current(){return Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/track.clientWidth)))}
-    function goTo(i){track.scrollTo({left:Math.max(0,Math.min(slides.length-1,i))*track.clientWidth,behavior:'smooth'})}
+    if(slides.length<2)return; /* Pfeile, Punkte, Loop & Autoplay erst ab 2 Slides */
+    var n=slides.length;
+
+    /* Klone an beiden Enden für nahtlosen Loop */
+    var cloneFirst=slides[0].cloneNode(true),cloneLast=slides[n-1].cloneNode(true);
+    cloneFirst.setAttribute('data-carousel-clone','');cloneLast.setAttribute('data-carousel-clone','');
+    cloneFirst.querySelectorAll('img').forEach(function(i){i.loading='eager'});
+    cloneLast.querySelectorAll('img').forEach(function(i){i.loading='eager'});
+    track.insertBefore(cloneLast,slides[0]);
+    track.appendChild(cloneFirst);
+    /* Positionen: 0=Klon(letzter), 1..n=echte Slides, n+1=Klon(erster) */
+    var pos=1;
+    function mod(k){return ((k%n)+n)%n}
+    function scrollToPos(i,smooth){track.scrollTo({left:i*track.clientWidth,behavior:smooth&&!reduced?'smooth':'auto'})}
+    function realIndex(){return mod(pos-1)}
+    function goToReal(i,smooth){pos=mod(i)+1;scrollToPos(pos,smooth)}
+
+    /* Punkte */
     var dots=document.createElement('div');dots.setAttribute('data-carousel-dots','');
     slides.forEach(function(_,i){
       var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Bild '+(i+1));
-      b.addEventListener('click',function(){goTo(i)});dots.appendChild(b);
+      b.addEventListener('click',function(){user();goToReal(i)});dots.appendChild(b);
     });
     car.appendChild(dots);
+
+    /* Pfeile — mit Loop: letzter → erster, erster → letzter */
     ['prev','next'].forEach(function(dir){
       var a=document.createElement('button');a.type='button';a.setAttribute('data-carousel-arrow',dir);
       a.setAttribute('aria-label',dir==='prev'?'Vorheriges Bild':'Nächstes Bild');
       a.innerHTML=dir==='prev'?chevPrev:chevNext;
-      a.addEventListener('click',function(){goTo(current()+(dir==='prev'?-1:1))});
+      a.addEventListener('click',function(){user();goToReal(realIndex()+(dir==='prev'?-1:1))});
       car.appendChild(a);
     });
-    function sync(){var i=current();dots.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')})}
-    track.addEventListener('scroll',sync,{passive:true});sync();
+
+    function sync(){var i=realIndex();dots.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')})}
+
+    /* Nach Scroll-Ende: bei Klon instant auf die echte Position springen */
+    var settle;
+    track.addEventListener('scroll',function(){
+      pos=Math.round(track.scrollLeft/track.clientWidth);
+      sync();
+      clearTimeout(settle);
+      settle=setTimeout(function(){
+        if(pos===0){pos=n;scrollToPos(pos,false)}
+        else if(pos===n+1){pos=1;scrollToPos(pos,false)}
+        sync();
+      },120);
+    },{passive:true});
+
+    scrollToPos(1,false);sync();
+
+    /* Autoplay: alle 2 s weiter — nur wenn sichtbar, pausiert bei Interaktion (5 s) */
+    var inView=true,paused=0,timer=null,resume;
+    function tick(){if(inView&&!paused)goToReal(realIndex()+1)}
+    function startTimer(){if(!timer&&!reduced)timer=setInterval(tick,2000)}
+    function stopTimer(){if(timer){clearInterval(timer);timer=null}}
+    function user(){stopTimer();paused=1;clearTimeout(resume);resume=setTimeout(function(){paused=0;startTimer()},5000)}
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){inView=en[0].isIntersecting},{threshold:.4}).observe(car);
+    }
+    document.addEventListener('visibilitychange',function(){document.hidden?stopTimer():startTimer()});
+    track.addEventListener('touchstart',user,{passive:true});
+    startTimer();
+
     /* Desktop: Ziehen mit der Maus */
     var down=false,sx=0,sl=0;
-    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;sx=e.clientX;sl=track.scrollLeft;track.style.scrollSnapType='none';track.style.cursor='grabbing'});
+    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;user();down=true;sx=e.clientX;sl=track.scrollLeft;track.style.scrollSnapType='none';track.style.cursor='grabbing'});
     window.addEventListener('pointermove',function(e){if(!down)return;track.scrollLeft=sl-(e.clientX-sx)});
-    window.addEventListener('pointerup',function(){if(!down)return;down=false;track.style.scrollSnapType='';track.style.cursor='';goTo(current())});
+    window.addEventListener('pointerup',function(){if(!down)return;down=false;track.style.scrollSnapType='';track.style.cursor='';goToReal(Math.round(track.scrollLeft/track.clientWidth)-1,false)});
   });
 })();
 </script>
