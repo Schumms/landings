@@ -206,16 +206,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="tel" id="sr-phone" name="phone" placeholder="+49 ..." required autocomplete="tel">
         </div>
         <div class="sr-field">
-          <label for="sr-company">Unternehmen <span class="req">*</span></label>
-          <input type="text" id="sr-company" name="company" placeholder="Firma" required autocomplete="organization">
-        </div>
-        <div class="sr-field">
-          <label>Worum geht es? <span class="req">*</span></label>
+          <label>Worum geht es? <small style="font-weight:400;text-transform:none;letter-spacing:0;">(mehrere möglich)</small></label>
           <div class="sr-interest" id="sr-interest">
-            <input type="radio" id="sr-i1" name="produkt_interesse" value="JET.III SE Bürodrehstuhl" checked><label class="sr-pill" for="sr-i1">JET.III SE</label>
-            <input type="radio" id="sr-i2" name="produkt_interesse" value="ACTIVE.T SE Steh-Sitz-Arbeitsplatz"><label class="sr-pill" for="sr-i2">ACTIVE.T SE</label>
-            <input type="radio" id="sr-i3" name="produkt_interesse" value="QUICK.III Stehhilfe"><label class="sr-pill" for="sr-i3">QUICK.III</label>
-            <input type="radio" id="sr-i4" name="produkt_interesse" value="Mehrere Produkte / Beratung"><label class="sr-pill" for="sr-i4">Mehrere / Beratung</label>
+            <input type="checkbox" id="sr-i1" name="kn_asap_kampagne_produkte" value="JET.III SE"><label class="sr-pill" for="sr-i1">JET.III SE</label>
+            <input type="checkbox" id="sr-i2" name="kn_asap_kampagne_produkte" value="ACTIVE.T SE"><label class="sr-pill" for="sr-i2">ACTIVE.T SE</label>
+            <input type="checkbox" id="sr-i3" name="kn_asap_kampagne_produkte" value="QUICK.III"><label class="sr-pill" for="sr-i3">QUICK.III</label>
+            <input type="checkbox" id="sr-i4" name="kn_asap_kampagne_produkte" value="Mehrere / Beratung"><label class="sr-pill" for="sr-i4">Mehrere / Beratung</label>
           </div>
         </div>
         <label class="sr-consent">
@@ -239,9 +235,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var button = form.querySelector('button[type="submit"]');
   var consent = document.getElementById('sr-consent');
 
-  /* TODO(FORM): HubSpot-Form-GUID einsetzen, sobald Timo das Formular-Script schickt.
-     Formular-Script / Form-ID folgt von Timo — bis dahin ist dieser Endpoint ein Platzhalter. */
-  var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/TODO-FORM-GUID-VON-TIMO';
+  var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/cc7e5303-dfe3-4656-97f8-fc81d16f6893';
+  var REDIRECT = 'https://go.schumms.com/kn-asap-kampagne';
 
   function validEmail(v){
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -278,9 +273,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
 
-    var interest = form.querySelector('input[name="produkt_interesse"]:checked');
-    if(interest){
-      fields.push({name: interest.name, value: interest.value});
+    var interest = form.querySelectorAll('input[name="kn_asap_kampagne_produkte"]:checked');
+    var values = [];
+    interest.forEach(function(box){ values.push(box.value); });
+    if(values.length){
+      /* HubSpot-Multi-Checkbox: Werte semikolon-getrennt in einem Feld */
+      fields.push({name: 'kn_asap_kampagne_produkte', value: values.join(';')});
     }
 
     if(!consent.checked){
@@ -306,7 +304,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         'event': 'form_submission',
         'form_id': 'koenig_neurath_asap'
       });
-      window.location.href = 'danke/';
+      window.location.href = REDIRECT;
     }).catch(function(){
       button.disabled = false;
       msg.className = 'sr-formmsg err';
