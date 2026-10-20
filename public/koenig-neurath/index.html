@@ -290,25 +290,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     button.disabled = true;
 
-    fetch(API, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
+    var CONSENT_TEXT = 'Ich willige in die Verarbeitung meiner Daten zur Erstellung eines Angebots ein und habe die Datenschutzerklärung (https://www.schumms.com/datenschutz) gelesen.';
+
+    function submitToHubspot(useConsent){
+      var body = {
         fields: fields,
         context: {pageName: 'K+N ASAP Schnell-Lieferprogramm'}
-      })
+      };
+      /* Einwilligung an HubSpot melden — consentToProcess dokumentiert die DSGVO-Einwilligung */
+      if(useConsent){
+        body.legalConsentOptions = {
+          consent: {
+            consentToProcess: true,
+            text: CONSENT_TEXT,
+            communications: []
+          }
+        };
+      }
+      return fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      });
+    }
+
+    submitToHubspot(true).then(function(res){
+      if(res.ok) return res;
+      if(res.status === 400){
+        /* HubSpot lehnt legalConsentOptions je nach Consent-Modell ab (INVALID_LEGAL_OPTION_FORMAT)
+           → ein Mal ohne Consent-Option wiederholen, Submission geht durch, DSGVO ist lokal dokumentiert */
+        return submitToHubspot(false).then(function(res2){
+          if(res2.ok) return res2;
+          return res2.text().then(function(t){
+            throw new Error('HS-' + res2.status + ': ' + t.replace(/\s+/g,' ').slice(0, 160));
+          });
+        });
+      }
+      return res.text().then(function(t){
+        throw new Error('HS-' + res.status + ': ' + t.replace(/\s+/g,' ').slice(0, 160));
+      });
     }).then(function(res){
-      if(!res.ok) throw new Error(String(res.status));
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'form_submission',
         'form_id': 'koenig_neurath_asap'
       });
       window.location.href = REDIRECT;
-    }).catch(function(){
+    }).catch(function(err){
       button.disabled = false;
       msg.className = 'sr-formmsg err';
-      msg.textContent = 'Das hat leider nicht geklappt. Bitte versuch es noch einmal — oder schreib uns an info@schumms.com.';
+      var detail = (err && err.message) ? ' [Details: ' + err.message + ']' : '';
+      msg.textContent = 'Das hat leider nicht geklappt. Bitte versuch es noch einmal — oder schreib uns an info@schumms.com.' + detail;
       msg.hidden = false;
     });
   });
