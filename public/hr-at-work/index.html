@@ -211,11 +211,13 @@ ul{margin:0}
   [data-hide-narrow]{display:none!important}
   .begleitung__grid{gap:24px!important}
   .begleitung__photos{gap:12px!important}
-  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:202/254;object-fit:cover}
+  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover}
   /* Mobile hero: image first, then text */
   .hero__grid{display:flex!important;flex-direction:column-reverse!important}
   .hero__figure{height:auto!important;margin-bottom:0!important;max-height:300px;overflow:hidden}
   .hero__figure img{width:100%!important;height:auto!important;max-height:300px;object-fit:cover}
+  /* Mehrwert: Termin-sichern-Button zentral unter den Benefit-Cards */
+  .mehrwert [style*="margin-top:56px"]{display:flex;justify-content:center}
 }
 @media(max-width:560px){.benefit-grid{grid-template-columns:1fr!important}.cform__row{grid-template-columns:1fr}}
 @media(max-width:480px){
@@ -224,11 +226,12 @@ ul{margin:0}
   h3{font-size:1.2375rem!important}
   p{font-size:0.9375rem!important}
   .nav{padding:14px 16px!important}
-  .nav img{height:22px!important;width:auto!important;object-fit:contain}
+  .nav img{height:20px!important;width:auto!important;object-fit:contain}
   .was{padding-left:20px!important;padding-right:20px!important}
+  .was .container{padding-inline:0!important}
   .was p{font-size:1rem!important}
   [style*="padding:clamp(56px,8vw,104px) clamp(40px,6vw,80px)"]{padding-left:20px!important;padding-right:20px!important}
-  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:202/254;object-fit:cover}
+  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover}
 }
 </style>
 </head>
