@@ -88,7 +88,7 @@ ul{margin:0}
 .container{max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,64px)}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.2}
 .eyebrow i{width:22px;height:2px;background:currentColor;display:inline-block;flex-shrink:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1;border-radius:0;cursor:pointer;text-decoration:none;border:1.5px solid transparent;transition:transform var(--dur-fast) var(--ease-standard),filter var(--dur-fast) var(--ease-standard)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:8px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1;border-radius:0;cursor:pointer;text-decoration:none;border:1.5px solid transparent;transition:transform var(--dur-fast) var(--ease-standard),filter var(--dur-fast) var(--ease-standard)}
 .btn:active{transform:translateY(1px)}.btn:hover{filter:brightness(.94)}
 .btn--full{display:flex;width:100%}
 .btn--sm{padding:8px 16px;font-size:.8125rem}
@@ -211,7 +211,8 @@ ul{margin:0}
   [data-hide-narrow]{display:none!important}
   .begleitung__grid{gap:24px!important}
   .begleitung__photos{gap:12px!important}
-  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover}
+  .begleitung__photos img{flex:1 1 0!important;min-width:0!important;width:auto!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important}
+  .nav img{height:16px!important;width:auto!important;object-fit:contain!important}
   /* Mobile hero: image first, then text */
   .hero__grid{display:flex!important;flex-direction:column-reverse!important}
   .hero__figure{height:auto!important;margin-bottom:0!important;max-height:300px;overflow:hidden}
@@ -226,12 +227,12 @@ ul{margin:0}
   h3{font-size:1.2375rem!important}
   p{font-size:0.9375rem!important}
   .nav{padding:14px 16px!important}
-  .nav img{height:20px!important;width:auto!important;object-fit:contain}
+  .nav img{height:16px!important;width:auto!important;object-fit:contain!important}
   .was{padding-left:20px!important;padding-right:20px!important}
   .was .container{padding-inline:0!important}
   .was p{font-size:1rem!important}
   [style*="padding:clamp(56px,8vw,104px) clamp(40px,6vw,80px)"]{padding-left:20px!important;padding-right:20px!important}
-  .begleitung__photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover}
+  .begleitung__photos img{flex:1 1 0!important;min-width:0!important;width:auto!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important}
 }
 </style>
 </head>
