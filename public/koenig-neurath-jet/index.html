@@ -93,8 +93,19 @@ html{scroll-behavior:smooth;}
 /* ---------- Produkt ---------- */
 #sr-produkt{background:#fff;padding:96px 0;}
 #sr-produkt .sr-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;}
-#sr-produkt .sr-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-#sr-produkt .sr-gallery img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-radius:8px;display:block;}
+/* Produkt-Slider (bewährtes Karussell-Muster) */
+#sr-produkt [data-carousel]{position:relative;width:100%;overflow:hidden;border-radius:8px;touch-action:pan-x;user-select:none;-webkit-user-select:none;}
+#sr-produkt [data-carousel-track]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;}
+#sr-produkt [data-carousel-track]::-webkit-scrollbar{display:none;}
+#sr-produkt [data-carousel-slide]{flex:0 0 100%;margin:0;scroll-snap-align:center;}
+#sr-produkt [data-carousel-slide] img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;display:block;}
+#sr-produkt [data-carousel-arrow]{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;border-radius:999px;background:rgba(19,63,66,0.88);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .15s ease;box-shadow:0 4px 14px rgba(19,63,66,0.3);}
+#sr-produkt [data-carousel-arrow]:hover{background:var(--ink);}
+#sr-produkt [data-carousel-arrow="prev"]{left:12px;}
+#sr-produkt [data-carousel-arrow="next"]{right:12px;}
+#sr-produkt [data-carousel-dots]{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;background:rgba(19,63,66,0.35);padding:8px 10px;border-radius:999px;backdrop-filter:blur(4px);}
+#sr-produkt [data-carousel-dots] button{width:8px;height:8px;border:none;border-radius:999px;background:rgba(255,255,255,0.5);cursor:pointer;padding:0;transition:background .15s ease,width .15s ease;}
+#sr-produkt [data-carousel-dots] button[aria-current="true"]{background:#fff;width:20px;}
 #sr-produkt h2{font-size:clamp(1.9rem,3vw,2.6rem);font-weight:900;line-height:1.15;color:var(--ink);margin:18px 0 14px;}
 #sr-produkt .sr-sub{font-size:1.0625rem;line-height:1.6;color:#4B5563;max-width:50ch;}
 #sr-produkt .sr-features{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -233,7 +244,6 @@ html{scroll-behavior:smooth;}
   #sr-usp .sr-uspitem span{font-size:0.75rem;}
   #sr-produkt h2{font-size:1.8rem;}
   #sr-produkt .sr-features{grid-template-columns:1fr;}
-  #sr-produkt .sr-gallery{grid-template-columns:1fr;}
   #sr-ablauf h2{font-size:1.8rem;}
   #sr-form .sr-card{padding:26px 20px;}
   #sr-form .sr-copy h2{font-size:1.8rem;}
@@ -306,11 +316,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="sr-produkt">
   <div class="sr-inner">
     <div class="sr-media">
-      <div class="sr-gallery">
-        <img src="gallery-1.webp" alt="JET.III SE Bürodrehstuhl — Gesamtansicht von hinten" loading="lazy">
-        <img src="gallery-2.webp" alt="JET.III SE — Netzrücken mit höhenverstellbarer Lordosenstütze" loading="lazy">
-        <img src="gallery-3.webp" alt="JET.III SE — Sitzpolster im Querschnitt: nachhaltiges Faserpolster" loading="lazy">
-        <img src="gallery-4.webp" alt="JET.III SE — Synchronmechanik mit Bedienhebel" loading="lazy">
+      <div data-carousel>
+        <div data-carousel-track>
+          <figure data-carousel-slide>
+            <img src="gallery-1.webp" alt="JET.III SE Bürodrehstuhl — Gesamtansicht von hinten">
+          </figure>
+          <figure data-carousel-slide>
+            <img src="gallery-2.webp" alt="JET.III SE — Netzrücken mit höhenverstellbarer Lordosenstütze">
+          </figure>
+          <figure data-carousel-slide>
+            <img src="gallery-3.webp" alt="JET.III SE — Sitzpolster im Querschnitt: nachhaltiges Faserpolster">
+          </figure>
+          <figure data-carousel-slide>
+            <img src="gallery-4.webp" alt="JET.III SE — Synchronmechanik mit Bedienhebel">
+          </figure>
+        </div>
       </div>
     </div>
     <div class="sr-copy">
@@ -582,6 +602,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = 'Das hat leider nicht geklappt. Bitte versuch es noch einmal — oder schreib uns an info@schumms.com.' + detail;
       msg.hidden = false;
     });
+  });
+})();
+/* Produkt-Slider: Endlos-Loop, Autoplay 2 s, Pause bei Interaktion/Nicht-Sichtbarkeit */
+(function(){
+  var chevPrev='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+  var chevNext='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('#sr-produkt [data-carousel]').forEach(function(car){
+    var track=car.querySelector('[data-carousel-track]');
+    if(!track)return;
+    var slides=Array.prototype.slice.call(track.querySelectorAll('[data-carousel-slide]'));
+    if(slides.length<2)return;
+    var n=slides.length;
+
+    /* Klone an beiden Enden für nahtlosen Loop */
+    var cloneFirst=slides[0].cloneNode(true),cloneLast=slides[n-1].cloneNode(true);
+    cloneFirst.setAttribute('data-carousel-clone','');cloneLast.setAttribute('data-carousel-clone','');
+    track.insertBefore(cloneLast,slides[0]);
+    track.appendChild(cloneFirst);
+    /* Positionen: 0=Klon(letzter), 1..n=echte Slides, n+1=Klon(erster) */
+    var pos=1;
+    function mod(k){return ((k%n)+n)%n}
+    function scrollToPos(i,smooth){track.scrollTo({left:i*track.clientWidth,behavior:smooth&&!reduced?'smooth':'auto'})}
+    function realIndex(){return mod(pos-1)}
+    function goToReal(i,smooth){pos=mod(i)+1;scrollToPos(pos,smooth)}
+
+    /* Punkte */
+    var dots=document.createElement('div');dots.setAttribute('data-carousel-dots','');
+    slides.forEach(function(_,i){
+      var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Bild '+(i+1));
+      b.addEventListener('click',function(){user();goToReal(i)});dots.appendChild(b);
+    });
+    car.appendChild(dots);
+
+    /* Pfeile — mit Loop: letzter → erster, erster → letzter */
+    ['prev','next'].forEach(function(dir){
+      var a=document.createElement('button');a.type='button';a.setAttribute('data-carousel-arrow',dir);
+      a.setAttribute('aria-label',dir==='prev'?'Vorheriges Bild':'Nächstes Bild');
+      a.innerHTML=dir==='prev'?chevPrev:chevNext;
+      a.addEventListener('click',function(){user();goToReal(realIndex()+(dir==='prev'?-1:1))});
+      car.appendChild(a);
+    });
+
+    function sync(){var i=realIndex();dots.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')})}
+
+    /* Nach Scroll-Ende: bei Klon instant auf die echte Position springen */
+    var settle;
+    track.addEventListener('scroll',function(){
+      pos=Math.round(track.scrollLeft/track.clientWidth);
+      sync();
+      clearTimeout(settle);
+      settle=setTimeout(function(){
+        if(pos===0){pos=n;scrollToPos(pos,false)}
+        else if(pos===n+1){pos=1;scrollToPos(pos,false)}
+        sync();
+      },120);
+    },{passive:true});
+
+    scrollToPos(1,false);sync();
+
+    /* Autoplay: alle 2 s weiter — nur wenn sichtbar, pausiert bei Interaktion (5 s) */
+    var inView=true,paused=0,timer=null,resume;
+    function tick(){if(inView&&!paused)goToReal(realIndex()+1)}
+    function startTimer(){if(!timer&&!reduced)timer=setInterval(tick,2000)}
+    function stopTimer(){if(timer){clearInterval(timer);timer=null}}
+    function user(){stopTimer();paused=1;clearTimeout(resume);resume=setTimeout(function(){paused=0;startTimer()},5000)}
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){inView=en[0].isIntersecting},{threshold:.4}).observe(car);
+    }
+    document.addEventListener('visibilitychange',function(){document.hidden?stopTimer():startTimer()});
+    track.addEventListener('touchstart',user,{passive:true});
+    startTimer();
+
+    /* Desktop: Ziehen mit der Maus */
+    var down=false,sx=0,sl=0;
+    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;user();down=true;sx=e.clientX;sl=track.scrollLeft;track.style.scrollSnapType='none';track.style.cursor='grabbing'});
+    window.addEventListener('pointermove',function(e){if(!down)return;track.scrollLeft=sl-(e.clientX-sx)});
+    window.addEventListener('pointerup',function(){if(!down)return;down=false;track.style.scrollSnapType='';track.style.cursor='';goToReal(Math.round(track.scrollLeft/track.clientWidth)-1,false)});
   });
 })();
 </script>
