@@ -166,7 +166,7 @@ html{scroll-behavior:smooth;}
 .sr-row2col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
 #sr-form .sr-field label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dark);margin-bottom:6px;}
 #sr-form .sr-field .req{color:var(--sr-green);}
-#sr-form input[type="email"],#sr-form input[type="text"],#sr-form input[type="tel"]{
+#sr-form input[type="email"],#sr-form input[type="text"],#sr-form input[type="tel"],#sr-form input[type="number"]{
   width:100%;border:1px solid #D8DDE1;border-radius:4px;padding:12px 14px;
   font-family:inherit;font-size:1rem;color:var(--text-dark);background:#fff;outline:none;
   transition:border-color .15s ease, box-shadow .15s ease;
@@ -174,16 +174,6 @@ html{scroll-behavior:smooth;}
 #sr-form input::placeholder{color:var(--placeholder);}
 #sr-form input:focus{border-color:var(--sr-green);box-shadow:0 0 0 2px rgba(1,219,162,0.22);}
 #sr-form input.sr-invalid{border-color:#8b0000;}
-#sr-form .sr-interest{display:flex;flex-wrap:wrap;gap:8px;}
-#sr-form .sr-interest input{position:absolute;opacity:0;pointer-events:none;}
-#sr-form .sr-interest label.sr-pill{
-  cursor:pointer;border:1px solid #D8DDE1;border-radius:999px;
-  font-family:inherit;font-size:0.75rem;font-weight:600;letter-spacing:0.04em;
-  padding:9px 16px;color:var(--text-dark);transition:all .15s ease;margin:0;
-  text-transform:none;display:inline-block;
-}
-#sr-form .sr-interest input:checked + label.sr-pill{background:var(--ink);border-color:var(--ink);color:#fff;}
-#sr-form .sr-interest input:focus-visible + label.sr-pill{box-shadow:0 0 0 2px rgba(1,219,162,0.35);}
 .sr-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.75rem;line-height:1.55;color:var(--text-dark);cursor:pointer;}
 .sr-consent input{margin-top:2px;accent-color:var(--sr-green);width:15px;height:15px;flex-shrink:0;}
 .sr-consent a{color:#0E6B57;text-decoration:underline;}
@@ -450,13 +440,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="tel" id="sr-phone" name="phone" placeholder="+49 ..." required autocomplete="tel">
         </div>
         <div class="sr-field">
-          <label>Worum geht es? <small style="font-weight:400;text-transform:none;letter-spacing:0;">(mehrere möglich)</small></label>
-          <div class="sr-interest" id="sr-interest">
-            <input type="checkbox" id="sr-i1" name="kn_asap_kampagne_produkte" value="JET.III SE" checked><label class="sr-pill" for="sr-i1">JET.III SE</label>
-            <input type="checkbox" id="sr-i2" name="kn_asap_kampagne_produkte" value="ACTIVE.T SE"><label class="sr-pill" for="sr-i2">ACTIVE.T SE</label>
-            <input type="checkbox" id="sr-i3" name="kn_asap_kampagne_produkte" value="QUICK.III"><label class="sr-pill" for="sr-i3">QUICK.III</label>
-            <input type="checkbox" id="sr-i4" name="kn_asap_kampagne_produkte" value="Mehrere / Beratung"><label class="sr-pill" for="sr-i4">Mehrere / Beratung</label>
-          </div>
+          <label for="sr-stuckzahl">Stückzahl <span class="req">*</span></label>
+          <input type="number" id="sr-stuckzahl" name="stuckzahl" placeholder="z. B. 5" min="1" inputmode="numeric" required>
         </div>
         <label class="sr-consent">
           <input type="checkbox" id="sr-consent">
@@ -494,7 +479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var button = form.querySelector('button[type="submit"]');
   var consent = document.getElementById('sr-consent');
 
-  var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/cc7e5303-dfe3-4656-97f8-fc81d16f6893';
+  var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/6514ccf7-aaad-4c03-9d4b-85d7204b6b38';
   var REDIRECT = '/koenig-neurath-jet/danke/';
 
   function getCookie(name){
@@ -506,7 +491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
 
-  form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(inp){
+  form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"],input[type="number"]').forEach(function(inp){
     inp.addEventListener('input', function(){ inp.classList.remove('sr-invalid'); });
   });
 
@@ -517,7 +502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var firstInvalid = null;
     var fields = [];
 
-    form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(inp){
+    form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"],input[type="number"]').forEach(function(inp){
       var value = String(inp.value || '').trim();
       var isEmail = inp.type === 'email';
       var bad = (inp.required && !value) || (isEmail && value && !validEmail(value));
@@ -532,14 +517,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(firstInvalid){
       firstInvalid.focus();
       return;
-    }
-
-    var interest = form.querySelectorAll('input[name="kn_asap_kampagne_produkte"]:checked');
-    var values = [];
-    interest.forEach(function(box){ values.push(box.value); });
-    if(values.length){
-      /* HubSpot-Multi-Checkbox: Werte semikolon-getrennt in einem Feld */
-      fields.push({name: 'kn_asap_kampagne_produkte', value: values.join(';')});
     }
 
     if(!consent.checked){
