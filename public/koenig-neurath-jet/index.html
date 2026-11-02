@@ -93,7 +93,8 @@ html{scroll-behavior:smooth;}
 /* ---------- Produkt ---------- */
 #sr-produkt{background:#fff;padding:96px 0;}
 #sr-produkt .sr-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;}
-#sr-produkt .sr-media img{width:100%;height:auto;display:block;border-radius:8px;}
+#sr-produkt .sr-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+#sr-produkt .sr-gallery img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-radius:8px;display:block;}
 #sr-produkt h2{font-size:clamp(1.9rem,3vw,2.6rem);font-weight:900;line-height:1.15;color:var(--ink);margin:18px 0 14px;}
 #sr-produkt .sr-sub{font-size:1.0625rem;line-height:1.6;color:#4B5563;max-width:50ch;}
 #sr-produkt .sr-features{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -232,6 +233,7 @@ html{scroll-behavior:smooth;}
   #sr-usp .sr-uspitem span{font-size:0.75rem;}
   #sr-produkt h2{font-size:1.8rem;}
   #sr-produkt .sr-features{grid-template-columns:1fr;}
+  #sr-produkt .sr-gallery{grid-template-columns:1fr;}
   #sr-ablauf h2{font-size:1.8rem;}
   #sr-form .sr-card{padding:26px 20px;}
   #sr-form .sr-copy h2{font-size:1.8rem;}
@@ -304,7 +306,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="sr-produkt">
   <div class="sr-inner">
     <div class="sr-media">
-      <img src="jet-studio.webp" alt="JET.III SE Bürodrehstuhl — Netzrücken mit Lordosenstütze" width="1200" height="849">
+      <div class="sr-gallery">
+        <img src="gallery-1.webp" alt="JET.III SE Bürodrehstuhl — Gesamtansicht von hinten" loading="lazy">
+        <img src="gallery-2.webp" alt="JET.III SE — Netzrücken mit höhenverstellbarer Lordosenstütze" loading="lazy">
+        <img src="gallery-3.webp" alt="JET.III SE — Sitzpolster im Querschnitt: nachhaltiges Faserpolster" loading="lazy">
+        <img src="gallery-4.webp" alt="JET.III SE — Synchronmechanik mit Bedienhebel" loading="lazy">
+      </div>
     </div>
     <div class="sr-copy">
       <span class="eyebrow" style="color:var(--ink);"><i></i>Der Stuhl</span>
@@ -313,8 +320,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sr-features">
         <div class="sr-feature"><strong>Synchronmechanik</strong><span>Sitz und Lehne bewegen sich mit — für dynamisches, gesundes Sitzen.</span></div>
         <div class="sr-feature"><strong>Netzrücken</strong><span>Atmungsaktiv und stabil — angenehm auch an langen Arbeitstagen.</span></div>
-        <div class="sr-feature"><strong>Blauer Engel</strong><span>Umweltzeichen für schadstoffgeprüfte Materialien und saubere Herstellung.</span></div>
-        <div class="sr-feature"><strong>Made in Germany</strong><span>Gefertigt von König + Neurath — Qualität, die man sitzt.</span></div>
+        <div class="sr-feature"><strong>Nachhaltiges Faserpolster</strong><span>Mit ca. 40 % Post-Consumer-PET (recycelte Wasserflaschen) und sortenrein zu 100 % recycelbar – entwickelt für spürbar hohen Sitzkomfort.</span></div>
+        <div class="sr-feature"><strong>Lordose</strong><span>Unabhängig von der Rückenlehne höhenverstellbar. Einstellung der Tiefe über das Handrad.</span></div>
       </div>
       <div class="sr-foot">
         <a class="sr-ctabtn" href="#sr-form">Angebot einholen →</a>
