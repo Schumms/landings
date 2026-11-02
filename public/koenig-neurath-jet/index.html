@@ -174,9 +174,8 @@ html{scroll-behavior:smooth;}
 #sr-form input::placeholder{color:var(--placeholder);}
 #sr-form input:focus{border-color:var(--sr-green);box-shadow:0 0 0 2px rgba(1,219,162,0.22);}
 #sr-form input.sr-invalid{border-color:#8b0000;}
-.sr-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.75rem;line-height:1.55;color:var(--text-dark);cursor:pointer;}
-.sr-consent input{margin-top:2px;accent-color:var(--sr-green);width:15px;height:15px;flex-shrink:0;}
-.sr-consent a{color:#0E6B57;text-decoration:underline;}
+.sr-consent-hinweis{font-size:0.75rem;line-height:1.55;color:#6B7280;}
+.sr-consent-hinweis a{color:#0E6B57;text-decoration:underline;}
 .sr-error{color:#8b0000;font-size:0.8125rem;margin-top:6px;}
 #sr-form button[type="submit"]{
   background:var(--sr-green);color:#062622;border:none;border-radius:4px;
@@ -443,11 +442,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label for="sr-stuckzahl">Stückzahl <span class="req">*</span></label>
           <input type="number" id="sr-stuckzahl" name="stuckzahl" placeholder="z. B. 5" min="1" inputmode="numeric" required>
         </div>
-        <label class="sr-consent">
-          <input type="checkbox" id="sr-consent">
-          <span>Ich willige in die Verarbeitung meiner Daten zur Erstellung eines Angebots ein und habe die
-            <a href="https://www.schumms.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen. *</span>
-        </label>
+        <p class="sr-consent-hinweis">Ich willige in die Verarbeitung meiner Daten zur Erstellung meines persönlichen Angebots ein und bin damit einverstanden, dass Schumm &amp; Rösch mich dazu per E-Mail und Telefon kontaktiert. Ich habe die
+          <a href="https://www.schumms.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen.</p>
         <button type="submit">Angebot einholen →</button>
         <p class="sr-formmsg" id="sr-formmsg" hidden></p>
         <p class="sr-formhint">Unverbindliche Anfrage — wir melden uns mit deinem persönlichen Angebot.</p>
@@ -477,10 +473,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var form = document.getElementById('sr-jetform');
   var msg = document.getElementById('sr-formmsg');
   var button = form.querySelector('button[type="submit"]');
-  var consent = document.getElementById('sr-consent');
 
   var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/6514ccf7-aaad-4c03-9d4b-85d7204b6b38';
-  var REDIRECT = '/koenig-neurath-jet/danke/';
+  var REDIRECT = 'https://go.schumms.com/kn-asap-kampagne';
 
   function getCookie(name){
     var m = document.cookie.match(new RegExp('(^|;)\\s*' + name + '=\\s*([^;]+)'));
@@ -519,18 +514,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
 
-    if(!consent.checked){
-      msg.className = 'sr-formmsg err';
-      msg.textContent = 'Bitte bestätige die Datenschutzerklärung.';
-      msg.hidden = false;
-      return;
-    }
-
     button.disabled = true;
 
-    var CONSENT_TEXT = 'Ich willige in die Verarbeitung meiner Daten zur Erstellung eines Angebots ein und habe die Datenschutzerklärung (https://www.schumms.com/datenschutz) gelesen.';
-
-    function submitToHubspot(useConsent){
+    /* Formular nutzt implizite Verarbeitungseinwilligung (Hinweis ohne Kontrollkästchen):
+       HubSpot dokumentiert die Rechtsbasis anhand der Formular-Konfiguration selbst
+       (processingConsentType IMPLICIT + berechtigtes Interesse für die 1:1-Kommunikation).
+       legalConsentOptions im Payload würde von diesem Consent-Modell abgelehnt. */
+    function submitToHubspot(){
       var body = {
         fields: fields,
         context: {
@@ -542,16 +532,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          bekannten Besucher (behebt die HubSpot-Warnung zur Cookie-Zuordnung) */
       var hutk = getCookie('hubspotutk');
       if(hutk){ body.context.hutk = hutk; }
-      /* Einwilligung an HubSpot melden — consentToProcess dokumentiert die DSGVO-Einwilligung */
-      if(useConsent){
-        body.legalConsentOptions = {
-          consent: {
-            consentToProcess: true,
-            text: CONSENT_TEXT,
-            communications: []
-          }
-        };
-      }
       return fetch(API, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -559,22 +539,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    submitToHubspot(true).then(function(res){
-      if(res.ok) return res;
-      if(res.status === 400){
-        /* HubSpot lehnt legalConsentOptions je nach Consent-Modell ab (INVALID_LEGAL_OPTION_FORMAT)
-           → ein Mal ohne Consent-Option wiederholen, Submission geht durch, DSGVO ist lokal dokumentiert */
-        return submitToHubspot(false).then(function(res2){
-          if(res2.ok) return res2;
-          return res2.text().then(function(t){
-            throw new Error('HS-' + res2.status + ': ' + t.replace(/\s+/g,' ').slice(0, 160));
-          });
+    submitToHubspot().then(function(res){
+      if(!res.ok){
+        return res.text().then(function(t){
+          throw new Error('HS-' + res.status + ': ' + t.replace(/\s+/g,' ').slice(0, 160));
         });
       }
-      return res.text().then(function(t){
-        throw new Error('HS-' + res.status + ': ' + t.replace(/\s+/g,' ').slice(0, 160));
-      });
-    }).then(function(res){
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'form_submission',
