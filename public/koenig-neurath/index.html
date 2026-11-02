@@ -238,6 +238,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var API = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/146949753/cc7e5303-dfe3-4656-97f8-fc81d16f6893';
   var REDIRECT = 'https://go.schumms.com/kn-asap-kampagne';
 
+  function getCookie(name){
+    var m = document.cookie.match(new RegExp('(^|;)\\s*' + name + '=\\s*([^;]+)'));
+    return m ? m.pop() : '';
+  }
+
   function validEmail(v){
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
@@ -295,8 +300,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function submitToHubspot(useConsent){
       var body = {
         fields: fields,
-        context: {pageName: 'K+N ASAP Schnell-Lieferprogramm'}
+        context: {
+          pageName: 'K+N ASAP Schnell-Lieferprogramm',
+          pageUri: window.location.href
+        }
       };
+      /* hubspotutk-Cookie mitgeben — verknüpft die Übermittlung mit dem
+         bekannten Besucher (behebt die HubSpot-Warnung zur Cookie-Zuordnung) */
+      var hutk = getCookie('hubspotutk');
+      if(hutk){ body.context.hutk = hutk; }
       /* Einwilligung an HubSpot melden — consentToProcess dokumentiert die DSGVO-Einwilligung */
       if(useConsent){
         body.legalConsentOptions = {
