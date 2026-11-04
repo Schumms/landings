@@ -13,6 +13,10 @@ sections:
   secondary_cta: false
   footer: true
 
+sections_layout:
+  location:
+    details_layout: "cards"
+
 nav_cta_text: "Jetzt registrieren"
 
 # ── Hero ───────────────────────────────────────────────────────────────────────
@@ -21,6 +25,9 @@ hero_title: "Weihnachtsmarkt bei Schumm & Rösch."
 hero_subtitle: "Ein Abend bei uns in Wiesbaden — zum Jahresausklang, mit weihnachtlicher Atmosphäre und Zeit für Austausch."
 hero_image: "/images/shared/event-hero-default.jpg"
 hero_image_alt: "Weihnachtlich dekorierte Eventfläche von Schumm & Rösch in Wiesbaden"
+
+# Hero untereinander statt nebeneinander: erst Headline, dann Bild (volle Breite)
+hero_variant: "stacked"
 
 cta_text: "Jetzt registrieren"
 
@@ -39,8 +46,6 @@ location_venue: "Schumm & Rösch Eventfläche"
 location_address: "Borsigstraße 20 · 65205 Wiesbaden"
 location_phone: "+49 6122 727 555-0"
 location_email: "info@schumms.com"
-location_image: "/images/shared/event-location-default.jpg"
-location_image_alt: "Eventfläche von Schumm & Rösch in Wiesbaden"
 
 # ── Formular / Registrierung (HubSpot Embed) ───────────────────────────────────
 form_title: "Jetzt registrieren"

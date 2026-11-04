@@ -10,6 +10,8 @@ const { page, layout } = Astro.props;
 
 const heroVariant = page.hero_variant ?? "default";
 const isFullbleed = heroVariant === "fullbleed";
+// "stacked": einzeilige Spalte — Copy (Headline) oben, Bild darunter in voller Breite.
+const isStacked = heroVariant === "stacked";
 // "compact" wirkt in beiden Varianten:
 // - fullbleed: reduziert min-height und Padding (Original-Verhalten)
 // - default: skaliert die Headline auf 70% für leisere Hero-Optik
@@ -21,6 +23,7 @@ const isInlineMetrics = layout?.metrics_layout === "inline";
 const sectionClasses = [
   "hero",
   isFullbleed && "hero--fullbleed",
+  isStacked && "hero--stacked",
   isCompact && "hero--compact",
   isInlineMetrics && "hero--metrics-inline",
   layout?.align && `section--align-${layout.align}`,
@@ -363,5 +366,27 @@ const sectionClasses = [
     text-align: center;
     margin-inline: auto;
   }
+
+  /* ── Stacked-Variante ────────────────────────────────────────── */
+  /* Einzeilige Spalte: Copy (Eyebrow → Headline → Subtitle → CTA →
+     Trust-Metrics) zuerst, Bild darunter in voller Container-Breite.
+     Aktiviert per hero_variant: "stacked" im Frontmatter. */
+  .hero--stacked .hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero--stacked .hero__copy h1 {
+    max-width: 20ch;
+  }
+
+  /* Breites Panorama-Bild statt Hochformat (4/5 wäre in voller Breite
+     unnötig hoch). 21/9 bleibt kompakt und wirkt wie ein Banner. */
+  .hero--stacked .hero__visual img,
+  .hero--stacked .hero__visual-fallback {
+    aspect-ratio: 21 / 9;
+  }
+
+  .hero--stacked .hero__visual {
+    margin-top: 0.5rem;
   }
 </style>

@@ -105,6 +105,10 @@ const sectionLayoutSchema = z
     // farbigen Backgrounds). Default ist Brand-Standard (schwarz auf hell,
     // weiß auf dark).
     body_color: z.enum(["white", "black", "muted"]).optional(),
+    // Location: Layout-Modus für Detail-Liste.
+    // "list" (default): vertikale Label/Value-Liste.
+    // "cards": Details als Kartenreihe (ohne Bild, volle Breite).
+    details_layout: z.enum(["list", "cards"]).optional(),
   })
   .optional();
 
@@ -128,7 +132,7 @@ const landingSchema = z.object({
   hero_subtitle: z.string().max(300),
   hero_image: z.string().optional(),
   hero_image_alt: z.string().optional(),
-  hero_variant: z.enum(["default", "fullbleed"]).optional(),
+  hero_variant: z.enum(["default", "fullbleed", "stacked"]).optional(),
   // Per-Page Hero-Größe. Wirkt in BEIDEN Varianten (fullbleed + default-Split):
   //   "default" → Standard-Höhe
   //   "compact" → fullbleed: reduzierte min-height; default: Headline auf 70%

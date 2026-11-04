@@ -9,10 +9,16 @@ interface Props {
 
 const { page, layout } = Astro.props;
 
+// Cards-Modus: Details als Kartenreihe statt vertikaler Label/Value-Liste.
+// Löst auch das halbbreite Einzel-Spalten-Problem, wenn kein Bild gesetzt ist.
+// Aktiviert per sections_layout.location.details_layout: "cards".
+const isCards = layout?.details_layout === "cards";
+
 const sectionClasses = [
   "location",
   "section",
   "section--compact",
+  isCards && "location--cards",
   layout?.align && `section--align-${layout.align}`,
   layout?.width && `section--width-${layout.width}`,
   layout?.background && `section--bg-${layout.background}`,
@@ -35,7 +41,7 @@ const email = page.location_email ?? brand.contact.email;
 ---
 
 <section class:list={sectionClasses} id="location" aria-labelledby="location-heading">
-  <div class="container split">
+  <div class:list={["container", !isCards && "split"]}>
     <div class="location__content">
       <h2 id="location-heading">{page.location_heading ?? "Location"}</h2>
       {page.location_intro && <p class="location__intro">{page.location_intro}</p>}
@@ -136,5 +142,53 @@ const email = page.location_email ?? brand.contact.email;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+  }
+
+  /* ── Cards-Modus ─────────────────────────────────────────────── */
+  /* Details (Venue, Adresse, Telefon, E-Mail) als Kartenreihe über
+     die volle Breite — ohne Bild. Überschrift + Intro zentriert,
+     Karten darunter im responsive Grid (1/2/4 Spalten).
+     Aktiviert per sections_layout.location.details_layout: "cards". */
+  .location--cards .location__content {
+    text-align: center;
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+
+  .location--cards .location__details {
+    margin-top: 2.5rem;
+    border-top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .location--cards .location__details {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .location--cards .location__details {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .location--cards .location__details li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    align-items: center;
+  }
+
+  .location--cards .location__details a {
+    overflow-wrap: anywhere;
   }
 </style>
