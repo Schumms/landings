@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Feedbackbogen zum Workshop Baukasten@work bei Arjo — Schumm und Rösch.">
+<title>Workshop-Feedback Baukasten@work – Schumm + Rösch</title>
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+/* Buenos Aires — self-hosted, kein Third-Party-Request */
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Regular400.woff2") format("woff2"),url("/fonts/BuenosAires-Regular400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-SemiBold600.woff2") format("woff2"),url("/fonts/BuenosAires-SemiBold600.woff") format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Bold700.woff2") format("woff2"),url("/fonts/BuenosAires-Bold700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Buenos Aires";src:url("/fonts/BuenosAires-Black900.woff2") format("woff2"),url("/fonts/BuenosAires-Black900.woff") format("woff");font-weight:800 900;font-style:normal;font-display:swap}
+
+:root{
+  --bg:#F1F1F1; --surface:#FFFFFF; --ink:#16161A; --ink-2:#3D3C37; --ink-3:#5C5B55;
+  --border:#D6D5CF; --placeholder:#76756F;
+  --green:#01DBA2; --purple:#827AFE;
+  --radius-card:20px; --radius-input:10px; --radius-pill:999px;
+  --font:'Buenos Aires','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:hidden}
+body{overflow-x:hidden;max-width:100vw;margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);min-height:100vh}
+
+/* Header */
+#sr-top{background:var(--ink);color:#fff}
+#sr-top .top-in{max-width:880px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.sub{font-size:14px;color:#C9C8C2}
+
+#sr-main{max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px}
+.hero{display:flex;flex-direction:column;gap:20px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-weight:600;font-size:13px;padding:6px 12px;border-radius:var(--radius-pill);background:#fff;border:1px solid var(--border)}
+.badge.green{background:var(--green);border-color:var(--green);font-weight:700}
+h1{margin:0;font-size:clamp(34px,5.5vw,52px);line-height:1.05;font-weight:800;letter-spacing:-0.03em}
+.lead{margin:0;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:640px}
+.note{margin:0;font-size:14px;color:var(--ink-3)}
+
+form{display:flex;flex-direction:column;gap:40px}
+.card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:28px}
+.card-head{display:flex;gap:16px;align-items:center}
+.num{width:40px;height:40px;flex:none;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800}
+h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em}
+.intro{margin:0;font-size:16px;line-height:1.5;color:var(--ink-3)}
+
+/* Likert-Skala */
+.likert{display:flex;flex-direction:column;gap:10px;border:0;margin:0;padding:0}
+.likert-q{font-weight:600;font-size:16px;line-height:1.4}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.seg{position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;border:1.5px solid var(--border);border-radius:var(--radius-input);background:#fff;font-weight:700;font-size:15px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.seg:hover{border-color:var(--ink)}
+.seg:has(input:checked){background:var(--green);border-color:var(--green)}
+.seg:has(input:focus-visible){outline:3px solid var(--purple);outline-offset:2px}
+.scale-hint{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--ink-3);font-weight:400}
+.scale-hint span{max-width:48%}
+
+/* Matrix (Frage 10): Zeilen mit eigener Skala */
+.matrix{display:flex;flex-direction:column;gap:20px}
+.likert.sub .likert-q{font-size:15px;font-weight:600;color:var(--ink-2)}
+
+/* Freitext + Chips */
+.field{display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px}
+.full{flex-basis:100%}
+.label .req{color:var(--ink)}
+.hint{font-weight:400;font-size:14px;color:var(--ink-3)}
+.in{width:100%;font:inherit;font-size:16px;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-input);padding:13px 14px;min-height:48px}
+.in::placeholder{color:var(--placeholder)}
+textarea.in{min-height:120px;resize:vertical;line-height:1.5}
+.in:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+
+.group{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.group legend{padding:0;margin-bottom:12px;font-weight:600;font-size:16px;line-height:1.4}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative;display:inline-flex;cursor:pointer}
+.chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);border:1.5px solid var(--border);background:#fff;font-size:15px;font-weight:600}
+.chip svg{display:none}
+.chip:hover span{border-color:var(--ink)}
+.chip:has(input:checked) span{background:var(--green);border-color:var(--green)}
+.chip:has(input:checked) svg{display:block}
+.chip:has(input:focus-visible) span{outline:3px solid var(--purple);outline-offset:2px}
+
+.error{margin:0;font-size:14px;font-weight:600;color:#B3261E}
+
+.submit-row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.submit-row p{margin:0;font-size:14px;color:var(--ink-3);max-width:420px}
+.btn{font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border-radius:var(--radius-pill)}
+.btn.primary{min-height:56px;padding:16px 32px;border:0;background:var(--green);color:var(--ink);font-size:18px;font-weight:800}
+.btn:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.btn:disabled{opacity:.6;cursor:progress}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.done{padding-top:120px;padding-bottom:120px;align-items:flex-start;gap:24px}
+.done-icon{width:64px;height:64px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.done h1{font-size:clamp(34px,6vw,52px);line-height:1.05}
+.form-error{margin:0;font-size:14px;font-weight:600;color:#B3261E;max-width:420px}
+
+/* ---- Mobile Optimization (Mobile Optimization Brief) ---- */
+@media (max-width:860px){
+  #sr-top .top-in{padding:14px 20px}
+  #sr-main{padding:48px 20px 72px}
+  .card{padding:24px 20px}
+  h2{font-size:24px}
+}
+@media (max-width:480px){
+  #sr-top .top-in{padding:12px 16px}
+  #sr-top img{height:16px}
+  #sr-main{padding:36px 16px 56px;gap:28px}
+  .sub{font-size:12px}
+  h1{font-size:clamp(28px,8.5vw,34px)}
+  .lead{font-size:17px}
+  h2{font-size:22px}
+  .card{padding:22px 16px;gap:24px}
+  .likert-q{font-size:15px}
+  .scale{gap:5px}
+  .seg{min-height:44px;font-size:14px}
+  .scale-hint{font-size:11.5px}
+  .chips{gap:8px}
+  .chip span{font-size:14px;padding:9px 14px;min-height:44px}
+  .submit-row{flex-direction:column;align-items:stretch}
+  .submit-row p{max-width:none}
+  .btn.primary{width:100%;justify-content:center}
+  .done{padding-top:64px;padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+<header id="sr-top"><div class="top-in"><img src="/images/schumms-logo-white.png" alt="Schumm und Rösch" style="height:20px;width:auto;display:block"><div class="sub">Baukasten@work · Arjo · Feedback</div></div></header>
+
+<main id="formview" style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:40px">
+<section class="hero">
+<div class="badges"><span class="badge green">Anonym</span><span class="badge">ca. 6 Minuten</span><span class="badge">22 Fragen</span></div>
+<h1>Ihr Feedback zum Workshop.</h1>
+<p class="lead">Vielen Dank, dass Sie am Workshop „Baukasten@work“ am 29.10.2026 teilgenommen haben. Ihre Rückmeldung hilft uns, die nächsten Schritte für das neue Büro gut vorzubereiten.</p>
+<p class="note">Die Umfrage ist anonym – wir fragen weder Namen noch Abteilungen ab. Nur Frage 1 ist Pflicht, alle anderen Fragen können Sie frei beantworten oder auslassen.</p>
+</section>
+
+<form id="survey" novalidate>
+<div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+<!-- Teil 1: Gesamteindruck -->
+<section class="card" aria-labelledby="h-t1">
+<div class="card-head"><span class="num" aria-hidden="true">1</span><h2 id="h-t1">Gesamteindruck</h2></div>
+<fieldset class="likert" data-required-group>
+<legend class="likert-q">1&nbsp;· Wie zufrieden sind Sie insgesamt mit dem Workshop? <span class="req" aria-hidden="true">*</span></legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f01" value="1" aria-label="1 — sehr unzufrieden">1</label>
+<label class="seg"><input type="radio" name="f01" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f01" value="3" aria-label="3">3</label>
+<label class="seg"><input type="radio" name="f01" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f01" value="5" aria-label="5 — sehr zufrieden">5</label>
+</div>
+<div class="scale-hint"><span>1 = sehr unzufrieden</span><span>5 = sehr zufrieden</span></div>
+<p class="error" role="alert" hidden>Bitte wählen Sie einen Wert aus.</p>
+</fieldset>
+<p class="intro">Für die folgenden Fragen gilt: 1 = trifft gar nicht zu · 3 = teils, teils · 5 = trifft voll zu.</p>
+<fieldset class="likert">
+<legend class="likert-q">2&nbsp;· Die Ziele des Workshops waren für mich klar.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f02" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f02" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f02" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f02" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f02" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">3&nbsp;· Der Workshop hat meine Erwartungen erfüllt.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f03" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f03" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f03" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f03" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f03" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">4&nbsp;· Ich habe neue Impulse und Ideen mitgenommen.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f04" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f04" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f04" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f04" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f04" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+</section>
+
+<!-- Teil 2: Arjo und das neue Bürokonzept -->
+<section class="card" aria-labelledby="h-t2">
+<div class="card-head"><span class="num" aria-hidden="true">2</span><h2 id="h-t2">Arjo und das neue Bürokonzept</h2></div>
+<p class="intro">1 = trifft gar nicht zu · 3 = teils, teils · 5 = trifft voll zu.</p>
+<fieldset class="likert">
+<legend class="likert-q">5&nbsp;· Ich verstehe, warum Arjo ein neues Bürokonzept plant.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f05" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f05" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f05" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f05" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f05" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">6&nbsp;· Ich habe jetzt eine klare Vorstellung, wie unser künftiges Büro funktionieren kann.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f06" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f06" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f06" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f06" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f06" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">7&nbsp;· Ich fühle mich von Arjo in den Veränderungsprozess gut eingebunden.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f07" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f07" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f07" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f07" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f07" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">8&nbsp;· Ich habe den Eindruck, dass die Ergebnisse des Workshops bei Arjo ernst genommen werden.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f08" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f08" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f08" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f08" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f08" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<label class="field full"><span class="label">9&nbsp;· Was wünschen Sie sich von Arjo für den weiteren Prozess?</span><textarea class="in" name="f09" rows="4" maxlength="5000"></textarea></label>
+</section>
+
+<!-- Teil 3: Inhalte und Übungen -->
+<section class="card" aria-labelledby="h-t3">
+<div class="card-head"><span class="num" aria-hidden="true">3</span><h2 id="h-t3">Inhalte und Übungen</h2></div>
+<fieldset class="group">
+<legend class="likert-q">10&nbsp;· Wie hilfreich fanden Sie die einzelnen Übungen?</legend>
+<p class="intro" style="margin:0">1 = gar nicht hilfreich · 5 = sehr hilfreich.</p>
+<div class="matrix">
+<fieldset class="likert sub">
+<legend class="likert-q">Übung 1 „Abteilungen und Zusammenarbeit“</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f10a" value="1" aria-label="Übung 1: 1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10a" value="2" aria-label="Übung 1: 2">2</label>
+<label class="seg"><input type="radio" name="f10a" value="3" aria-label="Übung 1: 3">3</label>
+<label class="seg"><input type="radio" name="f10a" value="4" aria-label="Übung 1: 4">4</label>
+<label class="seg"><input type="radio" name="f10a" value="5" aria-label="Übung 1: 5 — sehr hilfreich">5</label>
+</div>
+</fieldset>
+<fieldset class="likert sub">
+<legend class="likert-q">Übung 2 „Arbeitstag in drei Tätigkeiten“</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f10b" value="1" aria-label="Übung 2: 1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10b" value="2" aria-label="Übung 2: 2">2</label>
+<label class="seg"><input type="radio" name="f10b" value="3" aria-label="Übung 2: 3">3</label>
+<label class="seg"><input type="radio" name="f10b" value="4" aria-label="Übung 2: 4">4</label>
+<label class="seg"><input type="radio" name="f10b" value="5" aria-label="Übung 2: 5 — sehr hilfreich">5</label>
+</div>
+</fieldset>
+<fieldset class="likert sub">
+<legend class="likert-q">Rundgang durch die Ausstellungsfläche</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f10c" value="1" aria-label="Rundgang: 1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10c" value="2" aria-label="Rundgang: 2">2</label>
+<label class="seg"><input type="radio" name="f10c" value="3" aria-label="Rundgang: 3">3</label>
+<label class="seg"><input type="radio" name="f10c" value="4" aria-label="Rundgang: 4">4</label>
+<label class="seg"><input type="radio" name="f10c" value="5" aria-label="Rundgang: 5 — sehr hilfreich">5</label>
+</div>
+</fieldset>
+<fieldset class="likert sub">
+<legend class="likert-q">Übung 4 „Baukasten“</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f10d" value="1" aria-label="Baukasten: 1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10d" value="2" aria-label="Baukasten: 2">2</label>
+<label class="seg"><input type="radio" name="f10d" value="3" aria-label="Baukasten: 3">3</label>
+<label class="seg"><input type="radio" name="f10d" value="4" aria-label="Baukasten: 4">4</label>
+<label class="seg"><input type="radio" name="f10d" value="5" aria-label="Baukasten: 5 — sehr hilfreich">5</label>
+</div>
+</fieldset>
+<fieldset class="likert sub">
+<legend class="likert-q">Showroom</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f10e" value="1" aria-label="Showroom: 1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10e" value="2" aria-label="Showroom: 2">2</label>
+<label class="seg"><input type="radio" name="f10e" value="3" aria-label="Showroom: 3">3</label>
+<label class="seg"><input type="radio" name="f10e" value="4" aria-label="Showroom: 4">4</label>
+<label class="seg"><input type="radio" name="f10e" value="5" aria-label="Showroom: 5 — sehr hilfreich">5</label>
+</div>
+</fieldset>
+</div>
+</fieldset>
+<p class="intro" style="margin:0">Für die Fragen 11 und 12 gilt: 1 = trifft gar nicht zu · 5 = trifft voll zu.</p>
+<fieldset class="likert">
+<legend class="likert-q">11&nbsp;· Die Aufgabenstellungen waren verständlich.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f11" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f11" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f11" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f11" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f11" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">12&nbsp;· Ich konnte die Anforderungen meiner Abteilung gut einbringen.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f12" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f12" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f12" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f12" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f12" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="group">
+<legend>13&nbsp;· Welche Übung war für Sie am wertvollsten?</legend>
+<div class="chips">
+<label class="chip"><input type="radio" name="f13" value="Abteilungen und Zusammenarbeit"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Abteilungen und Zusammenarbeit</span></label>
+<label class="chip"><input type="radio" name="f13" value="Arbeitstag in drei Tätigkeiten"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Arbeitstag in drei Tätigkeiten</span></label>
+<label class="chip"><input type="radio" name="f13" value="Rundgang Ausstellungsfläche"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Rundgang Ausstellungsfläche</span></label>
+<label class="chip"><input type="radio" name="f13" value="Baukasten"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Baukasten</span></label>
+<label class="chip"><input type="radio" name="f13" value="Showroom"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Showroom</span></label>
+</div>
+</fieldset>
+</section>
+
+<!-- Teil 4: Moderation und Organisation -->
+<section class="card" aria-labelledby="h-t4">
+<div class="card-head"><span class="num" aria-hidden="true">4</span><h2 id="h-t4">Moderation und Organisation</h2></div>
+<p class="intro" style="margin:0">Für die Fragen 14, 15, 17 und 18 gilt: 1 = trifft gar nicht zu · 5 = trifft voll zu.</p>
+<fieldset class="likert">
+<legend class="likert-q">14&nbsp;· Die Moderation war strukturiert und gut verständlich.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f14" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f14" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f14" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f14" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f14" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">15&nbsp;· Es gab ausreichend Raum für Fragen und Diskussion.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f15" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f15" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f15" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f15" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f15" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="group">
+<legend>16&nbsp;· Wie fanden Sie die Dauer des Workshops?</legend>
+<div class="chips">
+<label class="chip"><input type="radio" name="f16" value="zu kurz"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>zu kurz</span></label>
+<label class="chip"><input type="radio" name="f16" value="genau richtig"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>genau richtig</span></label>
+<label class="chip"><input type="radio" name="f16" value="zu lang"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>zu lang</span></label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">17&nbsp;· Die Arbeitsmaterialien (Arbeitsblätter, Baukasten-Module, Präsentation) waren hilfreich.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f17" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f17" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f17" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f17" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f17" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+<fieldset class="likert">
+<legend class="likert-q">18&nbsp;· Räumlichkeiten, Atmosphäre und Verpflegung haben gepasst.</legend>
+<div class="scale">
+<label class="seg"><input type="radio" name="f18" value="1" aria-label="1 — trifft gar nicht zu">1</label>
+<label class="seg"><input type="radio" name="f18" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f18" value="3" aria-label="3 — teils, teils">3</label>
+<label class="seg"><input type="radio" name="f18" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f18" value="5" aria-label="5 — trifft voll zu">5</label>
+</div>
+</fieldset>
+</section>
+
+<!-- Teil 5: Offene Fragen -->
+<section class="card" aria-labelledby="h-t5">
+<div class="card-head"><span class="num" aria-hidden="true">5</span><h2 id="h-t5">Offene Fragen</h2></div>
+<label class="field full"><span class="label">19&nbsp;· Was hat Ihnen am Workshop besonders gut gefallen?</span><textarea class="in" name="f19" rows="4" maxlength="5000"></textarea></label>
+<label class="field full"><span class="label">20&nbsp;· Was können wir beim nächsten Mal besser machen?</span><textarea class="in" name="f20" rows="4" maxlength="5000"></textarea></label>
+<label class="field full"><span class="label">21&nbsp;· Gibt es Anforderungen oder Themen, die im Workshop zu kurz gekommen sind?</span><textarea class="in" name="f21" rows="4" maxlength="5000"></textarea></label>
+<label class="field full"><span class="label">22&nbsp;· Möchten Sie uns sonst noch etwas mitgeben?</span><textarea class="in" name="f22" rows="4" maxlength="5000"></textarea></label>
+</section>
+
+<div class="submit-row">
+<div>
+<p>Nach dem Absenden ist Ihre Rückmeldung anonym gespeichert – wir halten Sie über die nächsten Schritte auf dem Laufenden.</p>
+<p class="form-error" id="formerror" role="alert" hidden>Das Absenden hat leider nicht geklappt. Bitte versuchen Sie es in ein paar Minuten noch einmal. Ihre Eingaben sind noch da.</p>
+</div>
+<button class="btn primary" type="submit" id="submitbtn">Feedback absenden<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+</div>
+</form>
+</main>
+
+<main id="done" class="wrap done" hidden style="max-width:880px;margin:0 auto;padding:120px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:24px">
+<span class="done-icon"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" stroke="#16161A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+<h1>Herzlichen Dank für Ihr Feedback!</h1>
+<p class="lead">Wir halten Sie über die nächsten Schritte auf dem Laufenden.</p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  // Public NocoDB Form-Endpoint — kein Token nötig, Secret bleibt serverseitig.
+  var SUBMIT_URL = 'https://ki-backend.schumms.com/api/v1/db/public/shared-view/3940175c-6247-4750-8893-c03b0ac8b181/rows';
+
+  var form = document.getElementById('survey');
+  var formView = document.getElementById('formview');
+  var doneView = document.getElementById('done');
+  var submitBtn = document.getElementById('submitbtn');
+  var formError = document.getElementById('formerror');
+
+  function one(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function text(name) {
+    var el = form.elements[name];
+    return el ? String(el.value || '').trim() : '';
+  }
+  function num(name) {
+    var v = one(name);
+    return v ? parseInt(v, 10) : null;
+  }
+
+  function buildPayload() {
+    var d = {};
+    // Bewertungsfragen als Zahlen
+    var nums = ['f01','f02','f03','f04','f05','f06','f07','f08','f10a','f10b','f10c','f10d','f10e','f11','f12','f14','f15','f17','f18'];
+    var numCols = { f01:'F01_Zufriedenheit', f02:'F02_Ziele_klar', f03:'F03_Erwartungen', f04:'F04_Impulse',
+      f05:'F05_Verstaendnis_Konzept', f06:'F06_Vorstellung_Buero', f07:'F07_Eingebunden', f08:'F08_Ernst_genommen',
+      f10a:'F10a_Uebung_Abteilungen', f10b:'F10b_Uebung_Arbeitstag', f10c:'F10c_Uebung_Rundgang', f10d:'F10d_Uebung_Baukasten', f10e:'F10e_Uebung_Showroom',
+      f11:'F11_Verstaendlichkeit', f12:'F12_Einbringen', f14:'F14_Moderation', f15:'F15_Raum_Fragen', f17:'F17_Materialien', f18:'F18_Raeumlichkeiten' };
+    nums.forEach(function (n) {
+      var v = num(n);
+      if (v !== null) d[numCols[n]] = v;
+    });
+    // Einfachauswahl
+    var f13 = one('f13'); if (f13) d.F13_Wertvollste_Uebung = f13;
+    var f16 = one('f16'); if (f16) d.F16_Dauer = f16;
+    // Freitext
+    var texts = { f09:'F09_Wuensche_Arjo', f19:'F19_Gut_gefallen', f20:'F20_Besser', f21:'F21_Themen_kurz', f22:'F22_Sonstiges' };
+    Object.keys(texts).forEach(function (n) {
+      var v = text(n);
+      if (v) d[texts[n]] = v;
+    });
+    return { data: d };
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formError.hidden = true;
+
+    // Pflicht: nur Frage 1
+    var firstBad = null;
+    form.querySelectorAll('fieldset[data-required-group]').forEach(function (fs) {
+      var ok = !!fs.querySelector('input:checked');
+      fs.querySelector('.error').hidden = ok;
+      if (!ok && !firstBad) firstBad = fs;
+    });
+    if (firstBad) {
+      if (firstBad.scrollIntoView) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Honeypot: gefüllt → vorgetäuschter Erfolg, nichts speichern
+    if (form.elements.website && form.elements.website.value) {
+      formView.hidden = true; doneView.hidden = false; window.scrollTo(0, 0);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    var label = submitBtn.firstChild;
+    if (label && label.nodeType === 3) label.textContent = 'Wird gesendet … ';
+
+    fetch(SUBMIT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildPayload())
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      formView.hidden = true; doneView.hidden = false; window.scrollTo(0, 0);
+    }).catch(function () {
+      formError.hidden = false;
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).finally(function () {
+      submitBtn.disabled = false;
+      if (label && label.nodeType === 3) label.textContent = 'Feedback absenden';
+    });
+  });
+})();
+</script>
+</body>
+</html>
