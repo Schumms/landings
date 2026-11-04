@@ -159,20 +159,11 @@ const email = page.location_email ?? brand.contact.email;
     margin-top: 2.5rem;
     border-top: 0;
     display: grid;
-    grid-template-columns: 1fr;
+    /* Auto-Fit mit Mindestbreite: Karten nie schmaler als 14rem, damit
+       E-Mail/Telefon nicht mid-word umbrechen. 1/2/3/4 Spalten ergeben
+       sich automatisch aus der Viewport-Breite. */
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .location--cards .location__details {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 900px) {
-    .location--cards .location__details {
-      grid-template-columns: repeat(4, 1fr);
-    }
   }
 
   .location--cards .location__details li {
