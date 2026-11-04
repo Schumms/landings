@@ -140,7 +140,7 @@ const landingSchema = z.object({
   cta_text: z.string(),
   cta_href: z.string().url().optional(),
   // Per-Page-Akzentfarbe. Default "coral" wenn nicht gesetzt.
-  accent_color: z.enum(["coral", "turquoise", "violet"]).optional(),
+  accent_color: z.enum(["coral", "turquoise", "violet", "red"]).optional(),
   hero_trust_metrics: z.array(metricItem).max(3).optional(),
 
   social_proof_text: z.string().optional(),

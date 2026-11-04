@@ -370,13 +370,33 @@ const sectionClasses = [
   /* ── Stacked-Variante ────────────────────────────────────────── */
   /* Einzeilige Spalte: Copy (Eyebrow → Headline → Subtitle → CTA →
      Trust-Metrics) zuerst, Bild darunter in voller Container-Breite.
+     Text zentriert (Timo, Nov 2026: „der text ist nicht zentriert").
      Aktiviert per hero_variant: "stacked" im Frontmatter. */
   .hero--stacked .hero__grid {
     grid-template-columns: 1fr;
   }
 
+  .hero--stacked .hero__copy {
+    text-align: center;
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+
   .hero--stacked .hero__copy h1 {
     max-width: 20ch;
+    margin-inline: auto;
+  }
+
+  .hero--stacked .hero__subtitle {
+    margin-inline: auto;
+  }
+
+  .hero--stacked .hero__cta {
+    margin-inline: auto;
+  }
+
+  .hero--stacked .hero__metrics {
+    justify-content: center;
   }
 
   /* Breites Panorama-Bild statt Hochformat (4/5 wäre in voller Breite

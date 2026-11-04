@@ -21,6 +21,9 @@
   --color-turquoise-dark: #01B386;
   --color-violet: #827afe;
   --color-violet-dark: #5C5BD9;
+  /* Rot: offizielles S&R-Burgund (#522633, per Timo bestätigt Nov 2026). */
+  --color-red: #522633;
+  --color-red-dark: #3d1a25;
 
   /* Semantic */
   --color-text: var(--color-black);
@@ -39,6 +42,11 @@
 :root[data-accent="violet"] {
   --color-coral: var(--color-violet);
   --color-coral-dark: var(--color-violet-dark);
+}
+
+:root[data-accent="red"] {
+  --color-coral: var(--color-red);
+  --color-coral-dark: var(--color-red-dark);
 }
 
 :root {
