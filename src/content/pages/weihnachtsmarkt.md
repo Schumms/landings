@@ -10,6 +10,7 @@ sections:
   hero: true
   location: true
   form: true
+  secondary_cta: false
   footer: true
 
 nav_cta_text: "Jetzt registrieren"
