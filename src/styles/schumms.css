@@ -49,6 +49,12 @@
   --color-coral-dark: var(--color-red-dark);
 }
 
+/* Burgund ist dunkel genug für weiße Button-Schrift (im Gegensatz zu
+   Coral, wo Schwarz Standard bleibt). Gilt nur für red-Akzent-Pages. */
+:root[data-accent="red"] .btn--coral {
+  color: var(--color-white);
+}
+
 :root {
   /* Typography — Inter wie schumms.com */
   --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;

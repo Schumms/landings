@@ -24,7 +24,7 @@ nav_cta_text: "Ich bin dabei"
 
 # ── Hero ───────────────────────────────────────────────────────────────────────
 hero_eyebrow: "Für unsere Hersteller und Partner · 9. Dezember 2026 · Wiesbaden"
-hero_title: "Danke für ein gemeinsames Jahr."
+hero_title: "Weihnachtszauber bei Schumm und Rösch — Danke für 2026!"
 hero_subtitle: "Herzlich laden wir euch zu unserem Weihnachtsmarkt ein: In weihnachtlicher Atmosphäre und bei gutem Gespräch möchten wir mit euch auf das gemeinsame Jahr anstoßen — und es in gemütlicher Runde ausklingen lassen."
 hero_image: "/images/shared/event-hero-default.jpg"
 hero_image_alt: "Weihnachtlich dekorierte Eventfläche von Schumm & Rösch in Wiesbaden"
