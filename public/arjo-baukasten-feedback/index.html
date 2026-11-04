@@ -259,61 +259,16 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 <!-- Teil 3: Inhalte und Übungen -->
 <section class="card step" data-step="3" aria-labelledby="h-t3">
 <div class="card-head"><span class="num" aria-hidden="true">3</span><h2 id="h-t3">Inhalte und Übungen</h2></div>
-<fieldset class="group">
-<legend class="likert-q">10&nbsp;· Wie hilfreich fanden Sie die einzelnen Übungen?</legend>
-<p class="intro" style="margin:0">1 = gar nicht hilfreich · 5 = sehr hilfreich.</p>
-<div class="matrix">
-<fieldset class="likert sub">
-<legend class="likert-q">Übung 1 „Abteilungen und Zusammenarbeit“</legend>
+<fieldset class="likert">
+<legend class="likert-q">10&nbsp;· Wie hilfreich fanden Sie die Übungen?</legend>
 <div class="scale">
-<label class="seg"><input type="radio" name="f10a" value="1" aria-label="Übung 1: 1 — gar nicht hilfreich">1</label>
-<label class="seg"><input type="radio" name="f10a" value="2" aria-label="Übung 1: 2">2</label>
-<label class="seg"><input type="radio" name="f10a" value="3" aria-label="Übung 1: 3">3</label>
-<label class="seg"><input type="radio" name="f10a" value="4" aria-label="Übung 1: 4">4</label>
-<label class="seg"><input type="radio" name="f10a" value="5" aria-label="Übung 1: 5 — sehr hilfreich">5</label>
+<label class="seg"><input type="radio" name="f10" value="1" aria-label="1 — gar nicht hilfreich">1</label>
+<label class="seg"><input type="radio" name="f10" value="2" aria-label="2">2</label>
+<label class="seg"><input type="radio" name="f10" value="3" aria-label="3">3</label>
+<label class="seg"><input type="radio" name="f10" value="4" aria-label="4">4</label>
+<label class="seg"><input type="radio" name="f10" value="5" aria-label="5 — sehr hilfreich">5</label>
 </div>
-</fieldset>
-<fieldset class="likert sub">
-<legend class="likert-q">Übung 2 „Arbeitstag in drei Tätigkeiten“</legend>
-<div class="scale">
-<label class="seg"><input type="radio" name="f10b" value="1" aria-label="Übung 2: 1 — gar nicht hilfreich">1</label>
-<label class="seg"><input type="radio" name="f10b" value="2" aria-label="Übung 2: 2">2</label>
-<label class="seg"><input type="radio" name="f10b" value="3" aria-label="Übung 2: 3">3</label>
-<label class="seg"><input type="radio" name="f10b" value="4" aria-label="Übung 2: 4">4</label>
-<label class="seg"><input type="radio" name="f10b" value="5" aria-label="Übung 2: 5 — sehr hilfreich">5</label>
-</div>
-</fieldset>
-<fieldset class="likert sub">
-<legend class="likert-q">Rundgang durch die Ausstellungsfläche</legend>
-<div class="scale">
-<label class="seg"><input type="radio" name="f10c" value="1" aria-label="Rundgang: 1 — gar nicht hilfreich">1</label>
-<label class="seg"><input type="radio" name="f10c" value="2" aria-label="Rundgang: 2">2</label>
-<label class="seg"><input type="radio" name="f10c" value="3" aria-label="Rundgang: 3">3</label>
-<label class="seg"><input type="radio" name="f10c" value="4" aria-label="Rundgang: 4">4</label>
-<label class="seg"><input type="radio" name="f10c" value="5" aria-label="Rundgang: 5 — sehr hilfreich">5</label>
-</div>
-</fieldset>
-<fieldset class="likert sub">
-<legend class="likert-q">Übung 4 „Baukasten“</legend>
-<div class="scale">
-<label class="seg"><input type="radio" name="f10d" value="1" aria-label="Baukasten: 1 — gar nicht hilfreich">1</label>
-<label class="seg"><input type="radio" name="f10d" value="2" aria-label="Baukasten: 2">2</label>
-<label class="seg"><input type="radio" name="f10d" value="3" aria-label="Baukasten: 3">3</label>
-<label class="seg"><input type="radio" name="f10d" value="4" aria-label="Baukasten: 4">4</label>
-<label class="seg"><input type="radio" name="f10d" value="5" aria-label="Baukasten: 5 — sehr hilfreich">5</label>
-</div>
-</fieldset>
-<fieldset class="likert sub">
-<legend class="likert-q">Showroom</legend>
-<div class="scale">
-<label class="seg"><input type="radio" name="f10e" value="1" aria-label="Showroom: 1 — gar nicht hilfreich">1</label>
-<label class="seg"><input type="radio" name="f10e" value="2" aria-label="Showroom: 2">2</label>
-<label class="seg"><input type="radio" name="f10e" value="3" aria-label="Showroom: 3">3</label>
-<label class="seg"><input type="radio" name="f10e" value="4" aria-label="Showroom: 4">4</label>
-<label class="seg"><input type="radio" name="f10e" value="5" aria-label="Showroom: 5 — sehr hilfreich">5</label>
-</div>
-</fieldset>
-</div>
+<div class="scale-hint"><span>1 = gar nicht hilfreich</span><span>5 = sehr hilfreich</span></div>
 </fieldset>
 <p class="intro" style="margin:0">Für die Fragen 11 und 12 gilt: 1 = trifft gar nicht zu · 5 = trifft voll zu.</p>
 <fieldset class="likert">
@@ -494,10 +449,10 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
   function buildPayload() {
     var d = {};
     // Bewertungsfragen als Zahlen
-    var nums = ['f01','f02','f03','f04','f05','f06','f07','f08','f10a','f10b','f10c','f10d','f10e','f11','f12','f14','f15','f17','f18'];
+    var nums = ['f01','f02','f03','f04','f05','f06','f07','f08','f10','f11','f12','f14','f15','f17','f18'];
     var numCols = { f01:'F01_Zufriedenheit', f02:'F02_Ziele_klar', f03:'F03_Erwartungen', f04:'F04_Impulse',
       f05:'F05_Verstaendnis_Konzept', f06:'F06_Vorstellung_Buero', f07:'F07_Eingebunden', f08:'F08_Ernst_genommen',
-      f10a:'F10a_Uebung_Abteilungen', f10b:'F10b_Uebung_Arbeitstag', f10c:'F10c_Uebung_Rundgang', f10d:'F10d_Uebung_Baukasten', f10e:'F10e_Uebung_Showroom',
+      f10:'F10_Uebungen',
       f11:'F11_Verstaendlichkeit', f12:'F12_Einbringen', f14:'F14_Moderation', f15:'F15_Raum_Fragen', f17:'F17_Materialien', f18:'F18_Raeumlichkeiten' };
     nums.forEach(function (n) {
       var v = num(n);
