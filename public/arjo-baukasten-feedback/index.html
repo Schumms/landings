@@ -89,6 +89,13 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 .error{margin:0;font-size:14px;font-weight:600;color:#B3261E}
 
 .submit-row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.stepbtns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.stepnav{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:4px}
+.stepnav.solo{justify-content:flex-end}
+.stepper{padding:2px 0 0}
+.stepper-label{margin:0 0 10px;font-size:13px;font-weight:700;color:var(--ink-3);letter-spacing:.01em}
+.stepper-track{height:6px;background:#E2E1DB;border-radius:var(--radius-pill);overflow:hidden}
+.stepper-fill{height:100%;background:var(--green);border-radius:var(--radius-pill);width:20%;transition:width .35s ease}
 .submit-row p{margin:0;font-size:14px;color:var(--ink-3);max-width:420px}
 .btn{font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border-radius:var(--radius-pill)}
 .btn.primary{min-height:56px;padding:16px 32px;border:0;background:var(--green);color:var(--ink);font-size:18px;font-weight:800}
@@ -125,6 +132,10 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
   .chip span{font-size:14px;padding:9px 14px;min-height:44px}
   .submit-row{flex-direction:column;align-items:stretch}
   .submit-row p{max-width:none}
+  .stepbtns{flex-direction:column-reverse;align-items:stretch;gap:10px;width:100%}
+  .stepnav{flex-direction:column-reverse;align-items:stretch;gap:10px}
+  .stepnav .btn{width:100%;justify-content:center}
+  .stepper-label{font-size:12px}
   .btn.primary{width:100%;justify-content:center}
   .done{padding-top:64px;padding-bottom:64px}
 }
@@ -142,10 +153,14 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 </section>
 
 <form id="survey" novalidate>
+<div class="stepper" id="stepper" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
+<p class="stepper-label" id="steptext">Teil 1 von 5 · Gesamteindruck</p>
+<div class="stepper-track"><div class="stepper-fill" id="stepfill"></div></div>
+</div>
 <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
 <!-- Teil 1: Gesamteindruck -->
-<section class="card" aria-labelledby="h-t1">
+<section class="card step" data-step="1" aria-labelledby="h-t1">
 <div class="card-head"><span class="num" aria-hidden="true">1</span><h2 id="h-t1">Gesamteindruck</h2></div>
 <fieldset class="likert" data-required-group>
 <legend class="likert-q">1&nbsp;· Wie zufrieden sind Sie insgesamt mit dem Workshop? <span class="req" aria-hidden="true">*</span></legend>
@@ -190,10 +205,11 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 <label class="seg"><input type="radio" name="f04" value="5" aria-label="5 — trifft voll zu">5</label>
 </div>
 </fieldset>
+<div class="stepnav solo"><button class="btn primary" type="button" data-next>Weiter<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
 </section>
 
 <!-- Teil 2: Arjo und das neue Bürokonzept -->
-<section class="card" aria-labelledby="h-t2">
+<section class="card step" data-step="2" aria-labelledby="h-t2">
 <div class="card-head"><span class="num" aria-hidden="true">2</span><h2 id="h-t2">Arjo und das neue Bürokonzept</h2></div>
 <p class="intro">1 = trifft gar nicht zu · 3 = teils, teils · 5 = trifft voll zu.</p>
 <fieldset class="likert">
@@ -237,10 +253,11 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 </div>
 </fieldset>
 <label class="field full"><span class="label">9&nbsp;· Was wünschen Sie sich von Arjo für den weiteren Prozess?</span><textarea class="in" name="f09" rows="4" maxlength="5000"></textarea></label>
+<div class="stepnav"><button class="btn outline" type="button" data-prev>Zurück</button><button class="btn primary" type="button" data-next>Weiter<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
 </section>
 
 <!-- Teil 3: Inhalte und Übungen -->
-<section class="card" aria-labelledby="h-t3">
+<section class="card step" data-step="3" aria-labelledby="h-t3">
 <div class="card-head"><span class="num" aria-hidden="true">3</span><h2 id="h-t3">Inhalte und Übungen</h2></div>
 <fieldset class="group">
 <legend class="likert-q">10&nbsp;· Wie hilfreich fanden Sie die einzelnen Übungen?</legend>
@@ -329,10 +346,11 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 <label class="chip"><input type="radio" name="f13" value="Showroom"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Showroom</span></label>
 </div>
 </fieldset>
+<div class="stepnav"><button class="btn outline" type="button" data-prev>Zurück</button><button class="btn primary" type="button" data-next>Weiter<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
 </section>
 
 <!-- Teil 4: Moderation und Organisation -->
-<section class="card" aria-labelledby="h-t4">
+<section class="card step" data-step="4" aria-labelledby="h-t4">
 <div class="card-head"><span class="num" aria-hidden="true">4</span><h2 id="h-t4">Moderation und Organisation</h2></div>
 <p class="intro" style="margin:0">Für die Fragen 14, 15, 17 und 18 gilt: 1 = trifft gar nicht zu · 5 = trifft voll zu.</p>
 <fieldset class="likert">
@@ -383,10 +401,11 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 <label class="seg"><input type="radio" name="f18" value="5" aria-label="5 — trifft voll zu">5</label>
 </div>
 </fieldset>
+<div class="stepnav"><button class="btn outline" type="button" data-prev>Zurück</button><button class="btn primary" type="button" data-next>Weiter<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
 </section>
 
 <!-- Teil 5: Offene Fragen -->
-<section class="card" aria-labelledby="h-t5">
+<section class="card step" data-step="5" aria-labelledby="h-t5">
 <div class="card-head"><span class="num" aria-hidden="true">5</span><h2 id="h-t5">Offene Fragen</h2></div>
 <label class="field full"><span class="label">19&nbsp;· Was hat Ihnen am Workshop besonders gut gefallen?</span><textarea class="in" name="f19" rows="4" maxlength="5000"></textarea></label>
 <label class="field full"><span class="label">20&nbsp;· Was können wir beim nächsten Mal besser machen?</span><textarea class="in" name="f20" rows="4" maxlength="5000"></textarea></label>
@@ -394,12 +413,15 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
 <label class="field full"><span class="label">22&nbsp;· Möchten Sie uns sonst noch etwas mitgeben?</span><textarea class="in" name="f22" rows="4" maxlength="5000"></textarea></label>
 </section>
 
-<div class="submit-row">
+<div class="submit-row" data-step="5">
 <div>
 <p>Nach dem Absenden ist Ihre Rückmeldung anonym gespeichert – wir halten Sie über die nächsten Schritte auf dem Laufenden.</p>
 <p class="form-error" id="formerror" role="alert" hidden>Das Absenden hat leider nicht geklappt. Bitte versuchen Sie es in ein paar Minuten noch einmal. Ihre Eingaben sind noch da.</p>
 </div>
+<div class="stepbtns">
+<button class="btn outline" type="button" data-prev>Zurück</button>
 <button class="btn primary" type="submit" id="submitbtn">Feedback absenden<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+</div>
 </div>
 </form>
 </main>
@@ -421,6 +443,40 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
   var doneView = document.getElementById('done');
   var submitBtn = document.getElementById('submitbtn');
   var formError = document.getElementById('formerror');
+
+  // ---- 5-Schritte-Flow ----
+  var curStep = 1;
+  var stepEls = Array.prototype.slice.call(document.querySelectorAll('[data-step]'));
+  var stepper = document.getElementById('stepper');
+  var stepNames = { 1: 'Gesamteindruck', 2: 'Arjo und das neue Bürokonzept', 3: 'Inhalte und Übungen', 4: 'Moderation und Organisation', 5: 'Offene Fragen' };
+
+  function showStep(n) {
+    curStep = n;
+    stepEls.forEach(function (el) {
+      el.hidden = parseInt(el.getAttribute('data-step'), 10) !== n;
+    });
+    document.getElementById('steptext').textContent = 'Teil ' + n + ' von 5 · ' + stepNames[n];
+    document.getElementById('stepfill').style.width = (n * 20) + '%';
+    if (stepper) stepper.setAttribute('aria-valuenow', String(n));
+    window.scrollTo(0, 0);
+  }
+  function stepValid(n) {
+    var bad = null;
+    document.querySelectorAll('.card.step[data-step="' + n + '"] fieldset[data-required-group]').forEach(function (fs) {
+      var ok = !!fs.querySelector('input:checked');
+      fs.querySelector('.error').hidden = ok;
+      if (!ok && !bad) bad = fs;
+    });
+    if (bad && bad.scrollIntoView) bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return !bad;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-next]'), function (b) {
+    b.addEventListener('click', function () { if (stepValid(curStep)) showStep(curStep + 1); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-prev]'), function (b) {
+    b.addEventListener('click', function () { showStep(Math.max(1, curStep - 1)); });
+  });
+  showStep(1);
 
   function one(name) {
     var el = form.querySelector('input[name="' + name + '"]:checked');
@@ -462,6 +518,12 @@ textarea.in{min-height:120px;resize:vertical;line-height:1.5}
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     formError.hidden = true;
+
+    // Enter/Sende-Versuch auf einem früheren Schritt → wie „Weiter“
+    if (curStep < 5) {
+      if (stepValid(curStep)) showStep(curStep + 1);
+      return;
+    }
 
     // Pflicht: nur Frage 1
     var firstBad = null;
