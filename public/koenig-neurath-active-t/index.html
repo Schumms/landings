@@ -60,7 +60,7 @@ html{scroll-behavior:smooth;}
 
 /* ---------- Hero ---------- */
 #sr-hero{background:var(--ink);color:#fff;}
-#sr-hero .sr-inner{max-width:1200px;margin:0 auto;padding:56px 40px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+#sr-hero .sr-inner{max-width:1200px;margin:0 auto;padding:56px 40px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:stretch;}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--sr-green);font-size:0.8125rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;}
 .eyebrow i{width:22px;height:2px;background:currentColor;display:inline-block;}
 #sr-hero h1{font-size:clamp(2.4rem,4.4vw,3.8rem);font-weight:900;line-height:1.08;margin:20px 0 18px;}
@@ -77,8 +77,8 @@ html{scroll-behavior:smooth;}
 #sr-hero .sr-sticker .sr-dot{width:8px;height:8px;border-radius:999px;background:var(--coral);flex-shrink:0;box-shadow:0 0 0 3px rgba(130,122,254,0.3);}
 #sr-hero .sr-sticker strong{display:block;font-size:0.875rem;font-weight:900;color:#fff;}
 #sr-hero .sr-sticker em{display:block;font-style:normal;font-size:0.6875rem;font-weight:600;color:rgba(255,255,255,0.65);margin-top:2px;}
-#sr-hero .sr-media{position:relative;}
-#sr-hero .sr-media img{width:100%;height:auto;display:block;border-radius:8px;}
+#sr-hero .sr-media{position:relative;display:flex;min-height:0;}
+#sr-hero .sr-media img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;}
 #sr-hero .sr-media .sr-timebadge{position:absolute;left:16px;bottom:16px;background:rgba(19,63,66,0.92);border:1px solid rgba(1,219,162,0.5);border-radius:6px;padding:10px 16px;color:#fff;}
 #sr-hero .sr-media .sr-timebadge strong{display:block;font-size:1.25rem;font-weight:900;color:var(--sr-green);}
 #sr-hero .sr-media .sr-timebadge span{font-size:0.6875rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.8);}
@@ -207,7 +207,7 @@ html{scroll-behavior:smooth;}
   #sr-nav a.sr-navcta{padding:8px 14px;font-size:0.6875rem;}
   #sr-nav .sr-logo img.sr-logo-kn{height:17px;}
   #sr-hero .sr-inner{padding:44px 20px;grid-template-columns:1fr;gap:36px;}
-  #sr-hero .sr-media{order:-1;}
+  #sr-hero .sr-media{order:-1;min-height:320px;}
   #sr-hero .sr-media .sr-timebadge{left:12px;bottom:12px;padding:8px 12px;}
   #sr-hero .sr-media .sr-timebadge strong{font-size:1.0625rem;}
   #sr-usp .sr-inner{grid-template-columns:1fr 1fr;gap:20px 0;}
