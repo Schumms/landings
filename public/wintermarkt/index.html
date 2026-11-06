@@ -105,7 +105,7 @@
 
 /* ── Basis ─────────────────────────────────────────── */
 html { overflow-x: hidden; scroll-behavior: smooth; }
-body { margin: 0; overflow-x: hidden; max-width: 100vw; background: var(--wm-paper); font-family: var(--font-brand); color: var(--sur-ink); }
+body { margin: 0; overflow-x: hidden; max-width: 100vw; background: #ffffff; font-family: var(--font-brand); color: var(--sur-ink); }
 a { color: var(--wm-accent); text-decoration: none; }
 a:hover { color: var(--wm-accent-dark); }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--wm-accent); outline-offset: 3px; }
@@ -135,7 +135,7 @@ img { max-width: 100%; }
 #sr-hero .btn-hero:hover { background: var(--wm-accent-dark); color: var(--sur-ink); }
 
 /* ── Unser Danke (2-col) ────────────────────────────── */
-#sr-danke { max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+#sr-danke { max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; background: #ffffff; }
 #sr-danke h2, #sr-markt h2, #anmeldung h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.02em; text-transform: none; }
 #sr-danke h2 { margin: 18px 0 0; }
 #sr-danke .danke-text { padding-top: 8px; }
@@ -152,7 +152,7 @@ img { max-width: 100%; }
 #sr-markt .prog-card h3 { font-size: 1.25rem; font-weight: 900; line-height: 1.1; text-transform: none; margin: 0; }
 
 /* ── Galerie ───────────────────────────────────────── */
-#sr-galerie { max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) 40px; }
+#sr-galerie { max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) 40px; background: #ffffff; }
 #sr-galerie .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: clamp(200px, 22vw, 300px); gap: 16px; }
 #sr-galerie .gallery-grid img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; }
 #sr-galerie .tile-wide { grid-column: span 2; }
@@ -164,7 +164,7 @@ img { max-width: 100%; }
 #sr-info .value { font-size: 1.5rem; font-weight: 900; margin-top: 8px; line-height: 1.2; color: var(--wm-accent); }
 
 /* ── Anmeldung ─────────────────────────────────────── */
-#anmeldung { max-width: 640px; margin: 0 auto; padding: var(--space-9) 40px; }
+#anmeldung { max-width: 640px; margin: 0 auto; padding: var(--space-9) 40px; background: #ffffff; }
 #anmeldung h2 { margin: 18px 0 12px; }
 #anmeldung .signup-intro { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.55; margin: 0 0 40px; }
 #anmeldung .cform { display: flex; flex-direction: column; gap: 20px; }
@@ -208,7 +208,7 @@ img { max-width: 100%; }
 
 /* ── Responsive: 480px ────────────────────────────── */
 @media (max-width: 480px) {
-  #sr-nav img { height: 24px !important; }
+  #sr-nav img { height: 17px !important; }
   #sr-hero h1 { font-size: 2.2rem; }
   #sr-hero .hero-body { font-size: 0.9375rem; }
   #sr-hero .btn-hero { padding: 14px 24px; font-size: 0.9375rem; width: 100%; }
@@ -225,7 +225,7 @@ img { max-width: 100%; }
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDNB35DX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header id="sr-nav">
-  <img src="/wintermarkt/images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:30px;width:auto;display:block" loading="eager" decoding="async">
+  <img src="/wintermarkt/images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:21px;width:auto;display:block" loading="eager" decoding="async">
   <a class="btn-dark" href="#anmeldung">Zusagen</a>
 </header>
 
@@ -377,7 +377,7 @@ img { max-width: 100%; }
 
 <footer id="sr-footer">
   <div class="inner">
-    <img src="/wintermarkt/images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:26px;width:auto;display:block" loading="lazy" decoding="async">
+    <img src="/wintermarkt/images/sur-logo-white.webp" alt="Schumm und Rösch" width="1000" height="84" style="height:18px;width:auto;display:block" loading="lazy" decoding="async">
     <div class="footer-meta">Frohe Weihnachten · Borsigstraße 20, 65205 Wiesbaden</div>
   </div>
 </footer>
