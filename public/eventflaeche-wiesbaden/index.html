@@ -760,13 +760,10 @@ section { scroll-margin-top: var(--nav-h); }
 (function () {
   "use strict";
 
-  /* ── Grundkonzept: crossfade carousel (autoplay 2s, pause on hover) ── */
+  /* ── Grundkonzept: crossfade carousel — wechselt fix alle 2s, Buttons zum Durchklicken ── */
   var csSlides = document.querySelectorAll("#raum .raum-slide");
   var csDotsWrap = document.getElementById("raum-dots");
-  var csCarousel = document.getElementById("raum-carousel");
   var csIdx = 0, csTimer = null;
-  var csFinePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  var csHover = false;
 
   for (var d = 0; d < csSlides.length; d++) {
     var dot = document.createElement("span");
@@ -785,15 +782,11 @@ section { scroll-margin-top: var(--nav-h); }
   function csRestart() {
     if (csTimer) clearInterval(csTimer);
     csTimer = setInterval(function () {
-      if ((csFinePointer && csHover) || document.hidden) return;
+      if (document.hidden) return;
       csGo(csIdx + 1);
     }, 2000);
   }
 
-  if (csFinePointer) {
-    csCarousel.addEventListener("pointerenter", function () { csHover = true; });
-    csCarousel.addEventListener("pointerleave", function () { csHover = false; });
-  }
   document.getElementById("cs-prev").addEventListener("click", function () { csGo(csIdx - 1); csRestart(); });
   document.getElementById("cs-next").addEventListener("click", function () { csGo(csIdx + 1); csRestart(); });
   csRestart();
