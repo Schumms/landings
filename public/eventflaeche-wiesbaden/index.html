@@ -191,7 +191,8 @@ section { scroll-margin-top: var(--nav-h); }
 #raum { background: #fff; }
 #raum .raum-inner { padding: 96px 48px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center; }
 #raum .raum-media { flex: 1.4 1 380px; min-width: 0; }
-#raum .raum-carousel { position: relative; width: 100%; height: 560px; overflow: hidden; background: var(--surface-mint); }
+#raum .raum-carousel { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-mint); }
+#raum .raum-arrows { position: absolute; right: 24px; bottom: 24px; display: flex; gap: 12px; z-index: 2; }
 #raum .raum-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity 700ms ease; }
 #raum .raum-slide.active { opacity: 1; pointer-events: auto; }
 #raum .raum-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -203,7 +204,7 @@ section { scroll-margin-top: var(--nav-h); }
 #raum .raum-lead { font-weight: 350; font-size: 1.15rem; line-height: 1.55; color: var(--text-secondary); margin: 0 0 16px; max-width: 46ch; }
 #raum .raum-lead--last { margin: 0; }
 #raum .raum-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: 40px; margin: 36px 0 0; padding: 28px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-#raum .stat-value { font-weight: 900; font-size: 2.25rem; line-height: 1; color: var(--purple-600); }
+#raum .stat-value { font-weight: 900; font-size: 2.25rem; line-height: 1; color: var(--sur-purple); }
 #raum .stat-label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-top: 8px; }
 #raum .raum-setups { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 24px; }
 #raum .setups-label { font-size: 0.8125rem; font-weight: 700; color: var(--sur-ink); text-transform: uppercase; }
@@ -213,8 +214,8 @@ section { scroll-margin-top: var(--nav-h); }
 #events { background: var(--sur-ink); overflow: hidden; }
 #events .container { padding: 96px 32px; }
 #events h2 { font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1; margin: 20px 0 24px; color: #fff; text-transform: none; }
-#events .events-flex { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; margin-top: 48px; }
-#events .ev-panel { flex: 1 1 320px; min-width: 0; }
+#events .events-flex { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: stretch; }
+#events .ev-panel { min-width: 0; display: flex; flex-direction: column; }
 #events .ev-num { font-weight: 900; font-size: 3.5rem; line-height: 1; color: var(--sur-purple); }
 #events .ev-rule { height: 1px; background: rgba(255,255,255,0.35); margin: 24px 0 28px; max-width: 280px; }
 #events .ev-title { font-weight: 900; font-size: 1.9rem; line-height: 1.1; color: #fff; letter-spacing: -0.01em; }
@@ -223,11 +224,11 @@ section { scroll-margin-top: var(--nav-h); }
 #events .ev-block { display: none; }
 #events .ev-block.active { display: block; }
 #events .ev-arrows { display: flex; gap: 12px; margin-top: 32px; }
-#events .ev-arrow { width: 64px; height: 64px; background: transparent; border: 1px solid rgba(255,255,255,0.45); color: #fff; font-family: var(--font-brand); font-size: 1.5rem; line-height: 1; cursor: pointer; transition: background 120ms cubic-bezier(0.22,0.61,0.36,1); }
-#events .ev-arrow:hover { background: rgba(255,255,255,0.14); }
-#events .ev-viewport { flex: 1.5 1 420px; min-width: 0; overflow: hidden; touch-action: pan-y; cursor: grab; }
-#events .ev-track { display: flex; gap: 28px; transition: transform 420ms cubic-bezier(0.22, 0.8, 0.24, 1); }
-#events .ev-slide { flex: 0 0 78%; position: relative; aspect-ratio: 10 / 11; background: var(--surface-mint); opacity: 0.5; transition: opacity 420ms ease; }
+.ev-arrow { width: 64px; height: 64px; background: transparent; border: 1px solid rgba(255,255,255,0.45); color: #fff; font-family: var(--font-brand); font-size: 1.5rem; line-height: 1; cursor: pointer; transition: background 120ms cubic-bezier(0.22,0.61,0.36,1); }
+.ev-arrow:hover { background: rgba(255,255,255,0.14); }
+#events .ev-viewport { min-width: 0; overflow: hidden; touch-action: pan-y; cursor: grab; }
+#events .ev-track { display: flex; gap: 28px; height: 100%; transition: transform 420ms cubic-bezier(0.22, 0.8, 0.24, 1); }
+#events .ev-slide { flex: 0 0 78%; position: relative; height: 100%; background: var(--surface-mint); opacity: 0.5; transition: opacity 420ms ease; }
 #events .ev-slide.active { opacity: 1; }
 #events .ev-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 #events .ev-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 24px 24px; pointer-events: none; background: linear-gradient(to top, rgba(20,32,28,0.88) 0%, rgba(20,32,28,0) 100%); }
@@ -243,7 +244,7 @@ section { scroll-margin-top: var(--nav-h); }
 #ausstattung .card-title { font-weight: 900; font-size: 1.35rem; letter-spacing: -0.01em; color: var(--text-primary); }
 #ausstattung .card-sub { font-size: 0.85rem; color: var(--text-secondary); margin: 6px 0 16px; }
 #ausstattung .card-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--border-subtle); }
-#ausstattung .card-check { color: var(--purple-600); font-weight: 900; flex-shrink: 0; }
+#ausstattung .card-check { color: var(--sur-purple); font-weight: 900; flex-shrink: 0; }
 #ausstattung .card-row-text { color: var(--text-primary); font-size: 0.95rem; line-height: 1.5; font-weight: 400; }
 #ausstattung .footnote { margin: 28px 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.55; max-width: 60ch; }
 
@@ -275,7 +276,7 @@ section { scroll-margin-top: var(--nav-h); }
 #faq .faq-item { border-bottom: 1px solid var(--border-subtle); }
 #faq .faq-q { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0; cursor: pointer; gap: 16px; background: none; border: none; text-align: left; font-family: var(--font-brand); }
 #faq .faq-q-text { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
-#faq .faq-sign { font-family: var(--font-brand); font-size: 1.3rem; color: var(--purple-600); flex-shrink: 0; font-weight: 400; }
+#faq .faq-sign { font-family: var(--font-brand); font-size: 1.3rem; color: var(--sur-purple); flex-shrink: 0; font-weight: 400; }
 #faq .faq-a { margin: 0 0 22px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.55; max-width: 56ch; display: none; }
 #faq .faq-item.open .faq-a { display: block; }
 
@@ -309,7 +310,7 @@ section { scroll-margin-top: var(--nav-h); }
 #sr-footer .footer-grid { max-width: var(--container-max); margin: 0 auto; padding: 56px 32px 32px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
 #sr-footer .footer-logo { height: 26px; width: auto; display: block; }
 #sr-footer .footer-desc { margin-top: 18px; color: rgba(255,255,255,0.55); font-size: 0.9rem; max-width: 32ch; font-family: var(--font-brand); }
-#sr-footer .footer-label { font-family: var(--font-brand); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-600); margin-bottom: 16px; }
+#sr-footer .footer-label { font-family: var(--font-brand); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sur-purple); margin-bottom: 16px; }
 #sr-footer .footer-contact { display: flex; flex-direction: column; gap: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem; font-family: var(--font-brand); }
 #sr-footer .footer-bottom { max-width: var(--container-max); margin: 0 auto; padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: rgba(255,255,255,0.4); font-size: 0.8rem; font-family: var(--font-brand); }
 #sr-footer .footer-bottom a { color: inherit; text-decoration: none; }
@@ -345,8 +346,9 @@ section { scroll-margin-top: var(--nav-h); }
   /* Grundkonzept — carousel above text, compact height */
   #raum .raum-inner { flex-direction: column; gap: 40px; padding-top: 64px; padding-bottom: 64px; }
   #raum .raum-media, #raum .raum-copy { flex: 1 1 auto; }
-  #raum .raum-carousel { height: 340px; min-height: 320px; }
   #raum .raum-dots { left: 16px; bottom: 16px; }
+  #raum .raum-arrows { right: 16px; bottom: 16px; }
+  #raum .raum-arrows .ev-arrow { width: 44px; height: 44px; font-size: 1.1rem; }
   #raum h2 { font-size: clamp(2.4rem, 8vw, 3rem); }
   #raum .raum-lead { font-size: 1rem; }
   #raum .raum-stats { gap: 20px; padding: 20px 0; }
@@ -356,7 +358,8 @@ section { scroll-margin-top: var(--nav-h); }
 
   /* Events — panel above carousel */
   #events .container { padding: 64px 20px; }
-  #events .events-flex { flex-direction: column; gap: 40px; margin-top: 32px; }
+  #events .events-flex { grid-template-columns: 1fr; gap: 40px; }
+  #events .ev-slide { height: auto; aspect-ratio: 4 / 5; }
   #events h2 { font-size: clamp(2.4rem, 8vw, 3rem); }
   #events .ev-num { font-size: 2.5rem; }
   #events .ev-title { font-size: 1.4rem; }
@@ -476,6 +479,10 @@ section { scroll-margin-top: var(--nav-h); }
         <div class="raum-slide"><img src="/eventflaeche-wiesbaden/images/konzept-5.webp" alt="Workshop-Bereich der Eventfläche mit Whiteboard und farbigen Stühlen" width="1600" height="900" loading="lazy" decoding="async"></div>
         <div class="raum-slide"><img src="/eventflaeche-wiesbaden/images/konzept-6.webp" alt="Eventfläche für Firmenevents und Meetings" width="1000" height="563" loading="lazy" decoding="async"></div>
         <div class="raum-dots" id="raum-dots" aria-hidden="true"></div>
+        <div class="raum-arrows">
+          <button type="button" class="ev-arrow" id="cs-prev" aria-label="Vorheriges Bild">←</button>
+          <button type="button" class="ev-arrow" id="cs-next" aria-label="Nächstes Bild">→</button>
+        </div>
       </div>
     </div>
     <div class="raum-copy">
@@ -502,10 +509,10 @@ section { scroll-margin-top: var(--nav-h); }
 
 <section id="events" aria-label="Beispiel-Events">
   <div class="container">
-    <span class="eyebrow">Beispiel-Events</span>
-    <h2>Wandelbar gestaltet. Vielseitig genutzt.</h2>
     <div class="events-flex">
       <div class="ev-panel">
+        <span class="eyebrow">Event Formate</span>
+        <h2>Wandelbar gestaltet.<br>Vielseitig genutzt.</h2>
         <div class="ev-blocks" id="ev-blocks">
           <div class="ev-block active">
             <div class="ev-num">01</div>
@@ -551,23 +558,23 @@ section { scroll-margin-top: var(--nav-h); }
       <div class="ev-viewport" id="ev-viewport">
         <div class="ev-track" id="ev-track">
           <div class="ev-slide active">
-            <img src="/eventflaeche-wiesbaden/images/event-workshop.webp" alt="Workshop &amp; Brainstorming auf der Eventfläche — offene Fläche mit Whiteboards" width="800" height="533" loading="lazy" decoding="async">
+            <img src="/eventflaeche-wiesbaden/images/event-workshop.webp" alt="Workshop &amp; Brainstorming auf der Eventfläche — kreative Session mit Whiteboard" width="1600" height="1067" loading="lazy" decoding="async">
             <div class="ev-caption"><div class="ev-caption-title">Workshop &amp; Brainstorming</div><div class="ev-caption-tag">Kreativ · Interaktiv</div></div>
           </div>
           <div class="ev-slide">
-            <img src="/eventflaeche-wiesbaden/images/event-praesentation.webp" alt="Präsentation &amp; Vortrag mit Reihenbestuhlung und Beamer" width="533" height="800" loading="lazy" decoding="async" style="object-position: 50% 30%;">
+            <img src="/eventflaeche-wiesbaden/images/event-praesentation.webp" alt="Präsentation &amp; Vortrag — Keynote mit Publikum in Reihenbestuhlung" width="1200" height="1800" loading="lazy" decoding="async">
             <div class="ev-caption"><div class="ev-caption-title">Präsentation &amp; Vortrag</div><div class="ev-caption-tag">Reihenbestuhlung</div></div>
           </div>
           <div class="ev-slide">
-            <img src="/eventflaeche-wiesbaden/images/event-dinner.webp" alt="Dinner &amp; Empfang mit beleuchteter Bar-Theke" width="533" height="800" loading="lazy" decoding="async">
+            <img src="/eventflaeche-wiesbaden/images/event-dinner.webp" alt="Dinner &amp; Empfang — Catering an der beleuchteten Bar-Theke" width="1200" height="1800" loading="lazy" decoding="async">
             <div class="ev-caption"><div class="ev-caption-title">Dinner &amp; Empfang</div><div class="ev-caption-tag">Bar · Teeküche</div></div>
           </div>
           <div class="ev-slide">
-            <img src="/eventflaeche-wiesbaden/images/event-podcast.webp" alt="Reduziertes Setup für Podcast-Aufnahmen im eigenen Abteil" width="533" height="800" loading="lazy" decoding="async" style="object-position: 50% 40%;">
+            <img src="/eventflaeche-wiesbaden/images/event-podcast.webp" alt="Eigens Abteil hinter Vorhängen — Rahmen für Podcast- und Videoformate" width="1200" height="1800" loading="lazy" decoding="async">
             <div class="ev-caption"><div class="ev-caption-title">Podcast-Aufnahme</div><div class="ev-caption-tag">Content · Studio</div></div>
           </div>
           <div class="ev-slide">
-            <img src="/eventflaeche-wiesbaden/images/event-firmenevent.webp" alt="Firmenevent &amp; Meeting — wandelbare Fläche für Team-Events" width="800" height="533" loading="lazy" decoding="async" style="object-position: 30% 50%;">
+            <img src="/eventflaeche-wiesbaden/images/event-firmenevent.webp" alt="Firmenevent — Teamevent an der langen Tafel" width="1600" height="1067" loading="lazy" decoding="async">
             <div class="ev-caption"><div class="ev-caption-title">Firmenevent &amp; Meeting</div><div class="ev-caption-tag">Team · Kunden</div></div>
           </div>
         </div>
@@ -756,8 +763,9 @@ section { scroll-margin-top: var(--nav-h); }
   var csSlides = document.querySelectorAll("#raum .raum-slide");
   var csDotsWrap = document.getElementById("raum-dots");
   var csCarousel = document.getElementById("raum-carousel");
-  var csIdx = 0, csTimer = null, csHover = false;
-  var csReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var csIdx = 0, csTimer = null;
+  var csFinePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var csHover = false;
 
   for (var d = 0; d < csSlides.length; d++) {
     var dot = document.createElement("span");
@@ -773,25 +781,21 @@ section { scroll-margin-top: var(--nav-h); }
       if (csDots[i]) csDots[i].classList.toggle("active", i === csIdx);
     }
   }
-  function csStart() {
-    if (csTimer || csReduced) return;
+  function csRestart() {
+    if (csTimer) clearInterval(csTimer);
     csTimer = setInterval(function () {
-      if (csHover || document.hidden) return;
+      if ((csFinePointer && csHover) || document.hidden) return;
       csGo(csIdx + 1);
     }, 2000);
   }
-  function csStop() { if (csTimer) { clearInterval(csTimer); csTimer = null; } }
 
-  csCarousel.addEventListener("pointerenter", function () { csHover = true; });
-  csCarousel.addEventListener("pointerleave", function () { csHover = false; });
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) csStop(); else csStart();
-  });
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) csStart(); else csStop(); });
-    }, { threshold: 0.1 }).observe(csCarousel);
-  } else { csStart(); }
+  if (csFinePointer) {
+    csCarousel.addEventListener("pointerenter", function () { csHover = true; });
+    csCarousel.addEventListener("pointerleave", function () { csHover = false; });
+  }
+  document.getElementById("cs-prev").addEventListener("click", function () { csGo(csIdx - 1); csRestart(); });
+  document.getElementById("cs-next").addEventListener("click", function () { csGo(csIdx + 1); csRestart(); });
+  csRestart();
 
   /* ── Events: sliding carousel + synced text panel ── */
   var evBlocks = document.querySelectorAll("#ev-blocks .ev-block");
