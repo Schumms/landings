@@ -191,8 +191,8 @@ img { max-width: 100%; }
 /* ── Responsive: 860px ────────────────────────────── */
 @media (max-width: 860px) {
   #sr-hero { flex-direction: column; min-height: auto; }
-  #sr-hero .hero-media { min-height: 340px; }
-  #sr-hero .hero-copy { flex-basis: auto; max-width: 100%; width: 100%; min-width: 0; padding: 48px 24px; }
+  #sr-hero .hero-media { position: relative; inset: auto; order: -1; min-height: 340px; }
+  #sr-hero .hero-copy { flex-basis: auto; max-width: 100%; width: 100%; min-width: 0; padding: 48px 24px; background: var(--wm-wine); text-shadow: none; }
   #sr-hero h1 { font-size: 2.75rem; }
   #sr-danke { grid-template-columns: 1fr; gap: 32px; padding: var(--space-8) 24px; }
   #sr-markt { padding: var(--space-8) 24px; }
